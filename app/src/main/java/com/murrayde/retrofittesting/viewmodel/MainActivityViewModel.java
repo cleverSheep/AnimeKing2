@@ -4,15 +4,14 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.murrayde.retrofittesting.di.DaggerApiComponent;
+import com.murrayde.retrofittesting.di.AnimeApiComponent;
+import com.murrayde.retrofittesting.di.DaggerAnimeApiComponent;
 import com.murrayde.retrofittesting.model.AnimeComplete;
 import com.murrayde.retrofittesting.model.AnimeData;
-import com.murrayde.retrofittesting.network.AnimeApiService;
+import com.murrayde.retrofittesting.network.AnimeApiEndpoint;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.inject.Inject;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
@@ -21,18 +20,20 @@ import io.reactivex.schedulers.Schedulers;
 
 public class MainActivityViewModel extends ViewModel {
 
-    @Inject
-    AnimeApiService animeApiService;
+    private AnimeApiEndpoint animeApiEndpoint;
 
     public MainActivityViewModel() {
-        DaggerApiComponent.create().inject(this);
+        AnimeApiComponent daggerAnimeApiComponent = DaggerAnimeApiComponent.builder()
+                .build();
+        animeApiEndpoint = daggerAnimeApiComponent.getAnimeApiEndpoint();
     }
 
     private CompositeDisposable disposable = new CompositeDisposable();
 
     private MutableLiveData<List<AnimeData>> animeData = new MutableLiveData<List<AnimeData>>();
 
-    /**We can't add 'AnimeData' objects to animeData, only assigning data with setValue/postValue is possible.
+    /**
+     * We can't add 'AnimeData' objects to animeData, only assigning data with setValue/postValue is possible.
      * Create a List<AnimeData> so we can add 'AnimeData' objects to the list and then assign animeData to the list.
      */
     private List<AnimeData> tempAnimeData = new ArrayList<>();
@@ -48,7 +49,7 @@ public class MainActivityViewModel extends ViewModel {
 
     private void loadAnime() {
         disposable.add(
-                animeApiService.getAnimeComplete()
+                animeApiEndpoint.getAnimeComplete()
                         .subscribeOn(Schedulers.newThread())
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribeWith(new DisposableSingleObserver<AnimeComplete>() {

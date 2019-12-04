@@ -7,7 +7,7 @@ import retrofit2.http.GET;
 
 public interface AnimeApiEndpoint {
 
-    @GET("anime?page[limit]=20&page[offset]=0")
+    @GET("anime?page[limit]=20")
     Single<AnimeComplete> getAnimeComplete();
 
 }

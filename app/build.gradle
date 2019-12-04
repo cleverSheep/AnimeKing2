@@ -39,10 +39,14 @@ dependencies {
     def cardview_version = "1.0.0"
     implementation "androidx.cardview:cardview:$cardview_version"
 
-    // Retrofit
+    // Retrofit, OkHttp, Timber
     def retrofitVersion = "2.5.0"
+    def okHttpVersion = "4.2.1"
+    def timberVersion = "4.7.1"
     implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
     implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+    implementation "com.squareup.okhttp3:logging-interceptor:$okHttpVersion"
+    implementation "com.jakewharton.timber:timber:$timberVersion"
 
     // ViewModel and LiveData
     def lifecycle_version = '2.2.0-alpha03'
