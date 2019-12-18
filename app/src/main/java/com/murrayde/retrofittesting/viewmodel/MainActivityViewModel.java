@@ -49,7 +49,7 @@ public class MainActivityViewModel extends ViewModel {
 
     private void loadAnime() {
         disposable.add(
-                animeApiEndpoint.getAnimeComplete()
+                animeApiEndpoint.getAnimeComplete(20, 0)
                         .subscribeOn(Schedulers.newThread())
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribeWith(new DisposableSingleObserver<AnimeComplete>() {
