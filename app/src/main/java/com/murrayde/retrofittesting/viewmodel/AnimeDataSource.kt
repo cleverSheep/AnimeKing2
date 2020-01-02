@@ -29,11 +29,11 @@ class AnimeDataSource(private val animeApiEndpoint: AnimeApiEndpoint,
 
                                 val animeDataArrayList: ArrayList<AnimeData> = ArrayList()
                                 animeDataArrayList.addAll(t.data)
-
                                 callback.onResult(animeDataArrayList, null, t.nextLink)
                             }
 
                             override fun onError(e: Throwable) {
+                                networkState.postValue(NetworkState.error("Error loading anime titles"))
                             }
 
                         })
@@ -43,6 +43,7 @@ class AnimeDataSource(private val animeApiEndpoint: AnimeApiEndpoint,
     override fun loadAfter(params: LoadParams<String>, callback: LoadCallback<String, AnimeData>) {
         networkState.postValue(NetworkState.LOADING)
         compositeDisposable.add(
+                // PAGING_OFFSET() increments the paging offset by the paging limit and returns the paging offset
                 animeApiEndpoint.getAnimeComplete(PAGING.PAGING_LIMIT, PAGING.PAGING_OFFSET())
                         .subscribeOn(Schedulers.newThread())
                         .observeOn(AndroidSchedulers.mainThread())
@@ -52,7 +53,6 @@ class AnimeDataSource(private val animeApiEndpoint: AnimeApiEndpoint,
 
                                 val animeDataArrayList: ArrayList<AnimeData> = ArrayList()
                                 animeDataArrayList.addAll(t.data)
-
                                 callback.onResult(animeDataArrayList, t.nextLink)
                             }
 

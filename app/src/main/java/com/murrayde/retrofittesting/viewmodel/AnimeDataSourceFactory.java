@@ -20,10 +20,10 @@ public class AnimeDataSourceFactory extends DataSource.Factory<String, AnimeData
 
     @SuppressWarnings("WeakerAccess")
     AnimeApiEndpoint animeApiEndpoint;
-    private CompositeDisposable compositeDisposable;
+        private CompositeDisposable compositeDisposable;
 
-    public AnimeDataSourceFactory(AnimeApiEndpoint animeApiEndpoint, CompositeDisposable compositeDisposable) {
-        this.animeApiEndpoint = animeApiEndpoint;
+        AnimeDataSourceFactory(AnimeApiEndpoint animeApiEndpoint, CompositeDisposable compositeDisposable) {
+            this.animeApiEndpoint = animeApiEndpoint;
         this.compositeDisposable = compositeDisposable;
     }
 

@@ -17,12 +17,6 @@ class AnimeDataAdapter : PagedListAdapter<AnimeData, AnimeViewHolder>(diffCallba
         /**
          * This diff callback informs the PagedListAdapter how to compute list differences when new
          * PagedLists arrive.
-         * <p>
-         * When you add a Cheese with the 'Add' button, the PagedListAdapter uses diffCallback to
-         * detect there's only a single item difference from before, so it only needs to animate and
-         * rebind a single view.
-         *
-         * @see android.support.v7.util.DiffUtil
          */
         private val diffCallback = object : DiffUtil.ItemCallback<AnimeData>() {
             override fun areItemsTheSame(oldItem: AnimeData, newItem: AnimeData): Boolean = oldItem.id == newItem.id
