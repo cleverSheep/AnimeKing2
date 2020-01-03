@@ -1,11 +1,14 @@
 
 package com.murrayde.retrofittesting.model.AnimeAttributes.AnimeImage;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import com.murrayde.retrofittesting.model.AnimeAttributes.AnimeImage.Meta.Meta_;
 
-public class CoverImage {
+public class CoverImage implements Parcelable {
 
     @SerializedName("tiny")
     @Expose
@@ -22,6 +25,25 @@ public class CoverImage {
     @SerializedName("meta")
     @Expose
     private Meta_ meta;
+
+    protected CoverImage(Parcel in) {
+        tiny = in.readString();
+        small = in.readString();
+        large = in.readString();
+        original = in.readString();
+    }
+
+    public static final Creator<CoverImage> CREATOR = new Creator<CoverImage>() {
+        @Override
+        public CoverImage createFromParcel(Parcel in) {
+            return new CoverImage(in);
+        }
+
+        @Override
+        public CoverImage[] newArray(int size) {
+            return new CoverImage[size];
+        }
+    };
 
     public String getTiny() {
         return tiny;
@@ -63,4 +85,13 @@ public class CoverImage {
         this.meta = meta;
     }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(original);
+    }
 }

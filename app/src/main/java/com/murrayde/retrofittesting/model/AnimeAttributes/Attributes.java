@@ -1,13 +1,17 @@
 
 package com.murrayde.retrofittesting.model.AnimeAttributes;
 
-import java.util.List;
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import com.murrayde.retrofittesting.model.AnimeAttributes.AnimeImage.CoverImage;
 import com.murrayde.retrofittesting.model.AnimeAttributes.AnimeImage.PosterImage;
 
-public class Attributes {
+import java.util.List;
+
+public class Attributes implements Parcelable {
 
     @SerializedName("createdAt")
     @Expose
@@ -100,36 +104,61 @@ public class Attributes {
     @Expose
     private boolean nsfw;
 
-    public String getCreatedAt() {
-        return createdAt;
+    protected Attributes(Parcel in) {
+        createdAt = in.readString();
+        updatedAt = in.readString();
+        slug = in.readString();
+        synopsis = in.readString();
+        coverImageTopOffset = in.readInt();
+        canonicalTitle = in.readString();
+        abbreviatedTitles = in.createStringArrayList();
+        averageRating = in.readString();
+        userCount = in.readInt();
+        favoritesCount = in.readInt();
+        startDate = in.readString();
+        endDate = in.readString();
+        popularityRank = in.readInt();
+        ratingRank = in.readInt();
+        ageRating = in.readString();
+        ageRatingGuide = in.readString();
+        subtype = in.readString();
+        status = in.readString();
+        tba = in.readString();
+        posterImage = in.readParcelable(PosterImage.class.getClassLoader());
+        episodeCount = in.readInt();
+        episodeLength = in.readInt();
+        totalLength = in.readInt();
+        youtubeVideoId = in.readString();
+        showType = in.readString();
+        nsfw = in.readByte() != 0;
     }
 
-    public void setCreatedAt(String createdAt) {
-        this.createdAt = createdAt;
+    public static final Creator<Attributes> CREATOR = new Creator<Attributes>() {
+        @Override
+        public Attributes createFromParcel(Parcel in) {
+            return new Attributes(in);
+        }
+
+        @Override
+        public Attributes[] newArray(int size) {
+            return new Attributes[size];
+        }
+    };
+
+    public String getCreatedAt() {
+        return createdAt;
     }
 
     public String getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(String updatedAt) {
-        this.updatedAt = updatedAt;
-    }
-
     public String getSlug() {
         return slug;
     }
 
-    public void setSlug(String slug) {
-        this.slug = slug;
-    }
-
     public String getSynopsis() {
         return synopsis;
-    }
-
-    public void setSynopsis(String synopsis) {
-        this.synopsis = synopsis;
     }
 
     public int getCoverImageTopOffset() {
@@ -200,144 +229,45 @@ public class Attributes {
         return startDate;
     }
 
-    public void setStartDate(String startDate) {
-        this.startDate = startDate;
-    }
-
     public String getEndDate() {
         return endDate;
-    }
-
-    public void setEndDate(String endDate) {
-        this.endDate = endDate;
     }
 
     public Object getNextRelease() {
         return nextRelease;
     }
 
-    public void setNextRelease(Object nextRelease) {
-        this.nextRelease = nextRelease;
-    }
-
     public int getPopularityRank() {
         return popularityRank;
-    }
-
-    public void setPopularityRank(int popularityRank) {
-        this.popularityRank = popularityRank;
     }
 
     public int getRatingRank() {
         return ratingRank;
     }
 
-    public void setRatingRank(int ratingRank) {
-        this.ratingRank = ratingRank;
-    }
-
     public String getAgeRating() {
         return ageRating;
-    }
-
-    public void setAgeRating(String ageRating) {
-        this.ageRating = ageRating;
     }
 
     public String getAgeRatingGuide() {
         return ageRatingGuide;
     }
 
-    public void setAgeRatingGuide(String ageRatingGuide) {
-        this.ageRatingGuide = ageRatingGuide;
-    }
-
-    public String getSubtype() {
-        return subtype;
-    }
-
-    public void setSubtype(String subtype) {
-        this.subtype = subtype;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public String getTba() {
-        return tba;
-    }
-
-    public void setTba(String tba) {
-        this.tba = tba;
-    }
-
     public PosterImage getPosterImage() {
         return posterImage;
     }
 
-    public void setPosterImage(PosterImage posterImage) {
-        this.posterImage = posterImage;
+    @Override
+    public int describeContents() {
+        return 0;
     }
 
-    public CoverImage getCoverImage() {
-        return coverImage;
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(slug);
+        parcel.writeParcelable(posterImage, i);
+        parcel.writeString(synopsis);
     }
-
-    public void setCoverImage(CoverImage coverImage) {
-        this.coverImage = coverImage;
-    }
-
-    public int getEpisodeCount() {
-        return episodeCount;
-    }
-
-    public void setEpisodeCount(int episodeCount) {
-        this.episodeCount = episodeCount;
-    }
-
-    public int getEpisodeLength() {
-        return episodeLength;
-    }
-
-    public void setEpisodeLength(int episodeLength) {
-        this.episodeLength = episodeLength;
-    }
-
-    public int getTotalLength() {
-        return totalLength;
-    }
-
-    public void setTotalLength(int totalLength) {
-        this.totalLength = totalLength;
-    }
-
-    public String getYoutubeVideoId() {
-        return youtubeVideoId;
-    }
-
-    public void setYoutubeVideoId(String youtubeVideoId) {
-        this.youtubeVideoId = youtubeVideoId;
-    }
-
-    public String getShowType() {
-        return showType;
-    }
-
-    public void setShowType(String showType) {
-        this.showType = showType;
-    }
-
-    public boolean isNsfw() {
-        return nsfw;
-    }
-
-    public void setNsfw(boolean nsfw) {
-        this.nsfw = nsfw;
-    }
-
 }
+
+

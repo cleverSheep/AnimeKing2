@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="@dimen/margin_regular"
-    android:background="@drawable/round_bg"
+    android:background="@drawable/item_stroke"
     android:orientation="vertical">
 
     <ImageView
@@ -25,7 +25,7 @@
         android:id="@+id/tv_anime_name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@drawable/title_bg"
+        android:background="@drawable/title_stroke"
         android:fontFamily="@font/bahnscrift"
         android:textAlignment="center"
         android:textColor="@android:color/white"

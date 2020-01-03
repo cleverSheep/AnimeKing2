@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.DiffUtil
 import com.murrayde.retrofittesting.model.AnimeData
 
 class AnimeDataAdapter : PagedListAdapter<AnimeData, AnimeViewHolder>(diffCallback) {
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AnimeViewHolder = AnimeViewHolder(parent)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AnimeViewHolder = AnimeViewHolder.create(parent)
 
     override fun onBindViewHolder(holder: AnimeViewHolder, position: Int) {
         getItem(position)?.let { holder.bindTo(it) }

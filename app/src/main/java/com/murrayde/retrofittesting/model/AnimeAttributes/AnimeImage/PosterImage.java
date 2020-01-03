@@ -1,11 +1,14 @@
 
 package com.murrayde.retrofittesting.model.AnimeAttributes.AnimeImage;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import com.murrayde.retrofittesting.model.AnimeAttributes.AnimeImage.Meta.Meta;
 
-public class PosterImage {
+public class PosterImage implements Parcelable {
 
     @SerializedName("tiny")
     @Expose
@@ -25,6 +28,26 @@ public class PosterImage {
     @SerializedName("meta")
     @Expose
     private Meta meta;
+
+    protected PosterImage(Parcel in) {
+        tiny = in.readString();
+        small = in.readString();
+        medium = in.readString();
+        large = in.readString();
+        original = in.readString();
+    }
+
+    public static final Creator<PosterImage> CREATOR = new Creator<PosterImage>() {
+        @Override
+        public PosterImage createFromParcel(Parcel in) {
+            return new PosterImage(in);
+        }
+
+        @Override
+        public PosterImage[] newArray(int size) {
+            return new PosterImage[size];
+        }
+    };
 
     public String getTiny() {
         return tiny;
@@ -74,4 +97,13 @@ public class PosterImage {
         this.meta = meta;
     }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(original);
+    }
 }
