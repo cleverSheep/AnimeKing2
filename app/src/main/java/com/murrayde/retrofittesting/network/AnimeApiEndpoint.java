@@ -8,7 +8,7 @@ import retrofit2.http.Query;
 
 public interface AnimeApiEndpoint {
 
-    @GET("anime")
+    @GET("anime?filter[subtype]=tv&sort=popularityRank")
     Single<AnimeComplete> getAnimeComplete(
             @Query("page[limit]") int limit,
             @Query("page[offset]") int offset

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".view.LowQuestionCountFragment">
+
+    <TextView
+        android:id="@+id/not_enough"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableTop="@drawable/ic_box"
+        android:fontFamily="@font/bahnscrift"
+        android:text="@string/not_enough_questions"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/not_enough_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_regular"
+        android:fontFamily="@font/bahnscrift"
+        android:text="@string/not_enough_description"
+        android:textAlignment="center"
+        android:textSize="15sp" />
+
+    <Button
+        android:id="@+id/button_take_quiz"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="@dimen/margin_regular"
+        android:background="@color/colorAccent"
+        android:text="@string/ask_question"
+        android:textColor="@color/color_grey"
+        android:textSize="@dimen/button_text_size" />
+
+</LinearLayout>

@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.murrayde.retrofittesting.R
@@ -21,7 +22,7 @@ class DetailFragment : Fragment() {
         val LOG_TAG = DetailFragment::class.simpleName
     }
 
-    val args: DetailFragmentArgs by navArgs()
+    private val args: DetailFragmentArgs by navArgs()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -33,7 +34,7 @@ class DetailFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val attributes = args.animeAttributes
 
-        tv_title.text = attributes.slug
+        tv_title.text = attributes.titles.en ?: attributes.canonicalTitle
         tv_description.text = attributes.synopsis
         Glide.with(this)
                 .load(attributes.posterImage.original)
@@ -41,5 +42,10 @@ class DetailFragment : Fragment() {
                 .dontAnimate()
                 .into(iv_image)
         Log.d(LOG_TAG, attributes.posterImage.original)
+
+        button_take_quiz.setOnClickListener {
+            val action = DetailFragmentDirections.actionDetailFragmentToLowQuestionCountFragment()
+            Navigation.findNavController(view).navigate(action)
+        }
     }
 }
