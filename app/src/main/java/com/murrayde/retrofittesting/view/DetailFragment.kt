@@ -10,8 +10,8 @@ import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.murrayde.retrofittesting.R
+import com.murrayde.retrofittesting.model.QuestionFactory
 import kotlinx.android.synthetic.main.fragment_detail.*
-import timber.log.Timber
 
 /**
  * A simple [Fragment] subclass.
@@ -41,15 +41,24 @@ class DetailFragment : Fragment() {
                 .placeholder(R.drawable.castle)
                 .dontAnimate()
                 .into(iv_image)
-        Timber.d(attributes.posterImage.original)
 
         button_take_quiz.setOnClickListener {
-            val action = DetailFragmentDirections.actionDetailFragmentToLowQuestionCountFragment(attributes)
-            Navigation.findNavController(view).navigate(action)
+            if (QuestionFactory.hasEnoughQuestions(attributes.titles.en
+                            ?: attributes.canonicalTitle)) {
+                startQuiz()
+            } else alertNotEnoughQuestions(it)
         }
         button_ask_question.setOnClickListener {
             val action = DetailFragmentDirections.actionDetailFragmentToAskQuestionFragment(attributes)
             Navigation.findNavController(view).navigate(action)
         }
+    }
+
+    private fun alertNotEnoughQuestions(view: View) {
+        val action = DetailFragmentDirections.actionDetailFragmentToLowQuestionCountFragment(args.animeAttributes)
+        Navigation.findNavController(view).navigate(action)
+    }
+
+    private fun startQuiz() {
     }
 }

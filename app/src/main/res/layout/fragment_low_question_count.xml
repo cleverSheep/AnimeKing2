@@ -29,7 +29,7 @@
         android:textSize="15sp" />
 
     <Button
-        android:id="@+id/button_take_quiz"
+        android:id="@+id/button_transition_ask_question"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"

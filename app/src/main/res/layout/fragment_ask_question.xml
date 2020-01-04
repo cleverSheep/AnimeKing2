@@ -98,6 +98,26 @@
             app:layout_constraintTop_toBottomOf="@+id/editText_correct_choice" />
 
         <EditText
+            android:id="@+id/editText_wrong_two"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/wrong_question_background"
+            android:hint="@string/wrong_choice_hint"
+            android:inputType="text"
+            android:maxLines="1"
+            android:textAlignment="center"
+            android:textColor="@color/color_white"
+            android:textColorHint="@color/color_white"
+            android:textCursorDrawable="@drawable/cursor_drawable"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editText_wrong_one" />
+
+
+        <EditText
             android:id="@+id/editText_wrong_three"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -105,6 +125,7 @@
             android:layout_marginTop="16dp"
             android:background="@drawable/wrong_question_background"
             android:hint="@string/wrong_choice_hint"
+            android:inputType="text"
             android:maxLines="1"
             android:textAlignment="center"
             android:textColor="@color/color_white"
@@ -114,26 +135,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editText_wrong_two" />
-
-        <EditText
-            android:id="@+id/editText_wrong_two"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/wrong_question_background"
-            android:hint="@string/wrong_choice_hint"
-            android:maxLines="1"
-            android:textAlignment="center"
-            android:textColor="@color/color_white"
-            android:textColorHint="@color/color_white"
-            android:textCursorDrawable="@drawable/cursor_drawable"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editText_wrong_one"
-            app:layout_goneMarginTop="8dp" />
-
 
         <ImageView
             android:id="@+id/imageView2"

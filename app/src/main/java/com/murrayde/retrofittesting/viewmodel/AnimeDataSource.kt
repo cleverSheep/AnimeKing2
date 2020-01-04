@@ -58,7 +58,6 @@ class AnimeDataSource(private val animeApiEndpoint: AnimeApiEndpoint,
 
                             override fun onError(e: Throwable) {
                                 networkState.postValue(NetworkState.error("Error loading anime titles"))
-                                // TODO : PROVIDE RETRY OPERATION
                             }
 
                         })

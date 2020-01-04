@@ -9,7 +9,7 @@ data class Question(val question: String,
                     val issue_count: Int,
                     val anime_title: String)
 
-class QuestionBuilder {
+class QuestionFactory {
     companion object {
         private val current_anime = HashMap<String, Int>()
         private var id_count = 0
@@ -21,6 +21,11 @@ class QuestionBuilder {
                 current_anime[anime_title] = id_count
             } else current_anime[anime_title] = 0
             return Question(question, image_url, current_anime.getValue(anime_title), multiple_choice, issue_count, anime_title)
+        }
+
+        fun hasEnoughQuestions(anime_title: String): Boolean {
+            if (current_anime[anime_title] == null) return false
+            return current_anime[anime_title]!! >= 10
         }
     }
 }
