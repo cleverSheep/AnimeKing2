@@ -34,7 +34,7 @@ class DetailFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val attributes = args.animeAttributes
 
-        tv_title.text = attributes.titles.en ?: attributes.canonicalTitle
+        tv_ask_question.text = attributes.titles.en ?: attributes.canonicalTitle
         tv_description.text = attributes.synopsis
         Glide.with(this)
                 .load(attributes.posterImage.original)
@@ -45,6 +45,10 @@ class DetailFragment : Fragment() {
 
         button_take_quiz.setOnClickListener {
             val action = DetailFragmentDirections.actionDetailFragmentToLowQuestionCountFragment()
+            Navigation.findNavController(view).navigate(action)
+        }
+        button_ask_question.setOnClickListener {
+            val action = DetailFragmentDirections.actionDetailFragmentToAskQuestionFragment(attributes)
             Navigation.findNavController(view).navigate(action)
         }
     }

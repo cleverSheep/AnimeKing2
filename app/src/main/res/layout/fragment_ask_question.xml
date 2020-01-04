@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,28 +7,156 @@
     android:background="#4E555E"
     tools:context=".view.AskQuestionFragment">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:scaleType="center"
-        android:src="@drawable/castle"
-        app:layout_constraintDimensionRatio="16:9"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_gravity="start|bottom"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:src="@drawable/ic_photo_camera_black_24dp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView"
-        app:layout_constraintDimensionRatio=""
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        <ImageView
+            android:id="@+id/iv_ask_question"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:scaleType="center"
+            app:layout_constraintDimensionRatio="16:9"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/castle" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/tv_ask_question"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/title_bg"
+            android:fontFamily="@font/bahnscrift"
+            android:paddingStart="30dp"
+            android:textAlignment="viewStart"
+            android:textColor="@android:color/white"
+            android:textSize="35sp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_ask_question"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/iv_ask_question"
+            tools:ignore="RtlSymmetry"
+            tools:text="Anime Title" />
+
+        <EditText
+            android:id="@+id/editText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/ask_question_background"
+            android:hint="@string/question_hint"
+            android:inputType="text"
+            android:textAlignment="center"
+            android:textColor="@color/color_grey"
+            android:textColorHint="@color/color_grey"
+            android:textCursorDrawable="@drawable/cursor_drawable"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+
+
+        <EditText
+            android:id="@+id/editText3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="48dp"
+            android:background="@drawable/correct_question_background"
+            android:hint="@string/correct_choice_hint"
+            android:inputType="text"
+            android:textAlignment="center"
+            android:textColor="@color/color_white"
+            android:textColorHint="@color/color_white"
+            android:textCursorDrawable="@drawable/cursor_drawable"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editText" />
+
+        <EditText
+            android:id="@+id/editText2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/wrong_question_background"
+            android:hint="@string/wrong_choice_hint"
+            android:inputType="text"
+            android:textAlignment="center"
+            android:textColor="@color/color_white"
+            android:textColorHint="@color/color_white"
+            android:textCursorDrawable="@drawable/cursor_drawable"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editText3" />
+
+        <EditText
+            android:id="@+id/editText4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/wrong_question_background"
+            android:hint="@string/wrong_choice_hint"
+            android:textAlignment="center"
+            android:textColor="@color/color_white"
+            android:textColorHint="@color/color_white"
+            android:textCursorDrawable="@drawable/cursor_drawable"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editText5" />
+
+        <EditText
+            android:id="@+id/editText5"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/wrong_question_background"
+            android:hint="@string/wrong_choice_hint"
+            android:textAlignment="center"
+            android:textColor="@color/color_white"
+            android:textColorHint="@color/color_white"
+            android:textCursorDrawable="@drawable/cursor_drawable"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editText2"
+            app:layout_goneMarginTop="8dp" />
+
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="start|bottom"
+            android:layout_marginEnd="@dimen/margin_regular"
+            android:layout_marginBottom="@dimen/margin_regular"
+            android:src="@drawable/ic_photo_camera_black_24dp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_ask_question"
+            app:layout_constraintDimensionRatio=""
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv_ask_question" />
+
+        <Button
+            android:id="@+id/button_submit_question"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/ask_question_background"
+            android:text="@string/submit_question"
+            android:textAllCaps="false"
+            android:textColor="@color/color_grey"
+            android:textSize="@dimen/button_text_size"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/editText4"
+            app:layout_constraintStart_toStartOf="@+id/editText4"
+            app:layout_constraintTop_toBottomOf="@+id/editText4" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

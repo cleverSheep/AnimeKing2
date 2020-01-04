@@ -25,10 +25,22 @@
         <action
             android:id="@+id/action_detailFragment_to_lowQuestionCountFragment"
             app:destination="@id/lowQuestionCountFragment" />
+        <action
+            android:id="@+id/action_detailFragment_to_askQuestionFragment"
+            app:destination="@id/askQuestionFragment" />
     </fragment>
     <fragment
         android:id="@+id/lowQuestionCountFragment"
         android:name="com.murrayde.retrofittesting.view.LowQuestionCountFragment"
         android:label="fragment_low_question_count"
         tools:layout="@layout/fragment_low_question_count" />
+    <fragment
+        android:id="@+id/askQuestionFragment"
+        android:name="com.murrayde.retrofittesting.view.AskQuestionFragment"
+        android:label="fragment_ask_question"
+        tools:layout="@layout/fragment_ask_question" >
+        <argument
+            android:name="AnimeAttributes"
+            app:argType="com.murrayde.retrofittesting.model.AnimeAttributes.Attributes" />
+    </fragment>
 </navigation>

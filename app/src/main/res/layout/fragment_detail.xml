@@ -52,7 +52,7 @@
             tools:src="@drawable/castle" />
 
         <TextView
-            android:id="@+id/tv_title"
+            android:id="@+id/tv_ask_question"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/title_bg"
@@ -92,9 +92,9 @@
             android:layout_marginBottom="8dp"
             android:clickable="true"
             android:src="@drawable/ic_favorite_border_black_24dp"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_title"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_ask_question"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_title" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_ask_question" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </ScrollView>
