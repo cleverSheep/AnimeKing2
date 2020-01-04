@@ -9,7 +9,6 @@ import com.murrayde.retrofittesting.di.AnimeApiComponent;
 import com.murrayde.retrofittesting.di.DaggerAnimeApiComponent;
 import com.murrayde.retrofittesting.model.AnimeData;
 import com.murrayde.retrofittesting.network.AnimeApiEndpoint;
-import com.murrayde.retrofittesting.network.NetworkState;
 import com.murrayde.retrofittesting.util.PAGING;
 
 import io.reactivex.disposables.CompositeDisposable;

@@ -2,7 +2,6 @@ package com.murrayde.retrofittesting.view
 
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,6 +11,7 @@ import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.murrayde.retrofittesting.R
 import kotlinx.android.synthetic.main.fragment_detail.*
+import timber.log.Timber
 
 /**
  * A simple [Fragment] subclass.
@@ -41,10 +41,10 @@ class DetailFragment : Fragment() {
                 .placeholder(R.drawable.castle)
                 .dontAnimate()
                 .into(iv_image)
-        Log.d(LOG_TAG, attributes.posterImage.original)
+        Timber.d(attributes.posterImage.original)
 
         button_take_quiz.setOnClickListener {
-            val action = DetailFragmentDirections.actionDetailFragmentToLowQuestionCountFragment()
+            val action = DetailFragmentDirections.actionDetailFragmentToLowQuestionCountFragment(attributes)
             Navigation.findNavController(view).navigate(action)
         }
         button_ask_question.setOnClickListener {

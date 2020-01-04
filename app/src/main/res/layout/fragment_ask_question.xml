@@ -40,11 +40,12 @@
             tools:text="Anime Title" />
 
         <EditText
-            android:id="@+id/editText"
+            android:id="@+id/editText_enter_question"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
             android:layout_marginTop="8dp"
+            android:autofillHints="Enter Question"
             android:background="@drawable/ask_question_background"
             android:hint="@string/question_hint"
             android:inputType="text"
@@ -59,7 +60,7 @@
 
 
         <EditText
-            android:id="@+id/editText3"
+            android:id="@+id/editText_correct_choice"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
@@ -67,6 +68,7 @@
             android:background="@drawable/correct_question_background"
             android:hint="@string/correct_choice_hint"
             android:inputType="text"
+            android:maxLines="1"
             android:textAlignment="center"
             android:textColor="@color/color_white"
             android:textColorHint="@color/color_white"
@@ -74,10 +76,10 @@
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editText" />
+            app:layout_constraintTop_toBottomOf="@+id/editText_enter_question" />
 
         <EditText
-            android:id="@+id/editText2"
+            android:id="@+id/editText_wrong_one"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
@@ -85,6 +87,7 @@
             android:background="@drawable/wrong_question_background"
             android:hint="@string/wrong_choice_hint"
             android:inputType="text"
+            android:maxLines="1"
             android:textAlignment="center"
             android:textColor="@color/color_white"
             android:textColorHint="@color/color_white"
@@ -92,16 +95,17 @@
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editText3" />
+            app:layout_constraintTop_toBottomOf="@+id/editText_correct_choice" />
 
         <EditText
-            android:id="@+id/editText4"
+            android:id="@+id/editText_wrong_three"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
             android:layout_marginTop="16dp"
             android:background="@drawable/wrong_question_background"
             android:hint="@string/wrong_choice_hint"
+            android:maxLines="1"
             android:textAlignment="center"
             android:textColor="@color/color_white"
             android:textColorHint="@color/color_white"
@@ -109,16 +113,17 @@
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editText5" />
+            app:layout_constraintTop_toBottomOf="@+id/editText_wrong_two" />
 
         <EditText
-            android:id="@+id/editText5"
+            android:id="@+id/editText_wrong_two"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
             android:layout_marginTop="16dp"
             android:background="@drawable/wrong_question_background"
             android:hint="@string/wrong_choice_hint"
+            android:maxLines="1"
             android:textAlignment="center"
             android:textColor="@color/color_white"
             android:textColorHint="@color/color_white"
@@ -126,7 +131,7 @@
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editText2"
+            app:layout_constraintTop_toBottomOf="@+id/editText_wrong_one"
             app:layout_goneMarginTop="8dp" />
 
 
@@ -154,9 +159,22 @@
             android:textColor="@color/color_grey"
             android:textSize="@dimen/button_text_size"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/editText4"
-            app:layout_constraintStart_toStartOf="@+id/editText4"
-            app:layout_constraintTop_toBottomOf="@+id/editText4" />
+            app:layout_constraintEnd_toEndOf="@+id/editText_wrong_three"
+            app:layout_constraintStart_toStartOf="@+id/editText_wrong_three"
+            app:layout_constraintTop_toBottomOf="@+id/editText_wrong_three" />
+
+        <ProgressBar
+            android:id="@+id/progressBar_ask_question"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="146dp"
+            tools:layout_editor_absoluteY="315dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
