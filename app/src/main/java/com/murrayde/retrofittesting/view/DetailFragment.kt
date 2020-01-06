@@ -1,3 +1,5 @@
+@file:Suppress("PropertyName", "PrivatePropertyName")
+
 package com.murrayde.retrofittesting.view
 
 
@@ -45,7 +47,7 @@ class DetailFragment : Fragment() {
         button_take_quiz.setOnClickListener {
             if (QuestionFactory.hasEnoughQuestions(attributes.titles.en
                             ?: attributes.canonicalTitle)) {
-                startQuiz()
+                startQuiz(it)
             } else alertNotEnoughQuestions(it)
         }
         button_ask_question.setOnClickListener {
@@ -59,6 +61,8 @@ class DetailFragment : Fragment() {
         Navigation.findNavController(view).navigate(action)
     }
 
-    private fun startQuiz() {
+    private fun startQuiz(view: View) {
+        val action = DetailFragmentDirections.actionDetailFragmentToAnswerQuestionFragment(args.animeAttributes)
+        Navigation.findNavController(view).navigate(action)
     }
 }

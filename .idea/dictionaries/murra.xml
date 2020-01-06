@@ -6,7 +6,9 @@
       <w>blimit</w>
       <w>boffset</w>
       <w>cardview</w>
+      <w>firebase</w>
       <w>gson</w>
+      <w>hashmap</w>
       <w>murrayde</w>
       <w>retrofittesting</w>
     </words>

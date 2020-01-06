@@ -13,4 +13,7 @@
     <string name="correct_choice_hint">Correct Choice</string>
     <string name="wrong_choice_hint">Wrong Choice</string>
     <string name="submit_question">Submit Question</string>
+    <string name="next_question">Next Question</string>
+    <string name="answer_choice_1">Answer Choice 1</string>
+    <string name="anime_background">anime background</string>
 </resources>

@@ -28,6 +28,9 @@
         <action
             android:id="@+id/action_detailFragment_to_askQuestionFragment"
             app:destination="@id/askQuestionFragment" />
+        <action
+            android:id="@+id/action_detailFragment_to_answerQuestionFragment"
+            app:destination="@id/answerQuestionFragment" />
     </fragment>
     <fragment
         android:id="@+id/lowQuestionCountFragment"
@@ -54,5 +57,17 @@
             app:destination="@id/detailFragment"
             app:popUpTo="@+id/detailFragment"
             app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/answerQuestionFragment"
+        android:name="com.murrayde.retrofittesting.view.AnswerQuestionFragment"
+        android:label="fragment_answer_question"
+        tools:layout="@layout/fragment_answer_question" >
+        <argument
+            android:name="AnimeAttributes"
+            app:argType="com.murrayde.retrofittesting.model.AnimeAttributes.Attributes" />
+        <action
+            android:id="@+id/action_answerQuestionFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
     </fragment>
 </navigation>
