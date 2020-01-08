@@ -4,7 +4,9 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#FFF780</color>
     <color name="title_bg">#80707070</color>
+    <color name="home_bg">#00FFFEFE</color>
     <color name="color_grey">#707070</color>
+    <color name="color_home_logo">#2E2E2E</color>
     <color name="color_correct">#00FF00</color>
     <color name="color_white">#FFF</color>
     <color name="color_wrong">#FF0000</color>

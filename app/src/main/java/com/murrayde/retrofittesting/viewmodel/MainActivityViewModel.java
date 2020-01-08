@@ -9,7 +9,7 @@ import com.murrayde.retrofittesting.di.AnimeApiComponent;
 import com.murrayde.retrofittesting.di.DaggerAnimeApiComponent;
 import com.murrayde.retrofittesting.model.AnimeData;
 import com.murrayde.retrofittesting.network.AnimeApiEndpoint;
-import com.murrayde.retrofittesting.util.PAGING;
+import com.murrayde.retrofittesting.util.PagingUtil;
 
 import io.reactivex.disposables.CompositeDisposable;
 
@@ -28,7 +28,7 @@ public class MainActivityViewModel extends ViewModel {
         AnimeDataSourceFactory animeDataSourceFactory = new AnimeDataSourceFactory(animeApiEndpoint, compositeDisposable);
 
         PagedList.Config pagingConfig = new PagedList.Config.Builder()
-                .setPrefetchDistance(PAGING.PAGING_PREFETCH)
+                .setPrefetchDistance(PagingUtil.PAGING_PREFETCH)
                 .setEnablePlaceholders(true)
                 .build();
         animeData = new LivePagedListBuilder<>(animeDataSourceFactory, pagingConfig).build();

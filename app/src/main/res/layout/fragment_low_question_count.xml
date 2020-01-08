@@ -5,14 +5,14 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".view.LowQuestionCountFragment">
+    tools:context=".view.questions.LowQuestionCount">
 
     <TextView
         android:id="@+id/not_enough"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:drawableTop="@drawable/ic_box"
-        android:fontFamily="@font/bahnscrift"
+        android:fontFamily="@font/baloobhairegular"
         android:text="@string/not_enough_questions"
         android:textAlignment="center"
         android:textSize="20sp"
@@ -23,7 +23,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_regular"
-        android:fontFamily="@font/bahnscrift"
+        android:fontFamily="@font/baloobhairegular"
         android:text="@string/not_enough_description"
         android:textAlignment="center"
         android:textSize="15sp" />
@@ -35,6 +35,7 @@
         android:layout_marginHorizontal="16dp"
         android:layout_marginTop="@dimen/margin_regular"
         android:background="@color/colorAccent"
+        android:fontFamily="@font/baloobhairegular"
         android:text="@string/ask_question"
         android:textColor="@color/color_grey"
         android:textSize="@dimen/button_text_size" />
