@@ -23,6 +23,10 @@ class LandingScreen : Fragment() {
             val action = LandingScreenDirections.actionLandingScreen2ToMainActivity()
             Navigation.findNavController(it).navigate(action)
         }
+        home_credits_button.setOnClickListener {
+            val action = LandingScreenDirections.actionLandingScreen2ToCredits()
+            Navigation.findNavController(it).navigate(action)
+        }
     }
 
 }

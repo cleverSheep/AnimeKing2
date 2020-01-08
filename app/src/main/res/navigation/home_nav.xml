@@ -18,7 +18,9 @@
             app:popUpToInclusive="false" />
         <action
             android:id="@+id/action_landingScreen2_to_credits"
-            app:destination="@id/credits" />
+            app:destination="@id/credits"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left" />
     </fragment>
     <activity
         android:id="@+id/mainActivity"
@@ -29,5 +31,11 @@
         android:id="@+id/credits"
         android:name="com.murrayde.retrofittesting.view.home.Credits"
         android:label="fragment_credits"
-        tools:layout="@layout/fragment_credits" />
+        tools:layout="@layout/fragment_credits" >
+        <action
+            android:id="@+id/action_credits_to_landingScreen2"
+            app:destination="@id/landingScreen2"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_right" />
+    </fragment>
 </navigation>
