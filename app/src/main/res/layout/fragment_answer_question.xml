@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#4E555E"
-    tools:context=".view.AnswerQuestionFragment">
+    tools:context=".view.questions.AnswerQuestion">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -28,15 +28,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/title_bg"
-            android:fontFamily="@font/bahnscrift"
+            android:fontFamily="@font/baloobhairegular"
             android:paddingStart="30dp"
             android:textAlignment="viewStart"
             android:textColor="@android:color/white"
-            android:textSize="35sp"
+            android:textSize="25sp"
             app:layout_constraintBottom_toBottomOf="@+id/iv_answer_question"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/iv_answer_question"
-            tools:ignore="RtlSymmetry"
             tools:text="Anime Title" />
 
         <TextView
@@ -46,6 +45,7 @@
             android:layout_marginHorizontal="16dp"
             android:layout_marginTop="32dp"
             android:background="@drawable/ask_question_background"
+            android:fontFamily="@font/baloobhairegular"
             android:textAlignment="center"
             android:textColor="@color/color_grey"
             android:textColorHint="@color/color_grey"
@@ -64,6 +64,7 @@
             android:layout_marginHorizontal="16dp"
             android:layout_marginTop="48dp"
             android:background="@drawable/answer_question_background"
+            android:fontFamily="@font/baloobhairegular"
             android:textAlignment="center"
             android:textColor="@color/color_grey"
             android:textSize="20sp"
@@ -80,6 +81,7 @@
             android:layout_marginHorizontal="16dp"
             android:layout_marginTop="16dp"
             android:background="@drawable/answer_question_background"
+            android:fontFamily="@font/baloobhairegular"
             android:textAlignment="center"
             android:textColor="@color/color_grey"
             android:textSize="20sp"
@@ -96,6 +98,7 @@
             android:layout_marginHorizontal="16dp"
             android:layout_marginTop="16dp"
             android:background="@drawable/answer_question_background"
+            android:fontFamily="@font/baloobhairegular"
             android:maxLines="1"
             android:textAlignment="center"
             android:textColor="@color/color_grey"
@@ -114,6 +117,7 @@
             android:layout_marginHorizontal="16dp"
             android:layout_marginTop="16dp"
             android:background="@drawable/answer_question_background"
+            android:fontFamily="@font/baloobhairegular"
             android:textAlignment="center"
             android:textColor="@color/color_grey"
             android:textSize="20sp"
@@ -127,8 +131,10 @@
             android:id="@+id/button_next_question"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="30dp"
             android:background="@drawable/ask_question_background"
+            android:fontFamily="@font/baloobhairegular"
             android:text="@string/next_question"
             android:textAllCaps="false"
             android:textColor="@color/color_grey"

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.ListFragment">
+    tools:context=".view.list_anime.AnimeList">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_anime"
@@ -23,6 +23,7 @@
         android:layout_marginBottom="@dimen/margin_regular"
         android:clickable="true"
         android:src="@drawable/ic_search_black_24dp"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@color/colorAccent" />

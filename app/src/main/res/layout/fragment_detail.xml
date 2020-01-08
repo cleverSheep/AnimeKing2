@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.DetailFragment">
+    tools:context=".view.list_anime.AnimeListDetail">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -16,6 +16,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
             android:background="@color/colorAccent"
+            android:fontFamily="@font/baloobhairegular"
             android:text="@string/take_quiz"
             android:textColor="@color/color_grey"
             android:textSize="@dimen/button_text_size"
@@ -30,6 +31,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginBottom="16dp"
             android:background="@android:color/white"
+            android:fontFamily="@font/baloobhairegular"
             android:text="@string/ask_question"
             android:textColor="@color/color_grey"
             android:textSize="@dimen/button_text_size"
@@ -56,11 +58,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/title_bg"
-            android:fontFamily="@font/bahnscrift"
+            android:fontFamily="@font/baloobhairegular"
             android:paddingStart="30dp"
             android:textAlignment="viewStart"
             android:textColor="@android:color/white"
-            android:textSize="35sp"
+            android:textSize="25sp"
             app:layout_constraintBottom_toBottomOf="@+id/iv_image"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/iv_image"
@@ -92,6 +94,7 @@
             android:layout_marginBottom="8dp"
             android:clickable="true"
             android:src="@drawable/ic_favorite_border_black_24dp"
+            android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="@+id/tv_ask_question"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_ask_question" />

@@ -3,7 +3,7 @@
 package com.murrayde.retrofittesting.model
 
 import com.google.firebase.firestore.FirebaseFirestore
-import com.murrayde.retrofittesting.util.QuestionUtility
+import com.murrayde.retrofittesting.util.QuestionUtil
 
 class QuestionFactory {
     private val db = FirebaseFirestore.getInstance()
@@ -14,7 +14,7 @@ class QuestionFactory {
             val distinct_questions = ArrayList<String>()
             val final_questions = ArrayList<Question>()
 
-            db.collection("anime").document(anime_title).collection("questions").limit(QuestionUtility.LIMIT).get().addOnSuccessListener {
+            db.collection("anime").document(anime_title).collection("questions").limit(QuestionUtil.QUESTION_LIMIT).get().addOnSuccessListener {
                 it.forEach { snapshot ->
                     val question = snapshot.toObject(Question::class.java)
                     if (!distinct_questions.contains(question.question_id)) {
@@ -35,7 +35,7 @@ class QuestionFactory {
             if (doc_snapshot.getLong("question_count") == null) {
                 questionCountCallback.onQuestionCountCallback(false)
             } else {
-                questionCountCallback.onQuestionCountCallback((doc_snapshot.getLong("question_count"))!! > 2)
+                questionCountCallback.onQuestionCountCallback((doc_snapshot.getLong("question_count"))!! > QuestionUtil.QUESTION_COUNT_MIN)
             }
         }
     }

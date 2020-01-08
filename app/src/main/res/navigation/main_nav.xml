@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/listFragment"
-        android:name="com.murrayde.retrofittesting.view.ListFragment"
+        android:name="com.murrayde.retrofittesting.view.list_anime.AnimeList"
         android:label="fragment_list"
         tools:layout="@layout/fragment_list" >
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/detailFragment"
-        android:name="com.murrayde.retrofittesting.view.DetailFragment"
+        android:name="com.murrayde.retrofittesting.view.list_anime.AnimeListDetail"
         android:label="fragment_detail"
         tools:layout="@layout/fragment_detail">
         <argument
@@ -34,7 +34,7 @@
     </fragment>
     <fragment
         android:id="@+id/lowQuestionCountFragment"
-        android:name="com.murrayde.retrofittesting.view.LowQuestionCountFragment"
+        android:name="com.murrayde.retrofittesting.view.questions.LowQuestionCount"
         android:label="fragment_low_question_count"
         tools:layout="@layout/fragment_low_question_count" >
         <action
@@ -46,7 +46,7 @@
     </fragment>
     <fragment
         android:id="@+id/askQuestionFragment"
-        android:name="com.murrayde.retrofittesting.view.AskQuestionFragment"
+        android:name="com.murrayde.retrofittesting.view.questions.AskQuestion"
         android:label="fragment_ask_question"
         tools:layout="@layout/fragment_ask_question" >
         <argument
@@ -60,7 +60,7 @@
     </fragment>
     <fragment
         android:id="@+id/answerQuestionFragment"
-        android:name="com.murrayde.retrofittesting.view.AnswerQuestionFragment"
+        android:name="com.murrayde.retrofittesting.view.questions.AnswerQuestion"
         android:label="fragment_answer_question"
         tools:layout="@layout/fragment_answer_question" >
         <argument

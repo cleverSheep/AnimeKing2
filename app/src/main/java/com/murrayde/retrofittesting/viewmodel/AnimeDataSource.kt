@@ -6,7 +6,7 @@ import com.murrayde.retrofittesting.model.AnimeComplete
 import com.murrayde.retrofittesting.model.AnimeData
 import com.murrayde.retrofittesting.network.AnimeApiEndpoint
 import com.murrayde.retrofittesting.network.NetworkState
-import com.murrayde.retrofittesting.util.PAGING
+import com.murrayde.retrofittesting.util.PagingUtil
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableSingleObserver
@@ -20,7 +20,7 @@ class AnimeDataSource(private val animeApiEndpoint: AnimeApiEndpoint,
     override fun loadInitial(params: LoadInitialParams<String>, callback: LoadInitialCallback<String, AnimeData>) {
         networkState.postValue(NetworkState.LOADING)
         compositeDisposable.add(
-                animeApiEndpoint.getAnimeComplete(PAGING.PAGING_LIMIT, PAGING.PAGING_OFFSET)
+                animeApiEndpoint.getAnimeComplete(PagingUtil.PAGING_LIMIT, PagingUtil.PAGING_OFFSET)
                         .subscribeOn(Schedulers.newThread())
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribeWith(object : DisposableSingleObserver<AnimeComplete>() {
@@ -44,7 +44,7 @@ class AnimeDataSource(private val animeApiEndpoint: AnimeApiEndpoint,
         networkState.postValue(NetworkState.LOADING)
         compositeDisposable.add(
                 // PAGING_OFFSET() increments the paging offset by the paging limit and returns the paging offset
-                animeApiEndpoint.getAnimeComplete(PAGING.PAGING_LIMIT, PAGING.PAGING_OFFSET())
+                animeApiEndpoint.getAnimeComplete(PagingUtil.PAGING_LIMIT, PagingUtil.PAGING_OFFSET())
                         .subscribeOn(Schedulers.newThread())
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribeWith(object : DisposableSingleObserver<AnimeComplete>() {
