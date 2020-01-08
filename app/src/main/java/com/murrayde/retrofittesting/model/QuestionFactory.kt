@@ -6,24 +6,12 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.murrayde.retrofittesting.util.QuestionUtility
 
 class QuestionFactory {
-    val db = FirebaseFirestore.getInstance()
+    private val db = FirebaseFirestore.getInstance()
 
     companion object {
-        private val current_anime = HashMap<String, Int>()
-        private var id_count = 0
-
-        fun BUILD(question: String, image_url: String, multiple_choice: ArrayList<String>, issue_count: Int, anime_title: String): Question {
-            if (current_anime.containsKey(anime_title)) {
-                id_count = current_anime[anime_title]!!
-                id_count++
-                current_anime[anime_title] = id_count
-            } else current_anime[anime_title] = 0
-            return Question(question, image_url, current_anime.getValue(anime_title), multiple_choice, issue_count, anime_title)
-        }
-
         fun RETRIEVE(anime_title: String, db: FirebaseFirestore, status: StatusCallback): ArrayList<Question> {
             // Store each question id into hashmap to guarantee we ask unique questions
-            val distinct_questions = ArrayList<Int>()
+            val distinct_questions = ArrayList<String>()
             val final_questions = ArrayList<Question>()
 
             db.collection("anime").document(anime_title).collection("questions").limit(QuestionUtility.LIMIT).get().addOnSuccessListener {
@@ -33,22 +21,30 @@ class QuestionFactory {
                         final_questions.add(question)
                     }
                 }
+                // NOTE: When waiting on data from an async use callback to notify client when the data was received
+                // Don't execute code in a synchronous behavior
                 status.onStatusCallback(final_questions)
             }
             return final_questions
         }
+    }
 
-        fun hasEnoughQuestions(anime_title: String): Boolean {
-            if (current_anime[anime_title] == null) return false
-            return current_anime[anime_title]!! >= 2
-        }
-
-        fun CLEAR() {
-            current_anime.clear()
+    fun hasEnoughQuestions(anime_title: String, questionCountCallback: QuestionCountCallback) {
+        val doc_ref = db.collection("anime").document(anime_title)
+        doc_ref.get().addOnSuccessListener { doc_snapshot ->
+            if (doc_snapshot.getLong("question_count") == null) {
+                questionCountCallback.onQuestionCountCallback(false)
+            } else {
+                questionCountCallback.onQuestionCountCallback((doc_snapshot.getLong("question_count"))!! > 2)
+            }
         }
     }
 
     interface StatusCallback {
         fun onStatusCallback(list: ArrayList<Question>)
+    }
+
+    interface QuestionCountCallback {
+        fun onQuestionCountCallback(hasEnoughQuestions: Boolean)
     }
 }

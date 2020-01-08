@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Question {
     private String question;
     private String image_url;
-    private int question_id;
+    private String question_id;
     private ArrayList<String> multiple_choice;
     private int issue_count;
     private String anime_title;
@@ -26,11 +26,11 @@ public class Question {
         this.image_url = image_url;
     }
 
-    public int getQuestion_id() {
+    public String getQuestion_id() {
         return question_id;
     }
 
-    public void setQuestion_id(int question_id) {
+    public void setQuestion_id(String question_id) {
         this.question_id = question_id;
     }
 
@@ -61,7 +61,7 @@ public class Question {
     public Question() {
     }
 
-    public Question(String question, String image_url, int question_id, ArrayList<String> multiple_choice, int issue_count, String anime_title) {
+    public Question(String question, String image_url, String question_id, ArrayList<String> multiple_choice, int issue_count, String anime_title) {
         this.question = question;
         this.image_url = image_url;
         this.question_id = question_id;

@@ -11,9 +11,6 @@ import androidx.navigation.fragment.navArgs
 import com.murrayde.retrofittesting.R
 import kotlinx.android.synthetic.main.fragment_low_question_count.*
 
-/**
- * A simple [Fragment] subclass.
- */
 class LowQuestionCountFragment : Fragment() {
 
     private val args: DetailFragmentArgs by navArgs()

@@ -14,8 +14,7 @@ import com.murrayde.retrofittesting.model.AnimeData
 import com.murrayde.retrofittesting.util.Util
 
 class AnimeViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-
-
+    
     private val nameView = itemView.findViewById<TextView>(R.id.tv_anime_name)
     private val imageView = itemView.findViewById<ImageView>(R.id.iv_anime_image)
 

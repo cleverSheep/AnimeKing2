@@ -68,6 +68,8 @@
             app:argType="com.murrayde.retrofittesting.model.AnimeAttributes.Attributes" />
         <action
             android:id="@+id/action_answerQuestionFragment_to_detailFragment"
-            app:destination="@id/detailFragment" />
+            app:destination="@id/detailFragment"
+            app:popUpTo="@+id/detailFragment"
+            app:popUpToInclusive="true" />
     </fragment>
 </navigation>

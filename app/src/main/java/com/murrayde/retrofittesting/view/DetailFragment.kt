@@ -2,7 +2,6 @@
 
 package com.murrayde.retrofittesting.view
 
-
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -15,16 +14,10 @@ import com.murrayde.retrofittesting.R
 import com.murrayde.retrofittesting.model.QuestionFactory
 import kotlinx.android.synthetic.main.fragment_detail.*
 
-/**
- * A simple [Fragment] subclass.
- */
 class DetailFragment : Fragment() {
 
-    companion object {
-        val LOG_TAG = DetailFragment::class.simpleName
-    }
-
     private val args: DetailFragmentArgs by navArgs()
+    private lateinit var questionFactory: QuestionFactory
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -44,11 +37,16 @@ class DetailFragment : Fragment() {
                 .dontAnimate()
                 .into(iv_image)
 
+        questionFactory = QuestionFactory()
         button_take_quiz.setOnClickListener {
-            if (QuestionFactory.hasEnoughQuestions(attributes.titles.en
-                            ?: attributes.canonicalTitle)) {
-                startQuiz(it)
-            } else alertNotEnoughQuestions(it)
+            questionFactory.hasEnoughQuestions(attributes.titles.en
+                    ?: attributes.canonicalTitle, object : QuestionFactory.QuestionCountCallback {
+                override fun onQuestionCountCallback(hasEnoughQuestions: Boolean) {
+                    if (hasEnoughQuestions) {
+                        startQuiz(it)
+                    } else alertNotEnoughQuestions(it)
+                }
+            })
         }
         button_ask_question.setOnClickListener {
             val action = DetailFragmentDirections.actionDetailFragmentToAskQuestionFragment(attributes)

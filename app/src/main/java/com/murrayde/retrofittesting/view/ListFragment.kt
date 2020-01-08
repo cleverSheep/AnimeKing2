@@ -15,9 +15,6 @@ import com.murrayde.retrofittesting.model.AnimeData
 import com.murrayde.retrofittesting.viewmodel.MainActivityViewModel
 import kotlinx.android.synthetic.main.fragment_list.*
 
-/**
- * A simple [Fragment] subclass.
- */
 class ListFragment : Fragment() {
 
     private lateinit var listAdapter: AnimeDataAdapter

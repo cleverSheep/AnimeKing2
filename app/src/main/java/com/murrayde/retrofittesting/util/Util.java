@@ -3,7 +3,6 @@ package com.murrayde.retrofittesting.util;
 import android.content.Context;
 import android.widget.ImageView;
 
-import androidx.databinding.BindingAdapter;
 import androidx.swiperefreshlayout.widget.CircularProgressDrawable;
 
 import com.bumptech.glide.Glide;
@@ -33,7 +32,6 @@ public class Util {
         return circularProgressDrawable;
     }
 
-    @BindingAdapter("android:imageUrl")
     public static void loadImage(ImageView view, String url) {
         loadImage(view, url, getProgressDrawable(view.getContext()));
     }
