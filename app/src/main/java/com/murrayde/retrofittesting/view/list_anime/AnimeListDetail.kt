@@ -2,6 +2,7 @@
 
 package com.murrayde.retrofittesting.view.list_anime
 
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,11 +14,13 @@ import com.bumptech.glide.Glide
 import com.murrayde.retrofittesting.R
 import com.murrayde.retrofittesting.model.QuestionFactory
 import kotlinx.android.synthetic.main.fragment_detail.*
+import timber.log.Timber
 
 class AnimeListDetail : Fragment() {
 
     private val args: AnimeListDetailArgs by navArgs()
     private lateinit var questionFactory: QuestionFactory
+    private lateinit var media: MediaPlayer
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -28,6 +31,7 @@ class AnimeListDetail : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val attributes = args.animeAttributes
+        media = MediaPlayer.create(activity, R.raw.button_click_sound_effect)
 
         tv_ask_question.text = attributes.titles.en ?: attributes.canonicalTitle
         tv_description.text = attributes.synopsis
@@ -39,6 +43,7 @@ class AnimeListDetail : Fragment() {
 
         questionFactory = QuestionFactory()
         button_take_quiz.setOnClickListener {
+            media.start()
             questionFactory.hasEnoughQuestions(attributes.titles.en
                     ?: attributes.canonicalTitle, object : QuestionFactory.QuestionCountCallback {
                 override fun onQuestionCountCallback(hasEnoughQuestions: Boolean) {
@@ -49,6 +54,7 @@ class AnimeListDetail : Fragment() {
             })
         }
         button_ask_question.setOnClickListener {
+            media.start()
             val action = AnimeListDetailDirections.actionDetailFragmentToAskQuestionFragment(attributes)
             Navigation.findNavController(view).navigate(action)
         }
@@ -62,5 +68,11 @@ class AnimeListDetail : Fragment() {
     private fun startQuiz(view: View) {
         val action = AnimeListDetailDirections.actionDetailFragmentToAnswerQuestionFragment(args.animeAttributes)
         Navigation.findNavController(view).navigate(action)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        media.release()
+        Timber.d("Media release, fragment destroyed")
     }
 }

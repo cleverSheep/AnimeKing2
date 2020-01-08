@@ -2,6 +2,7 @@
 
 package com.murrayde.retrofittesting.view.questions
 
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -17,11 +18,13 @@ import com.murrayde.retrofittesting.R
 import com.murrayde.retrofittesting.model.Question
 import com.murrayde.retrofittesting.view.list_anime.AnimeListDetailArgs
 import kotlinx.android.synthetic.main.fragment_ask_question.*
+import timber.log.Timber
 
 class AskQuestion : Fragment() {
 
     private val args: AnimeListDetailArgs by navArgs()
     private val db = FirebaseFirestore.getInstance()
+    private lateinit var media: MediaPlayer
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -31,6 +34,7 @@ class AskQuestion : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val attributes = args.animeAttributes
+        media = MediaPlayer.create(activity, R.raw.button_click_sound_effect)
 
         tv_ask_question.text = attributes.titles.en ?: attributes.canonicalTitle
         Glide.with(this)
@@ -40,6 +44,7 @@ class AskQuestion : Fragment() {
                 .into(iv_ask_question)
 
         button_submit_question.setOnClickListener {
+            media.start()
             progressBar_ask_question.visibility = View.VISIBLE
             // NOTE: For some reason, I have to initialize 'question' inside of the click listener...
             val multiple_choice = arrayListOf(editText_correct_choice.text.toString(),
@@ -89,6 +94,12 @@ class AskQuestion : Fragment() {
     private fun navigateBackToDetailScreen(view: View) {
         val action = AskQuestionDirections.actionAskQuestionFragmentToDetailFragment(args.animeAttributes)
         Navigation.findNavController(view).navigate(action)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        media.release()
+        Timber.d("Media release, fragment destroyed")
     }
 
 }

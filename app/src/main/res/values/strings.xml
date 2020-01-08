@@ -19,4 +19,6 @@
     <string name="play">Play</string>
     <string name="credits">Credits</string>
     <string name="credit_source">Icon made by Freepik from www.flaticon.com</string>
+    <string name="credits_author">Developed by Dean Murray</string>
+    <string name="credits_audio">“Sound effects obtained from www.zapsplat.com“</string>
 </resources>
