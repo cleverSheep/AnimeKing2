@@ -4,22 +4,18 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
-import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.setupWithNavController
 import com.murrayde.animeking.R
-import kotlinx.android.synthetic.main.fragment_credits.*
 
 class Credits : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_credits, container, false)
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        credits_tv.setOnClickListener {
-            val action = CreditsDirections.actionCreditsToLandingScreen2()
-            Navigation.findNavController(it).navigate(action)
-        }
+        val view = inflater.inflate(R.layout.fragment_credits, container, false)
+        val toolbar = view.findViewById<Toolbar>(R.id.toolbar_credits)
+        toolbar.setupWithNavController(findNavController())
+        return view
     }
 }

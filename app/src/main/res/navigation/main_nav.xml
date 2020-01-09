@@ -8,11 +8,12 @@
     <fragment
         android:id="@+id/listFragment"
         android:name="com.murrayde.animeking.view.list_anime.AnimeList"
-        android:label="fragment_list"
-        tools:layout="@layout/fragment_list" >
+        tools:layout="@layout/fragment_list">
         <action
             android:id="@+id/action_listFragment_to_detailFragment"
-            app:destination="@+id/detailFragment" />
+            app:destination="@+id/detailFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left" />
         <action
             android:id="@+id/action_listFragment_to_homeScreenActivity"
             app:destination="@id/homeScreenActivity"
@@ -22,17 +23,20 @@
     <fragment
         android:id="@+id/detailFragment"
         android:name="com.murrayde.animeking.view.list_anime.AnimeListDetail"
-        android:label="fragment_detail"
         tools:layout="@layout/fragment_detail">
         <argument
             android:name="AnimeAttributes"
             app:argType="com.murrayde.animeking.model.AnimeAttributes.Attributes" />
         <action
             android:id="@+id/action_detailFragment_to_lowQuestionCountFragment"
-            app:destination="@id/lowQuestionCountFragment" />
+            app:destination="@id/lowQuestionCountFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left" />
         <action
             android:id="@+id/action_detailFragment_to_askQuestionFragment"
-            app:destination="@id/askQuestionFragment" />
+            app:destination="@id/askQuestionFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left" />
         <action
             android:id="@+id/action_detailFragment_to_answerQuestionFragment"
             app:destination="@id/answerQuestionFragment" />
@@ -40,11 +44,12 @@
     <fragment
         android:id="@+id/lowQuestionCountFragment"
         android:name="com.murrayde.animeking.view.questions.LowQuestionCount"
-        android:label="fragment_low_question_count"
-        tools:layout="@layout/fragment_low_question_count" >
+        tools:layout="@layout/fragment_low_question_count">
         <action
             android:id="@+id/action_lowQuestionCountFragment_to_askQuestionFragment"
-            app:destination="@id/askQuestionFragment" />
+            app:destination="@id/askQuestionFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left" />
         <argument
             android:name="AnimeAttributes"
             app:argType="com.murrayde.animeking.model.AnimeAttributes.Attributes" />
@@ -52,8 +57,7 @@
     <fragment
         android:id="@+id/askQuestionFragment"
         android:name="com.murrayde.animeking.view.questions.AskQuestion"
-        android:label="fragment_ask_question"
-        tools:layout="@layout/fragment_ask_question" >
+        tools:layout="@layout/fragment_ask_question">
         <argument
             android:name="AnimeAttributes"
             app:argType="com.murrayde.animeking.model.AnimeAttributes.Attributes" />
@@ -66,8 +70,7 @@
     <fragment
         android:id="@+id/answerQuestionFragment"
         android:name="com.murrayde.animeking.view.questions.AnswerQuestion"
-        android:label="fragment_answer_question"
-        tools:layout="@layout/fragment_answer_question" >
+        tools:layout="@layout/fragment_answer_question">
         <argument
             android:name="AnimeAttributes"
             app:argType="com.murrayde.animeking.model.AnimeAttributes.Attributes" />
@@ -80,6 +83,5 @@
     <activity
         android:id="@+id/homeScreenActivity"
         android:name="com.murrayde.animeking.view.HomeScreenActivity"
-        android:label="activity_home_screen"
         tools:layout="@layout/activity_home_screen" />
 </navigation>

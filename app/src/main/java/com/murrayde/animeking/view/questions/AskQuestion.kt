@@ -7,9 +7,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import androidx.navigation.ui.setupWithNavController
 import com.bumptech.glide.Glide
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
@@ -28,7 +31,10 @@ class AskQuestion : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_ask_question, container, false)
+        val view = inflater.inflate(R.layout.fragment_ask_question, container, false)
+        val toolbar = view.findViewById<Toolbar>(R.id.toolbar_ask_question)
+        toolbar.setupWithNavController(findNavController())
+        return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

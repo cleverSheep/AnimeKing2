@@ -8,4 +8,16 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+
+    <style name="BaseTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorControlNormal">@color/color_white</item>
+    </style>
+
+    <style name="TestingTheme" parent="ThemeOverlay.AppCompat.Dark" />
+
+    <style name="TextAppearance.TabsFont" parent="android:TextAppearance">
+        <item name="android:fontFamily">@font/baloobhairegular</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/color_grey</item>
+    </style>
 </resources>

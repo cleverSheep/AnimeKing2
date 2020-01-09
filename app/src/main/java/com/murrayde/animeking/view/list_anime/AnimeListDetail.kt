@@ -7,9 +7,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import androidx.navigation.ui.setupWithNavController
 import com.bumptech.glide.Glide
 import com.murrayde.animeking.R
 import com.murrayde.animeking.model.QuestionFactory
@@ -24,8 +27,10 @@ class AnimeListDetail : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_detail, container, false)
+        val view = inflater.inflate(R.layout.fragment_detail, container, false)
+        val toolbar = view.findViewById<Toolbar>(R.id.toolbar_detail)
+        toolbar.setupWithNavController(findNavController())
+        return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -37,7 +42,7 @@ class AnimeListDetail : Fragment() {
         tv_description.text = attributes.synopsis
         Glide.with(this)
                 .load(attributes.posterImage.original)
-                .placeholder(R.drawable.castle)
+                .placeholder(R.drawable.feature_graphic)
                 .dontAnimate()
                 .into(iv_image)
 

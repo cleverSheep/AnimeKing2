@@ -9,6 +9,19 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+        <!--NOTE: Use theme instead of style when changing toolbar text/back arrow color-->
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar_detail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/detail_gradient"
+            android:fitsSystemWindows="true"
+            android:theme="@style/TestingTheme"
+            android:translationZ="2dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
 
         <Button
             android:id="@+id/button_take_quiz"
@@ -51,7 +64,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="ContentDescription"
-            tools:src="@drawable/castle" />
+            tools:src="@drawable/feature_graphic" />
 
         <TextView
             android:id="@+id/tv_ask_question"
