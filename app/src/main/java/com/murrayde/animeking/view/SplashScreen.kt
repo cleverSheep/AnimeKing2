@@ -2,13 +2,16 @@ package com.murrayde.animeking.view
 
 import android.content.Intent
 import android.media.MediaPlayer
+import android.os.Build
 import android.os.Bundle
+import android.view.View
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import com.murrayde.animeking.R
 import timber.log.Timber
 import java.util.*
 import kotlin.concurrent.schedule
+
 
 class SplashScreen : AppCompatActivity() {
 
@@ -17,6 +20,8 @@ class SplashScreen : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         window.addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN)
+        setContentView(R.layout.activity_splash_screen)
+        fullScreenAll()
 
         mediaPlayer = MediaPlayer.create(this, R.raw.splash_music)
         Timer().schedule(3500L) {
@@ -26,6 +31,18 @@ class SplashScreen : AppCompatActivity() {
             }
         }
         mediaPlayer.start()
+    }
+
+    private fun fullScreenAll() {
+        if (Build.VERSION.SDK_INT in 12..18) { // lower api
+            val v = this.window.decorView
+            v.systemUiVisibility = View.GONE
+        } else {
+            //for new api versions.
+            val decorView = window.decorView
+            val uiOptions = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
+            decorView.systemUiVisibility = uiOptions
+        }
     }
 
     override fun onDestroy() {

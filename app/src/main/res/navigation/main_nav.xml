@@ -13,6 +13,11 @@
         <action
             android:id="@+id/action_listFragment_to_detailFragment"
             app:destination="@+id/detailFragment" />
+        <action
+            android:id="@+id/action_listFragment_to_homeScreenActivity"
+            app:destination="@id/homeScreenActivity"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/detailFragment"
@@ -72,4 +77,9 @@
             app:popUpTo="@+id/detailFragment"
             app:popUpToInclusive="true" />
     </fragment>
+    <activity
+        android:id="@+id/homeScreenActivity"
+        android:name="com.murrayde.animeking.view.HomeScreenActivity"
+        android:label="activity_home_screen"
+        tools:layout="@layout/activity_home_screen" />
 </navigation>

@@ -8,10 +8,12 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import androidx.paging.PagedList
 import androidx.recyclerview.widget.GridLayoutManager
 import com.murrayde.animeking.R
 import com.murrayde.animeking.model.AnimeData
+import com.murrayde.animeking.util.PagingUtil
 import com.murrayde.animeking.viewmodel.MainActivityViewModel
 import kotlinx.android.synthetic.main.fragment_list.*
 
@@ -33,7 +35,11 @@ class AnimeList : Fragment() {
         rv_anime.layoutManager = GridLayoutManager(activity!!, 2)
         viewModel.animeData.observe(activity!!, Observer<PagedList<AnimeData>> { listAdapter.submitList(it) })
 
-
+        list_home.setOnClickListener {
+            PagingUtil.RESET_PAGING_OFFSET()
+            val action = AnimeListDirections.actionListFragmentToHomeScreenActivity()
+            Navigation.findNavController(it).navigate(action)
+        }
     }
 
 

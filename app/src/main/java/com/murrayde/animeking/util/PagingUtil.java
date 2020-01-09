@@ -9,4 +9,8 @@ public class PagingUtil {
         PAGING_OFFSET += PAGING_LIMIT;
         return PAGING_OFFSET;
     }
+
+    public static void RESET_PAGING_OFFSET() {
+        PAGING_OFFSET = 0;
+    }
 }

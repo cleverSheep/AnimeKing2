@@ -1,12 +1,12 @@
 package com.murrayde.animeking.view;
 
 import android.os.Bundle;
-import android.view.View;
 import android.view.WindowManager;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.murrayde.animeking.R;
+import com.murrayde.animeking.util.PagingUtil;
 
 public class MainActivity extends AppCompatActivity {
     @Override
@@ -14,5 +14,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        PagingUtil.RESET_PAGING_OFFSET();
     }
 }
