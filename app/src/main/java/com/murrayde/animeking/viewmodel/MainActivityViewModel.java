@@ -1,0 +1,46 @@
+package com.murrayde.animeking.viewmodel;
+
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.ViewModel;
+import androidx.paging.LivePagedListBuilder;
+import androidx.paging.PagedList;
+
+import com.murrayde.animeking.di.AnimeApiComponent;
+import com.murrayde.animeking.di.DaggerAnimeApiComponent;
+import com.murrayde.animeking.model.AnimeData;
+import com.murrayde.animeking.network.AnimeApiEndpoint;
+import com.murrayde.animeking.util.PagingUtil;
+
+import io.reactivex.disposables.CompositeDisposable;
+
+public class MainActivityViewModel extends ViewModel {
+
+    private CompositeDisposable compositeDisposable;
+
+    private LiveData<PagedList<AnimeData>> animeData;
+
+    public MainActivityViewModel() {
+        AnimeApiComponent daggerAnimeApiComponent = DaggerAnimeApiComponent.builder()
+                .build();
+        AnimeApiEndpoint animeApiEndpoint = daggerAnimeApiComponent.getAnimeApiEndpoint();
+
+        compositeDisposable = new CompositeDisposable();
+        AnimeDataSourceFactory animeDataSourceFactory = new AnimeDataSourceFactory(animeApiEndpoint, compositeDisposable);
+
+        PagedList.Config pagingConfig = new PagedList.Config.Builder()
+                .setPrefetchDistance(PagingUtil.PAGING_PREFETCH)
+                .setEnablePlaceholders(true)
+                .build();
+        animeData = new LivePagedListBuilder<>(animeDataSourceFactory, pagingConfig).build();
+    }
+
+    @Override
+    protected void onCleared() {
+        super.onCleared();
+        compositeDisposable.clear();
+    }
+
+    public LiveData<PagedList<AnimeData>> getAnimeData() {
+        return animeData;
+    }
+}

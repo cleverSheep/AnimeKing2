@@ -8,6 +8,35 @@
   "client": [
     {
       "client_info": {
+        "mobilesdk_app_id": "1:738121527329:android:fdb9a848d6cdd4391f7360",
+        "android_client_info": {
+          "package_name": "com.murrayde.animeking"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "738121527329-rfo4htu4olvqjhv280cg3i919d11c4ce.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBephRmxlEqtryakjQTXy8cpdIC5HQoiek"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "738121527329-rfo4htu4olvqjhv280cg3i919d11c4ce.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:738121527329:android:571a756b49ec1b351f7360",
         "android_client_info": {
           "package_name": "com.murrayde.retrofittesting"

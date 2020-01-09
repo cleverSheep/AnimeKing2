@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/listFragment"
-        android:name="com.murrayde.retrofittesting.view.list_anime.AnimeList"
+        android:name="com.murrayde.animeking.view.list_anime.AnimeList"
         android:label="fragment_list"
         tools:layout="@layout/fragment_list" >
         <action
@@ -16,12 +16,12 @@
     </fragment>
     <fragment
         android:id="@+id/detailFragment"
-        android:name="com.murrayde.retrofittesting.view.list_anime.AnimeListDetail"
+        android:name="com.murrayde.animeking.view.list_anime.AnimeListDetail"
         android:label="fragment_detail"
         tools:layout="@layout/fragment_detail">
         <argument
             android:name="AnimeAttributes"
-            app:argType="com.murrayde.retrofittesting.model.AnimeAttributes.Attributes" />
+            app:argType="com.murrayde.animeking.model.AnimeAttributes.Attributes" />
         <action
             android:id="@+id/action_detailFragment_to_lowQuestionCountFragment"
             app:destination="@id/lowQuestionCountFragment" />
@@ -34,7 +34,7 @@
     </fragment>
     <fragment
         android:id="@+id/lowQuestionCountFragment"
-        android:name="com.murrayde.retrofittesting.view.questions.LowQuestionCount"
+        android:name="com.murrayde.animeking.view.questions.LowQuestionCount"
         android:label="fragment_low_question_count"
         tools:layout="@layout/fragment_low_question_count" >
         <action
@@ -42,16 +42,16 @@
             app:destination="@id/askQuestionFragment" />
         <argument
             android:name="AnimeAttributes"
-            app:argType="com.murrayde.retrofittesting.model.AnimeAttributes.Attributes" />
+            app:argType="com.murrayde.animeking.model.AnimeAttributes.Attributes" />
     </fragment>
     <fragment
         android:id="@+id/askQuestionFragment"
-        android:name="com.murrayde.retrofittesting.view.questions.AskQuestion"
+        android:name="com.murrayde.animeking.view.questions.AskQuestion"
         android:label="fragment_ask_question"
         tools:layout="@layout/fragment_ask_question" >
         <argument
             android:name="AnimeAttributes"
-            app:argType="com.murrayde.retrofittesting.model.AnimeAttributes.Attributes" />
+            app:argType="com.murrayde.animeking.model.AnimeAttributes.Attributes" />
         <action
             android:id="@+id/action_askQuestionFragment_to_detailFragment"
             app:destination="@id/detailFragment"
@@ -60,12 +60,12 @@
     </fragment>
     <fragment
         android:id="@+id/answerQuestionFragment"
-        android:name="com.murrayde.retrofittesting.view.questions.AnswerQuestion"
+        android:name="com.murrayde.animeking.view.questions.AnswerQuestion"
         android:label="fragment_answer_question"
         tools:layout="@layout/fragment_answer_question" >
         <argument
             android:name="AnimeAttributes"
-            app:argType="com.murrayde.retrofittesting.model.AnimeAttributes.Attributes" />
+            app:argType="com.murrayde.animeking.model.AnimeAttributes.Attributes" />
         <action
             android:id="@+id/action_answerQuestionFragment_to_detailFragment"
             app:destination="@id/detailFragment"
