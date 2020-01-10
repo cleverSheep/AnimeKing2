@@ -35,7 +35,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:contentDescription="@string/go_back_to_home_screen"
-                    android:src="@drawable/ic_home_black_24dp"
+                    android:src="@drawable/ic_home_24px"
                     app:layout_constraintBottom_toBottomOf="@id/list_logo_title"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="@id/list_logo_title" />
@@ -49,7 +49,7 @@
                     android:fontFamily="@font/baloobhairegular"
                     android:gravity="center"
                     android:text="@string/app_name"
-                    android:textColor="@color/color_home_logo"
+                    android:textColor="@color/color_grey"
                     android:textSize="20sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -63,7 +63,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:contentDescription="@string/go_back_to_home_screen"
-                    android:src="@drawable/ic_search_black_24dp"
+                    android:src="@drawable/ic_search"
                     app:layout_constraintBottom_toBottomOf="@id/list_logo_title"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="@id/list_logo_title" />
