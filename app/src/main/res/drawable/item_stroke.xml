@@ -16,5 +16,5 @@
 
     <stroke
         android:width="3dp"
-        android:color="@color/title_bg" />
+        android:color="@color/color_grey" />
 </shape>
