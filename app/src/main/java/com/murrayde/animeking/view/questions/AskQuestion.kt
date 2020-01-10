@@ -2,11 +2,15 @@
 
 package com.murrayde.animeking.view.questions
 
+import android.content.DialogInterface
 import android.media.MediaPlayer
 import android.os.Bundle
+import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
@@ -22,6 +26,7 @@ import com.murrayde.animeking.model.Question
 import com.murrayde.animeking.view.list_anime.AnimeListDetailArgs
 import kotlinx.android.synthetic.main.fragment_ask_question.*
 import timber.log.Timber
+
 
 class AskQuestion : Fragment() {
 
@@ -50,20 +55,30 @@ class AskQuestion : Fragment() {
                 .into(iv_ask_question)
 
         button_submit_question.setOnClickListener {
-            media.start()
-            progressBar_ask_question.visibility = View.VISIBLE
-            // NOTE: For some reason, I have to initialize 'question' inside of the click listener...
-            val multiple_choice = arrayListOf(editText_correct_choice.text.toString(),
-                    editText_wrong_one.text.toString(),
-                    editText_wrong_two.text.toString(),
-                    editText_wrong_three.text.toString())
-            val question = Question(editText_enter_question.text.toString(),
-                    attributes.posterImage.original,
-                    "",
-                    multiple_choice,
-                    0,
-                    tv_ask_question.text.toString())
-            addQuestionToDatabase(question, view)
+            if (editText_enter_question.text.toString().length < 12) {
+                showDialogForBadQuestion(view)
+            } else if (
+                    TextUtils.isEmpty(editText_wrong_one.text) ||
+                    TextUtils.isEmpty(editText_wrong_two.text) ||
+                    TextUtils.isEmpty(editText_wrong_three.text) ||
+                    TextUtils.isEmpty(editText_correct_choice.text)) {
+                showDialogForBadAnswerChoice(view)
+            } else {
+                media.start()
+                progressBar_ask_question.visibility = View.VISIBLE
+                // NOTE: For some reason, I have to initialize 'question' inside of the click listener...
+                val multiple_choice = arrayListOf(editText_correct_choice.text.toString(),
+                        editText_wrong_one.text.toString(),
+                        editText_wrong_two.text.toString(),
+                        editText_wrong_three.text.toString())
+                val question = Question(editText_enter_question.text.toString(),
+                        attributes.posterImage.original,
+                        "",
+                        multiple_choice,
+                        0,
+                        tv_ask_question.text.toString())
+                addQuestionToDatabase(question, view)
+            }
         }
     }
 
@@ -100,6 +115,56 @@ class AskQuestion : Fragment() {
     private fun navigateBackToDetailScreen(view: View) {
         val action = AskQuestionDirections.actionAskQuestionFragmentToDetailFragment(args.animeAttributes)
         Navigation.findNavController(view).navigate(action)
+    }
+
+    private fun showDialogForBadQuestion(view: View) {
+        //before inflating the custom alert dialog layout, we will get the current activity viewgroup
+        val viewGroup = view.findViewById<ViewGroup>(R.id.main_view_content)
+
+        //then we will inflate the custom alert dialog xml that we created
+        val dialogView = LayoutInflater.from(activity!!).inflate(R.layout.empty_question_fix, viewGroup, false)
+
+        //Now we need an AlertDialog.Builder object
+        val builder = AlertDialog.Builder(activity!!)
+
+
+        val button = dialogView.findViewById<Button>(R.id.accept_request_button)
+
+        //setting the view of the builder to our custom view that we already inflated
+        builder.setView(dialogView).setPositiveButton("") { _: DialogInterface, _: Int -> }
+        builder.setNegativeButton("") { _: DialogInterface, _: Int -> }
+
+        //finally creating the alert dialog and displaying it
+        val alertDialog = builder.create()
+        button.setOnClickListener {
+            alertDialog.dismiss()
+        }
+        alertDialog.show()
+    }
+
+    private fun showDialogForBadAnswerChoice(view: View) {
+        //before inflating the custom alert dialog layout, we will get the current activity viewgroup
+        val viewGroup = view.findViewById<ViewGroup>(R.id.main_view_content)
+
+        //then we will inflate the custom alert dialog xml that we created
+        val dialogView = LayoutInflater.from(activity!!).inflate(R.layout.empty_answer_fix, viewGroup, false)
+
+        //Now we need an AlertDialog.Builder object
+        val builder = AlertDialog.Builder(activity!!)
+
+
+        val button = dialogView.findViewById<Button>(R.id.accept_request_button)
+
+        //setting the view of the builder to our custom view that we already inflated
+        builder.setView(dialogView).setPositiveButton("") { _: DialogInterface, _: Int -> }
+        builder.setNegativeButton("") { _: DialogInterface, _: Int -> }
+
+        //finally creating the alert dialog and displaying it
+        val alertDialog = builder.create()
+        button.setOnClickListener {
+            alertDialog.dismiss()
+        }
+        alertDialog.show()
     }
 
     override fun onDestroy() {

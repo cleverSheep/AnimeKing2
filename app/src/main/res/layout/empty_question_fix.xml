@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fontFamily="@font/baloobhairegular"
+        android:gravity="center"
+        android:text="@string/question_min"
+        android:textAlignment="center"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/accept_request_button"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/color_correct"
+        android:clickable="true"
+        android:fontFamily="@font/baloobhairegular"
+        android:text="@string/accept"
+        android:textColor="@color/color_white"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+</LinearLayout>

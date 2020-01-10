@@ -23,4 +23,7 @@
     <string name="credits_audio">“Sound effects obtained from www.zapsplat.com“</string>
     <string name="go_back_to_home_screen">Go Back To Home Screen</string>
     <string name="slogan">For the anime community, by the anime community.</string>
+    <string name="question_min">Enter 12+ characters for question</string>
+    <string name="accept">Accept</string>
+    <string name="fix_answer_choice">Enter 1+ character for answer choice</string>
 </resources>
