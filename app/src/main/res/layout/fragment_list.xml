@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="@dimen/margin_regular"
-    tools:context="com.murrayde.animeking.view.list_anime.AnimeList">
+    tools:context=".view.community.list_anime.AnimeList">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"

@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/listFragment"
-        android:name="com.murrayde.animeking.view.list_anime.AnimeList"
+        android:name="com.murrayde.animeking.view.community.list_anime.AnimeList"
         tools:layout="@layout/fragment_list">
         <action
             android:id="@+id/action_listFragment_to_detailFragment"
@@ -22,11 +22,11 @@
     </fragment>
     <fragment
         android:id="@+id/detailFragment"
-        android:name="com.murrayde.animeking.view.list_anime.AnimeListDetail"
+        android:name="com.murrayde.animeking.view.community.list_anime.AnimeListDetail"
         tools:layout="@layout/fragment_detail">
         <argument
             android:name="AnimeAttributes"
-            app:argType="com.murrayde.animeking.model.AnimeAttributes.Attributes" />
+            app:argType="com.murrayde.animeking.model.community.AnimeAttributes.Attributes" />
         <action
             android:id="@+id/action_detailFragment_to_lowQuestionCountFragment"
             app:destination="@id/lowQuestionCountFragment"
@@ -43,7 +43,7 @@
     </fragment>
     <fragment
         android:id="@+id/lowQuestionCountFragment"
-        android:name="com.murrayde.animeking.view.questions.LowQuestionCount"
+        android:name="com.murrayde.animeking.view.community.LowQuestionCount"
         tools:layout="@layout/fragment_low_question_count">
         <action
             android:id="@+id/action_lowQuestionCountFragment_to_askQuestionFragment"
@@ -52,15 +52,15 @@
             app:exitAnim="@anim/slide_out_left" />
         <argument
             android:name="AnimeAttributes"
-            app:argType="com.murrayde.animeking.model.AnimeAttributes.Attributes" />
+            app:argType="com.murrayde.animeking.model.community.AnimeAttributes.Attributes" />
     </fragment>
     <fragment
         android:id="@+id/askQuestionFragment"
-        android:name="com.murrayde.animeking.view.questions.AskQuestion"
+        android:name="com.murrayde.animeking.view.community.AskQuestion"
         tools:layout="@layout/fragment_ask_question">
         <argument
             android:name="AnimeAttributes"
-            app:argType="com.murrayde.animeking.model.AnimeAttributes.Attributes" />
+            app:argType="com.murrayde.animeking.model.community.AnimeAttributes.Attributes" />
         <action
             android:id="@+id/action_askQuestionFragment_to_detailFragment"
             app:destination="@id/detailFragment"
@@ -69,11 +69,11 @@
     </fragment>
     <fragment
         android:id="@+id/answerQuestionFragment"
-        android:name="com.murrayde.animeking.view.questions.AnswerQuestion"
+        android:name="com.murrayde.animeking.view.community.AnswerQuestion"
         tools:layout="@layout/fragment_answer_question">
         <argument
             android:name="AnimeAttributes"
-            app:argType="com.murrayde.animeking.model.AnimeAttributes.Attributes" />
+            app:argType="com.murrayde.animeking.model.community.AnimeAttributes.Attributes" />
         <action
             android:id="@+id/action_answerQuestionFragment_to_detailFragment"
             app:destination="@id/detailFragment"
@@ -82,6 +82,6 @@
     </fragment>
     <activity
         android:id="@+id/homeScreenActivity"
-        android:name="com.murrayde.animeking.view.HomeScreenActivity"
+        android:name="com.murrayde.animeking.view.home.HomeScreenActivity"
         tools:layout="@layout/activity_home_screen" />
 </navigation>

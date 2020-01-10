@@ -1,162 +1,159 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#4E555E"
-    tools:context=".view.questions.AnswerQuestion">
+    tools:context=".view.community.AnswerQuestion">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ImageView
+        android:id="@+id/iv_answer_question"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:scaleType="center"
+        app:layout_constraintDimensionRatio="16:9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/castle" />
+
+
+    <TextView
+        android:id="@+id/tv_answer_title"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@color/title_bg"
+        android:fontFamily="@font/baloobhairegular"
+        android:paddingStart="30dp"
+        android:textAlignment="viewStart"
+        android:textColor="@android:color/white"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_answer_question"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/iv_answer_question"
+        tools:text="Anime Title" />
 
-        <ImageView
-            android:id="@+id/iv_answer_question"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:scaleType="center"
-            app:layout_constraintDimensionRatio="16:9"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:src="@drawable/castle" />
-
-
-        <TextView
-            android:id="@+id/tv_answer_title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/title_bg"
-            android:fontFamily="@font/baloobhairegular"
-            android:paddingStart="30dp"
-            android:textAlignment="viewStart"
-            android:textColor="@android:color/white"
-            android:textSize="25sp"
-            app:layout_constraintBottom_toBottomOf="@+id/iv_answer_question"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/iv_answer_question"
-            tools:text="Anime Title" />
-
-        <TextView
-            android:id="@+id/tv_answer_question"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="32dp"
-            android:background="@drawable/ask_question_background"
-            android:fontFamily="@font/baloobhairegular"
-            android:textAlignment="center"
-            android:textColor="@color/color_grey"
-            android:textColorHint="@color/color_grey"
-            android:textSize="25sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/iv_answer_question"
-            tools:text="Question" />
+    <TextView
+        android:id="@+id/tv_answer_question"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/ask_question_background"
+        android:fontFamily="@font/baloobhairegular"
+        android:textAlignment="center"
+        android:textColor="@color/color_grey"
+        android:textColorHint="@color/color_grey"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_answer_question"
+        tools:text="Question" />
 
 
-        <Button
-            android:id="@+id/button_choice_one"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="48dp"
-            android:background="@drawable/answer_question_background"
-            android:fontFamily="@font/baloobhairegular"
-            android:textAlignment="center"
-            android:textColor="@color/color_grey"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_answer_question"
-            tools:text="Answer Choice 1" />
+    <Button
+        android:id="@+id/button_choice_one"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/answer_question_background"
+        android:fontFamily="@font/baloobhairegular"
+        android:textAlignment="center"
+        android:textColor="@color/color_grey"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_answer_question"
+        tools:text="Answer Choice 1" />
 
-        <Button
-            android:id="@+id/button_choice_two"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/answer_question_background"
-            android:fontFamily="@font/baloobhairegular"
-            android:textAlignment="center"
-            android:textColor="@color/color_grey"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button_choice_one"
-            tools:text="Answer Choice 2" />
+    <Button
+        android:id="@+id/button_choice_two"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/answer_question_background"
+        android:fontFamily="@font/baloobhairegular"
+        android:textAlignment="center"
+        android:textColor="@color/color_grey"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_choice_one"
+        tools:text="Answer Choice 2" />
 
-        <Button
-            android:id="@+id/button_choice_three"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/answer_question_background"
-            android:fontFamily="@font/baloobhairegular"
-            android:maxLines="1"
-            android:textAlignment="center"
-            android:textColor="@color/color_grey"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button_choice_two"
-            tools:text="Answer Choice 3" />
+    <Button
+        android:id="@+id/button_choice_three"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/answer_question_background"
+        android:fontFamily="@font/baloobhairegular"
+        android:maxLines="1"
+        android:textAlignment="center"
+        android:textColor="@color/color_grey"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_choice_two"
+        tools:text="Answer Choice 3" />
 
 
-        <Button
-            android:id="@+id/button_choice_four"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/answer_question_background"
-            android:fontFamily="@font/baloobhairegular"
-            android:textAlignment="center"
-            android:textColor="@color/color_grey"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button_choice_three"
-            tools:text="Answer Choice 4" />
+    <Button
+        android:id="@+id/button_choice_four"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/answer_question_background"
+        android:fontFamily="@font/baloobhairegular"
+        android:textAlignment="center"
+        android:textColor="@color/color_grey"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_choice_three"
+        tools:text="Answer Choice 4" />
 
-        <Button
-            android:id="@+id/button_next_question"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:layout_marginBottom="30dp"
-            android:background="@drawable/ask_question_background"
-            android:fontFamily="@font/baloobhairegular"
-            android:text="@string/next_question"
-            android:textAllCaps="false"
-            android:textColor="@color/color_grey"
-            android:textSize="@dimen/button_text_size"
-            android:visibility="invisible"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/button_choice_four"
-            app:layout_constraintStart_toStartOf="@+id/button_choice_four"
-            app:layout_constraintTop_toBottomOf="@+id/button_choice_four" />
+    <Button
+        android:id="@+id/button_next_question"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/ask_question_background"
+        android:fontFamily="@font/baloobhairegular"
+        android:text="@string/next_question"
+        android:textAllCaps="false"
+        android:textColor="@color/color_grey"
+        android:textSize="@dimen/button_text_size"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/button_choice_four"
+        app:layout_constraintStart_toStartOf="@+id/button_choice_four"
+        app:layout_constraintTop_toBottomOf="@+id/button_choice_four"
+        tools:visibility="visible" />
 
-        <ProgressBar
-            android:id="@+id/progressBar_ask_question"
-            style="?android:attr/progressBarStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:visibility="invisible"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:layout_editor_absoluteX="146dp"
-            tools:layout_editor_absoluteY="315dp" />
+    <ProgressBar
+        android:id="@+id/progressBar_ask_question"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="146dp"
+        tools:layout_editor_absoluteY="315dp" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -20,6 +20,11 @@
             app:destination="@id/credits"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left" />
+        <action
+            android:id="@+id/action_landingScreen2_to_randomQuestions"
+            app:destination="@id/randomQuestions"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left" />
     </fragment>
     <activity
         android:id="@+id/mainActivity"
@@ -35,5 +40,13 @@
             app:destination="@id/landingScreen2"
             app:enterAnim="@anim/slide_in_left"
             app:exitAnim="@anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/randomQuestions"
+        android:name="com.murrayde.animeking.view.random.AnswerRandomQuestions"
+        tools:layout="@layout/fragment_random_questions" >
+        <action
+            android:id="@+id/action_randomQuestions_to_landingScreen2"
+            app:destination="@id/landingScreen2" />
     </fragment>
 </navigation>

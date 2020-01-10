@@ -14,7 +14,7 @@
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
         <activity
-            android:name="com.murrayde.animeking.view.SplashScreen"
+            android:name="com.murrayde.animeking.view.home.SplashScreen"
             android:noHistory="true"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -23,7 +23,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.murrayde.animeking.view.HomeScreenActivity"
+            android:name="com.murrayde.animeking.view.home.HomeScreenActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -31,7 +31,7 @@
         </activity>
         <activity
             android:name="com.murrayde.animeking.view.MainActivity"
-            android:parentActivityName="com.murrayde.animeking.view.HomeScreenActivity">
+            android:parentActivityName="com.murrayde.animeking.view.home.HomeScreenActivity">
             <nav-graph android:value="@navigation/main_nav" />
         </activity>
     </application>

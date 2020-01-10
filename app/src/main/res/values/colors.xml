@@ -9,6 +9,7 @@
     <color name="detail_gradient_center_bg">#80FFFFFF</color>
     <color name="home_bg">#00FFFEFE</color>
     <color name="color_grey">#707070</color>
+    <color name="color_darker_grey">#505050</color>
     <color name="color_home_logo">#2E2E2E</color>
     <color name="color_correct">#00FF00</color>
     <color name="color_white">#FFF</color>

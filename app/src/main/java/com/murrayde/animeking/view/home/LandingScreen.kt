@@ -27,7 +27,7 @@ class LandingScreen : Fragment() {
         // the fragment is attached to as a context
         media = MediaPlayer.create(activity, R.raw.button_click_sound_effect)
 
-        home_play_button.setOnClickListener {
+        home_compete_btn.setOnClickListener {
             media.start()
             val action = LandingScreenDirections.actionLandingScreen2ToMainActivity()
             Navigation.findNavController(it).navigate(action)
@@ -36,6 +36,12 @@ class LandingScreen : Fragment() {
             media.start()
             val action = LandingScreenDirections.actionLandingScreen2ToCredits()
             Navigation.findNavController(it).navigate(action)
+        }
+        home_play_btn.setOnClickListener {
+            media.start()
+            val action = LandingScreenDirections.actionLandingScreen2ToRandomQuestions()
+            Navigation.findNavController(it).navigate(action)
+
         }
     }
 

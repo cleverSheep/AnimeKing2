@@ -7,7 +7,7 @@
     android:gravity="center"
     android:orientation="vertical"
     android:padding="@dimen/margin_regular"
-    tools:context=".view.SplashScreen">
+    tools:context=".view.home.SplashScreen">
 
     <TextView
         android:id="@+id/textView"
@@ -20,7 +20,7 @@
         android:fontFamily="@font/baloobhairegular"
         android:text="@string/app_name"
         android:textAlignment="center"
-        android:textColor="@color/color_home_logo"
+        android:textColor="@color/color_darker_grey"
         android:textSize="40sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/textView4"
