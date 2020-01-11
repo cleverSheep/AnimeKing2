@@ -58,7 +58,6 @@ class AnswerRandomQuestions : Fragment() {
         val question_answer = ArrayList<String>()
         question_answer.addAll(randomQuestions[question_track].incorrect_answers)
         question_answer.add(randomQuestions[question_track].correct_answer)
-        question_answer.shuffle()
 
         val question = Html.fromHtml(randomQuestions[question_track].question)
         random_question_tv.text = question
