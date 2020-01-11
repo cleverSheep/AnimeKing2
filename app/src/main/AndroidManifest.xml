@@ -32,7 +32,6 @@
         <activity
             android:name="com.murrayde.animeking.view.MainActivity"
             android:parentActivityName="com.murrayde.animeking.view.home.HomeScreenActivity">
-            <nav-graph android:value="@navigation/main_nav" />
         </activity>
     </application>
 </manifest>

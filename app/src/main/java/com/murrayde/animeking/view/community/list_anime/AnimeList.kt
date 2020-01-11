@@ -16,6 +16,7 @@ import com.murrayde.animeking.model.community.api.AnimeData
 import com.murrayde.animeking.util.PagingUtil
 import com.murrayde.animeking.view.community.viewmodel.MainActivityViewModel
 import kotlinx.android.synthetic.main.fragment_list.*
+import timber.log.Timber
 
 class AnimeList : Fragment() {
 
@@ -23,7 +24,12 @@ class AnimeList : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_list, container, false)
+        try {
+            return inflater.inflate(R.layout.fragment_list, container, false)
+        } catch (e: Exception ) {
+            Timber.e("Error inflating layout")
+            throw e
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
