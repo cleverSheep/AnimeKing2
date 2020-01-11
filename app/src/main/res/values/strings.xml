@@ -7,7 +7,7 @@
     <string name="take_quiz">Take Quiz</string>
     <string name="ask_question">Ask Question</string>
     <string name="sample_text">Sophie (Emily Mortimer) has an uneventful life at her late father\'s hat shop, but all that changes when she befriends wizard Howl (Christian Bale), who lives in a magical flying castle. However, the evil Witch of Waste (Lauren Bacall) takes issue with their budding relationship and casts a spell on young Sophie, which ages her prematurely. Now Howl must use all his magical talents to battle the jealous hag and return Sophie to her former youth and beauty.</string>
-    <string name="not_enough_description">Each anime requires at least 5 communityQuestions. Add more communityQuestions to play trivia with this anime.</string>
+    <string name="not_enough_description">Each community requires at least 5 questions.\nAdd more questions to play trivia with this anime.</string>
     <string name="not_enough_questions">Not Enough Questions</string>
     <string name="question_hint">Enter Question</string>
     <string name="correct_choice_hint">Correct Choice</string>
@@ -22,7 +22,7 @@
     <string name="credits_author">Created by Clarmoph Games</string>
     <string name="credits_audio">“Sound effects obtained from www.zapsplat.com“</string>
     <string name="go_back_to_home_screen">Go Back To Home Screen</string>
-    <string name="slogan">For the anime community, by the anime community.</string>
+    <string name="slogan">How much anime do YOU know?</string>
     <string name="question_min">Enter 12+ characters for question</string>
     <string name="accept">Accept</string>
     <string name="fix_answer_choice">Enter 1+ character for answer choice</string>
