@@ -3,6 +3,8 @@ package com.murrayde.animeking.view.random
 
 import android.media.MediaPlayer
 import android.os.Bundle
+import android.text.Html
+import android.text.Spanned
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,6 +12,7 @@ import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import com.murrayde.animeking.R
 import com.murrayde.animeking.model.random.Result
 import kotlinx.android.synthetic.main.fragment_random_questions.*
@@ -52,10 +55,15 @@ class AnswerRandomQuestions : Fragment() {
             return
         }
 
-        random_question_tv.text = randomQuestions[question_track].question
+        val question_answer = ArrayList<String>()
+        question_answer.addAll(randomQuestions[question_track].incorrect_answers)
+        question_answer.add(randomQuestions[question_track].correct_answer)
+
+        val question = Html.fromHtml(randomQuestions[question_track].question)
+        random_question_tv.text = question
 
         repeat(list_buttons.size) {
-            list_buttons[it].text = randomQuestions.removeAt(0).incorrect_answers[it]
+            list_buttons[it].text = Html.fromHtml(question_answer.removeAt(0))
         }
         buttonChoiceClick(list_buttons, randomQuestions, question_track)
 
@@ -71,10 +79,13 @@ class AnswerRandomQuestions : Fragment() {
         }
     }
 
-    private fun navigateBackHome(view: View) {}
+    private fun navigateBackHome(view: View) {
+        val action = AnswerRandomQuestionsDirections.actionRandomQuestionsToLandingScreen2()
+        Navigation.findNavController(view).navigate(action)
+    }
 
     private fun buttonChoiceClick(list_buttons: ArrayList<Button>, randomQuestions: ArrayList<Result>, question_track: Int) {
-        val correct_response = randomQuestions[question_track].correct_answer
+        val correct_response = Html.fromHtml(randomQuestions[question_track].correct_answer)
         repeat(list_buttons.size) { position ->
             list_buttons[position].setOnClickListener { view ->
                 disableAllButtons(list_buttons)
@@ -92,7 +103,7 @@ class AnswerRandomQuestions : Fragment() {
         }
     }
 
-    private fun alertWrongResponse(view: View, list_buttons: ArrayList<Button>, correct_response: String) {
+    private fun alertWrongResponse(view: View, list_buttons: ArrayList<Button>, correct_response: Spanned) {
         val button = view as Button
         media_wrong.start()
         button.setBackgroundColor(resources.getColor(R.color.color_wrong))
@@ -117,6 +128,7 @@ class AnswerRandomQuestions : Fragment() {
         list_buttons.add(random_question_btn1)
         list_buttons.add(random_question_btn2)
         list_buttons.add(random_question_btn3)
+        list_buttons.add(random_question_btn4)
         return list_buttons
     }
 }

@@ -157,7 +157,7 @@
         android:textAllCaps="false"
         android:textColor="@color/color_grey"
         android:textSize="@dimen/button_text_size"
-        android:visibility="visible"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/random_question_btn4"
         app:layout_constraintStart_toStartOf="@+id/random_question_btn4"
