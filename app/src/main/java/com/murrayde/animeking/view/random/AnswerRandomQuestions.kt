@@ -22,7 +22,7 @@ class AnswerRandomQuestions : Fragment() {
     private lateinit var media_default: MediaPlayer
     private lateinit var media_correct: MediaPlayer
     private lateinit var media_wrong: MediaPlayer
-    private lateinit var randomQuestionsViewModel: RandomQuestionsViewModel
+    private var current_score: Int = 0
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -41,12 +41,12 @@ class AnswerRandomQuestions : Fragment() {
         val randomQuestionsViewModel = ViewModelProvider(this).get(RandomQuestionsViewModel::class.java)
         randomQuestionsViewModel.getQuestionSet().observe(this, Observer {
             randomQuestions = it as ArrayList<Result>
-            loadQuestions(randomQuestions, 0, view, listButtons())
+            loadQuestions(randomQuestions, 0, view, listButtons(), current_score)
         })
 
     }
 
-    private fun loadQuestions(randomQuestions: ArrayList<Result>, track: Int, view: View, list_buttons: ArrayList<Button>) {
+    private fun loadQuestions(randomQuestions: ArrayList<Result>, track: Int, view: View, list_buttons: ArrayList<Button>, score: Int) {
         var question_track = track
 
         // NOTE: Make sure to explicitly return or else the remaining lines of code will be executed
@@ -58,6 +58,7 @@ class AnswerRandomQuestions : Fragment() {
         val question_answer = ArrayList<String>()
         question_answer.addAll(randomQuestions[question_track].incorrect_answers)
         question_answer.add(randomQuestions[question_track].correct_answer)
+        question_answer.shuffle()
 
         val question = Html.fromHtml(randomQuestions[question_track].question)
         random_question_tv.text = question
@@ -75,7 +76,7 @@ class AnswerRandomQuestions : Fragment() {
                 list_buttons[it].setTextColor(resources.getColor(R.color.color_grey))
                 list_buttons[it].isClickable = true
             }
-            loadQuestions(randomQuestions, ++question_track, view, list_buttons)
+            loadQuestions(randomQuestions, ++question_track, view, list_buttons, current_score)
         }
     }
 
@@ -90,6 +91,8 @@ class AnswerRandomQuestions : Fragment() {
             list_buttons[position].setOnClickListener { view ->
                 disableAllButtons(list_buttons)
                 if (list_buttons[position].text == correct_response) {
+                    current_score++
+                    random_question_score_tv.text = "${current_score}/10"
                     alertCorrectResponse(view)
                 } else alertWrongResponse(view, list_buttons, correct_response)
                 random_question_next_btn.visibility = View.VISIBLE
