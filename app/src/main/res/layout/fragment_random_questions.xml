@@ -19,6 +19,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
+            android:id="@+id/random_question_score_tv"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -149,8 +150,7 @@
         android:id="@+id/random_question_next_btn"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="30dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/ask_question_background"
         android:fontFamily="@font/baloobhairegular"
         android:text="@string/next_question"
@@ -158,7 +158,6 @@
         android:textColor="@color/color_grey"
         android:textSize="@dimen/button_text_size"
         android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/random_question_btn4"
         app:layout_constraintStart_toStartOf="@+id/random_question_btn4"
         app:layout_constraintTop_toBottomOf="@+id/random_question_btn4"
