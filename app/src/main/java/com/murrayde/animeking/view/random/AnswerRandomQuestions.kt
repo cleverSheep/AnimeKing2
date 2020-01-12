@@ -22,7 +22,7 @@ class AnswerRandomQuestions : Fragment() {
     private lateinit var media_default: MediaPlayer
     private lateinit var media_correct: MediaPlayer
     private lateinit var media_wrong: MediaPlayer
-    private var current_score: Int = 2
+    private var current_score: Int = 0
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
