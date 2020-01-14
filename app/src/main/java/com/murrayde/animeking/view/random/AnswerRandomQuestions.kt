@@ -1,8 +1,9 @@
-@file:Suppress("LocalVariableName")
+@file:Suppress("LocalVariableName", "PrivatePropertyName")
 
 package com.murrayde.animeking.view.random
 
 
+import android.content.DialogInterface
 import android.media.MediaPlayer
 import android.media.MediaPlayer.create
 import android.os.Bundle
@@ -13,6 +14,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -74,7 +76,7 @@ class AnswerRandomQuestions : Fragment() {
         repeat(list_buttons.size) {
             list_buttons[it].text = Html.fromHtml(question_answer.removeAt(0))
         }
-        startTimer()
+        startTimer(randomQuestions, ++question_track, view, list_buttons)
         buttonChoiceClick(list_buttons, randomQuestions, question_track)
 
         random_question_next_btn.setOnClickListener {
@@ -90,10 +92,51 @@ class AnswerRandomQuestions : Fragment() {
         }
     }
 
-
     private fun navigateBackHome(view: View) {
         val action = AnswerRandomQuestionsDirections.actionRandomQuestionsToLandingScreen2()
         Navigation.findNavController(view).navigate(action)
+    }
+
+    private fun startTimer(randomQuestions: ArrayList<Result>, track: Int, view: View, list_buttons: ArrayList<Button>) {
+        countDownTimer = object : CountDownTimer(QuestionUtil.QUESTION_TIMER, 1000) {
+            override fun onFinish() {
+                disableAllButtons(list_buttons)
+                showTimeUpDialog(randomQuestions, track, view, list_buttons)
+            }
+
+            override fun onTick(p0: Long) {
+                Timber.d(p0.toString())
+                random_time_tv.text = "${p0 / 1000}s"
+            }
+
+        }.start()
+    }
+
+    private fun showTimeUpDialog(randomQuestions: ArrayList<Result>, track: Int, view: View, list_buttons: ArrayList<Button>) {
+        //before inflating the custom alert dialog layout, we will get the current activity viewgroup
+        val viewGroup = view.findViewById<ViewGroup>(R.id.main_view_content)
+
+        //then we will inflate the custom alert dialog xml that we created
+        val dialogView = LayoutInflater.from(activity!!).inflate(R.layout.time_up_layout, viewGroup, false)
+
+        //Now we need an AlertDialog.Builder object
+        val builder = AlertDialog.Builder(activity!!)
+
+
+        val button = dialogView.findViewById<Button>(R.id.time_up_next_question)
+
+        //setting the view of the builder to our custom view that we already inflated
+        builder.setView(dialogView).setPositiveButton("") { _: DialogInterface, _: Int -> }
+        builder.setNegativeButton("") { _: DialogInterface, _: Int -> }
+
+        //finally creating the alert dialog and displaying it
+        val alertDialog = builder.create()
+        alertDialog.setCanceledOnTouchOutside(false)
+        button.setOnClickListener {
+            alertDialog.dismiss()
+            loadQuestions(randomQuestions, track, view, list_buttons)
+        }
+        alertDialog.show()
     }
 
     private fun buttonChoiceClick(list_buttons: ArrayList<Button>, randomQuestions: ArrayList<Result>, question_track: Int) {
@@ -110,25 +153,6 @@ class AnswerRandomQuestions : Fragment() {
                 random_question_next_btn.visibility = View.VISIBLE
             }
         }
-    }
-
-    private fun startTimer() {
-        countDownTimer = object : CountDownTimer(QuestionUtil.QUESTION_TIMER, 1000) {
-            override fun onFinish() {
-                this.cancel()
-            }
-
-            override fun onTick(p0: Long) {
-                Timber.d(p0.toString())
-                random_time_tv.text = "${p0 / 1000}s"
-            }
-
-        }.start()
-    }
-
-    override fun onStop() {
-        super.onStop()
-        countDownTimer.cancel()
     }
 
     private fun disableAllButtons(list_buttons: ArrayList<Button>) {
@@ -166,12 +190,18 @@ class AnswerRandomQuestions : Fragment() {
         return list_buttons
     }
 
+    override fun onStop() {
+        super.onStop()
+        countDownTimer.cancel()
+    }
+
     override fun onDestroy() {
         super.onDestroy()
         media_default.release()
         media_correct.release()
         media_wrong.release()
     }
+
 
 
 }
