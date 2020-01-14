@@ -2,8 +2,8 @@ package com.murrayde.animeking.view.community.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.paging.PageKeyedDataSource
-import com.murrayde.animeking.model.community.api.AnimeComplete
-import com.murrayde.animeking.model.community.api.AnimeData
+import com.murrayde.animeking.network.community.api.AnimeComplete
+import com.murrayde.animeking.network.community.api.AnimeData
 import com.murrayde.animeking.network.community.AnimeApiEndpoint
 import com.murrayde.animeking.network.NetworkState
 import com.murrayde.animeking.util.PagingUtil

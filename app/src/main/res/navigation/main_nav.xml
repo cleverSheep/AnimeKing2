@@ -82,6 +82,6 @@
     </fragment>
     <activity
         android:id="@+id/homeScreenActivity"
-        android:name="com.murrayde.animeking.view.home.HomeScreenActivity"
+        android:name="com.murrayde.animeking.view.landing_screen.HomeScreenActivity"
         tools:layout="@layout/activity_home_screen" />
 </navigation>

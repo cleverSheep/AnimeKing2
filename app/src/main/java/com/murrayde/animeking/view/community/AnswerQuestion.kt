@@ -5,6 +5,8 @@ package com.murrayde.animeking.view.community
 
 import android.media.MediaPlayer
 import android.os.Bundle
+import android.os.CountDownTimer
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,12 +15,17 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.CenterCrop
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.google.firebase.firestore.FirebaseFirestore
 import com.murrayde.animeking.R
 import com.murrayde.animeking.model.community.CommunityQuestion
 import com.murrayde.animeking.model.community.QuestionFactory
+import com.murrayde.animeking.util.QuestionUtil
 import com.murrayde.animeking.view.community.list_anime.AnimeListDetailArgs
 import kotlinx.android.synthetic.main.fragment_answer_question.*
+import kotlinx.android.synthetic.main.fragment_random_questions.*
+import timber.log.Timber
 
 class AnswerQuestion : Fragment() {
 
@@ -27,6 +34,8 @@ class AnswerQuestion : Fragment() {
     private lateinit var media_default: MediaPlayer
     private lateinit var media_correct: MediaPlayer
     private lateinit var media_wrong: MediaPlayer
+    private var current_score: Int = 0
+    private lateinit var countDownTimer: CountDownTimer
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -67,13 +76,14 @@ class AnswerQuestion : Fragment() {
                 .load(communityQuestions[question_track].image_url)
                 .placeholder(R.drawable.castle)
                 .dontAnimate()
+                .transform(CenterCrop(), RoundedCorners(16))
                 .into(iv_answer_question)
         tv_answer_question.text = communityQuestions[question_track].question
 
         repeat(list_buttons.size) {
             list_buttons[it].text = random_questions.removeAt(0)
         }
-
+        startTimer()
         buttonChoiceClick(list_buttons, communityQuestions, track)
 
         button_next_question.setOnClickListener {
@@ -82,6 +92,7 @@ class AnswerQuestion : Fragment() {
             repeat(list_buttons.size) {
                 list_buttons[it].setBackgroundColor(resources.getColor(R.color.color_white))
                 list_buttons[it].setTextColor(resources.getColor(R.color.color_grey))
+                list_buttons[it].background = resources.getDrawable(R.drawable.answer_question_background)
                 list_buttons[it].isClickable = true
             }
             loadQuestions(communityQuestions, ++question_track, view, list_buttons)
@@ -92,8 +103,11 @@ class AnswerQuestion : Fragment() {
         val correct_response = communityQuestions[question_track].multiple_choice[0]
         repeat(list_buttons.size) { position ->
             list_buttons[position].setOnClickListener { view ->
+                countDownTimer.cancel()
                 disableAllButtons(list_buttons)
                 if (list_buttons[position].text == correct_response) {
+                    current_score++
+                    answer_question_score.text = "${current_score}/10"
                     alertCorrectResponse(view)
                 } else alertWrongResponse(view, list_buttons, correct_response)
                 button_next_question.visibility = View.VISIBLE
@@ -121,14 +135,33 @@ class AnswerQuestion : Fragment() {
         Navigation.findNavController(view).navigate(action)
     }
 
+    private fun startTimer() {
+        countDownTimer = object : CountDownTimer(QuestionUtil.QUESTION_TIMER, 1000) {
+            override fun onFinish() {
+                this.cancel()
+            }
+
+            override fun onTick(p0: Long) {
+                Timber.d(p0.toString())
+                answer_question_timer.text = "${p0 / 1000}s"
+            }
+
+        }.start()
+    }
+
+    override fun onStop() {
+        super.onStop()
+        countDownTimer.cancel()
+    }
+
     private fun alertWrongResponse(view: View, list_buttons: ArrayList<Button>, correct_response: String) {
         val button = view as Button
         media_wrong.start()
-        button.setBackgroundColor(resources.getColor(R.color.color_wrong))
+        button.background = resources.getDrawable(R.drawable.answer_wrong_background)
         button.setTextColor(resources.getColor(R.color.color_white))
         repeat(list_buttons.size) { position ->
             if (list_buttons[position].text == correct_response) {
-                list_buttons[position].setBackgroundColor(resources.getColor(R.color.color_correct))
+                list_buttons[position].background = resources.getDrawable(R.drawable.answer_correct_background)
                 list_buttons[position].setTextColor(resources.getColor(R.color.color_white))
             }
         }
@@ -137,7 +170,7 @@ class AnswerQuestion : Fragment() {
     private fun alertCorrectResponse(view: View) {
         val button = view as Button
         media_correct.start()
-        button.setBackgroundColor(resources.getColor(R.color.color_correct))
+        button.background = resources.getDrawable(R.drawable.answer_correct_background)
         button.setTextColor(resources.getColor(R.color.color_white))
     }
 

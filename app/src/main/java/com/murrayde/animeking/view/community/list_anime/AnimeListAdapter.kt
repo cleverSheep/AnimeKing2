@@ -4,7 +4,7 @@ import android.annotation.SuppressLint
 import android.view.ViewGroup
 import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
-import com.murrayde.animeking.model.community.api.AnimeData
+import com.murrayde.animeking.network.community.api.AnimeData
 
 class AnimeListAdapter : PagedListAdapter<AnimeData, AnimeViewHolder>(diffCallback) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AnimeViewHolder = AnimeViewHolder.create(parent)
