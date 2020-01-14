@@ -22,9 +22,7 @@ import androidx.navigation.Navigation
 import com.murrayde.animeking.R
 import com.murrayde.animeking.model.random.Result
 import com.murrayde.animeking.util.QuestionUtil
-import kotlinx.android.synthetic.main.fragment_answer_question.*
 import kotlinx.android.synthetic.main.fragment_random_questions.*
-import kotlinx.android.synthetic.main.fragment_random_questions.random_question_score_tv
 import timber.log.Timber
 
 class AnswerRandomQuestions : Fragment() {
@@ -73,11 +71,11 @@ class AnswerRandomQuestions : Fragment() {
         val question = Html.fromHtml(randomQuestions[question_track].question)
         random_question_tv.text = question
 
-        repeat(list_buttons.size) {
-            list_buttons[it].text = Html.fromHtml(question_answer.removeAt(0))
+        repeat(list_buttons.size) {position ->
+            list_buttons[position].text = Html.fromHtml(question_answer.removeAt(0))
         }
-        startTimer(randomQuestions, ++question_track, view, list_buttons)
-        buttonChoiceClick(list_buttons, randomQuestions, question_track)
+        startTimer(randomQuestions, question_track, view, list_buttons)
+        buttonChoiceClick(list_buttons, randomQuestions, track)
 
         random_question_next_btn.setOnClickListener {
             media_default.start()
@@ -100,8 +98,9 @@ class AnswerRandomQuestions : Fragment() {
     private fun startTimer(randomQuestions: ArrayList<Result>, track: Int, view: View, list_buttons: ArrayList<Button>) {
         countDownTimer = object : CountDownTimer(QuestionUtil.QUESTION_TIMER, 1000) {
             override fun onFinish() {
+                var current_question = track
                 disableAllButtons(list_buttons)
-                showTimeUpDialog(randomQuestions, track, view, list_buttons)
+                showTimeUpDialog(randomQuestions, ++current_question, view, list_buttons)
             }
 
             override fun onTick(p0: Long) {
