@@ -1,7 +1,6 @@
-package com.murrayde.animeking.view.home
+package com.murrayde.animeking.view.landing_screen
 
 import android.os.Bundle
-import android.view.View
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import com.murrayde.animeking.R

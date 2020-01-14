@@ -10,7 +10,7 @@ import android.widget.TextView
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.murrayde.animeking.R
-import com.murrayde.animeking.model.community.api.AnimeData
+import com.murrayde.animeking.network.community.api.AnimeData
 import com.murrayde.animeking.util.ImageUtil
 
 class AnimeViewHolder(view: View) : RecyclerView.ViewHolder(view) {

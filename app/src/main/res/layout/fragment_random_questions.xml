@@ -39,6 +39,7 @@
             android:src="@drawable/crown_list_screen" />
 
         <TextView
+            android:id="@+id/random_time_tv"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"

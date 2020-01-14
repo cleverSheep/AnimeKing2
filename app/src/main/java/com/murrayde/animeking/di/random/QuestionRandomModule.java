@@ -15,6 +15,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 @Module(includes = OkHttpClientModule.class)
 public class QuestionRandomModule {
 
+    @SuppressWarnings("FieldCanBeLocal")
     private static String BASE_URL = "https://opentdb.com/";
 
     @Provides

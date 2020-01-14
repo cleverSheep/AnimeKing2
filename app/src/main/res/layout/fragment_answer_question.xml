@@ -8,39 +8,85 @@
     android:background="#4E555E"
     tools:context=".view.community.AnswerQuestion">
 
+    <LinearLayout
+        android:id="@+id/iv_answer_question_ll"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="15dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="@+id/iv_answer_question"
+        app:layout_constraintStart_toStartOf="@+id/iv_answer_question"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/answer_question_score"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="@font/baloobhairegular"
+            android:gravity="center"
+            android:text="0/10"
+            android:textColor="@color/color_white"
+            android:textSize="27sp"
+            android:textStyle="bold"
+            tools:text="0/10" />
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:src="@drawable/crown_list_screen" />
+
+        <TextView
+            android:id="@+id/answer_question_timer"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="@font/baloobhairegular"
+            android:gravity="center"
+            android:text="17s"
+            android:textColor="@color/color_white"
+            android:textSize="27sp"
+            android:textStyle="bold"
+            tools:text="17s" />
+
+    </LinearLayout>
+
+
     <ImageView
         android:id="@+id/iv_answer_question"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginTop="8dp"
         android:scaleType="center"
         app:layout_constraintDimensionRatio="16:9"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/tv_answer_question"
+        app:layout_constraintStart_toStartOf="@+id/tv_answer_question"
+        app:layout_constraintTop_toBottomOf="@id/iv_answer_question_ll"
         tools:src="@drawable/castle" />
 
 
     <TextView
         android:id="@+id/tv_answer_title"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@color/title_bg"
         android:fontFamily="@font/baloobhairegular"
+        android:background="@drawable/answer_question_title"
         android:paddingStart="30dp"
         android:textAlignment="viewStart"
         android:textColor="@android:color/white"
         android:textSize="25sp"
         app:layout_constraintBottom_toBottomOf="@+id/iv_answer_question"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/iv_answer_question"
         app:layout_constraintStart_toStartOf="@+id/iv_answer_question"
         tools:text="Anime Title" />
 
     <TextView
         android:id="@+id/tv_answer_question"
-        android:layout_width="0dp"
+        android:layout_width="379dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="24dp"
         android:background="@drawable/ask_question_background"
         android:fontFamily="@font/baloobhairegular"
         android:textAlignment="center"
@@ -48,7 +94,9 @@
         android:textColorHint="@color/color_grey"
         android:textSize="17sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/button_choice_one"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/iv_answer_question"
         tools:text="Question" />
@@ -56,44 +104,45 @@
 
     <Button
         android:id="@+id/button_choice_one"
-        android:layout_width="0dp"
+        android:layout_width="379dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="32dp"
         android:background="@drawable/answer_question_background"
         android:fontFamily="@font/baloobhairegular"
         android:textAlignment="center"
         android:textColor="@color/color_grey"
         android:textSize="17sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/button_choice_two"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_answer_question"
         tools:text="Answer Choice 1" />
 
     <Button
         android:id="@+id/button_choice_two"
-        android:layout_width="0dp"
+        android:layout_width="379dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="12dp"
         android:background="@drawable/answer_question_background"
         android:fontFamily="@font/baloobhairegular"
         android:textAlignment="center"
         android:textColor="@color/color_grey"
         android:textSize="17sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/button_choice_three"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button_choice_one"
         tools:text="Answer Choice 2" />
 
     <Button
         android:id="@+id/button_choice_three"
-        android:layout_width="0dp"
+        android:layout_width="379dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="12dp"
         android:background="@drawable/answer_question_background"
         android:fontFamily="@font/baloobhairegular"
         android:maxLines="1"
@@ -101,7 +150,9 @@
         android:textColor="@color/color_grey"
         android:textSize="17sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/button_choice_four"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button_choice_two"
         tools:text="Answer Choice 3" />
@@ -109,26 +160,26 @@
 
     <Button
         android:id="@+id/button_choice_four"
-        android:layout_width="0dp"
+        android:layout_width="379dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="12dp"
         android:background="@drawable/answer_question_background"
         android:fontFamily="@font/baloobhairegular"
         android:textAlignment="center"
         android:textColor="@color/color_grey"
         android:textSize="17sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/button_next_question"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button_choice_three"
         tools:text="Answer Choice 4" />
 
     <Button
         android:id="@+id/button_next_question"
-        android:layout_width="0dp"
+        android:layout_width="379dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:background="@drawable/ask_question_background"
         android:fontFamily="@font/baloobhairegular"
         android:text="@string/next_question"
@@ -136,8 +187,10 @@
         android:textColor="@color/color_grey"
         android:textSize="@dimen/button_text_size"
         android:visibility="invisible"
-        app:layout_constraintEnd_toEndOf="@+id/button_choice_four"
-        app:layout_constraintStart_toStartOf="@+id/button_choice_four"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button_choice_four"
         tools:visibility="visible" />
 

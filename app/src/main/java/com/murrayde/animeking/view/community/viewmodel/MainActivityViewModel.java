@@ -7,7 +7,7 @@ import androidx.paging.PagedList;
 
 import com.murrayde.animeking.di.community.AnimeApiComponent;
 import com.murrayde.animeking.di.community.DaggerAnimeApiComponent;
-import com.murrayde.animeking.model.community.api.AnimeData;
+import com.murrayde.animeking.network.community.api.AnimeData;
 import com.murrayde.animeking.network.community.AnimeApiEndpoint;
 import com.murrayde.animeking.util.PagingUtil;
 

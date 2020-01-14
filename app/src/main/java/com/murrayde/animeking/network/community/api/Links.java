@@ -1,4 +1,4 @@
-package com.murrayde.animeking.model.community.api;
+package com.murrayde.animeking.network.community.api;
 
 import com.google.gson.annotations.SerializedName;
 

@@ -1,6 +1,6 @@
 package com.murrayde.animeking.network.community;
 
-import com.murrayde.animeking.model.community.api.AnimeComplete;
+import com.murrayde.animeking.network.community.api.AnimeComplete;
 
 import io.reactivex.Single;
 import retrofit2.http.GET;

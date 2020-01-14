@@ -54,4 +54,9 @@ class RandomQuestionsViewModel : ViewModel() {
     fun getQuestionSet(): LiveData<List<Result>> {
         return question_result
     }
+
+    override fun onCleared() {
+        super.onCleared()
+        compositeDisposable.clear()
+    }
 }

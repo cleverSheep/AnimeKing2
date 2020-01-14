@@ -12,7 +12,7 @@ import androidx.navigation.Navigation
 import androidx.paging.PagedList
 import androidx.recyclerview.widget.GridLayoutManager
 import com.murrayde.animeking.R
-import com.murrayde.animeking.model.community.api.AnimeData
+import com.murrayde.animeking.network.community.api.AnimeData
 import com.murrayde.animeking.util.PagingUtil
 import com.murrayde.animeking.view.community.viewmodel.MainActivityViewModel
 import kotlinx.android.synthetic.main.fragment_list.*

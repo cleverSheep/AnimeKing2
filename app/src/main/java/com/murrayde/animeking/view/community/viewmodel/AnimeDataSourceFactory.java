@@ -4,7 +4,7 @@ package com.murrayde.animeking.view.community.viewmodel;
 import androidx.lifecycle.MutableLiveData;
 import androidx.paging.DataSource;
 
-import com.murrayde.animeking.model.community.api.AnimeData;
+import com.murrayde.animeking.network.community.api.AnimeData;
 import com.murrayde.animeking.network.community.AnimeApiEndpoint;
 
 import org.jetbrains.annotations.NotNull;

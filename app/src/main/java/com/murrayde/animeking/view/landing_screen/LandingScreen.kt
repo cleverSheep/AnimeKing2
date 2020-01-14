@@ -1,4 +1,4 @@
-package com.murrayde.animeking.view.home
+package com.murrayde.animeking.view.landing_screen
 
 
 import android.media.MediaPlayer
