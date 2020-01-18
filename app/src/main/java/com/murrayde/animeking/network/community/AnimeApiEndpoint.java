@@ -14,7 +14,7 @@ public interface AnimeApiEndpoint {
             @Query("page[offset]") int offset
     );
 
-    @GET("anime?page[limit]=17")
+    @GET("anime?page[limit]=20&sort=popularityRank")
     Single<AnimeComplete> getUserRequestedAnime(
             @Query("filter[text]") String title
     );
