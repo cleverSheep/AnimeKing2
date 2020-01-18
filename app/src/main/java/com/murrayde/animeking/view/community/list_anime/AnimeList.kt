@@ -16,8 +16,11 @@ import com.murrayde.animeking.R
 import com.murrayde.animeking.network.community.api.AnimeData
 import com.murrayde.animeking.util.PagingUtil
 import com.murrayde.animeking.view.community.viewmodel.MainActivityViewModel
+import com.murrayde.animeking.view.search.SearchFragmentDirections
 import kotlinx.android.synthetic.main.fragment_list.*
+import kotlinx.android.synthetic.main.fragment_search.*
 import timber.log.Timber
+import java.util.*
 
 class AnimeList : Fragment() {
 
@@ -54,5 +57,10 @@ class AnimeList : Fragment() {
         }
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        Timber.d("List screen destroyed")
+        PagingUtil.RESET_PAGING_OFFSET()
+    }
 
 }

@@ -8,31 +8,57 @@
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar_search"
-        android:layout_width="match_parent"
-        android:layout_height="?android:attr/actionBarSize"
-        android:elevation="3dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
         app:contentInsetEnd="0dp"
-        android:layout_marginVertical="8dp"
         app:contentInsetLeft="0dp"
         app:contentInsetRight="0dp"
         app:contentInsetStart="0dp"
         app:contentInsetStartWithNavigation="0dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/cancel_search"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:titleTextColor="@color/color_grey">
 
         <EditText
-            android:id="@+id/editSearch"
+            android:id="@+id/search_edit_text"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
+            android:layout_height="match_parent"
             android:background="@drawable/search_background"
-            android:fontFamily="@font/bahnscrift"
+            android:drawableStart="@drawable/ic_search_black_24dp"
+            android:drawablePadding="8dp"
+            android:fontFamily="@font/baloobhairegular"
             android:hint="Search for anime"
             android:imeOptions="actionSearch"
             android:inputType="text"
-            android:padding="8dp" />
+            android:padding="8dp"
+            android:textCursorDrawable="@drawable/cursor_drawable" />
     </androidx.appcompat.widget.Toolbar>
+
+    <TextView
+        android:id="@+id/cancel_search"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:fontFamily="@font/baloobhairegular"
+        android:text="Cancel"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/toolbar_search"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/toolbar_search" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/search_rv"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_search" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

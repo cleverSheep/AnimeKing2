@@ -64,7 +64,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="ContentDescription"
-            tools:src="@drawable/feature_graphic" />
+            tools:src="@drawable/feature_graphic"
+            tools:srcCompat="@drawable/abyss" />
 
         <TextView
             android:id="@+id/tv_ask_question"

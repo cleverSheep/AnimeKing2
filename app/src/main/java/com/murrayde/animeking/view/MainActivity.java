@@ -15,10 +15,4 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
     }
-
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        PagingUtil.RESET_PAGING_OFFSET();
-    }
 }

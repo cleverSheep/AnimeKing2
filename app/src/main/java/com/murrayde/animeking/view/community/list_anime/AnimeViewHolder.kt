@@ -30,7 +30,7 @@ class AnimeViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     fun bindTo(data: AnimeData) {
         this.data = data
         nameView.text = data.attributes.titles.en ?: data.attributes.canonicalTitle
-        ImageUtil.loadImage(imageView, data.attributes.posterImage.original)
+        ImageUtil.loadImage(imageView, data.attributes.posterImage.large)
     }
 
     companion object {
