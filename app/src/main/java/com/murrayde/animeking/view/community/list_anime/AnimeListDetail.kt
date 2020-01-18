@@ -41,7 +41,7 @@ class AnimeListDetail : Fragment() {
         tv_ask_question.text = attributes.titles.en ?: attributes.canonicalTitle
         tv_description.text = attributes.synopsis
         Glide.with(this)
-                .load(attributes.posterImage.original)
+                .load(attributes.coverImage.original)
                 .placeholder(R.drawable.feature_graphic)
                 .dontAnimate()
                 .into(iv_image)

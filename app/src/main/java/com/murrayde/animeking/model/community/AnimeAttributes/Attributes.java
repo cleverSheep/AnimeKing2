@@ -161,6 +161,10 @@ public class Attributes implements Parcelable {
         return synopsis;
     }
 
+    public CoverImage getCoverImage() {
+        return coverImage;
+    }
+
     public int getCoverImageTopOffset() {
         return coverImageTopOffset;
     }
