@@ -20,7 +20,7 @@ class AnimeDataSource(private val animeApiEndpoint: AnimeApiEndpoint,
     override fun loadInitial(params: LoadInitialParams<String>, callback: LoadInitialCallback<String, AnimeData>) {
         networkState.postValue(NetworkState.LOADING)
         compositeDisposable.add(
-                animeApiEndpoint.getAnimeComplete(PagingUtil.PAGING_LIMIT, PagingUtil.PAGING_OFFSET)
+                animeApiEndpoint.getAllPopularAnime(PagingUtil.PAGING_LIMIT, PagingUtil.PAGING_OFFSET)
                         .subscribeOn(Schedulers.newThread())
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribeWith(object : DisposableSingleObserver<AnimeComplete>() {
@@ -44,7 +44,7 @@ class AnimeDataSource(private val animeApiEndpoint: AnimeApiEndpoint,
         networkState.postValue(NetworkState.LOADING)
         compositeDisposable.add(
                 // PAGING_OFFSET() increments the paging offset by the paging limit and returns the paging offset
-                animeApiEndpoint.getAnimeComplete(PagingUtil.PAGING_LIMIT, PagingUtil.PAGING_OFFSET())
+                animeApiEndpoint.getAllPopularAnime(PagingUtil.PAGING_LIMIT, PagingUtil.PAGING_OFFSET())
                         .subscribeOn(Schedulers.newThread())
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribeWith(object : DisposableSingleObserver<AnimeComplete>() {

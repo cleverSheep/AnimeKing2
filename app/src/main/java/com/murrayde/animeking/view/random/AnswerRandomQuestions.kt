@@ -20,8 +20,10 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import com.murrayde.animeking.R
+import com.murrayde.animeking.model.community.CommunityQuestion
 import com.murrayde.animeking.model.random.Result
 import com.murrayde.animeking.util.QuestionUtil
+import kotlinx.android.synthetic.main.fragment_answer_question.*
 import kotlinx.android.synthetic.main.fragment_random_questions.*
 import timber.log.Timber
 
@@ -63,36 +65,34 @@ class AnswerRandomQuestions : Fragment() {
             navigateBackHome(view)
             return
         }
-        val question_answer = ArrayList<String>()
-        question_answer.addAll(randomQuestions[question_track].incorrect_answers)
-        question_answer.add(randomQuestions[question_track].correct_answer)
-        question_answer.shuffle()
+        val answer_choices = shuffleAnswerChoices(randomQuestions, question_track)
 
         val question = Html.fromHtml(randomQuestions[question_track].question)
         random_question_tv.text = question
 
-        repeat(list_buttons.size) {position ->
-            list_buttons[position].text = Html.fromHtml(question_answer.removeAt(0))
+        repeat(list_buttons.size) { position ->
+            list_buttons[position].text = Html.fromHtml(answer_choices.removeAt(0))
         }
+
         startTimer(randomQuestions, question_track, view, list_buttons)
         buttonChoiceClick(list_buttons, randomQuestions, track)
 
         random_question_next_btn.setOnClickListener {
-            media_default.start()
-            random_question_next_btn.visibility = View.INVISIBLE
-            repeat(list_buttons.size) {
-                list_buttons[it].setBackgroundColor(resources.getColor(R.color.color_white))
-                list_buttons[it].setTextColor(resources.getColor(R.color.color_grey))
-                list_buttons[it].background = resources.getDrawable(R.drawable.answer_question_background)
-                list_buttons[it].isClickable = true
-            }
-            loadQuestions(randomQuestions, ++question_track, view, list_buttons)
+            prepareForNextQuestion(randomQuestions, ++question_track, view, list_buttons)
         }
     }
 
     private fun navigateBackHome(view: View) {
         val action = AnswerRandomQuestionsDirections.actionRandomQuestionsToLandingScreen2()
         Navigation.findNavController(view).navigate(action)
+    }
+
+    private fun shuffleAnswerChoices(randomQuestions: ArrayList<Result>, current_question: Int): ArrayList<String> {
+        val answer_choices = ArrayList<String>()
+        answer_choices.addAll(randomQuestions[current_question].incorrect_answers)
+        answer_choices.add(randomQuestions[current_question].correct_answer)
+        answer_choices.shuffle()
+        return answer_choices
     }
 
     private fun startTimer(randomQuestions: ArrayList<Result>, track: Int, view: View, list_buttons: ArrayList<Button>) {
@@ -180,6 +180,18 @@ class AnswerRandomQuestions : Fragment() {
         button.setTextColor(resources.getColor(R.color.color_white))
     }
 
+    private fun prepareForNextQuestion(randomQuestions: ArrayList<Result>, track: Int, view: View, list_buttons: ArrayList<Button>) {
+        media_default.start()
+        random_question_next_btn.visibility = View.INVISIBLE
+        repeat(list_buttons.size) { position ->
+            list_buttons[position].setBackgroundColor(resources.getColor(R.color.color_white))
+            list_buttons[position].setTextColor(resources.getColor(R.color.color_grey))
+            list_buttons[position].background = resources.getDrawable(R.drawable.answer_question_background)
+            list_buttons[position].isClickable = true
+        }
+        loadQuestions(randomQuestions, track, view, list_buttons)
+    }
+
     private fun listButtons(): ArrayList<Button> {
         val list_buttons = ArrayList<Button>()
         list_buttons.add(random_question_btn1)
@@ -200,7 +212,6 @@ class AnswerRandomQuestions : Fragment() {
         media_correct.release()
         media_wrong.release()
     }
-
 
 
 }

@@ -53,17 +53,17 @@
                     android:textSize="20sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@id/list_search"
+                    app:layout_constraintEnd_toStartOf="@id/filter_anime"
                     app:layout_constraintStart_toEndOf="@+id/list_home"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <ImageView
-                    android:id="@+id/list_search"
+                    android:id="@+id/filter_anime"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:contentDescription="@string/go_back_to_home_screen"
-                    android:src="@drawable/ic_search"
+                    android:src="@drawable/ic_filter_list_black_24dp"
                     app:layout_constraintBottom_toBottomOf="@id/list_logo_title"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="@id/list_logo_title" />
@@ -83,4 +83,12 @@
         android:splitMotionEvents="false"
         app:layoutManager="LinearLayoutManager"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_search_anime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="16dp"
+        android:src="@drawable/ic_search" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

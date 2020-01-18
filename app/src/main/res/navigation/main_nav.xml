@@ -19,6 +19,9 @@
             app:destination="@id/homeScreenActivity"
             app:enterAnim="@anim/slide_in_left"
             app:exitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_listFragment_to_searchFragment"
+            app:destination="@id/searchFragment" />
     </fragment>
     <fragment
         android:id="@+id/detailFragment"
@@ -84,4 +87,8 @@
         android:id="@+id/homeScreenActivity"
         android:name="com.murrayde.animeking.view.landing_screen.HomeScreenActivity"
         tools:layout="@layout/activity_home_screen" />
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.murrayde.animeking.view.search.SearchFragment"
+        tools:layout="@layout/fragment_search" />
 </navigation>

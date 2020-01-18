@@ -5,9 +5,9 @@ package com.murrayde.animeking.view.community
 
 import android.content.DialogInterface
 import android.media.MediaPlayer
+import android.media.MediaPlayer.create
 import android.os.Bundle
 import android.os.CountDownTimer
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,18 +16,13 @@ import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.resource.bitmap.CenterCrop
-import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.google.firebase.firestore.FirebaseFirestore
 import com.murrayde.animeking.R
 import com.murrayde.animeking.model.community.CommunityQuestion
 import com.murrayde.animeking.model.community.QuestionFactory
-import com.murrayde.animeking.model.random.Result
 import com.murrayde.animeking.util.QuestionUtil
 import com.murrayde.animeking.view.community.list_anime.AnimeListDetailArgs
 import kotlinx.android.synthetic.main.fragment_answer_question.*
-import kotlinx.android.synthetic.main.fragment_random_questions.*
 import timber.log.Timber
 
 class AnswerQuestion : Fragment() {
@@ -49,13 +44,14 @@ class AnswerQuestion : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val attributes = args.animeAttributes
         var communityQuestions: ArrayList<CommunityQuestion>
-        media_default = MediaPlayer.create(activity, R.raw.button_click_sound_effect)
-        media_correct = MediaPlayer.create(activity, R.raw.button_click_correct)
-        media_wrong = MediaPlayer.create(activity, R.raw.button_click_wrong)
+
+        media_default = create(activity, R.raw.button_click_sound_effect)
+        media_correct = create(activity, R.raw.button_click_correct)
+        media_wrong = create(activity, R.raw.button_click_wrong)
 
         QuestionFactory.RETRIEVE(attributes.titles.en
                 ?: attributes.canonicalTitle, db, object : QuestionFactory.StatusCallback {
-            // NOTE: Crate your own callback to handle asynchronous calls to FB Firestore
+            // NOTE: Callback used to handle asynchronous calls to Firebase Firestore
             override fun onStatusCallback(list: ArrayList<CommunityQuestion>) {
                 communityQuestions = list
                 tv_answer_title.text = args.animeAttributes.titles.en
@@ -75,30 +71,18 @@ class AnswerQuestion : Fragment() {
         var question_track = track
         val random_questions: ArrayList<String> = communityQuestions[question_track].multiple_choice.shuffled() as ArrayList<String>
 
-        Glide.with(this)
-                .load(communityQuestions[question_track].image_url)
-                .placeholder(R.drawable.castle)
-                .dontAnimate()
-                .transform(CenterCrop(), RoundedCorners(16))
-                .into(iv_answer_question)
-        tv_answer_question.text = communityQuestions[question_track].question
+        QuestionUtil.setUpQuestionWithImage(iv_answer_question, communityQuestions[question_track].image_url,
+                tv_answer_question, communityQuestions[question_track].question)
 
         repeat(list_buttons.size) {
             list_buttons[it].text = random_questions.removeAt(0)
         }
+
         startTimer(communityQuestions, ++question_track, view, list_buttons)
         buttonChoiceClick(list_buttons, communityQuestions, track)
 
         button_next_question.setOnClickListener {
-            media_default.start()
-            button_next_question.visibility = View.INVISIBLE
-            repeat(list_buttons.size) {
-                list_buttons[it].setBackgroundColor(resources.getColor(R.color.color_white))
-                list_buttons[it].setTextColor(resources.getColor(R.color.color_grey))
-                list_buttons[it].background = resources.getDrawable(R.drawable.answer_question_background)
-                list_buttons[it].isClickable = true
-            }
-            loadQuestions(communityQuestions, ++question_track, view, list_buttons)
+            prepareForNextQuestion(communityQuestions, ++question_track, view, list_buttons)
         }
     }
 
@@ -131,7 +115,6 @@ class AnswerQuestion : Fragment() {
 
         //Now we need an AlertDialog.Builder object
         val builder = AlertDialog.Builder(activity!!)
-
 
         val button = dialogView.findViewById<Button>(R.id.time_up_next_question)
 
@@ -189,6 +172,18 @@ class AnswerQuestion : Fragment() {
         media_correct.start()
         button.background = resources.getDrawable(R.drawable.answer_correct_background)
         button.setTextColor(resources.getColor(R.color.color_white))
+    }
+
+    private fun prepareForNextQuestion(communityQuestions: ArrayList<CommunityQuestion>, track: Int, view: View, list_buttons: ArrayList<Button>) {
+        media_default.start()
+        button_next_question.visibility = View.INVISIBLE
+        repeat(list_buttons.size) { position ->
+            list_buttons[position].setBackgroundColor(resources.getColor(R.color.color_white))
+            list_buttons[position].setTextColor(resources.getColor(R.color.color_grey))
+            list_buttons[position].background = resources.getDrawable(R.drawable.answer_question_background)
+            list_buttons[position].isClickable = true
+        }
+        loadQuestions(communityQuestions, track, view, list_buttons)
     }
 
     private fun listButtons(): ArrayList<Button> {
