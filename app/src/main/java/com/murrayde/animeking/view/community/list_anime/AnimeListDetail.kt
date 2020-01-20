@@ -1,4 +1,4 @@
-@file:Suppress("PropertyName", "PrivatePropertyName")
+@file:Suppress("PropertyName", "PrivatePropertyName", "LocalVariableName")
 
 package com.murrayde.animeking.view.community.list_anime
 
@@ -40,8 +40,10 @@ class AnimeListDetail : Fragment() {
 
         tv_ask_question.text = attributes.titles.en ?: attributes.canonicalTitle
         tv_description.text = attributes.synopsis
+        val image_url = attributes.coverImage.original ?: attributes.posterImage.original
+
         Glide.with(this)
-                .load(attributes.coverImage.original)
+                .load(image_url)
                 .placeholder(R.drawable.feature_graphic)
                 .dontAnimate()
                 .into(iv_image)

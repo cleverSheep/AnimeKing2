@@ -17,7 +17,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.murrayde.animeking.R
 import com.murrayde.animeking.network.community.api.AnimeData
 import com.murrayde.animeking.util.PagingUtil
-import kotlinx.android.synthetic.main.fragment_list.*
+import com.murrayde.animeking.view.search.adapter.SearchRecyclerViewAdapter
 import kotlinx.android.synthetic.main.fragment_search.*
 import timber.log.Timber
 
