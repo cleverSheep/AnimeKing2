@@ -3,12 +3,14 @@
 package com.murrayde.animeking.view.search
 
 
+import android.content.Context
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -19,13 +21,11 @@ import com.murrayde.animeking.network.community.api.AnimeData
 import com.murrayde.animeking.util.PagingUtil
 import com.murrayde.animeking.view.search.adapter.SearchRecyclerViewAdapter
 import kotlinx.android.synthetic.main.fragment_search.*
-import timber.log.Timber
 
 class SearchFragment : Fragment() {
 
     private lateinit var listAdapter: SearchRecyclerViewAdapter
     private lateinit var viewModel: SearchFragmentViewModel
-
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -35,8 +35,10 @@ class SearchFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         listAdapter = SearchRecyclerViewAdapter(activity!!)
+        showKeyboard()
 
         cancel_search.setOnClickListener {
+            hideKeyboard()
             PagingUtil.RESET_PAGING_OFFSET()
             val action = SearchFragmentDirections.actionSearchFragmentToListFragment()
             Navigation.findNavController(it).navigate(action)
@@ -44,11 +46,6 @@ class SearchFragment : Fragment() {
 
         viewModel = ViewModelProvider(this).get(SearchFragmentViewModel::class.java)
         viewModel.getRequestedAnime().observe(this, Observer<List<AnimeData>> { list_anime ->
-            repeat(list_anime.size) {
-                Timber.d(list_anime[it].attributes.titles.en
-                        ?: list_anime[it].attributes.canonicalTitle)
-                Timber.d(list_anime[it].attributes.posterImage.original)
-            }
             listAdapter.updateList(list_anime)
         })
 
@@ -58,10 +55,20 @@ class SearchFragment : Fragment() {
         performSearch(viewModel)
     }
 
+    private fun showKeyboard() {
+        search_edit_text.requestFocus()
+        val imm = activity!!.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.showSoftInput(search_edit_text as View, InputMethodManager.SHOW_IMPLICIT)
+    }
+
+    private fun hideKeyboard() {
+        val imm = activity!!.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(search_layout.windowToken, 0)
+    }
+
     private fun performSearch(viewModel: SearchFragmentViewModel) {
         search_edit_text.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(editable: Editable?) {
-                Timber.d("Text changed")
                 viewModel.search(editable.toString())
             }
 

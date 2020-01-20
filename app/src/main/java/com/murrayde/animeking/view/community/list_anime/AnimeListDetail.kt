@@ -40,7 +40,7 @@ class AnimeListDetail : Fragment() {
 
         tv_ask_question.text = attributes.titles.en ?: attributes.canonicalTitle
         tv_description.text = attributes.synopsis
-        val image_url = attributes.coverImage.original ?: attributes.posterImage.original
+        val image_url = attributes.coverImage?.original ?: attributes.posterImage.original
 
         Glide.with(this)
                 .load(image_url)

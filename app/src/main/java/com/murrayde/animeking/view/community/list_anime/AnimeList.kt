@@ -5,22 +5,19 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.paging.PagedList
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.murrayde.animeking.R
 import com.murrayde.animeking.network.community.api.AnimeData
 import com.murrayde.animeking.util.PagingUtil
 import com.murrayde.animeking.view.community.viewmodel.MainActivityViewModel
-import com.murrayde.animeking.view.search.SearchFragmentDirections
 import kotlinx.android.synthetic.main.fragment_list.*
-import kotlinx.android.synthetic.main.fragment_search.*
 import timber.log.Timber
-import java.util.*
 
 class AnimeList : Fragment() {
 
@@ -55,6 +52,21 @@ class AnimeList : Fragment() {
             val action = AnimeListDirections.actionListFragmentToSearchFragment()
             Navigation.findNavController(it).navigate(action)
         }
+
+        rv_anime.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                if (dy > 0 || dy < 0 && fab_search_anime.isShown) {
+                    fab_search_anime.hide()
+                }
+            }
+
+            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                if (newState == RecyclerView.SCROLL_STATE_IDLE) {
+                    fab_search_anime.show()
+                }
+                super.onScrollStateChanged(recyclerView, newState)
+            }
+        })
     }
 
     override fun onDestroy() {

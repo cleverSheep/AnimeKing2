@@ -64,6 +64,7 @@
                     android:layout_gravity="center"
                     android:contentDescription="@string/go_back_to_home_screen"
                     android:src="@drawable/ic_filter_list_black_24dp"
+                    android:visibility="invisible"
                     app:layout_constraintBottom_toBottomOf="@id/list_logo_title"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="@id/list_logo_title" />
