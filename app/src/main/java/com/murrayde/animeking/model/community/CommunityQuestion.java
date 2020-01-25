@@ -1,14 +1,40 @@
 package com.murrayde.animeking.model.community;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.ArrayList;
 
-public class CommunityQuestion {
+public class CommunityQuestion implements Parcelable {
     private String question;
     private String image_url;
     private String question_id;
     private ArrayList<String> multiple_choice;
     private int issue_count;
     private String anime_title;
+    private String correct_response;
+
+    protected CommunityQuestion(Parcel in) {
+        question = in.readString();
+        image_url = in.readString();
+        question_id = in.readString();
+        multiple_choice = in.createStringArrayList();
+        issue_count = in.readInt();
+        anime_title = in.readString();
+        correct_response = in.readString();
+    }
+
+    public static final Creator<CommunityQuestion> CREATOR = new Creator<CommunityQuestion>() {
+        @Override
+        public CommunityQuestion createFromParcel(Parcel in) {
+            return new CommunityQuestion(in);
+        }
+
+        @Override
+        public CommunityQuestion[] newArray(int size) {
+            return new CommunityQuestion[size];
+        }
+    };
 
     public String getQuestion() {
         return question;
@@ -58,6 +84,10 @@ public class CommunityQuestion {
         this.anime_title = anime_title;
     }
 
+    public String getCorrectResponse() {
+        return multiple_choice.get(0);
+    }
+
     public CommunityQuestion() {
     }
 
@@ -68,5 +98,18 @@ public class CommunityQuestion {
         this.multiple_choice = multiple_choice;
         this.issue_count = issue_count;
         this.anime_title = anime_title;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(question);
+        parcel.writeString(question_id);
+        parcel.writeString(correct_response);
+        parcel.writeStringList(multiple_choice);
     }
 }

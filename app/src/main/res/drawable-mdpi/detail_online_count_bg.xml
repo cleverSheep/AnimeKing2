@@ -7,5 +7,5 @@
         android:left="7dp"
         android:right="7dp"
         android:top="5dp" />
-    <solid android:color="@color/colour_deetail_online_count" />
+    <solid android:color="@color/color_detail_online_count" />
 </shape>

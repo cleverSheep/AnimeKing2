@@ -25,15 +25,21 @@ import com.murrayde.animeking.view.community.list_anime.AnimeListDetailArgs
 import kotlinx.android.synthetic.main.fragment_answer_question.*
 import timber.log.Timber
 
+
 class AnswerQuestion : Fragment() {
 
     private val args: AnimeListDetailArgs by navArgs()
     private val db = FirebaseFirestore.getInstance()
+
     private lateinit var media_default: MediaPlayer
     private lateinit var media_correct: MediaPlayer
     private lateinit var media_wrong: MediaPlayer
+
     private var current_score: Int = 0
     private lateinit var countDownTimer: CountDownTimer
+
+    private lateinit var question_correct: HashMap<Int, Boolean>
+    private lateinit var questions_list_argument: Array<CommunityQuestion>
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -54,6 +60,7 @@ class AnswerQuestion : Fragment() {
             // NOTE: Callback used to handle asynchronous calls to Firebase Firestore
             override fun onStatusCallback(list: ArrayList<CommunityQuestion>) {
                 communityQuestions = list
+                questions_list_argument = Array(list.size) {CommunityQuestion()}
                 tv_answer_title.text = args.animeAttributes.titles.en
                         ?: args.animeAttributes.canonicalTitle
                 loadQuestions(communityQuestions, 0, view, listButtons())
@@ -65,10 +72,11 @@ class AnswerQuestion : Fragment() {
     private fun loadQuestions(communityQuestions: ArrayList<CommunityQuestion>, track: Int, view: View, list_buttons: ArrayList<Button>) {
         // NOTE: Make sure to explicitly return or else the remaining lines of code will be executed
         if (track >= communityQuestions.size) {
-            navigateBackToDetail(view)
+            navigateToResultsScreen(view)
             return
         }
         var question_track = track
+        questions_list_argument[question_track] = communityQuestions[question_track]
         val random_questions: ArrayList<String> = communityQuestions[question_track].multiple_choice.shuffled() as ArrayList<String>
 
         QuestionUtil.setUpQuestionWithImage(iv_answer_question, communityQuestions[question_track].image_url,
@@ -86,8 +94,13 @@ class AnswerQuestion : Fragment() {
         }
     }
 
-    private fun navigateBackToDetail(view: View) {
-        val action = AnswerQuestionDirections.actionAnswerQuestionFragmentToDetailFragment(args.animeAttributes)
+    private fun navigateToResultsScreen(view: View) {
+        val answer_question = AnswerQuestion()
+        val bundle = Bundle()
+        bundle.putSerializable("hashmap_correct", question_correct)
+        answer_question.arguments = bundle
+
+        val action = AnswerQuestionDirections.actionAnswerQuestionFragmentToViewResults(questions_list_argument)
         Navigation.findNavController(view).navigate(action)
     }
 
@@ -139,10 +152,14 @@ class AnswerQuestion : Fragment() {
                 countDownTimer.cancel()
                 disableAllButtons(list_buttons)
                 if (list_buttons[position].text == correct_response) {
+                    question_correct[question_track] = true
                     current_score++
                     answer_question_score.text = "${current_score}/10"
                     alertCorrectResponse(view)
-                } else alertWrongResponse(view, list_buttons, correct_response)
+                } else {
+                    question_correct[question_track] = false
+                    alertWrongResponse(view, list_buttons, correct_response)
+                }
                 button_next_question.visibility = View.VISIBLE
             }
         }
@@ -157,7 +174,7 @@ class AnswerQuestion : Fragment() {
     private fun alertWrongResponse(view: View, list_buttons: ArrayList<Button>, correct_response: String) {
         val button = view as Button
         media_wrong.start()
-        button.background = resources.getDrawable(R.drawable.answer_wrong_background)
+        button.background = resources.getDrawable(com.murrayde.animeking.R.drawable.answer_wrong_background)
         button.setTextColor(resources.getColor(R.color.color_white))
         repeat(list_buttons.size) { position ->
             if (list_buttons[position].text == correct_response) {
