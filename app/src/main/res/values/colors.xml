@@ -9,9 +9,13 @@
     <color name="detail_gradient_center_bg">#80FFFFFF</color>
     <color name="home_bg">#00FFFEFE</color>
     <color name="color_grey">#707070</color>
+    <color name="color_detail_title">#80FFFFFF</color>
     <color name="color_darker_grey">#505050</color>
     <color name="color_home_logo">#2E2E2E</color>
     <color name="color_correct">#00FF00</color>
+    <color name="color_detail_member_count">#99e6ff</color>
+    <color name="color_detail_question_count">#cca4b8</color>
+    <color name="colour_deetail_online_count">#52588d</color>
     <color name="color_white">#FFF</color>
     <color name="color_wrong">#FF0000</color>
 </resources>
