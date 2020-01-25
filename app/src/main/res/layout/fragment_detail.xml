@@ -26,7 +26,7 @@
         <Button
             android:id="@+id/button_take_quiz"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="56dp"
             android:layout_marginTop="32dp"
             android:background="@drawable/home_play_background"
             android:fontFamily="@font/baloobhairegular"
@@ -40,15 +40,13 @@
         <Button
             android:id="@+id/button_ask_question"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="57dp"
             android:layout_marginTop="8dp"
-            android:layout_marginBottom="16dp"
             android:background="@drawable/home_button_credits"
             android:fontFamily="@font/baloobhairegular"
             android:text="@string/ask_question"
             android:textColor="@color/color_grey"
             android:textSize="@dimen/button_text_size"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/button_take_quiz"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/button_take_quiz"
@@ -202,6 +200,65 @@
             app:layout_constraintStart_toEndOf="@+id/textView4"
             app:layout_constraintTop_toTopOf="@+id/textView4"
             tools:text="74 online" />
+
+        <LinearLayout
+            android:id="@+id/detail_linearlayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="30dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="@+id/button_ask_question"
+            app:layout_constraintStart_toStartOf="@+id/button_ask_question"
+            app:layout_constraintTop_toBottomOf="@id/button_ask_question">
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/baloobhairegular"
+                android:gravity="center"
+                android:text="Long live the king!"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@id/textView7"
+                app:layout_constraintEnd_toEndOf="@+id/button_ask_question"
+                app:layout_constraintStart_toStartOf="@+id/button_ask_question"
+                app:layout_constraintTop_toBottomOf="@id/button_ask_question" />
+
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/baloobhairegular"
+                android:gravity="center"
+                android:text="This could be you!"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/textView6"
+                app:layout_constraintStart_toStartOf="@+id/textView6" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_margin="24dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/detail_linearlayout"
+            app:layout_constraintStart_toStartOf="@id/detail_linearlayout"
+            app:layout_constraintTop_toBottomOf="@id/detail_linearlayout">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/crown_list_screen"
+                tools:layout_editor_absoluteX="353dp"
+                tools:layout_editor_absoluteY="5dp" />
+
+            <include layout="@layout/detail_testing_first_place" />
+
+        </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
