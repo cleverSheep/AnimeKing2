@@ -50,6 +50,7 @@ class AnswerQuestion : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val attributes = args.animeAttributes
         var communityQuestions: ArrayList<CommunityQuestion>
+        question_correct = HashMap()
 
         media_default = create(activity, R.raw.button_click_sound_effect)
         media_correct = create(activity, R.raw.button_click_correct)
@@ -60,7 +61,7 @@ class AnswerQuestion : Fragment() {
             // NOTE: Callback used to handle asynchronous calls to Firebase Firestore
             override fun onStatusCallback(list: ArrayList<CommunityQuestion>) {
                 communityQuestions = list
-                questions_list_argument = Array(list.size) {CommunityQuestion()}
+                questions_list_argument = Array(list.size) { CommunityQuestion() }
                 tv_answer_title.text = args.animeAttributes.titles.en
                         ?: args.animeAttributes.canonicalTitle
                 loadQuestions(communityQuestions, 0, view, listButtons())
@@ -86,11 +87,11 @@ class AnswerQuestion : Fragment() {
             list_buttons[it].text = random_questions.removeAt(0)
         }
 
-        startTimer(communityQuestions, ++question_track, view, list_buttons)
+        startTimer(communityQuestions, question_track++, view, list_buttons)
         buttonChoiceClick(list_buttons, communityQuestions, track)
 
         button_next_question.setOnClickListener {
-            prepareForNextQuestion(communityQuestions, ++question_track, view, list_buttons)
+            prepareForNextQuestion(communityQuestions, question_track++, view, list_buttons)
         }
     }
 
