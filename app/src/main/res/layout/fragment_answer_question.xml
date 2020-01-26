@@ -84,7 +84,7 @@
 
     <TextView
         android:id="@+id/tv_answer_question"
-        android:layout_width="379dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
         android:background="@drawable/ask_question_background"
@@ -104,7 +104,7 @@
 
     <Button
         android:id="@+id/button_choice_one"
-        android:layout_width="379dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
         android:background="@drawable/answer_question_background"
@@ -122,7 +122,7 @@
 
     <Button
         android:id="@+id/button_choice_two"
-        android:layout_width="379dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
         android:background="@drawable/answer_question_background"
@@ -140,7 +140,7 @@
 
     <Button
         android:id="@+id/button_choice_three"
-        android:layout_width="379dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
         android:background="@drawable/answer_question_background"
@@ -160,7 +160,7 @@
 
     <Button
         android:id="@+id/button_choice_four"
-        android:layout_width="379dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
         android:background="@drawable/answer_question_background"
@@ -178,7 +178,7 @@
 
     <Button
         android:id="@+id/button_next_question"
-        android:layout_width="379dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@drawable/ask_question_background"
         android:fontFamily="@font/baloobhairegular"
@@ -188,9 +188,9 @@
         android:textSize="@dimen/button_text_size"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/button_choice_four"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/button_choice_four"
         app:layout_constraintTop_toBottomOf="@+id/button_choice_four"
         tools:visibility="visible" />
 

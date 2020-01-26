@@ -106,10 +106,11 @@ class AnswerQuestion : Fragment() {
     }
 
     private fun startTimer(randomQuestions: ArrayList<CommunityQuestion>, track: Int, view: View, list_buttons: ArrayList<Button>) {
+        val new_question = track + 1
         countDownTimer = object : CountDownTimer(QuestionUtil.QUESTION_TIMER, 1000) {
             override fun onFinish() {
                 disableAllButtons(list_buttons)
-                showTimeUpDialog(randomQuestions, track, view, list_buttons)
+                showTimeUpDialog(randomQuestions, new_question, view, list_buttons)
             }
 
             override fun onTick(p0: Long) {
