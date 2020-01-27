@@ -17,5 +17,6 @@
     <color name="color_detail_question_count">#cca4b8</color>
     <color name="color_detail_online_count">#52588d</color>
     <color name="color_white">#FFF</color>
+    <color name="color_results_background">#F5F5F5</color>
     <color name="color_wrong">#FF0000</color>
 </resources>
