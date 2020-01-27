@@ -113,6 +113,12 @@
         <argument android:name="list_questions"
             app:argType="com.murrayde.animeking.model.community.CommunityQuestion[]"
             app:nullable="true" />
+        <action
+            android:id="@+id/action_viewResults_to_detailFragment"
+            app:destination="@id/detailFragment" />
+        <argument
+            android:name="AnimeAttributes"
+            app:argType="com.murrayde.animeking.model.community.AnimeAttributes.Attributes" />
     </fragment>
     <fragment
         android:id="@+id/reviewShareQuestions"

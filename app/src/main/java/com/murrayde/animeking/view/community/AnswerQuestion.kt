@@ -101,7 +101,7 @@ class AnswerQuestion : Fragment() {
         bundle.putSerializable("hashmap_correct", question_correct)
         answer_question.arguments = bundle
 
-        val action = AnswerQuestionDirections.actionAnswerQuestionFragmentToViewResults(questions_list_argument)
+        val action = AnswerQuestionDirections.actionAnswerQuestionFragmentToViewResults(questions_list_argument, args.animeAttributes)
         Navigation.findNavController(view).navigate(action)
     }
 
