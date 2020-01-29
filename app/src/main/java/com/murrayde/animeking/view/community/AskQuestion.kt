@@ -75,7 +75,8 @@ class AskQuestion : Fragment() {
                         "",
                         multiple_choice,
                         0,
-                        tv_ask_question.text.toString())
+                        tv_ask_question.text.toString(),
+                        false)
                 addQuestionToDatabase(question, view)
             }
         }

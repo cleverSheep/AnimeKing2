@@ -1,4 +1,4 @@
-package com.murrayde.animeking.view.community.results_screen
+package com.murrayde.animeking.view.community.results_screen.review_questions
 
 
 import android.os.Bundle
@@ -12,7 +12,7 @@ import com.murrayde.animeking.R
 /**
  * A simple [Fragment] subclass.
  */
-class ReviewShareQuestions : Fragment() {
+class ReviewQuestions : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {

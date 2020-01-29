@@ -11,10 +11,15 @@ import android.view.ViewGroup
 import android.widget.CompoundButton
 import android.widget.LinearLayout
 import androidx.navigation.fragment.navArgs
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 
 import com.murrayde.animeking.R
+import com.murrayde.animeking.view.community.results_screen.review_questions.ReviewQuestionsAdapter
 import kotlinx.android.synthetic.main.fragment_view_results_bottom_sheet.*
+import kotlinx.android.synthetic.main.fragment_view_results_bottom_sheet.*
+import timber.log.Timber
+
 
 class ViewResults : Fragment() {
 
@@ -29,10 +34,15 @@ class ViewResults : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val list_questions = args.listQuestions
+        val review_questions_adapter = ReviewQuestionsAdapter(activity!!, list_questions!!)
+
+        bottom_sheet_rv.adapter = review_questions_adapter
+        bottom_sheet_rv.layoutManager = LinearLayoutManager(activity!!, LinearLayoutManager.VERTICAL, false)
+
         linearLayoutBottomSheet = view.findViewById(R.id.results_bottom_sheet)
         val bottomSheetBehavior = BottomSheetBehavior.from(linearLayoutBottomSheet)
 
-        results_toggle_button.setOnCheckedChangeListener { buttonView, isChecked ->
+        results_toggle_button.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
             else bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
         }
@@ -49,14 +59,5 @@ class ViewResults : Fragment() {
             }
 
         })
-    }
-
-    private fun questionCorrectStatus(): HashMap<Int, Boolean> {
-        var hashmap_correct = HashMap<Int, Boolean>()
-        val bundle = this.arguments
-        if (bundle?.getSerializable("hashmap_correct") != null) {
-            hashmap_correct = bundle.getSerializable("hashmap_correct") as HashMap<Int, Boolean>
-        }
-        return hashmap_correct
     }
 }

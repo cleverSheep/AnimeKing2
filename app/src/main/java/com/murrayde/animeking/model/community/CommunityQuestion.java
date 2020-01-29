@@ -1,7 +1,10 @@
 package com.murrayde.animeking.model.community;
 
+import android.os.Build;
 import android.os.Parcel;
 import android.os.Parcelable;
+
+import androidx.annotation.RequiresApi;
 
 import java.util.ArrayList;
 
@@ -9,6 +12,7 @@ public class CommunityQuestion implements Parcelable {
     private String question;
     private String image_url;
     private String question_id;
+    private Boolean user_correct_response;
     private ArrayList<String> multiple_choice;
     private int issue_count;
     private String anime_title;
@@ -88,16 +92,25 @@ public class CommunityQuestion implements Parcelable {
         return multiple_choice.get(0);
     }
 
+    public Boolean getUser_correct_response() {
+        return user_correct_response;
+    }
+
+    public void setUserCorrectResponse(Boolean status) {
+        user_correct_response = status;
+    }
+
     public CommunityQuestion() {
     }
 
-    public CommunityQuestion(String question, String image_url, String question_id, ArrayList<String> multiple_choice, int issue_count, String anime_title) {
+    public CommunityQuestion(String question, String image_url, String question_id, ArrayList<String> multiple_choice, int issue_count, String anime_title, Boolean user_correct_response) {
         this.question = question;
         this.image_url = image_url;
         this.question_id = question_id;
         this.multiple_choice = multiple_choice;
         this.issue_count = issue_count;
         this.anime_title = anime_title;
+        this.user_correct_response = user_correct_response;
     }
 
     @Override
@@ -105,11 +118,13 @@ public class CommunityQuestion implements Parcelable {
         return 0;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.Q)
     @Override
     public void writeToParcel(Parcel parcel, int i) {
         parcel.writeString(question);
         parcel.writeString(question_id);
         parcel.writeString(correct_response);
         parcel.writeStringList(multiple_choice);
+        parcel.writeBoolean(user_correct_response);
     }
 }

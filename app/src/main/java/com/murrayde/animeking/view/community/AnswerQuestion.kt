@@ -96,11 +96,6 @@ class AnswerQuestion : Fragment() {
     }
 
     private fun navigateToResultsScreen(view: View) {
-        val answer_question = AnswerQuestion()
-        val bundle = Bundle()
-        bundle.putSerializable("hashmap_correct", question_correct)
-        answer_question.arguments = bundle
-
         val action = AnswerQuestionDirections.actionAnswerQuestionFragmentToViewResults(questions_list_argument, args.animeAttributes)
         Navigation.findNavController(view).navigate(action)
     }
@@ -154,12 +149,12 @@ class AnswerQuestion : Fragment() {
                 countDownTimer.cancel()
                 disableAllButtons(list_buttons)
                 if (list_buttons[position].text == correct_response) {
-                    question_correct[question_track] = true
+                    communityQuestions[question_track].setUserCorrectResponse(true)
                     current_score++
                     answer_question_score.text = "${current_score}/10"
                     alertCorrectResponse(view)
                 } else {
-                    question_correct[question_track] = false
+                    communityQuestions[question_track].setUserCorrectResponse(false)
                     alertWrongResponse(view, list_buttons, correct_response)
                 }
                 button_next_question.visibility = View.VISIBLE
