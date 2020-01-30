@@ -38,18 +38,18 @@ class AnimeListDetail : Fragment() {
         val attributes = args.animeAttributes
         media = MediaPlayer.create(activity, R.raw.button_click_sound_effect)
 
-        tv_ask_question.text = attributes.titles.en ?: attributes.canonicalTitle
-        tv_description.text = attributes.synopsis
+        fragment_detail_title.text = attributes.titles.en ?: attributes.canonicalTitle
+        fragment_detail_description.text = attributes.synopsis
         val image_url = attributes.coverImage?.original ?: attributes.posterImage.original
 
         Glide.with(this)
                 .load(image_url)
                 .placeholder(R.drawable.feature_graphic)
                 .dontAnimate()
-                .into(iv_image)
+                .into(fragment_detail_image)
 
         questionFactory = QuestionFactory()
-        button_take_quiz.setOnClickListener {
+        fragment_detail_take_quiz.setOnClickListener {
             media.start()
             questionFactory.hasEnoughQuestions(attributes.titles.en
                     ?: attributes.canonicalTitle, object : QuestionFactory.QuestionCountCallback {
@@ -60,7 +60,7 @@ class AnimeListDetail : Fragment() {
                 }
             })
         }
-        button_ask_question.setOnClickListener {
+        fragment_detail_ask_question.setOnClickListener {
             media.start()
             val action = AnimeListDetailDirections.actionDetailFragmentToAskQuestionFragment(attributes)
             Navigation.findNavController(view).navigate(action)
