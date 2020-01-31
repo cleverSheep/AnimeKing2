@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="#3A2E39"
     android:layout_height="match_parent"
     tools:context=".view.community.list_anime.AnimeListDetail">
     <!--NOTE: Use theme instead of style when changing toolbar text/back arrow color-->
@@ -77,7 +78,7 @@
         android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:background="@color/title_bg"
+        android:background="@drawable/detail_gradient_main"
         android:orientation="horizontal"
         android:paddingHorizontal="15dp"
         app:layout_constraintBottom_toBottomOf="@+id/fragment_detail_image"
@@ -143,6 +144,7 @@
         android:fontFamily="@font/baloobhairegular"
         android:maxLines="12"
         android:textSize="16sp"
+        android:textColor="@color/color_white"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

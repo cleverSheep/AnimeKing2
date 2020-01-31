@@ -6,6 +6,8 @@
     <color name="title_bg">#80000000</color>
     <color name="home_bg_center">#26FFFEFE</color>
     <color name="detail_gradient_bg">#00FFFFFF</color>
+    <color name="detaik_gradient_main_bg">#3A2E39</color>
+    <color name="detaik_gradient_second_bg">#003A2E39</color>
     <color name="detail_gradient_center_bg">#80FFFFFF</color>
     <color name="home_bg">#00FFFEFE</color>
     <color name="color_grey">#707070</color>

@@ -44,7 +44,7 @@ class AnimeListDetail : Fragment() {
 
         Glide.with(this)
                 .load(image_url)
-                .placeholder(R.drawable.feature_graphic)
+                .placeholder(R.drawable.crown_list_screen)
                 .dontAnimate()
                 .into(fragment_detail_image)
 
