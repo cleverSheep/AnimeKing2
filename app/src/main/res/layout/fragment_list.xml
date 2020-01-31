@@ -5,14 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="@dimen/margin_regular"
     tools:context=".view.community.list_anime.AnimeList">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@android:color/transparent"
-        android:paddingHorizontal="8dp">
+        android:background="#3A2E39">
 
         <!--NOTE: Strange bug around toolbar if I don't add exitUntilCollapsed-->
         <com.google.android.material.appbar.CollapsingToolbarLayout
@@ -23,7 +21,7 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/list_tool_bar"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="125dp"
                 android:orientation="horizontal"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -36,6 +34,7 @@
                     android:layout_gravity="center"
                     android:contentDescription="@string/go_back_to_home_screen"
                     android:src="@drawable/ic_home_24px"
+                    android:visibility="invisible"
                     app:layout_constraintBottom_toBottomOf="@id/list_logo_title"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="@id/list_logo_title" />
@@ -49,8 +48,8 @@
                     android:fontFamily="@font/baloobhairegular"
                     android:gravity="center"
                     android:text="@string/app_name"
-                    android:textColor="@color/color_grey"
-                    android:textSize="20sp"
+                    android:textColor="@color/color_white"
+                    android:textSize="25sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@id/filter_anime"
@@ -82,6 +81,7 @@
         android:overScrollMode="never"
         android:scrollbars="none"
         android:splitMotionEvents="false"
+        android:background="#3A2E39"
         app:layoutManager="LinearLayoutManager"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 

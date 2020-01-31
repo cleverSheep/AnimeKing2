@@ -17,7 +17,7 @@ public class ImageUtil {
     private static void loadImage(ImageView imageView, String url, CircularProgressDrawable circularProgressDrawable) {
         RequestOptions options = new RequestOptions()
                 .placeholder(circularProgressDrawable)
-                .transform(new CenterCrop(), new RoundedCorners(16))
+                .transform(new CenterCrop())
                 .error(R.mipmap.ic_launcher_round);
         Glide.with(imageView.getContext())
                 .setDefaultRequestOptions(options)
@@ -29,9 +29,11 @@ public class ImageUtil {
         CircularProgressDrawable circularProgressDrawable = new CircularProgressDrawable(context);
         circularProgressDrawable.setStrokeWidth(10f);
         circularProgressDrawable.setCenterRadius(50f);
+        circularProgressDrawable.setBackgroundColor(R.color.color_white);
         circularProgressDrawable.start();
         return circularProgressDrawable;
     }
+
     @BindingAdapter("android:imageUrl")
     public static void loadImage(ImageView view, String url) {
         loadImage(view, url, getProgressDrawable(view.getContext()));
