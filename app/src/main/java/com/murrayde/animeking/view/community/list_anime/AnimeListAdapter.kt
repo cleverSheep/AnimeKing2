@@ -14,6 +14,7 @@ class AnimeListAdapter : PagedListAdapter<AnimeData, AnimeViewHolder>(diffCallba
     }
 
     companion object {
+        
         /**
          * This diff callback informs the PagedListAdapter how to compute list differences when new
          * PagedLists arrive.

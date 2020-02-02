@@ -42,31 +42,6 @@ class AnimeList : Fragment() {
         rv_anime.layoutManager = GridLayoutManager(activity!!, 2)
         viewModel.animeData.observe(activity!!, Observer<PagedList<AnimeData>> { listAdapter.submitList(it) })
 
-        list_home.setOnClickListener {
-            PagingUtil.RESET_PAGING_OFFSET()
-            val action = AnimeListDirections.actionListFragmentToHomeScreenActivity()
-            Navigation.findNavController(it).navigate(action)
-        }
-
-        fab_search_anime.setOnClickListener {
-            val action = AnimeListDirections.actionListFragmentToSearchFragment()
-            Navigation.findNavController(it).navigate(action)
-        }
-
-        rv_anime.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-                if (dy > 0 || dy < 0 && fab_search_anime.isShown) {
-                    fab_search_anime.hide()
-                }
-            }
-
-            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
-                if (newState == RecyclerView.SCROLL_STATE_IDLE) {
-                    fab_search_anime.show()
-                }
-                super.onScrollStateChanged(recyclerView, newState)
-            }
-        })
     }
 
     override fun onDestroy() {
