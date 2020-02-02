@@ -4,12 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_margin="8dp"
     android:orientation="vertical">
 
     <ImageView
         android:id="@+id/iv_anime_image"
         android:layout_width="match_parent"
-        android:layout_height="250dp"
+        android:layout_height="200dp"
         android:contentDescription="@string/anime_image"
         android:scaleType="fitCenter"
         android:src="@mipmap/ic_launcher_round"
@@ -27,7 +28,7 @@
         android:fontFamily="@font/baloobhairegular"
         android:textAlignment="center"
         android:textColor="@android:color/white"
-        android:textSize="14sp"
+        android:textSize="13sp"
         app:layout_constraintBottom_toBottomOf="@+id/iv_anime_image"
         app:layout_constraintEnd_toEndOf="@+id/iv_anime_image"
         app:layout_constraintStart_toStartOf="@+id/iv_anime_image"

@@ -16,12 +16,60 @@
             android:id="@+id/header"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:scaleType="center"
             motion:layout_constraintEnd_toEndOf="parent"
             motion:layout_constraintStart_toStartOf="parent"
             motion:layout_constraintTop_toTopOf="parent" />
         <Constraint
+            android:id="@id/header_frame_toolbar"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            motion:layout_constraintBottom_toBottomOf="@id/header_logo"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toTopOf="@id/header" />
+        <Constraint
+            android:id="@+id/header_logo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:drawableTop="@drawable/crown_list_screen"
+            android:fontFamily="@font/baloobhairegular"
+            android:padding="8dp"
+            android:text="Anime King"
+            android:textAlignment="center"
+            android:textColor="@color/color_white"
+            android:textSize="17sp"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toTopOf="@id/header_frame_toolbar" />
+        <Constraint
+            android:id="@id/header_frame_view"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            motion:layout_constraintBottom_toBottomOf="@id/header"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toTopOf="@id/header" />
+
+        <Constraint
             android:id="@id/header_title"
             android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            motion:layout_constraintBottom_toTopOf="@id/header_sub_title"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toStartOf="parent" />
+        <Constraint
+            android:id="@id/header_sub_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            motion:layout_constraintBottom_toTopOf="@id/header_play_button"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toStartOf="parent" />
+
+        <Constraint
+            android:id="@id/header_play_button"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             motion:layout_constraintBottom_toBottomOf="@id/header"
             motion:layout_constraintEnd_toEndOf="parent"
@@ -33,15 +81,62 @@
             android:id="@+id/header"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:scaleType="center"
             motion:layout_constraintBottom_toTopOf="parent"
             motion:layout_constraintEnd_toEndOf="parent"
             motion:layout_constraintStart_toStartOf="parent" />
         <Constraint
+            android:id="@id/header_frame_toolbar"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            motion:layout_constraintBottom_toBottomOf="@id/header_logo"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toTopOf="@id/header" />
+        <Constraint
+            android:id="@+id/header_logo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:drawableTop="@drawable/crown_list_screen"
+            android:fontFamily="@font/baloobhairegular"
+            android:padding="8dp"
+            android:text="Anime King"
+            android:textAlignment="center"
+            android:textColor="@color/color_white"
+            android:textSize="17sp"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toTopOf="@id/header_frame_toolbar" />
+        <Constraint
+            android:id="@id/header_frame_view"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            motion:layout_constraintBottom_toBottomOf="@id/header"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toTopOf="@id/header" />
+        <Constraint
             android:id="@id/header_title"
             android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            motion:layout_constraintBottom_toTopOf="@id/header_sub_title"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toStartOf="parent" />
+        <Constraint
+            android:id="@id/header_sub_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            motion:layout_constraintBottom_toTopOf="@id/header_play_button"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toStartOf="parent" />
+        <Constraint
+            android:id="@id/header_play_button"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             motion:layout_constraintBottom_toBottomOf="@id/header"
             motion:layout_constraintEnd_toEndOf="parent"
             motion:layout_constraintStart_toStartOf="parent" />
+
     </ConstraintSet>
 </MotionScene>

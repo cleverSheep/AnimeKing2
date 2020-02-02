@@ -4,30 +4,98 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/color_home_logo"
     app:layoutDescription="@xml/scrollable_header_above_recycler_view_scene"
     tools:context=".view.community.list_anime.AnimeList">
+
 
     <ImageView
         android:id="@+id/header"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:foreground="@drawable/fragment_list_header"
-        android:scaleType="centerCrop"
-        android:src="@drawable/abyss" />
+        android:adjustViewBounds="true"
+        android:scaleType="centerInside"
+        android:src="@drawable/grimgar_background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/header_frame_toolbar"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/fragment_list_header_toolbar"
+        app:layout_constraintBottom_toBottomOf="@id/header_logo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/header_frame_view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/fragment_list_header"
+        app:layout_constraintBottom_toTopOf="@id/header"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/header" />
+
+    <TextView
+        android:id="@+id/header_logo"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:drawableTop="@drawable/crown_list_screen"
+        android:fontFamily="@font/baloobhairegular"
+        android:padding="8dp"
+        android:text="Anime King"
+        android:textAlignment="center"
+        android:textColor="@color/color_white"
+        android:textSize="17sp"
+        app:layout_constraintTop_toTopOf="@id/header_frame_toolbar"
+        app:layout_constraintStart_toStartOf="parent" />
+
 
     <TextView
         android:id="@+id/header_title"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:drawableTop="@drawable/crown_list_screen"
         android:fontFamily="@font/baloobhairegular"
         android:text="King of Random Anime"
         android:textAlignment="center"
         android:textColor="@color/color_white"
-        android:textSize="20sp"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/header_sub_title"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/header_sub_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:fontFamily="@font/bahnscrift"
+        android:text="How well rounded are you!"
+        android:textAlignment="center"
+        android:textColor="@color/color_white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/header_play_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/header_play_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/home_compete_background"
+        android:fontFamily="@font/baloobhairegular"
+        android:text="Play"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@id/rv_anime"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_anime"
@@ -36,6 +104,7 @@
         android:background="@color/color_home_logo"
         android:clipToPadding="false"
         android:overScrollMode="never"
+        android:layout_marginTop="35dp"
         android:scrollbars="none"
         android:splitMotionEvents="false"
         app:layoutManager="LinearLayoutManager"

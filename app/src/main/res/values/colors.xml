@@ -11,6 +11,7 @@
     <color name="detail_gradient_center_bg">#80FFFFFF</color>
     <color name="home_bg">#00FFFEFE</color>
     <color name="list_header_bg">#33FFFFFF</color>
+    <color name="list_header_center_frame">#00FFFFFF</color>
     <color name="color_grey">#707070</color>
     <color name="color_detail_title">#80FFFFFF</color>
     <color name="color_darker_grey">#505050</color>

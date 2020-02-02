@@ -80,6 +80,5 @@ class AnimeListDetail : Fragment() {
     override fun onDestroy() {
         super.onDestroy()
         media.release()
-        Timber.d("Media release, fragment destroyed")
     }
 }

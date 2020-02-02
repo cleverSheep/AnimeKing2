@@ -51,7 +51,11 @@
             android:id="@+id/action_detailFragment_to_listFragment"
             app:destination="@id/listFragment"
             app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left" />
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_left"
+            app:popUpTo="@+id/detailFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/lowQuestionCountFragment"

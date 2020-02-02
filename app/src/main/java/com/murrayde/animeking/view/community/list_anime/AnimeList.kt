@@ -39,7 +39,7 @@ class AnimeList : Fragment() {
         val viewModel = ViewModelProvider(this).get(MainActivityViewModel::class.java)
 
         rv_anime.adapter = listAdapter
-        rv_anime.layoutManager = GridLayoutManager(activity!!, 2)
+        rv_anime.layoutManager = GridLayoutManager(activity!!, 3)
         viewModel.animeData.observe(activity!!, Observer<PagedList<AnimeData>> { listAdapter.submitList(it) })
 
     }
