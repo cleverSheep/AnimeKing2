@@ -46,7 +46,6 @@ class AnimeList : Fragment() {
 
     override fun onDestroy() {
         super.onDestroy()
-        Timber.d("List screen destroyed")
         PagingUtil.RESET_PAGING_OFFSET()
     }
 

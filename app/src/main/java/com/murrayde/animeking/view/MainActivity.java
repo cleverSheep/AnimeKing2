@@ -9,6 +9,8 @@ import android.view.inputmethod.InputMethodManager;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.murrayde.animeking.R;
+import com.murrayde.animeking.util.PagingUtil;
+import com.murrayde.animeking.util.QuestionUtil;
 
 public class MainActivity extends AppCompatActivity {
     @Override

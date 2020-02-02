@@ -40,19 +40,43 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/header" />
 
-    <TextView
+    <ImageView
         android:id="@+id/header_logo"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:drawableTop="@drawable/crown_list_screen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:fontFamily="@font/baloobhairegular"
-        android:padding="8dp"
-        android:text="Anime King"
+        android:padding="16dp"
+        android:src="@drawable/crown_list_screen"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/header_frame_toolbar" />
+
+    <TextView
+        android:id="@+id/header_tv_shows"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:fontFamily="@font/baloobhairegular"
+        android:text="TV Shows"
         android:textAlignment="center"
         android:textColor="@color/color_white"
-        android:textSize="17sp"
-        app:layout_constraintTop_toTopOf="@id/header_frame_toolbar"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:textSize="22sp"
+        app:layout_constraintBottom_toBottomOf="@id/header_logo"
+        app:layout_constraintStart_toEndOf="@id/header_logo"
+        app:layout_constraintTop_toTopOf="@id/header_logo" />
+
+    <TextView
+        android:id="@+id/header_movies"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:fontFamily="@font/baloobhairegular"
+        android:text="Movies"
+        android:textAlignment="center"
+        android:textColor="@color/color_white"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toBottomOf="@id/header_tv_shows"
+        app:layout_constraintStart_toEndOf="@id/header_tv_shows"
+        app:layout_constraintTop_toTopOf="@id/header_tv_shows" />
 
 
     <TextView
@@ -65,7 +89,6 @@
         android:textAlignment="center"
         android:textColor="@color/color_white"
         android:textSize="32sp"
-        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@id/header_sub_title"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -101,10 +124,10 @@
         android:id="@+id/rv_anime"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginTop="35dp"
         android:background="@color/color_home_logo"
         android:clipToPadding="false"
         android:overScrollMode="never"
-        android:layout_marginTop="35dp"
         android:scrollbars="none"
         android:splitMotionEvents="false"
         app:layoutManager="LinearLayoutManager"
