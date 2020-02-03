@@ -97,7 +97,7 @@
         android:layout_marginEnd="16dp"
         android:ellipsize="end"
         android:fontFamily="@font/baloobhairegular"
-        android:maxLines="12"
+        android:maxLines="10"
         android:textColor="@color/color_white"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
