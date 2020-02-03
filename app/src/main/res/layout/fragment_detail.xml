@@ -133,9 +133,8 @@
         android:text="356 questions"
         android:textColor="@color/color_white"
         android:textSize="15sp"
-        app:layout_constraintBottom_toBottomOf="@+id/fragment_detail_member_count"
+        app:layout_constraintBaseline_toBaselineOf="@+id/fragment_detail_member_count"
         app:layout_constraintStart_toEndOf="@+id/fragment_detail_member_count"
-        app:layout_constraintTop_toTopOf="@+id/fragment_detail_member_count"
         tools:text="356 questions" />
 
     <ImageView
@@ -153,12 +152,46 @@
         tools:srcCompat="@drawable/original" />
 
     <TextView
+        android:id="@+id/fragment_detail_age_rating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/baloobhairegular"
+        android:text="PG"
+        android:textAllCaps="true"
+        android:textColor="@color/color_white"
+        app:layout_constraintBottom_toTopOf="@+id/fragment_detail_title"
+        app:layout_constraintStart_toStartOf="@+id/fragment_detail_title" />
+
+    <View
+        android:id="@+id/view3"
+        android:layout_width="4dp"
+        android:layout_height="4dp"
+        android:layout_marginStart="4dp"
+        android:background="@drawable/fragment_detail_title_info_seperator"
+        app:layout_constraintBottom_toBottomOf="@+id/fragment_detail_age_rating"
+        app:layout_constraintStart_toEndOf="@+id/fragment_detail_age_rating"
+        app:layout_constraintTop_toTopOf="@+id/fragment_detail_age_rating" />
+
+    <TextView
+        android:id="@+id/fragment_detail_age_release_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:fontFamily="@font/baloobhairegular"
+        android:text="20177"
+        android:textAllCaps="false"
+        android:textColor="@color/color_white"
+        app:layout_constraintBaseline_toBaselineOf="@+id/fragment_detail_age_rating"
+        app:layout_constraintStart_toEndOf="@+id/view3" />
+
+    <TextView
         android:id="@+id/fragment_detail_title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
+        android:ellipsize="end"
         android:fontFamily="@font/baloobhairegular"
+        android:maxLines="1"
         android:textAlignment="viewStart"
         android:textColor="@android:color/white"
         android:textSize="23sp"
@@ -175,13 +208,13 @@
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
         android:background="@drawable/detail_join_btn_bg"
+        android:drawableStart="@drawable/ic_add"
         android:fontFamily="@font/baloobhairegular"
         android:text="Join Community"
         android:textAlignment="center"
-        android:textSize="15sp"
         android:textAllCaps="false"
-        android:drawableStart="@drawable/ic_add"
         android:textColor="@color/color_home_logo"
+        android:textSize="15sp"
         app:layout_constraintBottom_toTopOf="@+id/barrier4"
         app:layout_constraintStart_toStartOf="@+id/fragment_detail_title"
         app:layout_constraintTop_toBottomOf="@+id/fragment_detail_image" />

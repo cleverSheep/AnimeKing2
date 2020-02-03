@@ -44,6 +44,8 @@ class AnimeListDetail : Fragment() {
         fragment_detail_description.text = attributes.synopsis
         val cover_image = attributes.coverImage?.original ?: attributes.posterImage.original
         val poster_image = attributes.posterImage?.original ?: attributes.coverImage.original
+        val age_rating = attributes.ageRating
+        val release_date = attributes.createdAt.substring(0, 4)
 
         Glide.with(this)
                 .load(cover_image)
@@ -52,6 +54,8 @@ class AnimeListDetail : Fragment() {
                 .into(fragment_detail_image)
 
         ImageUtil.loadDetailPosterImage(fragment_detail_poster_image, poster_image)
+        fragment_detail_age_rating.text = age_rating
+        fragment_detail_age_release_date.text = release_date
 
         questionFactory = QuestionFactory()
         fragment_detail_take_quiz.setOnClickListener {
