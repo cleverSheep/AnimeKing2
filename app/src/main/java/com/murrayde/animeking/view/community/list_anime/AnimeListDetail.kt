@@ -17,7 +17,6 @@ import com.bumptech.glide.Glide
 import com.murrayde.animeking.R
 import com.murrayde.animeking.model.community.QuestionFactory
 import kotlinx.android.synthetic.main.fragment_detail.*
-import timber.log.Timber
 
 class AnimeListDetail : Fragment() {
 
@@ -40,13 +39,19 @@ class AnimeListDetail : Fragment() {
 
         fragment_detail_title.text = attributes.titles.en ?: attributes.canonicalTitle
         fragment_detail_description.text = attributes.synopsis
-        val image_url = attributes.coverImage?.original ?: attributes.posterImage.original
+        val cover_image = attributes.coverImage?.original ?: attributes.posterImage.original
+        val poster_image = attributes.posterImage?.original ?: attributes.coverImage.original
 
         Glide.with(this)
-                .load(image_url)
+                .load(cover_image)
                 .placeholder(R.drawable.crown_list_screen)
                 .dontAnimate()
                 .into(fragment_detail_image)
+        Glide.with(this)
+                .load(poster_image)
+                .placeholder(R.drawable.crown_list_screen)
+                .dontAnimate()
+                .into(fragment_detail_poster_image)
 
         questionFactory = QuestionFactory()
         fragment_detail_take_quiz.setOnClickListener {

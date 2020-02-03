@@ -3,9 +3,9 @@
     android:shape="rectangle">
     <corners android:radius="20dp" />
     <padding
-        android:bottom="5dp"
+        android:bottom="2dp"
         android:left="7dp"
         android:right="7dp"
-        android:top="5dp" />
+        android:top="2dp" />
     <solid android:color="@color/color_detail_question_count" />
 </shape>

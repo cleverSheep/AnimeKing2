@@ -7,6 +7,20 @@
     android:background="@color/color_home_logo"
     tools:context=".view.community.list_anime.AnimeListDetail">
     <!--NOTE: Use theme instead of style when changing toolbar text/back arrow color-->
+    <ImageView
+        android:id="@+id/fragment_detail_image"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:foreground="@drawable/detail_gradient_main"
+        android:scaleType="center"
+        app:layout_constraintDimensionRatio="16:9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription"
+        tools:src="@drawable/feature_graphic"
+        tools:srcCompat="@drawable/original_cover_image" />
+
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar_detail"
         android:layout_width="match_parent"
@@ -20,6 +34,35 @@
         app:layout_constraintTop_toTopOf="parent" />
 
 
+    <Button
+        android:id="@+id/fragment_detail_take_quiz"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/home_play_background"
+        android:drawableStart="@drawable/crown_list_screen"
+        android:fontFamily="@font/baloobhairegular"
+        android:text="@string/take_quiz"
+        android:textColor="@color/color_white"
+        android:textSize="@dimen/button_text_size"
+        app:layout_constraintBottom_toTopOf="@+id/fragment_detail_ask_question"
+        app:layout_constraintEnd_toEndOf="@+id/fragment_detail_ask_question"
+        app:layout_constraintStart_toStartOf="@+id/fragment_detail_ask_question"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_detail_description" />
+
+    <Button
+        android:id="@+id/fragment_detail_ask_question"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/home_compete_background"
+        android:fontFamily="@font/baloobhairegular"
+        android:text="@string/ask_question"
+        android:textColor="@color/color_grey"
+        android:textSize="@dimen/button_text_size"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_detail_take_quiz" />
+
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
@@ -30,143 +73,40 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
-        <Button
-            android:id="@+id/fragment_detail_take_quiz"
-            android:layout_width="344dp"
-            android:layout_height="56dp"
-            android:background="@drawable/home_play_background"
-            android:fontFamily="@font/baloobhairegular"
-            android:text="@string/take_quiz"
-            android:textColor="@color/color_white"
-            android:textSize="@dimen/button_text_size"
-            app:layout_constraintBottom_toTopOf="@+id/fragment_detail_ask_question"
-            app:layout_constraintEnd_toEndOf="@+id/fragment_detail_description"
-            app:layout_constraintStart_toStartOf="@+id/fragment_detail_description"
-            app:layout_constraintTop_toBottomOf="@+id/fragment_detail_description" />
-
-        <Button
-            android:id="@+id/fragment_detail_ask_question"
-            android:layout_width="344dp"
-            android:layout_height="56dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="16dp"
-            android:background="@drawable/home_compete_background"
-            android:fontFamily="@font/baloobhairegular"
-            android:text="@string/ask_question"
-            android:textColor="@color/color_grey"
-            android:textSize="@dimen/button_text_size"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/fragment_detail_take_quiz"
-            app:layout_constraintStart_toStartOf="@+id/fragment_detail_take_quiz"
-            app:layout_constraintTop_toBottomOf="@+id/fragment_detail_take_quiz" />
     </LinearLayout>
-
-    <ImageView
-        android:id="@+id/fragment_detail_image"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:scaleType="center"
-        app:layout_constraintDimensionRatio="16:9"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="ContentDescription"
-        tools:src="@drawable/feature_graphic"
-        tools:srcCompat="@drawable/abyss" />
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:background="@drawable/detail_gradient_main"
-        android:orientation="horizontal"
-        android:paddingHorizontal="15dp"
-        app:layout_constraintBottom_toBottomOf="@+id/fragment_detail_image"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <TextView
-            android:id="@+id/fragment_detail_title"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="8dp"
-            android:layout_marginEnd="8dp"
-            android:fontFamily="@font/baloobhairegular"
-            android:textAlignment="viewStart"
-            android:textColor="@android:color/white"
-            android:textSize="23sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/imageButton"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="RtlSymmetry"
-            tools:text="Anime Title" />
-
-        <ImageButton
-            android:id="@+id/imageButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginEnd="8dp"
-            android:background="@drawable/detail_notification_bg"
-            android:src="@drawable/ic_notifications_none_black_24dp"
-            android:visibility="invisible"
-            app:layout_constraintBottom_toBottomOf="@+id/fragment_detail_title"
-            app:layout_constraintEnd_toStartOf="@+id/fragment_detail_join"
-            app:layout_constraintTop_toTopOf="@+id/fragment_detail_title" />
-
-        <Button
-            android:id="@+id/fragment_detail_join"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:background="@drawable/detail_join_btn_bg"
-            android:fontFamily="@font/baloobhairegular"
-            android:gravity="center"
-            android:padding="1dp"
-            android:text="Join"
-            android:textAlignment="center"
-            android:textColor="@color/colorAccent"
-            android:textSize="12sp"
-            app:layout_constraintBottom_toBottomOf="@+id/imageButton"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/imageButton" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
     <TextView
         android:id="@+id/fragment_detail_description"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
         android:layout_marginVertical="16dp"
+        android:layout_marginEnd="16dp"
         android:ellipsize="end"
         android:fontFamily="@font/baloobhairegular"
         android:maxLines="12"
         android:textColor="@color/color_white"
         android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fragment_detail_member_count"
+        app:layout_constraintStart_toStartOf="@+id/fragment_detail_poster_image"
+        app:layout_constraintTop_toTopOf="@+id/barrier"
         tools:text="@string/sample_text" />
 
     <TextView
         android:id="@+id/fragment_detail_member_count"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="4dp"
-        android:layout_marginTop="16dp"
         android:background="@drawable/detail_member_count_bg"
         android:fontFamily="@font/baloobhairegular"
         android:gravity="center"
         android:paddingHorizontal="8dp"
         android:text="14 members"
         android:textColor="@color/color_white"
-        app:layout_constraintEnd_toStartOf="@+id/fragment_detail_question_count"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="@+id/fragment_detail_description"
-        app:layout_constraintTop_toBottomOf="@+id/fragment_detail_image"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toTopOf="@+id/barrier"
+        app:layout_constraintStart_toStartOf="@+id/fragment_detail_join"
+        app:layout_constraintTop_toTopOf="@+id/barrier4"
         tools:text="14 members" />
 
     <TextView
@@ -180,8 +120,79 @@
         android:paddingHorizontal="8dp"
         android:text="356 questions"
         android:textColor="@color/color_white"
-        app:layout_constraintBaseline_toBaselineOf="@+id/fragment_detail_member_count"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="@+id/fragment_detail_member_count"
         app:layout_constraintStart_toEndOf="@+id/fragment_detail_member_count"
+        app:layout_constraintTop_toTopOf="@+id/fragment_detail_member_count"
         tools:text="356 questions" />
+
+    <ImageView
+        android:id="@+id/fragment_detail_poster_image"
+        android:layout_width="0dp"
+        android:layout_height="150dp"
+        android:layout_marginStart="8dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/original"
+        app:layout_constraintBottom_toBottomOf="@+id/fragment_detail_image"
+        app:layout_constraintDimensionRatio="2:3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_detail_image"
+        tools:srcCompat="@drawable/original" />
+
+    <TextView
+        android:id="@+id/fragment_detail_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:fontFamily="@font/baloobhairegular"
+        android:textAlignment="viewStart"
+        android:textColor="@android:color/white"
+        android:textSize="23sp"
+        app:layout_constraintBottom_toTopOf="@+id/barrier3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/fragment_detail_poster_image"
+        tools:ignore="RtlSymmetry"
+        tools:text="Anime Title" />
+
+    <Button
+        android:id="@+id/fragment_detail_join"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/detail_join_btn_bg"
+        android:fontFamily="@font/baloobhairegular"
+        android:text="Join Community"
+        android:textAlignment="center"
+        android:textColor="@color/color_grey"
+        app:layout_constraintBottom_toTopOf="@+id/barrier4"
+        app:layout_constraintStart_toStartOf="@+id/fragment_detail_title"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_detail_image" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrier"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="bottom"
+        app:constraint_referenced_ids="fragment_detail_poster_image"
+        tools:layout_editor_absoluteY="731dp" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrier3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="bottom"
+        app:constraint_referenced_ids="fragment_detail_image"
+        tools:layout_editor_absoluteY="807dp" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrier4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="top"
+        app:constraint_referenced_ids="fragment_detail_member_count"
+        tools:layout_editor_absoluteY="807dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
