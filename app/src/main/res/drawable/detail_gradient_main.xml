@@ -2,6 +2,6 @@
     android:shape="rectangle">
     <gradient
         android:angle="90"
-        android:endColor="@color/detaik_gradient_second_bg"
-        android:startColor="@color/detaik_gradient_main_bg" />
+        android:endColor="@color/list_header_center_frame"
+        android:startColor="#2e2e2e" />
 </shape>

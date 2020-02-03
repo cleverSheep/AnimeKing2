@@ -3,15 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="#3A2E39"
     android:layout_height="match_parent"
+    android:background="@color/color_home_logo"
     tools:context=".view.community.list_anime.AnimeListDetail">
     <!--NOTE: Use theme instead of style when changing toolbar text/back arrow color-->
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar_detail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/detail_gradient"
+        android:background="@drawable/fragment_list_header_toolbar"
         android:fitsSystemWindows="true"
         android:theme="@style/TestingTheme"
         android:translationZ="2dp"
@@ -143,8 +143,8 @@
         android:ellipsize="end"
         android:fontFamily="@font/baloobhairegular"
         android:maxLines="12"
-        android:textSize="16sp"
         android:textColor="@color/color_white"
+        android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
