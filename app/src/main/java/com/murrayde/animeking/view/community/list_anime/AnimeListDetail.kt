@@ -14,8 +14,11 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.navigation.ui.setupWithNavController
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.CenterCrop
+import com.bumptech.glide.request.RequestOptions
 import com.murrayde.animeking.R
 import com.murrayde.animeking.model.community.QuestionFactory
+import com.murrayde.animeking.util.ImageUtil
 import kotlinx.android.synthetic.main.fragment_detail.*
 
 class AnimeListDetail : Fragment() {
@@ -47,11 +50,8 @@ class AnimeListDetail : Fragment() {
                 .placeholder(R.drawable.crown_list_screen)
                 .dontAnimate()
                 .into(fragment_detail_image)
-        Glide.with(this)
-                .load(poster_image)
-                .placeholder(R.drawable.crown_list_screen)
-                .dontAnimate()
-                .into(fragment_detail_poster_image)
+
+        ImageUtil.loadDetailPosterImage(fragment_detail_poster_image, poster_image)
 
         questionFactory = QuestionFactory()
         fragment_detail_take_quiz.setOnClickListener {

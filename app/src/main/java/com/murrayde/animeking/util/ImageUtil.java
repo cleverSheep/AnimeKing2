@@ -25,6 +25,18 @@ public class ImageUtil {
                 .into(imageView);
     }
 
+    private static void loadDetailPosterImage(ImageView imageView, String url, CircularProgressDrawable circularProgressDrawable) {
+        RequestOptions options = new RequestOptions()
+                .placeholder(circularProgressDrawable)
+                .transform(new CenterCrop(), new RoundedCorners(16))
+                .error(R.mipmap.ic_launcher_round);
+        Glide.with(imageView.getContext())
+                .setDefaultRequestOptions(options)
+                .load(url)
+                .dontAnimate()
+                .into(imageView);
+    }
+
     private static CircularProgressDrawable getProgressDrawable(Context context) {
         CircularProgressDrawable circularProgressDrawable = new CircularProgressDrawable(context);
         circularProgressDrawable.setStrokeWidth(10f);
@@ -37,6 +49,10 @@ public class ImageUtil {
     @BindingAdapter("android:imageUrl")
     public static void loadImage(ImageView view, String url) {
         loadImage(view, url, getProgressDrawable(view.getContext()));
+    }
+
+    public static void loadDetailPosterImage(ImageView view, String url) {
+        loadDetailPosterImage(view, url, getProgressDrawable(view.getContext()));
     }
 
 
