@@ -1,10 +1,14 @@
+@file:Suppress("PrivatePropertyName")
+
 package com.murrayde.animeking.view.community.list_anime
 
 
 import android.os.Bundle
+import android.util.DisplayMetrics
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.constraintlayout.motion.widget.MotionLayout
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -15,6 +19,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.murrayde.animeking.R
 import com.murrayde.animeking.network.community.api.AnimeData
 import com.murrayde.animeking.util.PagingUtil
+import com.murrayde.animeking.view.community.viewmodel.AnimeListMotionStateViewModel
 import com.murrayde.animeking.view.community.viewmodel.MainActivityViewModel
 import kotlinx.android.synthetic.main.fragment_list.*
 import timber.log.Timber
@@ -22,6 +27,7 @@ import timber.log.Timber
 class AnimeList : Fragment() {
 
     private lateinit var listAdapter: AnimeListAdapter
+    private lateinit var motionState_viewModel: AnimeListMotionStateViewModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -37,11 +43,19 @@ class AnimeList : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         listAdapter = AnimeListAdapter()
         val viewModel = ViewModelProvider(this).get(MainActivityViewModel::class.java)
+        motionState_viewModel = ViewModelProvider(this).get(AnimeListMotionStateViewModel::class.java)
+        motion_base.setTransitionDuration(1)
+        motion_base.transitionToState(motionState_viewModel.getMotionState())
 
         rv_anime.adapter = listAdapter
         rv_anime.layoutManager = GridLayoutManager(activity!!, 3)
         viewModel.animeData.observe(activity!!, Observer<PagedList<AnimeData>> { listAdapter.submitList(it) })
 
+    }
+
+    override fun onPause() {
+        super.onPause()
+        motionState_viewModel.setMotionState(motion_base.currentState)
     }
 
     override fun onDestroy() {

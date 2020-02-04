@@ -7,7 +7,7 @@
         motion:constraintSetStart="@+id/start">
         <OnSwipe
             motion:dragDirection="dragUp"
-            motion:onTouchUp="stop"
+            motion:onTouchUp="decelerate"
             motion:touchAnchorId="@+id/header" />
     </Transition>
 
