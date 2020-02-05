@@ -13,9 +13,9 @@
     <ImageView
         android:id="@+id/header"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="400dp"
         android:adjustViewBounds="true"
-        android:scaleType="fitCenter"
+        android:scaleType="centerCrop"
         android:src="@drawable/grimgar_background"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -89,7 +89,7 @@
         android:text="All Around Anime Expert"
         android:textAlignment="center"
         android:textColor="@color/color_white"
-        android:textSize="32sp"
+        android:textSize="28sp"
         app:layout_constraintBottom_toTopOf="@id/header_sub_title"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

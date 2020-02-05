@@ -3,6 +3,5 @@
     <gradient
         android:angle="90"
         android:endColor="@color/list_header_center_frame"
-        android:centerColor="@color/list_header_bg"
         android:startColor="#2e2e2e" />
 </shape>

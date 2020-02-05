@@ -15,7 +15,7 @@
         <Constraint
             android:id="@+id/header"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="400dp"
             android:adjustViewBounds="true"
             android:scaleType="fitCenter"
             motion:layout_constraintEnd_toEndOf="parent"
@@ -104,7 +104,7 @@
         <Constraint
             android:id="@+id/header"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="400dp"
             android:adjustViewBounds="true"
             android:scaleType="fitCenter"
             motion:layout_constraintBottom_toTopOf="parent"
