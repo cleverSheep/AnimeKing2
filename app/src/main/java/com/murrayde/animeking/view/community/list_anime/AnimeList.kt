@@ -4,25 +4,20 @@ package com.murrayde.animeking.view.community.list_anime
 
 
 import android.os.Bundle
-import android.util.DisplayMetrics
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.constraintlayout.motion.widget.MotionLayout
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.Navigation
 import androidx.paging.PagedList
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.murrayde.animeking.R
 import com.murrayde.animeking.network.community.api.AnimeData
 import com.murrayde.animeking.util.PagingUtil
 import com.murrayde.animeking.view.community.viewmodel.AnimeListMotionStateViewModel
 import com.murrayde.animeking.view.community.viewmodel.MainActivityViewModel
 import kotlinx.android.synthetic.main.fragment_list.*
-import timber.log.Timber
 
 class AnimeList : Fragment() {
 
@@ -34,7 +29,6 @@ class AnimeList : Fragment() {
         try {
             return inflater.inflate(R.layout.fragment_list, container, false)
         } catch (e: Exception) {
-            Timber.e("Error inflating layout")
             throw e
         }
     }
@@ -44,6 +38,7 @@ class AnimeList : Fragment() {
         listAdapter = AnimeListAdapter()
         val viewModel = ViewModelProvider(this).get(MainActivityViewModel::class.java)
         motionState_viewModel = ViewModelProvider(this).get(AnimeListMotionStateViewModel::class.java)
+
         motion_base.setTransitionDuration(1)
         motion_base.transitionToState(motionState_viewModel.getMotionState())
 
