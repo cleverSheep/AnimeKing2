@@ -127,5 +127,8 @@ dependencies {
     def paging_version = "2.1.0"
     implementation "androidx.paging:paging-runtime:$paging_version"
     implementation "org.jetbrains.kotlin:kotlin-reflect:1.3.50"
+
+    // Pandora BottomNavigationView
+    implementation 'com.pandora.bottomnavigator:bottom-navigator:1.5'
 }
 apply plugin: 'com.google.gms.google-services'
