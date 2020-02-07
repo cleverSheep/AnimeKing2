@@ -24,7 +24,7 @@ class SplashScreen : AppCompatActivity() {
         fullScreenAll()
 
         mediaPlayer = MediaPlayer.create(this, R.raw.splash_music)
-        Timer().schedule(3500L) {
+        Timer().schedule(4500) {
             runOnUiThread {
                 startActivity(Intent(this@SplashScreen, HomeScreenActivity::class.java))
                 finish()
