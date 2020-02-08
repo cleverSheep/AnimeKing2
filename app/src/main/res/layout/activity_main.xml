@@ -16,80 +16,16 @@
         app:navGraph="@navigation/main_nav"
         tools:ignore="FragmentTagUsage" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <com.google.android.material.bottomnavigation.BottomNavigationView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#141414"
-        android:padding="4dp"
+        android:theme="@style/MeneNavTheme"
+        app:itemIconTint="@color/bottomnav_color"
+        app:itemTextColor="@color/bottomnav_color"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <TextView
-            android:id="@+id/text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:drawableTop="@drawable/ic_home_24px"
-            android:fontFamily="@font/baloobhairegular"
-            android:text="Home"
-            android:textAlignment="center"
-            android:textColor="@color/color_white"
-            android:textSize="13sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/text1"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/text1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:drawableTop="@drawable/ic_search"
-            android:fontFamily="@font/baloobhairegular"
-            android:text="Search"
-            android:textAlignment="center"
-            android:textColor="@color/color_grey"
-            android:textSize="13sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/text3"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/text"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/text3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:drawableTop="@drawable/ic_person_24px"
-            android:fontFamily="@font/baloobhairegular"
-            android:text="Profile"
-            android:textAlignment="center"
-            android:textColor="@color/color_grey"
-            android:textSize="13sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/text2"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/text1"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/text2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:drawableTop="@drawable/ic_menu_24px"
-            android:fontFamily="@font/baloobhairegular"
-            android:text="More"
-            android:textAlignment="center"
-            android:textColor="@color/color_grey"
-            android:textSize="13sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/text3"
-            app:layout_constraintTop_toTopOf="parent" />
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/menu_nav_items" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
