@@ -141,4 +141,14 @@
             app:argType="com.murrayde.animeking.model.community.CommunityQuestion[]"
             app:nullable="true" />
     </fragment>
+    <fragment
+        android:id="@+id/test_replacement1"
+        android:name="com.murrayde.animeking.view.profile.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/test_replacement2"
+        android:name="com.murrayde.animeking.view.settings.SettingsFragment"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings" />
 </navigation>
