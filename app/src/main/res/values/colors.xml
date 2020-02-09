@@ -23,4 +23,5 @@
     <color name="color_white">#FFF</color>
     <color name="color_results_background">#F5F5F5</color>
     <color name="color_wrong">#FF0000</color>
+    <color name="color_dark_mode">#141414</color>
 </resources>
