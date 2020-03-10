@@ -39,18 +39,10 @@ class AnimeList : Fragment() {
         val viewModel = ViewModelProvider(this).get(MainActivityViewModel::class.java)
         motionState_viewModel = ViewModelProvider(this).get(AnimeListMotionStateViewModel::class.java)
 
-        motion_base.setTransitionDuration(1)
-        motion_base.transitionToState(motionState_viewModel.getMotionState())
-
         rv_anime.adapter = listAdapter
         rv_anime.layoutManager = GridLayoutManager(activity!!, 3)
         viewModel.animeData.observe(activity!!, Observer<PagedList<AnimeData>> { listAdapter.submitList(it) })
 
-    }
-
-    override fun onPause() {
-        super.onPause()
-        motionState_viewModel.setMotionState(motion_base.currentState)
     }
 
     override fun onDestroy() {

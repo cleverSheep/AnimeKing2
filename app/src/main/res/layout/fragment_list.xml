@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/motion_base"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/color_home_logo"
-    app:layoutDescription="@xml/scrollable_header_above_recycler_view_scene"
     tools:context=".view.community.list_anime.AnimeList">
 
 
@@ -46,6 +45,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/baloobhairegular"
+
+
         android:padding="16dp"
         android:src="@drawable/crown_list_screen"
         app:layout_constraintStart_toStartOf="parent"
@@ -138,4 +139,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/header" />
 
-</androidx.constraintlayout.motion.widget.MotionLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
