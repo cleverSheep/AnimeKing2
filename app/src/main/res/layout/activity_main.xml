@@ -17,18 +17,6 @@
         tools:ignore="FragmentTagUsage" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
-<<<<<<< HEAD
-        android:id="@+id/bottomnav_view"
-        android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:background="@color/color_home_logo"
-        app:itemIconTint="@color/bottomnav_color"
-        app:itemTextColor="@color/bottomnav_color"
-        app:layout_constraintBottom_toBottomOf="@+id/nav_host_fragment"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/navigation_items" />
-=======
         android:id="@+id/bottom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -40,6 +28,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/menu_nav_items" />
->>>>>>> develop
 
 </androidx.constraintlayout.widget.ConstraintLayout>
