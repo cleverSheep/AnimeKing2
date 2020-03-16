@@ -7,7 +7,6 @@ import com.murrayde.animeking.network.community.api.AnimeData
 import com.murrayde.animeking.network.community.AnimeApiEndpoint
 import com.murrayde.animeking.network.NetworkState
 import com.murrayde.animeking.util.PagingUtil
-import com.murrayde.animeking.view.community.list_anime.AnimeDataListProvider
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableSingleObserver
