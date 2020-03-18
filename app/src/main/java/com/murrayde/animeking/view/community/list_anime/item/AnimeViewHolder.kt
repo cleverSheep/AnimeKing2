@@ -1,6 +1,6 @@
 @file:Suppress("LocalVariableName")
 
-package com.murrayde.animeking.view.community.list_anime
+package com.murrayde.animeking.view.community.list_anime.item
 
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.murrayde.animeking.R
 import com.murrayde.animeking.network.community.api.AnimeData
 import com.murrayde.animeking.util.ImageUtil
+import com.murrayde.animeking.view.community.list_anime.AnimeListDirections
 
 class AnimeViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
@@ -27,10 +28,10 @@ class AnimeViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
     var data: AnimeData? = null
 
-    fun bindTo(data: AnimeData) {
+    fun bindTo(data: AnimeData?) {
         this.data = data
-        nameView.text = data.attributes.titles.en ?: data.attributes.canonicalTitle
-        ImageUtil.loadImage(imageView, data.attributes.posterImage.original)
+        nameView.text = data?.attributes?.titles?.en ?: data?.attributes?.canonicalTitle
+        ImageUtil.loadImage(imageView, data?.attributes?.posterImage?.original)
     }
 
     companion object {

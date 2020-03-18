@@ -36,8 +36,16 @@ class AnimeList : Fragment() {
         listAdapter = AnimeListAdapter()
         val viewModel = ViewModelProvider(this).get(MainActivityViewModel::class.java)
 
-        rv_anime.adapter = listAdapter
-        rv_anime.layoutManager = GridLayoutManager(activity!!, 3)
+        rv_anime.apply {
+            adapter = listAdapter
+            layoutManager = GridLayoutManager(activity, 3)
+            (layoutManager as GridLayoutManager).spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
+                override fun getSpanSize(position: Int) = when (position) {
+                    0 -> 3
+                    else -> 1
+                }
+            }
+        }
         viewModel.animeData.observe(activity!!, Observer<PagedList<AnimeData>> { listAdapter.submitList(it) })
 
     }

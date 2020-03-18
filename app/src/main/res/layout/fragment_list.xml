@@ -16,7 +16,6 @@
         android:background="@color/color_home_logo"
         android:clipToPadding="false"
         android:overScrollMode="never"
-        android:padding="16dp"
         android:scrollbars="none"
         android:splitMotionEvents="false"
         app:layoutManager="LinearLayoutManager"

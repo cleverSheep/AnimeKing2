@@ -30,7 +30,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/fragment_list_header"
-        app:layout_constraintBottom_toTopOf="@id/header"
+        app:layout_constraintBottom_toBottomOf="@id/header"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/header" />
@@ -40,46 +40,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/baloobhairegular"
-
-
         android:padding="16dp"
         android:src="@drawable/crown_list_screen"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/header_frame_toolbar" />
 
     <TextView
-        android:id="@+id/header_tv_shows"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:fontFamily="@font/baloobhairegular"
-        android:text="TV Shows"
-        android:textAlignment="center"
-        android:textColor="@color/color_white"
-        android:textSize="22sp"
-        app:layout_constraintBottom_toBottomOf="@id/header_logo"
-        app:layout_constraintStart_toEndOf="@id/header_logo"
-        app:layout_constraintTop_toTopOf="@id/header_logo" />
-
-    <TextView
-        android:id="@+id/header_movies"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:fontFamily="@font/baloobhairegular"
-        android:text="Movies"
-        android:textAlignment="center"
-        android:textColor="@color/color_white"
-        android:textSize="22sp"
-        app:layout_constraintBottom_toBottomOf="@id/header_tv_shows"
-        app:layout_constraintStart_toEndOf="@id/header_tv_shows"
-        app:layout_constraintTop_toTopOf="@id/header_tv_shows" />
-
-
-    <TextView
         android:id="@+id/header_title"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:drawableTop="@drawable/crown_list_screen"
         android:fontFamily="@font/baloobhairegular"
         android:text="Random Anime Trivia"
