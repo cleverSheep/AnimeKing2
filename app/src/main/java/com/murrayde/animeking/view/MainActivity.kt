@@ -2,6 +2,7 @@ package com.murrayde.animeking.view
 
 import android.content.Context
 import android.os.Bundle
+import android.view.MenuItem
 import android.view.View
 import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
@@ -14,6 +15,8 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.murrayde.animeking.R
 import com.murrayde.animeking.util.PagingUtil
 import com.murrayde.animeking.util.QuestionUtil
+import kotlinx.android.synthetic.main.activity_main.*
+import timber.log.Timber
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

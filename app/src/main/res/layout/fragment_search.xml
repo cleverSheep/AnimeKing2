@@ -35,6 +35,7 @@
             android:imeOptions="actionSearch"
             android:inputType="text"
             android:padding="8dp"
+            android:textColor="@color/color_white"
             android:textColorHint="@color/color_white"
             android:textCursorDrawable="@color/color_white" />
     </androidx.appcompat.widget.Toolbar>

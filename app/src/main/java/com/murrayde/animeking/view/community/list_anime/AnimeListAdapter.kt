@@ -1,3 +1,5 @@
+@file:Suppress("PrivatePropertyName")
+
 package com.murrayde.animeking.view.community.list_anime
 
 import android.annotation.SuppressLint
@@ -21,8 +23,8 @@ class AnimeListAdapter : PagedListAdapter<AnimeData, RecyclerView.ViewHolder>(di
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (getItemViewType(position) == DATA_VIEW_TYPE) {
-            val current_position = position - 1
-            (holder as AnimeViewHolder).bindTo(getItem(current_position))
+            /** IndexOutOfBounds exception occurs when using item position*/
+            (holder as AnimeViewHolder).bindTo(getItem(position - 1))
         } else {
             (holder as HeaderViewHolder).bindTo("Random Anime Trivia", "How well rounded are you?")
         }
@@ -33,6 +35,7 @@ class AnimeListAdapter : PagedListAdapter<AnimeData, RecyclerView.ViewHolder>(di
     }
 
     override fun getItemCount(): Int {
+        Timber.d("Count calculated")
         return super.getItemCount() + 1
     }
 
