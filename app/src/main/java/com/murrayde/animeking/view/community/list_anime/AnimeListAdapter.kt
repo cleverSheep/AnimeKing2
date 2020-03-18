@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.murrayde.animeking.network.community.api.AnimeData
 import com.murrayde.animeking.view.community.list_anime.item.AnimeViewHolder
 import com.murrayde.animeking.view.community.list_anime.item.HeaderViewHolder
+import timber.log.Timber
 
 class AnimeListAdapter : PagedListAdapter<AnimeData, RecyclerView.ViewHolder>(diffCallback) {
 
@@ -20,7 +21,8 @@ class AnimeListAdapter : PagedListAdapter<AnimeData, RecyclerView.ViewHolder>(di
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (getItemViewType(position) == DATA_VIEW_TYPE) {
-            (holder as AnimeViewHolder).bindTo(getItem(position))
+            val current_position = position - 1
+            (holder as AnimeViewHolder).bindTo(getItem(current_position))
         } else {
             (holder as HeaderViewHolder).bindTo("Random Anime Trivia", "How well rounded are you?")
         }

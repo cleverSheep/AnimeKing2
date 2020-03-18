@@ -17,6 +17,7 @@ import com.murrayde.animeking.network.community.api.AnimeData
 import com.murrayde.animeking.util.PagingUtil
 import com.murrayde.animeking.view.community.viewmodel.MainActivityViewModel
 import kotlinx.android.synthetic.main.fragment_list.*
+import timber.log.Timber
 
 class AnimeList : Fragment() {
 
@@ -53,6 +54,7 @@ class AnimeList : Fragment() {
     override fun onDestroy() {
         super.onDestroy()
         PagingUtil.RESET_PAGING_OFFSET()
+        Timber.d("List destroyed")
     }
 
 }
