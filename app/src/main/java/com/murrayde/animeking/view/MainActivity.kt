@@ -1,6 +1,7 @@
 package com.murrayde.animeking.view
 
 import android.content.Context
+import android.opengl.Visibility
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
@@ -13,10 +14,7 @@ import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 import com.murrayde.animeking.R
-import com.murrayde.animeking.util.PagingUtil
-import com.murrayde.animeking.util.QuestionUtil
 import kotlinx.android.synthetic.main.activity_main.*
-import timber.log.Timber
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,5 +27,14 @@ class MainActivity : AppCompatActivity() {
 
         val navController = findNavController(R.id.nav_host_fragment)
         findViewById<BottomNavigationView>(R.id.bottom).setupWithNavController(navController)
+
+        navController.addOnDestinationChangedListener { controller, destination, arguments ->
+            when (destination.id) {
+                R.id.answerQuestionFragment, R.id.answerRandomQuestions, R.id.viewResults, R.id.askQuestionFragment -> {
+                    bottom.visibility = View.GONE
+                }
+                else -> bottom.visibility = View.VISIBLE
+            }
+        }
     }
 }

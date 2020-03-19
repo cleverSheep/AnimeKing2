@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#4E555E"
+    android:background="@color/color_home_logo"
     tools:context=".view.community.AnswerQuestion">
 
     <LinearLayout
@@ -71,8 +71,8 @@
         android:id="@+id/tv_answer_title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/baloobhairegular"
         android:background="@drawable/answer_question_title"
+        android:fontFamily="@font/baloobhairegular"
         android:paddingStart="30dp"
         android:textAlignment="viewStart"
         android:textColor="@android:color/white"

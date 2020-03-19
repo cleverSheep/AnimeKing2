@@ -43,7 +43,9 @@
             android:id="@+id/action_detailFragment_to_askQuestionFragment"
             app:destination="@id/askQuestionFragment"
             app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left" />
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
         <action
             android:id="@+id/action_detailFragment_to_answerQuestionFragment"
             app:destination="@id/answerQuestionFragment"
@@ -82,6 +84,10 @@
         <action
             android:id="@+id/action_askQuestionFragment_to_detailFragment"
             app:destination="@id/detailFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_left"
             app:popUpTo="@+id/detailFragment"
             app:popUpToInclusive="true" />
     </fragment>
@@ -128,7 +134,8 @@
             app:nullable="true" />
         <action
             android:id="@+id/action_viewResults_to_detailFragment"
-            app:destination="@id/detailFragment" />
+            app:destination="@id/detailFragment"
+            app:popUpTo="@id/detailFragment" />
         <argument
             android:name="AnimeAttributes"
             app:argType="com.murrayde.animeking.model.community.AnimeAttributes.Attributes" />

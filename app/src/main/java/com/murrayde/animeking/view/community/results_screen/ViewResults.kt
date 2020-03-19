@@ -10,12 +10,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.CompoundButton
 import android.widget.LinearLayout
+import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 
 import com.murrayde.animeking.R
 import com.murrayde.animeking.view.community.results_screen.review_questions.ReviewQuestionsAdapter
+import kotlinx.android.synthetic.main.fragment_view_results.*
 import kotlinx.android.synthetic.main.fragment_view_results_bottom_sheet.*
 import kotlinx.android.synthetic.main.fragment_view_results_bottom_sheet.*
 import timber.log.Timber
@@ -59,5 +61,10 @@ class ViewResults : Fragment() {
             }
 
         })
+
+        results_quit_game.setOnClickListener { v ->
+            val direction = ViewResultsDirections.actionViewResultsToDetailFragment(args.animeAttributes)
+            Navigation.findNavController(v).navigate(direction)
+        }
     }
 }
