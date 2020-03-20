@@ -28,4 +28,8 @@
     <string name="fix_answer_choice">Enter 1+ character for answer choice</string>
     <string name="compete">Compete</string>
     <string name="community">Community</string>
+
+    <string name="facebook_app_id">1847601048710162</string>
+    <string name="fb_login_protocol_scheme">fb1847601048710162</string>
+
 </resources>

@@ -135,7 +135,8 @@
         <action
             android:id="@+id/action_viewResults_to_detailFragment"
             app:destination="@id/detailFragment"
-            app:popUpTo="@id/detailFragment" />
+            app:popUpTo="@id/detailFragment"
+            app:popUpToInclusive="true" />
         <argument
             android:name="AnimeAttributes"
             app:argType="com.murrayde.animeking.model.community.AnimeAttributes.Attributes" />
@@ -159,7 +160,12 @@
         android:id="@+id/more"
         android:name="com.murrayde.animeking.view.settings.SettingsFragment"
         android:label="fragment_settings"
-        tools:layout="@layout/fragment_settings" />
+        tools:layout="@layout/fragment_settings" >
+        <action
+            android:id="@+id/action_more_to_authenticationActivity"
+            app:destination="@id/authenticationActivity"
+            app:popUpTo="@id/authenticationActivity" />
+    </fragment>
     <fragment
         android:id="@+id/answerRandomQuestions"
         android:name="com.murrayde.animeking.view.random.AnswerRandomQuestions"
@@ -169,4 +175,9 @@
             android:id="@+id/action_answerRandomQuestions_to_home"
             app:destination="@id/home" />
     </fragment>
+    <activity
+        android:id="@+id/authenticationActivity"
+        android:name="com.murrayde.animeking.view.auth.AuthenticationActivity"
+        android:label="activity_authentication"
+        tools:layout="@layout/activity_authentication" />
 </navigation>

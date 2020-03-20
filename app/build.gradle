@@ -12,8 +12,8 @@ android {
         applicationId "com.murrayde.animeking"
         minSdkVersion 26
         targetSdkVersion 29
-        versionCode 35
-        versionName "3.2.1"
+        versionCode 36
+        versionName "3.4.2"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -48,10 +48,13 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
 
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    implementation 'com.google.firebase:firebase-firestore:21.3.1'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+    // Firebase Services
+    implementation 'com.google.firebase:firebase-firestore:21.3.1'
+    implementation 'com.google.firebase:firebase-auth:19.3.0'
 
     // Cardview
     def cardview_version = "1.0.0"
@@ -130,5 +133,10 @@ dependencies {
 
     // Pandora BottomNavigationView
     implementation 'com.pandora.bottomnavigator:bottom-navigator:1.5'
+
+    // Social Media Login
+    implementation 'com.facebook.android:facebook-login:[5,6)'
+    implementation 'com.google.android.gms:play-services-auth:17.0.0'
+
 }
 apply plugin: 'com.google.gms.google-services'
