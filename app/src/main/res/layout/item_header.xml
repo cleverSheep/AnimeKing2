@@ -31,49 +31,37 @@
         android:background="@drawable/fragment_list_header"
         app:layout_constraintBottom_toBottomOf="@id/header"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/header" />
+        app:layout_constraintTop_toTopOf="@id/header"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/header_title"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:drawableTop="@drawable/crown_list_screen"
         android:fontFamily="@font/baloobhairegular"
-        android:text="Random Anime Trivia"
+        android:text="Random Anime"
         android:textAlignment="center"
         android:textColor="@color/color_white"
-        android:textSize="28sp"
-        app:layout_constraintBottom_toTopOf="@id/header_sub_title"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/header_sub_title"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:fontFamily="@font/baloobhairegular"
-        android:text="How well rounded are you?"
-        android:textAlignment="center"
-        android:textColor="@color/color_white"
-        android:textSize="18sp"
+        android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@id/header_play_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/header_play_button"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:background="@drawable/header_play_background"
         android:fontFamily="@font/baloobhairegular"
         android:text="Play"
-        android:textColor="@color/color_white"
+        android:textColor="@color/color_home_logo"
         android:textSize="22sp"
         app:layout_constraintBottom_toBottomOf="@id/header"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="@+id/header_title"
+        app:layout_constraintStart_toStartOf="@+id/header_title" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

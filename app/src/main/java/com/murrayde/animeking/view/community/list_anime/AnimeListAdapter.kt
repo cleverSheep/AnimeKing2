@@ -26,7 +26,7 @@ class AnimeListAdapter : PagedListAdapter<AnimeData, RecyclerView.ViewHolder>(di
             /** IndexOutOfBounds exception occurs when using item position*/
             (holder as AnimeViewHolder).bindTo(getItem(position - 1))
         } else {
-            (holder as HeaderViewHolder).bindTo("Random Anime Trivia", "How well rounded are you?")
+            (holder as HeaderViewHolder).bindTo("Random Anime")
         }
     }
 

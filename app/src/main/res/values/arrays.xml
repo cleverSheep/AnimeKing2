@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="settings_list_preference_titles">
+        <item>English</item>
+        <item>Spanish</item>
+    </string-array>
+    <string-array name="settings_list_preference_values">
+        <item>English</item>
+        <item>Spanish</item>
+    </string-array>
+</resources>

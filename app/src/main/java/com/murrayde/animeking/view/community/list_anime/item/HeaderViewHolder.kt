@@ -11,13 +11,10 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.murrayde.animeking.R
 import com.murrayde.animeking.view.community.list_anime.AnimeListDirections
-import com.murrayde.animeking.view.landing_screen.LandingScreenDirections
-import timber.log.Timber
 
 class HeaderViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
     private val header_title = view.findViewById<TextView>(R.id.header_title)
-    private val header_sub_title = view.findViewById<TextView>(R.id.header_sub_title)
     private val header_play_button = view.findViewById<Button>(R.id.header_play_button)
 
     init {
@@ -27,9 +24,8 @@ class HeaderViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         }
     }
 
-    fun bindTo(title: String, sub_title: String) {
+    fun bindTo(title: String) {
         header_title.text = title
-        header_sub_title.text = sub_title
     }
 
     companion object {

@@ -5,7 +5,10 @@
     android:id="@+id/search_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#141414"
+    android:background="@color/color_home_logo"
+    android:clickable="true"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
     tools:context=".view.search.SearchFragment">
 
     <androidx.appcompat.widget.Toolbar
