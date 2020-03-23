@@ -125,11 +125,9 @@
         android:id="@+id/viewResults"
         android:name="com.murrayde.animeking.view.community.results_screen.ViewResults"
         android:label="fragment_view_results"
-        tools:layout="@layout/fragment_view_results" >
-        <action
-            android:id="@+id/action_viewResults_to_reviewShareQuestions"
-            app:destination="@id/reviewShareQuestions" />
-        <argument android:name="list_questions"
+        tools:layout="@layout/fragment_view_results">
+        <argument
+            android:name="list_questions"
             app:argType="com.murrayde.animeking.model.community.CommunityQuestion[]"
             app:nullable="true" />
         <action
@@ -142,16 +140,6 @@
             app:argType="com.murrayde.animeking.model.community.AnimeAttributes.Attributes" />
     </fragment>
     <fragment
-        android:id="@+id/reviewShareQuestions"
-        android:name="com.murrayde.animeking.view.community.results_screen.review_questions.ReviewQuestions"
-        android:label="fragment_review_share_questions"
-        tools:layout="@layout/fragment_review_share_questions" >
-        <argument
-            android:name="list_questions"
-            app:argType="com.murrayde.animeking.model.community.CommunityQuestion[]"
-            app:nullable="true" />
-    </fragment>
-    <fragment
         android:id="@+id/profile"
         android:name="com.murrayde.animeking.view.profile.ProfileFragment"
         android:label="fragment_profile"
@@ -160,7 +148,7 @@
         android:id="@+id/more"
         android:name="com.murrayde.animeking.view.settings.SettingsFragment"
         android:label="fragment_settings"
-        tools:layout="@layout/fragment_settings" >
+        tools:layout="@layout/fragment_settings">
         <action
             android:id="@+id/action_more_to_authenticationActivity"
             app:destination="@id/authenticationActivity"
@@ -170,7 +158,7 @@
         android:id="@+id/answerRandomQuestions"
         android:name="com.murrayde.animeking.view.random.AnswerRandomQuestions"
         android:label="fragment_random_questions"
-        tools:layout="@layout/fragment_random_questions" >
+        tools:layout="@layout/fragment_random_questions">
         <action
             android:id="@+id/action_answerRandomQuestions_to_home"
             app:destination="@id/home" />

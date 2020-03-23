@@ -11,6 +11,7 @@
         android:id="@+id/header_logo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:contentDescription="@string/anime_image"
         android:fontFamily="@font/baloobhairegular"
         android:padding="16dp"
         android:src="@drawable/crown_list_screen"
@@ -23,11 +24,11 @@
         android:layout_width="175dp"
         android:layout_height="175dp"
         android:src="@drawable/background"
-        tools:src="@tools:sample/avatars"
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/header_logo" />
+        app:layout_constraintTop_toBottomOf="@+id/header_logo"
+        tools:src="@tools:sample/avatars" />
 
     <TextView
         android:id="@+id/edit_profile"
@@ -36,7 +37,7 @@
         android:background="#80FFFFFF"
         android:fontFamily="@font/baloobhairegular"
         android:gravity="center"
-        android:text="Edit Profile"
+        android:text="@string/edit_profile"
         android:textColor="@color/color_home_logo"
         app:layout_constraintBottom_toBottomOf="@+id/profile_image"
         app:layout_constraintEnd_toEndOf="@+id/profile_image"
@@ -60,12 +61,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/baloobhairegular"
-        android:text="@string/string_username"
         android:textColor="@color/color_white"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profile_name" />
+        app:layout_constraintTop_toBottomOf="@+id/profile_name"
+        tools:text="murraydean1029" />
 
     <LinearLayout
         android:id="@+id/community_layout"
@@ -94,7 +95,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/baloobhairegular"
-            android:text="Communities"
+            android:text="@string/communities"
             android:textColor="@color/color_white"
             android:textSize="12sp" />
     </LinearLayout>
@@ -125,7 +126,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/baloobhairegular"
-            android:text="Points"
+            android:text="@string/points"
             android:textColor="@color/color_white"
             android:textSize="12sp" />
     </LinearLayout>
@@ -156,7 +157,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/baloobhairegular"
-            android:text="Questions"
+            android:text="@string/questions"
             android:textColor="@color/color_white"
             android:textSize="12sp" />
     </LinearLayout>
@@ -187,7 +188,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/baloobhairegular"
-            android:text="Correct"
+            android:text="@string/correct"
             android:textColor="@color/color_white"
             android:textSize="12sp" />
 
@@ -199,7 +200,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:fontFamily="@font/baloobhairegular"
-        android:text="My Communities"
+        android:text="@string/my_communities"
         android:textColor="@color/color_white"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"

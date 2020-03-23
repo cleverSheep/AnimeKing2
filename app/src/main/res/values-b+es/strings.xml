@@ -1,0 +1,88 @@
+<resources>
+    <!-- App Name -->
+    <string name="app_name">Anime King</string>
+
+    <!-- Anime Image Content Description -->
+    <string name="anime_image">Anime Image</string>
+
+    <!-- Anime List Layout -->
+    <string name="random_anime">Anime Al Azar</string>
+    <string name="play">Jugar</string>
+
+    <!-- Anime Detail Layout -->
+    <string name="take_quiz">Jugar</string>
+    <string name="anime_title">Título de Anime</string>
+    <string name="join_community">Únete a la Comunidad</string>
+    <string name="member_count">14 members</string>
+    <string name="question_count">356 questions</string>
+    <string name="ask_question">Pregunta</string>
+
+    <!-- Answer Question Layout -->
+    <string name="next_question">Próxima Pregunta</string>
+
+    <!-- Ask Question Layout -->
+    <string name="enter_question">Ingrese la Pregunta</string>
+    <string name="submit_question">Enviar Pregunta</string>
+    <string name="wrong_choice">Mala Decisión</string>
+    <string name="correct_choice">Elección Correcta</string>
+    <string name="fix_answer_choice">Ingrese 1+ carácter para la opción de respuesta</string>
+    <string name="question_min">Ingrese más de 12 caracteres para la pregunta</string>
+
+    <!-- View Results Layout -->
+    <string name="game_over">Juego Terminado</string>
+    <string name="time_bonus">Tiempo Extra</string>
+    <string name="try_again">Inténtalo de Nuevo</string>
+    <string name="quit_game">Salir del Juego</string>
+    <string name="review_share_questions">Revisar y Compartir Preguntas</string>
+    <string name="lost_quote">\"Recuerda la lección, no la decepción.\"\n-Holo la Lobo Sabio</string>
+
+    <!-- Profile Layout -->
+    <string name="edit_profile">Editar Perfil</string>
+    <string name="communities">Comunidades</string>
+    <string name="points">Puntos</string>
+    <string name="questions">Preguntas</string>
+    <string name="correct">Correcto</string>
+    <string name="my_communities">Mis Comunidades</string>
+
+    <!-- Settings Layout -->
+    <string name="language">Idioma</string>
+    <string name="sound_effects">Efectos de Sonido</string>
+    <string name="in_game_music">Música en el Juego</string>
+    <string name="dark_mode">Modo Oscuro</string>
+    <string name="about">Sobre</string>
+    <string name="sign_out">Desconectar</string>
+    <string name="english">Inglés</string>
+    <string name="spanish">Español</string>
+    <string name="basic">Básico</string>
+    <string name="other">Otro</string>
+
+    <!-- Bottom Navigation Layout -->
+    <string name="home">Hogar</string>
+    <string name="search">Buscar</string>
+    <string name="profile">Perfil</string>
+    <string name="more">Más</string>
+
+    <!-- Splash Layout -->
+    <string name="slogan">¿Cuánto anime sabes?</string>
+    <string name="credits_author">Creado por Clarmoph Games</string>
+
+    <!-- Search Layout -->
+    <string name="search_for_anime">Buscar anime</string>
+    <string name="cancel">Cancelar</string>
+
+    <!-- Facebook social login -->
+    <string name="facebook_app_id">1847601048710162</string>
+    <string name="fb_login_protocol_scheme">fb1847601048710162</string>
+
+    <string name="credits">Credits</string>
+    <string name="credit_source">Icon made by Freepik from www.flaticon.com</string>
+    <string name="credits_audio">“Sound effects obtained from www.zapsplat.com“</string>
+    <string name="go_back_to_home_screen">Go Back To Home Screen</string>
+    <string name="accept">Accept</string>
+    <string name="compete">Compete</string>
+    <string name="community">Community</string>
+
+    <string name="not_enough_description">Each community requires at least 5 questions.\nAdd more questions to play trivia with this anime.</string>
+    <string name="not_enough_questions">Not Enough Questions</string>
+
+</resources>

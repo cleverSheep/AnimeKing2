@@ -91,8 +91,7 @@
         android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/fragment_detail_poster_image"
-        app:layout_constraintTop_toTopOf="@+id/barrier"
-        tools:text="@string/sample_text" />
+        app:layout_constraintTop_toTopOf="@+id/barrier" />
 
     <TextView
         android:id="@+id/fragment_detail_member_count"
@@ -102,7 +101,7 @@
         android:fontFamily="@font/baloobhairegular"
         android:gravity="center"
         android:paddingHorizontal="8dp"
-        android:text="14 members"
+        android:text="@string/member_count"
         android:textColor="@color/color_white"
         android:textSize="15sp"
         app:layout_constraintBottom_toTopOf="@+id/barrier"
@@ -119,7 +118,7 @@
         android:fontFamily="@font/baloobhairegular"
         android:gravity="center"
         android:paddingHorizontal="8dp"
-        android:text="356 questions"
+        android:text="@string/question_count"
         android:textColor="@color/color_white"
         android:textSize="15sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/fragment_detail_member_count"
@@ -145,11 +144,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/baloobhairegular"
-        android:text="PG"
         android:textAllCaps="true"
         android:textColor="@color/color_white"
         app:layout_constraintBottom_toTopOf="@+id/fragment_detail_title"
-        app:layout_constraintStart_toStartOf="@+id/fragment_detail_title" />
+        app:layout_constraintStart_toStartOf="@+id/fragment_detail_title"
+        tools:text="PG" />
 
     <View
         android:id="@+id/view3"
@@ -167,11 +166,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
         android:fontFamily="@font/baloobhairegular"
-        android:text="20177"
         android:textAllCaps="false"
         android:textColor="@color/color_white"
         app:layout_constraintBaseline_toBaselineOf="@+id/fragment_detail_age_rating"
-        app:layout_constraintStart_toEndOf="@+id/view3" />
+        app:layout_constraintStart_toEndOf="@+id/view3"
+        tools:text="2017" />
 
     <TextView
         android:id="@+id/fragment_detail_title"
@@ -181,14 +180,14 @@
         android:ellipsize="end"
         android:fontFamily="@font/baloobhairegular"
         android:maxLines="1"
+        android:text="@string/anime_title"
         android:textAlignment="viewStart"
         android:textColor="@android:color/white"
         android:textSize="23sp"
         app:layout_constraintBottom_toTopOf="@+id/barrier3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/fragment_detail_poster_image"
-        tools:ignore="RtlSymmetry"
-        tools:text="Anime Title" />
+        tools:ignore="RtlSymmetry" />
 
     <Button
         android:id="@+id/fragment_detail_join"
@@ -199,7 +198,7 @@
         android:background="@drawable/detail_join_btn_bg"
         android:drawableStart="@drawable/ic_add"
         android:fontFamily="@font/baloobhairegular"
-        android:text="Join Community"
+        android:text="@string/join_community"
         android:textAlignment="center"
         android:textAllCaps="false"
         android:textColor="@color/color_home_logo"
