@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#4E555E"
+    android:background="@color/color_home_logo"
     tools:context=".view.community.AnswerQuestion">
 
     <LinearLayout
@@ -25,7 +25,6 @@
             android:layout_weight="1"
             android:fontFamily="@font/baloobhairegular"
             android:gravity="center"
-            android:text="0/10"
             android:textColor="@color/color_white"
             android:textSize="27sp"
             android:textStyle="bold"
@@ -45,7 +44,6 @@
             android:layout_weight="1"
             android:fontFamily="@font/baloobhairegular"
             android:gravity="center"
-            android:text="17s"
             android:textColor="@color/color_white"
             android:textSize="27sp"
             android:textStyle="bold"
@@ -71,9 +69,10 @@
         android:id="@+id/tv_answer_title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/baloobhairegular"
         android:background="@drawable/answer_question_title"
+        android:fontFamily="@font/baloobhairegular"
         android:paddingStart="30dp"
+        android:paddingEnd="30dp"
         android:textAlignment="viewStart"
         android:textColor="@android:color/white"
         android:textSize="25sp"

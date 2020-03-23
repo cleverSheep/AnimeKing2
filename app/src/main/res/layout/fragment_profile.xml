@@ -5,35 +5,46 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/color_home_logo"
-    android:padding="8dp"
     tools:context=".view.profile.ProfileFragment">
 
     <ImageView
-        android:id="@+id/image"
+        android:id="@+id/header_logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/anime_image"
+        android:fontFamily="@font/baloobhairegular"
+        android:padding="16dp"
+        android:src="@drawable/crown_list_screen"
+        app:layout_constraintEnd_toEndOf="@+id/profile_image"
+        app:layout_constraintStart_toStartOf="@+id/profile_image"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/profile_image"
         android:layout_width="175dp"
         android:layout_height="175dp"
-        android:layout_marginTop="32dp"
         android:src="@drawable/background"
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/header_logo"
+        tools:src="@tools:sample/avatars" />
 
     <TextView
-        android:id="@+id/text"
+        android:id="@+id/edit_profile"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="#80FFFFFF"
         android:fontFamily="@font/baloobhairegular"
         android:gravity="center"
-        android:text="Edit Profile"
-        android:textColor="@color/color_grey"
-        app:layout_constraintBottom_toBottomOf="@+id/image"
-        app:layout_constraintEnd_toEndOf="@+id/image"
-        app:layout_constraintStart_toStartOf="@+id/image" />
+        android:text="@string/edit_profile"
+        android:textColor="@color/color_home_logo"
+        app:layout_constraintBottom_toBottomOf="@+id/profile_image"
+        app:layout_constraintEnd_toEndOf="@+id/profile_image"
+        app:layout_constraintStart_toStartOf="@+id/profile_image" />
 
     <TextView
-        android:id="@+id/tex1"
+        android:id="@+id/profile_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
@@ -43,146 +54,178 @@
         android:textSize="28sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text" />
+        app:layout_constraintTop_toBottomOf="@+id/edit_profile" />
 
     <TextView
-        android:id="@+id/tex2"
+        android:id="@+id/profile_user_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/baloobhairegular"
-        android:text="@murray1029"
         android:textColor="@color/color_white"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tex1" />
+        app:layout_constraintTop_toBottomOf="@+id/profile_name"
+        tools:text="murraydean1029" />
 
     <LinearLayout
-        android:id="@+id/text3"
-        android:layout_width="91dp"
+        android:id="@+id/community_layout"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:gravity="center"
         android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="@+id/text4"
-        app:layout_constraintEnd_toStartOf="@+id/text4"
+        app:layout_constraintBottom_toTopOf="@+id/textView6"
+        app:layout_constraintEnd_toStartOf="@+id/points_layout"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profile_user_name">
 
         <TextView
+            android:id="@+id/profile_communities_count"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/baloobhairegular"
-            android:text="13"
+            android:text="0"
             android:textColor="@color/color_white"
-            android:textSize="28sp"
+            android:textSize="24sp"
             android:textStyle="bold" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/baloobhairegular"
-            android:text="Communities"
+            android:text="@string/communities"
             android:textColor="@color/color_white"
-            android:textSize="15sp" />
+            android:textSize="12sp" />
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/text4"
-        android:layout_width="47dp"
+        android:id="@+id/points_layout"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="@+id/text5"
-        app:layout_constraintEnd_toStartOf="@+id/text5"
+        app:layout_constraintBottom_toBottomOf="@+id/community_layout"
+        app:layout_constraintEnd_toStartOf="@+id/questions_layout"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/text3">
+        app:layout_constraintStart_toEndOf="@+id/community_layout"
+        app:layout_constraintTop_toTopOf="@+id/community_layout">
 
         <TextView
+            android:id="@+id/profile_points_count"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/baloobhairegular"
-            android:text="13"
+            android:text="0"
             android:textColor="@color/color_white"
-            android:textSize="28sp"
+            android:textSize="24sp"
             android:textStyle="bold" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/baloobhairegular"
-            android:text="Points"
+            android:text="@string/points"
             android:textColor="@color/color_white"
-            android:textSize="16sp" />
+            android:textSize="12sp" />
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/text5"
-        android:layout_width="71dp"
+        android:id="@+id/questions_layout"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="@+id/text6"
-        app:layout_constraintEnd_toStartOf="@+id/text6"
+        app:layout_constraintBottom_toBottomOf="@+id/points_layout"
+        app:layout_constraintEnd_toStartOf="@+id/correct_layout"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/text4">
+        app:layout_constraintStart_toEndOf="@+id/points_layout"
+        app:layout_constraintTop_toTopOf="@+id/points_layout">
 
         <TextView
+            android:id="@+id/profile_question_count"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/baloobhairegular"
-            android:text="13"
+            android:text="0"
             android:textColor="@color/color_white"
-            android:textSize="28sp"
+            android:textSize="24sp"
             android:textStyle="bold" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/baloobhairegular"
-            android:text="Questions"
+            android:text="@string/questions"
             android:textColor="@color/color_white"
-            android:textSize="15sp" />
+            android:textSize="12sp" />
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/text6"
-        android:layout_width="55dp"
+        android:id="@+id/correct_layout"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
         android:gravity="center"
         android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="@+id/questions_layout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/text5"
-        app:layout_constraintTop_toBottomOf="@+id/tex2">
+        app:layout_constraintStart_toEndOf="@+id/questions_layout"
+        app:layout_constraintTop_toTopOf="@+id/questions_layout">
 
         <TextView
+            android:id="@+id/profile_correct_percentage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/baloobhairegular"
-            android:text="67%"
+            android:text="0%"
             android:textColor="@color/color_white"
-            android:textSize="28sp"
+            android:textSize="24sp"
             android:textStyle="bold" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/baloobhairegular"
-            android:text="Correct"
+            android:text="@string/correct"
             android:textColor="@color/color_white"
-            android:textSize="15sp" />
+            android:textSize="12sp" />
 
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:fontFamily="@font/baloobhairegular"
+        android:text="@string/my_communities"
+        android:textColor="@color/color_white"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/barrier2" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrier2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="bottom"
+        app:constraint_referenced_ids="community_layout"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="723dp" />
+
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/text7"
+        android:id="@+id/profile_list_communities"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:padding="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text4" />
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

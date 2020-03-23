@@ -48,8 +48,8 @@ class AskQuestion : Fragment() {
 
         tv_ask_question.text = attributes.titles.en ?: attributes.canonicalTitle
         Glide.with(this)
-                .load(attributes.posterImage.original)
-                .placeholder(R.drawable.castle)
+                .load(attributes.coverImage?.original ?: attributes.posterImage.original)
+                .placeholder(R.drawable.crown_list_screen)
                 .dontAnimate()
                 .into(iv_ask_question)
 

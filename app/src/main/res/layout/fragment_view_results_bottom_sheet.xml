@@ -4,7 +4,7 @@
     android:id="@+id/results_bottom_sheet"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/white"
+    android:background="@color/color_home_logo"
     android:orientation="vertical"
     app:behavior_peekHeight="?actionBarSize"
     app:layout_behavior="@string/bottom_sheet_behavior">
@@ -33,7 +33,7 @@
             android:layout_marginStart="16dp"
             android:layout_toEndOf="@+id/results_toggle_button"
             android:fontFamily="@font/baloobhairegular"
-            android:text="Review and Share Questions"
+            android:text="@string/review_share_questions"
             android:textAlignment="center"
             android:textColor="@color/color_grey"
             android:textSize="20sp" />
@@ -44,7 +44,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/bottom_sheet_rv"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_weight="1" />
 
 

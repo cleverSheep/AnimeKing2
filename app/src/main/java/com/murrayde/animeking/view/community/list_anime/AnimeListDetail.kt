@@ -14,12 +14,12 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.navigation.ui.setupWithNavController
 import com.bumptech.glide.Glide
-import com.bumptech.glide.load.resource.bitmap.CenterCrop
-import com.bumptech.glide.request.RequestOptions
 import com.murrayde.animeking.R
 import com.murrayde.animeking.model.community.QuestionFactory
 import com.murrayde.animeking.util.ImageUtil
+import com.murrayde.animeking.view.MainActivity
 import kotlinx.android.synthetic.main.fragment_detail.*
+
 
 class AnimeListDetail : Fragment() {
 

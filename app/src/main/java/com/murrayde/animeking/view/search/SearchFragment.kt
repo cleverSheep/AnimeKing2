@@ -37,15 +37,19 @@ class SearchFragment : Fragment() {
         listAdapter = SearchRecyclerViewAdapter(activity!!)
         showKeyboard()
 
+        search_layout.setOnTouchListener { _, _ ->
+            hideKeyboard()
+            false
+        }
+
         cancel_search.setOnClickListener {
             hideKeyboard()
             PagingUtil.RESET_PAGING_OFFSET()
             val action = SearchFragmentDirections.actionSearchFragmentToListFragment()
             Navigation.findNavController(it).navigate(action)
         }
-
         viewModel = ViewModelProvider(this).get(SearchFragmentViewModel::class.java)
-        viewModel.getRequestedAnime().observe(this, Observer<List<AnimeData>> { list_anime ->
+        viewModel.getRequestedAnime().observe(activity!!, Observer<List<AnimeData>> { list_anime ->
             listAdapter.updateList(list_anime)
         })
 
@@ -58,12 +62,12 @@ class SearchFragment : Fragment() {
     private fun showKeyboard() {
         search_edit_text.requestFocus()
         val imm = activity!!.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-        imm.showSoftInput(search_edit_text as View, InputMethodManager.SHOW_IMPLICIT)
+        imm.showSoftInput(search_edit_text as View, InputMethodManager.HIDE_NOT_ALWAYS)
     }
 
     private fun hideKeyboard() {
         val imm = activity!!.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-        imm.hideSoftInputFromWindow(search_layout.windowToken, 0)
+        imm.hideSoftInputFromWindow(search_layout.windowToken, InputMethodManager.HIDE_NOT_ALWAYS)
     }
 
     private fun performSearch(viewModel: SearchFragmentViewModel) {
