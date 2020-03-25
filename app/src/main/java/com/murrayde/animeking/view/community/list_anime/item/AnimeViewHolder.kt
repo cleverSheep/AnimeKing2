@@ -22,16 +22,10 @@ class AnimeViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     private val imageView = itemView.findViewById<ImageView>(R.id.iv_anime_image)
 
     init {
-        Timber.d("Setup")
-        view.setOnClickListener(object : View.OnClickListener{
-            override fun onClick(p0: View?) {
-                val action = AnimeListDirections.actionListFragmentToDetailFragment(data!!.attributes)
-                Navigation.findNavController(p0!!).navigate(action)
-            }
-
-        })
-        val set = view.hasOnClickListeners()
-        Timber.d("Does it : $set")
+        view.setOnClickListener { v ->
+            val action = AnimeListDirections.actionListFragmentToDetailFragment(data!!.attributes)
+            Navigation.findNavController(v).navigate(action)
+        }
     }
 
     var data: AnimeData? = null
