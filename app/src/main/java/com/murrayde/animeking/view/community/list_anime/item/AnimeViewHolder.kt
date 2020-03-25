@@ -7,12 +7,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.murrayde.animeking.R
 import com.murrayde.animeking.network.community.api.AnimeData
 import com.murrayde.animeking.util.ImageUtil
 import com.murrayde.animeking.view.community.list_anime.AnimeListDirections
+import timber.log.Timber
 
 class AnimeViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
@@ -20,10 +22,16 @@ class AnimeViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     private val imageView = itemView.findViewById<ImageView>(R.id.iv_anime_image)
 
     init {
-        view.setOnClickListener {
-            val action = AnimeListDirections.actionListFragmentToDetailFragment(data!!.attributes)
-            Navigation.findNavController(it).navigate(action)
-        }
+        Timber.d("Setup")
+        view.setOnClickListener(object : View.OnClickListener{
+            override fun onClick(p0: View?) {
+                val action = AnimeListDirections.actionListFragmentToDetailFragment(data!!.attributes)
+                Navigation.findNavController(p0!!).navigate(action)
+            }
+
+        })
+        val set = view.hasOnClickListeners()
+        Timber.d("Does it : $set")
     }
 
     var data: AnimeData? = null
