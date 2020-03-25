@@ -43,7 +43,7 @@ class AnswerRandomQuestions : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        media_default = create(activity, R.raw.button_click_sound_effect)
+        media_default = create(activity!!, R.raw.button_click_sound_effect)
         media_correct = create(activity, R.raw.button_click_correct)
         media_wrong = create(activity, R.raw.button_click_wrong)
 
@@ -83,7 +83,7 @@ class AnswerRandomQuestions : Fragment() {
     }
 
     private fun navigateBackHome(view: View) {
-        val action = AnswerRandomQuestionsDirections.actionAnswerRandomQuestionsToHome()
+        val action = AnswerRandomQuestionsDirections.actionRandomQuestionsToLandingScreen2()
         Navigation.findNavController(view).navigate(action)
     }
 

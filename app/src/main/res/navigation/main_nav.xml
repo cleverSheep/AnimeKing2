@@ -158,4 +158,8 @@
         android:name="com.murrayde.animeking.view.auth.AuthenticationActivity"
         android:label="activity_authentication"
         tools:layout="@layout/activity_authentication" />
+    <fragment
+        android:id="@+id/more"
+        android:name="com.murrayde.animeking.view.settings.SettingsFragment"
+        android:label="SettingsFragment" />
 </navigation>

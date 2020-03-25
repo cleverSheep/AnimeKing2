@@ -29,7 +29,7 @@ public class MainActivityViewModel extends ViewModel {
 
         PagedList.Config pagingConfig = new PagedList.Config.Builder()
                 .setPrefetchDistance(PagingUtil.PAGING_PREFETCH)
-                .setEnablePlaceholders(true)
+                .setEnablePlaceholders(false)
                 .build();
         animeData = new LivePagedListBuilder<>(animeDataSourceFactory, pagingConfig).build();
     }
