@@ -10,7 +10,7 @@
         android:layout_height="400dp"
         android:adjustViewBounds="true"
         android:scaleType="centerCrop"
-        android:src="@drawable/grimgar_background"
+        android:src="@drawable/dbzpriginal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
