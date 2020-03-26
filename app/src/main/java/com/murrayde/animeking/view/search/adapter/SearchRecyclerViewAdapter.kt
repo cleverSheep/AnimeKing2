@@ -6,6 +6,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
@@ -41,7 +42,6 @@ class SearchRecyclerViewAdapter(val context: Context) : RecyclerView.Adapter<Sea
     override fun onClick(view: View) {
         list_anime.forEach { current_anime ->
             if (view.tag == current_anime.id) {
-                Timber.d("Anime clicked")
                 val action = SearchFragmentDirections.actionSearchFragmentToDetailFragment(current_anime.attributes)
                 Navigation.findNavController(view).navigate(action)
             }

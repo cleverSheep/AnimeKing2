@@ -5,6 +5,7 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.content.res.Configuration
 import android.content.res.Resources
+import android.content.Context
 import android.os.Bundle
 import android.util.DisplayMetrics
 import androidx.preference.PreferenceFragmentCompat
@@ -30,10 +31,33 @@ class SettingsFragment : PreferenceFragmentCompat(), SharedPreferences.OnSharedP
     }
 
     override fun onSharedPreferenceChanged(preference: SharedPreferences?, key: String?) {
+
+        val sharedPref = activity?.getPreferences(Context.MODE_PRIVATE) ?: return
+
         if (key == "language") {
             val language = preference?.getString("language", "")
             setLocale(language)
         }
+        if(key == "sound_effects") {
+            with (sharedPref.edit()) {
+                putBoolean(getString(R.string.sound_effects_enabled), preference?.getBoolean("sound_effects", true)!!)
+                commit()
+            }
+        }
+        if(key == "in_game_music") {
+            with (sharedPref.edit()) {
+                putBoolean(getString(R.string.game_music_enabled), preference?.getBoolean("in_game_music", true)!!)
+                commit()
+            }
+        }
+
+        if(key == "dark_mode") {
+            with (sharedPref.edit()) {
+                putBoolean(getString(R.string.dark_theme_enabled), preference?.getBoolean("dark_theme_enabled", true)!!)
+                commit()
+            }
+        }
+
     }
 
     fun setLocale(lang: String?) {
