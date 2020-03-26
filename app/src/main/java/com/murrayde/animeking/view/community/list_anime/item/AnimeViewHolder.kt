@@ -26,6 +26,10 @@ class AnimeViewHolder(view: View) : RecyclerView.ViewHolder(view) {
             val action = AnimeListDirections.actionListFragmentToDetailFragment(data!!.attributes)
             Navigation.findNavController(v).navigate(action)
         }
+        view.setOnLongClickListener {
+            Toast.makeText(view.context, "${data?.attributes?.titles?.en ?: data?.attributes?.canonicalTitle}", Toast.LENGTH_SHORT).show()
+            true
+        }
     }
 
     var data: AnimeData? = null

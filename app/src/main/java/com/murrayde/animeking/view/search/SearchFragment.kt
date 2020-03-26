@@ -54,7 +54,7 @@ class SearchFragment : Fragment() {
         })
 
         search_rv.adapter = listAdapter
-        search_rv.layoutManager = GridLayoutManager(activity!!, 2)
+        search_rv.layoutManager = GridLayoutManager(activity, 2)
 
         performSearch(viewModel)
     }
