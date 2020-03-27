@@ -2,6 +2,7 @@ package com.murrayde.animeking.view
 
 import android.app.Activity
 import android.content.Context
+import android.os.Build
 import android.os.Bundle
 import android.view.MotionEvent
 import android.view.View
@@ -20,6 +21,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        fullScreenAll()
         window.addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN)
 
         val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
@@ -35,6 +37,18 @@ class MainActivity : AppCompatActivity() {
                 }
                 else -> bottom.visibility = View.VISIBLE
             }
+        }
+    }
+
+    private fun fullScreenAll() {
+        if (Build.VERSION.SDK_INT in 12..18) { // lower api
+            val v = this.window.decorView
+            v.systemUiVisibility = View.GONE
+        } else {
+            //for new api versions.
+            val decorView = window.decorView
+            val uiOptions = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
+            decorView.systemUiVisibility = uiOptions
         }
     }
 

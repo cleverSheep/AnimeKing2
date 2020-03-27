@@ -142,5 +142,8 @@ dependencies {
     implementation 'androidx.preference:preference:1.1.0'
     implementation "com.orhanobut:hawk:2.0.1"
 
+    // Circular profile image
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+
 }
 apply plugin: 'com.google.gms.google-services'
