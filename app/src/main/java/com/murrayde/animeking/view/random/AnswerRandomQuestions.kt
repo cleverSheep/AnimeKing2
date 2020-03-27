@@ -4,6 +4,7 @@ package com.murrayde.animeking.view.random
 
 
 import android.content.DialogInterface
+import android.content.SharedPreferences
 import android.media.MediaPlayer
 import android.media.MediaPlayer.create
 import android.os.Bundle
@@ -19,6 +20,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
+import androidx.preference.PreferenceManager
 import com.murrayde.animeking.R
 import com.murrayde.animeking.model.community.CommunityQuestion
 import com.murrayde.animeking.model.random.Result
@@ -34,6 +36,8 @@ class AnswerRandomQuestions : Fragment() {
     private lateinit var media_wrong: MediaPlayer
     private var current_score: Int = 0
     private lateinit var countDownTimer: CountDownTimer
+    private var media_is_playing = true
+    private lateinit var sharedPreferences: SharedPreferences
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -46,6 +50,8 @@ class AnswerRandomQuestions : Fragment() {
         media_default = create(activity, R.raw.button_click_sound_effect)
         media_correct = create(activity, R.raw.button_click_correct)
         media_wrong = create(activity, R.raw.button_click_wrong)
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
+        media_is_playing = sharedPreferences.getBoolean("sound_effects", true)
 
         var randomQuestions: ArrayList<Result>
 
@@ -162,7 +168,7 @@ class AnswerRandomQuestions : Fragment() {
 
     private fun alertWrongResponse(view: View, list_buttons: ArrayList<Button>, correct_response: Spanned) {
         val button = view as Button
-        media_wrong.start()
+        if(media_is_playing) media_wrong.start()
         button.background = resources.getDrawable(R.drawable.answer_wrong_background)
         button.setTextColor(resources.getColor(R.color.color_white))
         repeat(list_buttons.size) { position ->
@@ -175,13 +181,13 @@ class AnswerRandomQuestions : Fragment() {
 
     private fun alertCorrectResponse(view: View) {
         val button = view as Button
-        media_correct.start()
+        if(media_is_playing) media_correct.start()
         button.background = resources.getDrawable(R.drawable.answer_correct_background)
         button.setTextColor(resources.getColor(R.color.color_white))
     }
 
     private fun prepareForNextQuestion(randomQuestions: ArrayList<Result>, track: Int, view: View, list_buttons: ArrayList<Button>) {
-        media_default.start()
+        if(media_is_playing) media_default.start()
         random_question_next_btn.visibility = View.INVISIBLE
         repeat(list_buttons.size) { position ->
             list_buttons[position].setBackgroundColor(resources.getColor(R.color.color_white))
