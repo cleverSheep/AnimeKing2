@@ -40,6 +40,12 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    override fun onStart() {
+        super.onStart()
+        fullScreenAll()
+        window.addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN)
+    }
+
     private fun fullScreenAll() {
         if (Build.VERSION.SDK_INT in 12..18) { // lower api
             val v = this.window.decorView
