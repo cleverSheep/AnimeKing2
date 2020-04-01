@@ -54,10 +54,10 @@
         <action
             android:id="@+id/action_detailFragment_to_listFragment"
             app:destination="@id/home"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_right"
-            app:popExitAnim="@anim/slide_out_left"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
             app:popUpTo="@+id/detailFragment"
             app:popUpToInclusive="true" />
     </fragment>

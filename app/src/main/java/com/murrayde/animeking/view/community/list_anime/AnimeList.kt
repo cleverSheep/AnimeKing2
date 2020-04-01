@@ -35,7 +35,7 @@ class AnimeList : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        listAdapter = AnimeListAdapter()
+        listAdapter = AnimeListAdapter(activity!!)
         val viewModel = ViewModelProvider(this).get(MainActivityViewModel::class.java)
 
         rv_anime.apply {

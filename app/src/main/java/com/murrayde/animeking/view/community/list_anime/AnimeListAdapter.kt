@@ -3,16 +3,18 @@
 package com.murrayde.animeking.view.community.list_anime
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.view.ViewGroup
 import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.murrayde.animeking.R
 import com.murrayde.animeking.network.community.api.AnimeData
 import com.murrayde.animeking.view.community.list_anime.item.AnimeViewHolder
 import com.murrayde.animeking.view.community.list_anime.item.HeaderViewHolder
 import timber.log.Timber
 
-class AnimeListAdapter : PagedListAdapter<AnimeData, RecyclerView.ViewHolder>(diffCallback) {
+class AnimeListAdapter(val context: Context) : PagedListAdapter<AnimeData, RecyclerView.ViewHolder>(diffCallback) {
 
     private val DATA_VIEW_TYPE = 1
     private val HEADER_VIEW_TYPE = 2
@@ -26,7 +28,7 @@ class AnimeListAdapter : PagedListAdapter<AnimeData, RecyclerView.ViewHolder>(di
             /** IndexOutOfBounds exception occurs when using item position*/
             (holder as AnimeViewHolder).bindTo(getItem(position - 1))
         } else {
-            (holder as HeaderViewHolder).bindTo("Random Anime")
+            (holder as HeaderViewHolder).bindTo(context.resources.getString(R.string.random_anime))
         }
     }
 

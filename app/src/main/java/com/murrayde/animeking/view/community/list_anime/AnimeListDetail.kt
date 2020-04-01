@@ -81,6 +81,11 @@ class AnimeListDetail : Fragment() {
             val action = AnimeListDetailDirections.actionDetailFragmentToAskQuestionFragment(attributes)
             Navigation.findNavController(view).navigate(action)
         }
+        fragment_detail_home.setOnClickListener {
+            if (media_is_playing) media.start()
+            val action = AnimeListDetailDirections.actionDetailFragmentToListFragment()
+            Navigation.findNavController(view).navigate(action)
+        }
     }
 
     private fun alertNotEnoughQuestions(view: View) {
