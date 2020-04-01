@@ -25,7 +25,7 @@
             android:layout_weight="1"
             android:fontFamily="@font/baloobhairegular"
             android:gravity="center"
-            android:text="0/10"
+            android:text="0/10X"
             android:textColor="@color/color_white"
             android:textSize="27sp"
             android:textStyle="bold"

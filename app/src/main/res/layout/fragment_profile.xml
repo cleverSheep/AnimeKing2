@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@color/color_home_logo"
     android:layout_height="match_parent"
     tools:context=".view.profile.ProfileFragment">
 
@@ -13,7 +14,7 @@
         android:src="@drawable/background"
         app:layout_constraintDimensionRatio="16:9"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_percent="0.7"
+        app:layout_constraintHeight_percent="0.55"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/backgrounds/scenic[0]" />
@@ -41,8 +42,8 @@
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/profile_imageds"
-        android:layout_width="96dp"
-        android:layout_height="96dp"
+        android:layout_width="78dp"
+        android:layout_height="78dp"
         android:layout_marginStart="16dp"
         android:src="@drawable/small_poster"
         app:civ_border_color="#FFFFFF"
@@ -83,20 +84,23 @@
         android:id="@+id/button2"
         android:layout_width="48dp"
         android:layout_height="48dp"
+        android:layout_marginTop="32dp"
         android:background="@drawable/profile_stats_button"
         android:fontFamily="@font/baloobhairegular"
         android:text="13"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/textView2"
+        android:textColor="@color/color_home_logo"
         app:layout_constraintEnd_toStartOf="@+id/button3"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profile_username"
         tools:text="13" />
 
     <Button
         android:id="@+id/button3"
         android:layout_width="48dp"
         android:layout_height="48dp"
+        android:textColor="@color/color_home_logo"
         android:background="@drawable/profile_stats_button"
         android:fontFamily="@font/baloobhairegular"
         android:text="13"
@@ -110,6 +114,7 @@
     <Button
         android:id="@+id/button4"
         android:layout_width="48dp"
+        android:textColor="@color/color_home_logo"
         android:layout_height="48dp"
         android:background="@drawable/profile_stats_button"
         android:fontFamily="@font/baloobhairegular"
@@ -124,6 +129,7 @@
     <Button
         android:id="@+id/button5"
         android:layout_width="48dp"
+        android:textColor="@color/color_home_logo"
         android:layout_height="48dp"
         android:background="@drawable/profile_stats_button"
         android:fontFamily="@font/baloobhairegular"
@@ -139,15 +145,14 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
         android:fontFamily="@font/baloobhairegular"
         android:text="@string/communities"
         android:textColor="@color/color_white"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@id/profile_bottomnav_placeholder"
         app:layout_constraintEnd_toEndOf="@+id/button2"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="@+id/button2" />
+        app:layout_constraintStart_toStartOf="@+id/button2"
+        app:layout_constraintTop_toBottomOf="@+id/button2" />
 
     <TextView
         android:id="@+id/textView3"
