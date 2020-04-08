@@ -13,7 +13,7 @@
         <item name="colorControlNormal">@color/color_white</item>
     </style>
 
-    <style name="TestingTheme" parent="ThemeOverlay.AppCompat.Dark" />
+    <style name="TestingTheme" parent="ThemeOverlay.AppCompat.DayNight" />
 
     <style name="TextAppearance.TabsFont" parent="android:TextAppearance">
         <item name="android:fontFamily">@font/baloobhairegular</item>
