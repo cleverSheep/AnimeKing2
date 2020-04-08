@@ -32,11 +32,11 @@
         android:layout_marginStart="8dp"
         android:paddingBottom="16dp"
         android:layout_marginTop="8dp"
-        android:drawableTop="@drawable/crown_list_screen"
+        android:drawableTop="@drawable/header_logo_image"
         android:fontFamily="@font/baloobhairegular"
         android:text="@string/app_name"
         android:textColor="@color/color_white"
-        android:textSize="22dp"
+        android:textSize="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
