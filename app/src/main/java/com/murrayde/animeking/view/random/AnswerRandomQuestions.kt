@@ -89,7 +89,7 @@ class AnswerRandomQuestions : Fragment() {
     }
 
     private fun navigateBackHome(view: View) {
-        val action = AnswerRandomQuestionsDirections.actionAnswerRandomQuestionsToHome()
+        val action = AnswerRandomQuestionsDirections.actionRandomQuestionsToLandingScreen2()
         Navigation.findNavController(view).navigate(action)
     }
 
