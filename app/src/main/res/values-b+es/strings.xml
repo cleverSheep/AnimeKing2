@@ -12,10 +12,13 @@
     <!-- Anime Detail Layout -->
     <string name="take_quiz">Jugar</string>
     <string name="anime_title">Título de Anime</string>
+    <string name="single_player">Una jugadora</string>
+    <string name="multi_player">Multijugador</string>
     <string name="join_community">Únete a la Comunidad</string>
     <string name="member_count">14 members</string>
     <string name="question_count">356 questions</string>
     <string name="ask_question">Pregunta</string>
+    <string name="coming_soon">Próximamente!</string>
 
     <!-- Answer Question Layout -->
     <string name="next_question">Próxima Pregunta</string>

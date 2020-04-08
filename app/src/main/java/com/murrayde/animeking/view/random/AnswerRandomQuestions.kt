@@ -191,7 +191,7 @@ class AnswerRandomQuestions : Fragment() {
         random_question_next_btn.visibility = View.INVISIBLE
         repeat(list_buttons.size) { position ->
             list_buttons[position].setBackgroundColor(resources.getColor(R.color.color_white))
-            list_buttons[position].setTextColor(resources.getColor(R.color.color_grey))
+            list_buttons[position].setTextColor(resources.getColor(R.color.color_black))
             list_buttons[position].background = resources.getDrawable(R.drawable.answer_question_background)
             list_buttons[position].isClickable = true
         }

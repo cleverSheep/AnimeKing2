@@ -33,48 +33,76 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <Button
+        android:id="@+id/fragment_detail_take_quiz"
+        android:layout_width="353dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:gravity="center"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="64dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/home_play_background"
+        android:drawableStart="@drawable/ic_person_24px"
+        android:fontFamily="@font/baloobhairegular"
+        android:text="@string/single_player"
+        android:textAlignment="center"
+        android:textColor="@color/color_home_logo"
+        android:textSize="22sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fragment_detail_description">
+        app:layout_constraintTop_toBottomOf="@+id/fragment_detail_description"
+        app:layout_constraintWidth_percent="0.9" />
 
-        <Button
-            android:id="@+id/fragment_detail_take_quiz"
-            android:layout_width="327dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:background="@drawable/home_play_background"
-            android:drawableStart="@drawable/crown_list_screen"
-            android:fontFamily="@font/baloobhairegular"
-            android:text="@string/take_quiz"
-            android:textColor="@color/color_white"
-            android:textSize="22sp"
-            app:layout_constraintBottom_toTopOf="@+id/fragment_detail_ask_question"
-            app:layout_constraintTop_toBottomOf="@+id/fragment_detail_description"
-            tools:layout_editor_absoluteX="43dp" />
 
-        <Button
-            android:id="@+id/fragment_detail_ask_question"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/fragment_detail_ask_question_bg"
-            android:drawableStart="@drawable/question_answer"
-            android:drawablePadding="16dp"
-            android:fontFamily="@font/baloobhairegular"
-            android:text="@string/ask_question"
-            android:textColor="@color/color_white"
-            android:textSize="22sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fragment_detail_take_quiz"
-            tools:layout_editor_absoluteX="43dp" />
-    </LinearLayout>
+    <Button
+        android:id="@+id/fragment_detail_ask_question"
+        android:layout_width="353dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/home_play_background"
+        android:drawableStart="@drawable/question_answer"
+        android:fontFamily="@font/baloobhairegular"
+        android:text="@string/ask_question"
+        android:textColor="@color/color_home_logo"
+        android:textSize="22sp"
+        app:layout_constraintEnd_toEndOf="@+id/fragment_detail_multiplayer"
+        app:layout_constraintStart_toStartOf="@+id/fragment_detail_multiplayer"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_detail_multiplayer"
+        app:layout_constraintWidth_percent="0.9" />
 
+    <Button
+        android:id="@+id/fragment_detail_home"
+        android:layout_width="353dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:background="@drawable/home_compete_background"
+        android:drawableStart="@drawable/ic_home_black_24dp"
+        android:fontFamily="@font/baloobhairegular"
+        android:text="@string/home"
+        android:textColor="@color/color_home_logo"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/fragment_detail_ask_question"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/fragment_detail_ask_question"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_detail_ask_question"
+        app:layout_constraintWidth_percent="0.9" />
+
+    <Button
+        android:id="@+id/fragment_detail_multiplayer"
+        android:layout_width="353dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/home_play_background"
+        android:drawableStart="@drawable/ic_people_black_24dp"
+        android:fontFamily="@font/baloobhairegular"
+        android:foreground="@drawable/conceal_frame"
+        android:text="@string/multi_player"
+        android:textColor="@color/color_home_logo"
+        android:textSize="22sp"
+        app:layout_constraintEnd_toEndOf="@+id/fragment_detail_take_quiz"
+        app:layout_constraintStart_toStartOf="@+id/fragment_detail_take_quiz"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_detail_take_quiz"
+        app:layout_constraintWidth_percent="0.9" />
 
     <TextView
         android:id="@+id/fragment_detail_description"

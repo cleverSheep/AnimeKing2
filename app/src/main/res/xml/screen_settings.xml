@@ -29,7 +29,11 @@
         <Preference
             app:icon="@drawable/ic_info_black_24dp"
             app:key="about"
-            app:title="@string/about" />
+            app:title="@string/about">
+            <intent
+                android:targetClass="com.murrayde.animeking.view.landing_screen.HomeScreenActivity"
+                android:targetPackage="com.murrayde.animeking" />
+        </Preference>
         <Preference
             app:icon="@drawable/ic_exit_to_app_black_24dp"
             app:key="sign_out"

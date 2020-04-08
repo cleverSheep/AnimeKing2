@@ -11,7 +11,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fitsSystemWindows="true"
-        android:theme="@android:style/ThemeOverlay.Material.Light"
         android:translationZ="2dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -40,8 +39,7 @@
             android:drawableTop="@drawable/ic_crownlogo"
             android:drawablePadding="15dp"
             android:padding="15dp"
-            android:text="@string/credit_source"
-            android:textColorLink="@color/color_grey" />
+            android:text="@string/credit_source" />
 
     </androidx.cardview.widget.CardView>
 
@@ -67,8 +65,7 @@
             android:drawableTop="@drawable/ic_box"
             android:drawablePadding="15dp"
             android:padding="15dp"
-            android:text="@string/credit_source"
-            android:textColorLink="@color/color_grey" />
+            android:text="@string/credit_source" />
 
     </androidx.cardview.widget.CardView>
 
@@ -94,8 +91,7 @@
             android:gravity="center"
             android:padding="15dp"
             android:text="@string/credits_audio"
-            android:textAlignment="center"
-            android:textColorLink="@color/color_grey" />
+            android:textAlignment="center"/>
 
     </androidx.cardview.widget.CardView>
 

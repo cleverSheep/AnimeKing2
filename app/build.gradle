@@ -39,6 +39,10 @@ android {
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
+
+    kapt {
+        correctErrorTypes = true
+    }
 }
 
 dependencies {
@@ -141,6 +145,15 @@ dependencies {
     // Settings preference dependency
     implementation 'androidx.preference:preference:1.1.0'
     implementation "com.orhanobut:hawk:2.0.1"
+
+    // Circular profile image
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+
+    // Epoxy
+    implementation 'com.airbnb.android:epoxy:3.9.0'
+    implementation 'com.airbnb.android:epoxy-paging:3.9.0' // Paging Support
+    // Add the annotation processor if you are using Epoxy's annotations (recommended)
+    kapt 'com.airbnb.android:epoxy-processor:3.9.0'
 
 }
 apply plugin: 'com.google.gms.google-services'

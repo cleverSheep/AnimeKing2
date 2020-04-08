@@ -3,50 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/home_nav"
-    app:startDestination="@id/landingScreen2">
-
-    <fragment
-        android:id="@+id/landingScreen2"
-        android:name="com.murrayde.animeking.view.landing_screen.LandingScreen"
-        tools:layout="@layout/fragment_landing_screen">
-        <action
-            android:id="@+id/action_landingScreen2_to_mainActivity"
-            app:destination="@id/mainActivity"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popUpToInclusive="false" />
-        <action
-            android:id="@+id/action_landingScreen2_to_credits"
-            app:destination="@id/credits"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left" />
-        <action
-            android:id="@+id/action_landingScreen2_to_randomQuestions"
-            app:destination="@id/randomQuestions"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left" />
-    </fragment>
-    <activity
-        android:id="@+id/mainActivity"
-        android:name="com.murrayde.animeking.view.MainActivity"
-        tools:layout="@layout/activity_main" />
+    app:startDestination="@id/credits">
     <fragment
         android:id="@+id/credits"
         android:name="com.murrayde.animeking.view.landing_screen.Credits"
-        android:label="Credits"
-        tools:layout="@layout/fragment_credits">
-        <action
-            android:id="@+id/action_credits_to_landingScreen2"
-            app:destination="@id/landingScreen2"
-            app:enterAnim="@anim/slide_in_left"
-            app:exitAnim="@anim/slide_out_right" />
-    </fragment>
-    <fragment
-        android:id="@+id/randomQuestions"
-        android:name="com.murrayde.animeking.view.random.AnswerRandomQuestions"
-        tools:layout="@layout/fragment_random_questions" >
-        <action
-            android:id="@+id/action_randomQuestions_to_landingScreen2"
-            app:destination="@id/landingScreen2" />
-    </fragment>
+        android:label="About"
+        tools:layout="@layout/fragment_credits" />
 </navigation>

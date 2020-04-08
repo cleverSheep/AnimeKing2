@@ -12,10 +12,13 @@
     <!-- Anime Detail Layout -->
     <string name="take_quiz">Take Quiz</string>
     <string name="anime_title">Anime Title</string>
+    <string name="single_player">Single Player</string>
+    <string name="multi_player">Multiplayer</string>
     <string name="join_community">Join Community</string>
     <string name="member_count">14 members</string>
     <string name="question_count">356 questions</string>
     <string name="ask_question">Ask Question</string>
+    <string name="coming_soon">Coming Soon!</string>
 
     <!-- Answer Question Layout -->
     <string name="next_question">Next Question</string>
