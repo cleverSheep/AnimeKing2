@@ -49,6 +49,9 @@
             android:name=".view.MainActivity"
             android:configChanges="locale|orientation"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".view.landing_screen.HomeScreenActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

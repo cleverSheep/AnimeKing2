@@ -7,12 +7,15 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
+import com.airbnb.epoxy.EpoxyModelClass
 import com.murrayde.animeking.R
 import com.murrayde.animeking.network.community.api.AnimeData
 import com.murrayde.animeking.util.ImageUtil
 import com.murrayde.animeking.view.community.list_anime.AnimeListDirections
+import timber.log.Timber
 
 class AnimeViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
@@ -20,9 +23,13 @@ class AnimeViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     private val imageView = itemView.findViewById<ImageView>(R.id.iv_anime_image)
 
     init {
-        view.setOnClickListener {
+        view.setOnClickListener { v ->
             val action = AnimeListDirections.actionListFragmentToDetailFragment(data!!.attributes)
-            Navigation.findNavController(it).navigate(action)
+            Navigation.findNavController(v).navigate(action)
+        }
+        view.setOnLongClickListener {
+            Toast.makeText(view.context, "${data?.attributes?.titles?.en ?: data?.attributes?.canonicalTitle}", Toast.LENGTH_SHORT).show()
+            true
         }
     }
 

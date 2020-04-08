@@ -18,7 +18,6 @@
     <style name="TextAppearance.TabsFont" parent="android:TextAppearance">
         <item name="android:fontFamily">@font/baloobhairegular</item>
         <item name="android:textSize">20sp</item>
-        <item name="android:textColor">@color/color_grey</item>
     </style>
 
     <style name="MeneNavTheme">

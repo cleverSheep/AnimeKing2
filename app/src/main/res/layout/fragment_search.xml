@@ -5,7 +5,6 @@
     android:id="@+id/search_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/color_home_logo"
     android:clickable="true"
     android:focusable="true"
     android:focusableInTouchMode="true"
@@ -44,6 +43,7 @@
     </androidx.appcompat.widget.Toolbar>
 
     <TextView
+        android:theme="@style/Theme.AppCompat.DayNight"
         android:id="@+id/cancel_search"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

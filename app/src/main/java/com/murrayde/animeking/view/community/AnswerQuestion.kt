@@ -4,6 +4,7 @@ package com.murrayde.animeking.view.community
 
 
 import android.content.DialogInterface
+import android.content.SharedPreferences
 import android.media.MediaPlayer
 import android.media.MediaPlayer.create
 import android.os.Bundle
@@ -16,6 +17,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
+import androidx.preference.PreferenceManager
 import com.google.firebase.firestore.FirebaseFirestore
 import com.murrayde.animeking.R
 import com.murrayde.animeking.model.community.CommunityQuestion
@@ -34,6 +36,8 @@ class AnswerQuestion : Fragment() {
     private lateinit var media_default: MediaPlayer
     private lateinit var media_correct: MediaPlayer
     private lateinit var media_wrong: MediaPlayer
+    private var media_is_playing = true
+    private lateinit var sharedPreferences: SharedPreferences
 
     private var current_score: Int = 0
     private lateinit var countDownTimer: CountDownTimer
@@ -55,6 +59,8 @@ class AnswerQuestion : Fragment() {
         media_default = create(activity, R.raw.button_click_sound_effect)
         media_correct = create(activity, R.raw.button_click_correct)
         media_wrong = create(activity, R.raw.button_click_wrong)
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
+        media_is_playing = sharedPreferences.getBoolean("sound_effects", true)
 
         QuestionFactory.RETRIEVE(attributes.titles.en
                 ?: attributes.canonicalTitle, db, object : QuestionFactory.StatusCallback {
@@ -170,7 +176,7 @@ class AnswerQuestion : Fragment() {
 
     private fun alertWrongResponse(view: View, list_buttons: ArrayList<Button>, correct_response: String) {
         val button = view as Button
-        media_wrong.start()
+        if(media_is_playing) media_wrong.start()
         button.background = resources.getDrawable(com.murrayde.animeking.R.drawable.answer_wrong_background)
         button.setTextColor(resources.getColor(R.color.color_white))
         repeat(list_buttons.size) { position ->
@@ -189,11 +195,11 @@ class AnswerQuestion : Fragment() {
     }
 
     private fun prepareForNextQuestion(communityQuestions: ArrayList<CommunityQuestion>, track: Int, view: View, list_buttons: ArrayList<Button>) {
-        media_default.start()
+        if(media_is_playing) media_default.start()
         button_next_question.visibility = View.INVISIBLE
         repeat(list_buttons.size) { position ->
             list_buttons[position].setBackgroundColor(resources.getColor(R.color.color_white))
-            list_buttons[position].setTextColor(resources.getColor(R.color.color_grey))
+            list_buttons[position].setTextColor(resources.getColor(R.color.color_black))
             list_buttons[position].background = resources.getDrawable(R.drawable.answer_question_background)
             list_buttons[position].isClickable = true
         }

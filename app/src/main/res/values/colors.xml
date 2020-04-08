@@ -2,7 +2,7 @@
 <resources>
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#FFF780</color>
+    <color name="colorAccent">#FFEB3B</color>
     <color name="title_bg">#CC2E2E2E</color>
     <color name="home_bg_center">#26FFFEFE</color>
     <color name="detail_gradient_bg">#00FFFFFF</color>
@@ -12,7 +12,11 @@
     <color name="home_bg">#00FFFEFE</color>
     <color name="list_header_bg">#33FFFFFF</color>
     <color name="list_header_center_frame">#00FFFFFF</color>
+    <color name="header_toolbar_gradient">#80000000</color>
+    <color name="header_toolbar_gradient_end">#00000000</color>
     <color name="color_grey">#707070</color>
+    <color name="color_black">#000</color>
+    <color name="concealer">#802E2E2E</color>
     <color name="color_detail_title">#80FFFFFF</color>
     <color name="color_darker_grey">#505050</color>
     <color name="color_home_logo">#2E2E2E</color>

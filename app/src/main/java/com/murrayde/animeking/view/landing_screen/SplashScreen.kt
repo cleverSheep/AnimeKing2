@@ -8,7 +8,6 @@ import android.view.View
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import com.murrayde.animeking.R
-import com.murrayde.animeking.view.MainActivity
 import com.murrayde.animeking.view.auth.AuthenticationActivity
 import timber.log.Timber
 import java.util.*

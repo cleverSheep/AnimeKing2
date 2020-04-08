@@ -12,10 +12,13 @@
     <!-- Anime Detail Layout -->
     <string name="take_quiz">Jugar</string>
     <string name="anime_title">Título de Anime</string>
+    <string name="single_player">Una jugadora</string>
+    <string name="multi_player">Multijugador</string>
     <string name="join_community">Únete a la Comunidad</string>
     <string name="member_count">14 members</string>
     <string name="question_count">356 questions</string>
     <string name="ask_question">Pregunta</string>
+    <string name="coming_soon">Próximamente!</string>
 
     <!-- Answer Question Layout -->
     <string name="next_question">Próxima Pregunta</string>
@@ -73,6 +76,10 @@
     <!-- Facebook social login -->
     <string name="facebook_app_id">1847601048710162</string>
     <string name="fb_login_protocol_scheme">fb1847601048710162</string>
+
+    <string name="sound_effects_enabled">sound_effects_enabled</string>
+    <string name="game_music_enabled">game_music_enabled</string>
+    <string name="dark_theme_enabled">dark_theme_enabled</string>
 
     <string name="credits">Credits</string>
     <string name="credit_source">Icon made by Freepik from www.flaticon.com</string>
