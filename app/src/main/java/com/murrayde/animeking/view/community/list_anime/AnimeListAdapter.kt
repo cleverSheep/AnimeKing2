@@ -6,6 +6,8 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.navigation.Navigation
 import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -19,24 +21,31 @@ import timber.log.Timber
 class AnimeListAdapter : PagedListEpoxyController<AnimeData>() {
 
     override fun buildItemModel(currentPosition: Int, item: AnimeData?): EpoxyModel<*> {
+
         item?.let {
             // Anime item model
             if (currentPosition == 0) {
                 return HeaderView_()
                         .id("Header")
                         .title(R.string.random_anime)
-                        .onClickListener(View.OnClickListener {
-                            Timber.d("Header clicked")
-                        })
+                        .onClickListener { view ->
+                            val directions = AnimeListDirections.actionHomeToAnswerRandomQuestions()
+                            Navigation.findNavController(view).navigate(directions)
+                        }
             }
             return AnimeView_()
                     .id("anime_id:${currentPosition}")
-                    .anime_title(item.attributes.titles.en ?: "Unknown Title")
+                    .anime_title(item.attributes.titles.en ?: item.attributes.canonicalTitle)
                     .image_url(item.attributes.posterImage.original
                             ?: item.attributes.coverImage.original)
-                    .onClickListener(View.OnClickListener {
-                        Timber.d("Item clicked")
-                    })
+                    .onClickListener { view ->
+                        val action = AnimeListDirections.actionListFragmentToDetailFragment(item.attributes)
+                        Navigation.findNavController(view).navigate(action)
+                    }
+                    .onLongClickListener {view ->
+                        Toast.makeText(view.context, "${item.attributes?.titles?.en ?: item.attributes?.canonicalTitle}", Toast.LENGTH_SHORT).show()
+                        true
+                    }
         } ?: return LoadingModel_().id("loading")
     }
 

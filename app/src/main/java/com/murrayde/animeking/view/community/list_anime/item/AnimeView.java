@@ -22,12 +22,15 @@ public abstract class AnimeView extends EpoxyModelWithHolder<AnimeView.ItemHolde
     @EpoxyAttribute String image_url;
     @EpoxyAttribute (EpoxyAttribute.Option.DoNotHash)
     View.OnClickListener onClickListener;
+    @EpoxyAttribute (EpoxyAttribute.Option.DoNotHash)
+    View.OnLongClickListener onLongClickListener;
 
     @Override
     public void bind(@NonNull ItemHolder holder) {
         holder.anime.setText(anime_title);
         ImageUtil.loadImage(holder.anime_image, image_url);
         holder.cardView.setOnClickListener(onClickListener);
+        holder.cardView.setOnLongClickListener(onLongClickListener);
     }
 
     static class ItemHolder extends EpoxyHolder {
