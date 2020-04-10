@@ -23,4 +23,11 @@
     <style name="MeneNavTheme">
         <item name="android:fontFamily">@font/baloobhairegular</item>
     </style>
+
+    <style name="facebook_style">
+        <item name="android:background">@drawable/facebook_drawable</item>
+        <item name="android:textSize">17sp</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:fontFamily">@font/baloobhairegular</item>
+    </style>
 </resources>
