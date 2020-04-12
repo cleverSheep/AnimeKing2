@@ -2,6 +2,10 @@
     <!-- App Name -->
     <string name="app_name">Anime King</string>
 
+    <!-- Screen Name -->
+    <string name="connect_with_facebook">Conéctate con Facebook</string>
+    <string name="connect_with_google">Conéctate con Google</string>
+
     <!-- Anime Image Content Description -->
     <string name="anime_image">Anime Image</string>
 
