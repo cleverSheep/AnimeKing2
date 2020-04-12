@@ -15,8 +15,12 @@
     <color name="header_toolbar_gradient">#80000000</color>
     <color name="header_toolbar_gradient_end">#00000000</color>
     <color name="header_toolbar_gradient_start">#DE000000</color>
+    <color name="auth_frame_center">#4D000000</color>
+    <color name="auth_frame_start">#000000</color>
+    <color name="auth_frame_end">#00000000</color>
     <color name="color_grey">#707070</color>
     <color name="color_black">#000</color>
+    <color name="facebook_color">#4267B2</color>
     <color name="concealer">#802E2E2E</color>
     <color name="color_detail_title">#80FFFFFF</color>
     <color name="color_darker_grey">#505050</color>

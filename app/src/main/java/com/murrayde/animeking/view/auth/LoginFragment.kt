@@ -7,19 +7,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.Navigation
-import com.facebook.AccessToken
-import com.facebook.CallbackManager
-import com.facebook.FacebookCallback
-import com.facebook.FacebookException
+import com.facebook.*
+import com.facebook.login.LoginManager
 import com.facebook.login.LoginResult
 import com.google.firebase.auth.FacebookAuthProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 
 import com.murrayde.animeking.R
-import kotlinx.android.synthetic.main.activity_authentication.*
 import kotlinx.android.synthetic.main.fragment_login.*
 import timber.log.Timber
 
@@ -27,10 +23,13 @@ class LoginFragment : Fragment() {
 
     private lateinit var callbackManager: CallbackManager
     private lateinit var auth: FirebaseAuth
+    private lateinit var authStateListener: FirebaseAuth.AuthStateListener
+    private lateinit var accesTokenTracker: AccessTokenTracker
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         auth = FirebaseAuth.getInstance()
+        FacebookSdk.sdkInitialize(activity?.applicationContext)
         callbackManager = CallbackManager.Factory.create()
         return inflater.inflate(R.layout.fragment_login, container, false)
     }
@@ -38,23 +37,39 @@ class LoginFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Initialize Facebook Login button
-        login_button.setReadPermissions("email", "public_profile")
-        login_button.fragment = this
-        login_button.registerCallback(callbackManager, object : FacebookCallback<LoginResult> {
-            override fun onSuccess(loginResult: LoginResult) {
-                Timber.d("facebook:onSuccess:$loginResult")
-                handleFacebookAccessToken(loginResult.accessToken, view)
+        LoginManager.getInstance().registerCallback(callbackManager, object : FacebookCallback<LoginResult> {
+            override fun onSuccess(result: LoginResult?) {
+                Timber.d("facebook:onSuccess:$result")
+                handleFacebookAccessToken(result!!.accessToken, view)
             }
 
             override fun onCancel() {
                 Timber.d("facebook:onCancel")
             }
 
-            override fun onError(error: FacebookException) {
+            override fun onError(error: FacebookException?) {
                 Timber.d("facebook:onError")
             }
+
         })
+
+        facebook_login_button.setOnClickListener {
+            LoginManager.getInstance().logInWithReadPermissions(this, listOf("email", "public_profile"))
+        }
+
+        authStateListener = FirebaseAuth.AuthStateListener { firebase_auth ->
+            if (firebase_auth.currentUser != null) updateUI(firebase_auth.currentUser)
+            else updateUI(null)
+        }
+
+        accesTokenTracker = object : AccessTokenTracker() {
+            override fun onCurrentAccessTokenChanged(oldAccessToken: AccessToken?, currentAccessToken: AccessToken?) {
+                if (currentAccessToken == null) {
+                    auth.signOut()
+                }
+            }
+
+        }
     }
 
     private fun handleFacebookAccessToken(token: AccessToken, view: View) {
@@ -97,6 +112,7 @@ class LoginFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
+        auth.addAuthStateListener(authStateListener)
         // Check if user is signed in (non-null) and update UI accordingly.
         val currentUser = auth.currentUser
         updateUI(currentUser)

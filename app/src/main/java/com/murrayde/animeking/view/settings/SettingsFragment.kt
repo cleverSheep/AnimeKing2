@@ -12,15 +12,24 @@ import android.os.Build
 import android.os.Bundle
 import android.util.DisplayMetrics
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.navigation.Navigation
+import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.SwitchPreference
 import androidx.preference.SwitchPreferenceCompat
+import com.facebook.AccessToken
+import com.facebook.login.LoginManager
+import com.google.firebase.auth.FirebaseAuth
 import com.murrayde.animeking.R
 import com.murrayde.animeking.view.MainActivity
+import timber.log.Timber
 import java.util.*
 
 
 class SettingsFragment : PreferenceFragmentCompat(), SharedPreferences.OnSharedPreferenceChangeListener {
+
+    private lateinit var auth: FirebaseAuth
+    private lateinit var loginManager: LoginManager
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         setPreferencesFromResource(R.xml.screen_settings, rootKey)
@@ -31,6 +40,18 @@ class SettingsFragment : PreferenceFragmentCompat(), SharedPreferences.OnSharedP
     override fun onResume() {
         super.onResume()
         preferenceManager.sharedPreferences.registerOnSharedPreferenceChangeListener(this)
+        val authPreference = findPreference<Preference>("sign_out")
+        loginManager = LoginManager.getInstance()
+        auth = FirebaseAuth.getInstance()
+        authPreference?.setOnPreferenceClickListener { _ ->
+            Timber.d("Sign out button clicked")
+            auth.signOut()
+            loginManager.logOut()
+            val directions = SettingsFragmentDirections.actionMoreToAuthenticationActivity()
+            Navigation.findNavController(view!!).navigate(directions)
+            true
+        }
+
     }
 
     override fun onPause() {
