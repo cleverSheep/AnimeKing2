@@ -70,6 +70,7 @@ class LoginFragment : Fragment() {
             }
 
         }
+
     }
 
     private fun handleFacebookAccessToken(token: AccessToken, view: View) {

@@ -38,5 +38,10 @@ class AuthenticationActivity : AppCompatActivity() {
             decorView.systemUiVisibility = uiOptions
         }
     }
+
+    override fun onStart() {
+        super.onStart()
+        fullScreenAll()
+    }
 }
 

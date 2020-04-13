@@ -20,7 +20,6 @@
             app:key="in_game_music"
             app:title="@string/in_game_music" />
         <SwitchPreferenceCompat
-            app:isPreferenceVisible="false"
             app:icon="@drawable/ic_brightness_2_black_24dp"
             app:key="dark_mode"
             app:title="@string/dark_mode" />
