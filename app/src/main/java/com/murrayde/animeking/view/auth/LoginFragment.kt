@@ -164,8 +164,6 @@ class LoginFragment : Fragment() {
                         Timber.w("signInWithCredential:failure")
                         updateUI(null)
                     }
-
-                    // ...
                 }
     }
 
