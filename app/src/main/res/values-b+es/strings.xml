@@ -81,6 +81,9 @@
     <string name="facebook_app_id">1847601048710162</string>
     <string name="fb_login_protocol_scheme">fb1847601048710162</string>
 
+    <string name="web_client_id">527744748681-mtg2ekjs2lcdd94c6mrjsd2kmpih6m3m.apps.googleusercontent.com</string>
+
+
     <string name="sound_effects_enabled">sound_effects_enabled</string>
     <string name="game_music_enabled">game_music_enabled</string>
     <string name="dark_theme_enabled">dark_theme_enabled</string>
