@@ -20,8 +20,8 @@
             app:key="in_game_music"
             app:title="@string/in_game_music" />
         <SwitchPreferenceCompat
-            app:isPreferenceVisible="false"
             app:icon="@drawable/ic_brightness_2_black_24dp"
+            app:isPreferenceVisible="false"
             app:key="dark_mode"
             app:title="@string/dark_mode" />
     </PreferenceCategory>
@@ -32,16 +32,12 @@
             app:key="about"
             app:title="@string/about">
             <intent
-                android:targetClass="com.murrayde.animeking.view.landing_screen.HomeScreenActivity"
-                android:targetPackage="com.murrayde.animeking" />
+                android:targetClass="com.murrayde.animekingtrivia.view.landing_screen.HomeScreenActivity"
+                android:targetPackage="com.murrayde.animekingtrivia" />
         </Preference>
         <Preference
             app:icon="@drawable/ic_exit_to_app_black_24dp"
             app:key="sign_out"
-            app:title="@string/sign_out">
-            <intent
-                android:targetClass="com.murrayde.animeking.view.auth.AuthenticationActivity"
-                android:targetPackage="com.murrayde.animeking" />
-        </Preference>
+            app:title="@string/sign_out" />
     </PreferenceCategory>
 </PreferenceScreen>
