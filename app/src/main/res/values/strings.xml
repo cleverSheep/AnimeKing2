@@ -19,8 +19,8 @@
     <string name="single_player">Single Player</string>
     <string name="multi_player">Multiplayer</string>
     <string name="join_community">Join Community</string>
-    <string name="member_count">14 members</string>
-    <string name="question_count">356 questions</string>
+    <string name="member_count">0 members</string>
+    <string name="question_count">0 questions</string>
     <string name="ask_question">Ask Question</string>
     <string name="coming_soon">Coming Soon!</string>
 
@@ -82,7 +82,10 @@
     <string name="facebook_app_id">1847601048710162</string>
     <string name="fb_login_protocol_scheme">fb1847601048710162</string>
 
-    <string name="web_client_id">527744748681-mtg2ekjs2lcdd94c6mrjsd2kmpih6m3m.apps.googleusercontent.com</string>
+    <!-- User Shared Preference -->
+    <string name="user_joined_community">user_joined_community</string>
+
+    <string name="web_client_id">738121527329-rfo4htu4olvqjhv280cg3i919d11c4ce.apps.googleusercontent.com</string>
 
     <string name="sound_effects_enabled">sound_effects_enabled</string>
     <string name="game_music_enabled">game_music_enabled</string>
