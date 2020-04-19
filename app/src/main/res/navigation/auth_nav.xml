@@ -6,7 +6,7 @@
     app:startDestination="@id/loginFragment">
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.murrayde.animeking.view.auth.LoginFragment"
+        android:name="com.murrayde.animekingtrivia.view.auth.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
         <action
@@ -21,7 +21,7 @@
     </fragment>
     <activity
         android:id="@+id/mainActivity2"
-        android:name="com.murrayde.animeking.view.MainActivity"
+        android:name="com.murrayde.animekingtrivia.view.MainActivity"
         android:label="activity_main"
         tools:layout="@layout/activity_main" />
 </navigation>
