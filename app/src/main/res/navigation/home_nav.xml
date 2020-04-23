@@ -6,7 +6,7 @@
     app:startDestination="@id/credits">
     <fragment
         android:id="@+id/credits"
-        android:name="com.murrayde.animeking.view.landing_screen.Credits"
+        android:name="com.murrayde.animekingtrivia.view.landing_screen.Credits"
         android:label="About"
         tools:layout="@layout/fragment_credits" />
 </navigation>

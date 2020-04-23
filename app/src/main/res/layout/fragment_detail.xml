@@ -134,8 +134,7 @@
         android:textSize="15sp"
         app:layout_constraintBottom_toTopOf="@+id/barrier"
         app:layout_constraintStart_toStartOf="@+id/fragment_detail_join"
-        app:layout_constraintTop_toTopOf="@+id/barrier4"
-        tools:text="14 members" />
+        app:layout_constraintTop_toTopOf="@+id/barrier4" />
 
     <TextView
         android:id="@+id/fragment_detail_question_count"
@@ -150,8 +149,7 @@
         android:textColor="@color/color_white"
         android:textSize="15sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/fragment_detail_member_count"
-        app:layout_constraintStart_toEndOf="@+id/fragment_detail_member_count"
-        tools:text="356 questions" />
+        app:layout_constraintStart_toEndOf="@+id/fragment_detail_member_count" />
 
     <ImageView
         android:id="@+id/fragment_detail_poster_image"

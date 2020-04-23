@@ -2,6 +2,10 @@
     <!-- App Name -->
     <string name="app_name">Anime King</string>
 
+    <!-- Screen Name -->
+    <string name="connect_with_facebook">Conéctate con Facebook</string>
+    <string name="connect_with_google">Conéctate con Google</string>
+
     <!-- Anime Image Content Description -->
     <string name="anime_image">Anime Image</string>
 
@@ -76,6 +80,12 @@
     <!-- Facebook social login -->
     <string name="facebook_app_id">1847601048710162</string>
     <string name="fb_login_protocol_scheme">fb1847601048710162</string>
+
+    <!-- User Shared Preference -->
+    <string name="user_joined_community">user_joined_community</string>
+
+    <string name="web_client_id">738121527329-rfo4htu4olvqjhv280cg3i919d11c4ce.apps.googleusercontent.com</string>
+
 
     <string name="sound_effects_enabled">sound_effects_enabled</string>
     <string name="game_music_enabled">game_music_enabled</string>

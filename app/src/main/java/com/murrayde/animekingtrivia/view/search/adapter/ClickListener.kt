@@ -1,0 +1,7 @@
+package com.murrayde.animekingtrivia.view.search.adapter
+
+import android.view.View
+
+interface ClickListener {
+    fun onClick(view: View)
+}
