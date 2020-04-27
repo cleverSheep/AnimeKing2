@@ -17,6 +17,9 @@ import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.SwitchPreferenceCompat
 import com.facebook.login.LoginManager
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInClient
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.auth.FirebaseAuth
 import com.murrayde.animekingtrivia.R
 import com.murrayde.animekingtrivia.view.MainActivity
@@ -28,6 +31,8 @@ class SettingsFragment : PreferenceFragmentCompat(), SharedPreferences.OnSharedP
 
     private lateinit var auth: FirebaseAuth
     private lateinit var loginManager: LoginManager
+    private lateinit var gso: GoogleSignInOptions
+    private lateinit var googleSignInClient: GoogleSignInClient
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         setPreferencesFromResource(R.xml.screen_settings, rootKey)
@@ -41,9 +46,15 @@ class SettingsFragment : PreferenceFragmentCompat(), SharedPreferences.OnSharedP
         val authPreference = findPreference<Preference>("sign_out")
         loginManager = LoginManager.getInstance()
         auth = FirebaseAuth.getInstance()
+        gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(getString(R.string.web_client_id))
+                .requestEmail()
+                .build()
+        googleSignInClient = GoogleSignIn.getClient(activity!!, gso)
         authPreference?.setOnPreferenceClickListener { _ ->
             Timber.d("Sign out button clicked")
             auth.signOut()
+            googleSignInClient.signOut()
             loginManager.logOut()
             val directions = SettingsFragmentDirections.actionMoreToAuthenticationActivity()
             Navigation.findNavController(view!!).navigate(directions)

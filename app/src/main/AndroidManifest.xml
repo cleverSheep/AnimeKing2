@@ -15,7 +15,7 @@
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
         <activity
             android:name="com.murrayde.animekingtrivia.view.auth.AuthenticationActivity"
-            android:screenOrientation="fullSensor" />
+            android:screenOrientation="portrait" />
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
@@ -24,7 +24,7 @@
         <activity
             android:name="com.murrayde.animekingtrivia.view.landing_screen.SplashScreen"
             android:noHistory="true"
-            android:screenOrientation="fullSensor">
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -34,10 +34,10 @@
         <activity
             android:name="com.murrayde.animekingtrivia.view.MainActivity"
             android:configChanges="locale|orientation"
-            android:screenOrientation="fullSensor" />
+            android:screenOrientation="portrait" />
         <activity
             android:name="com.murrayde.animekingtrivia.view.landing_screen.HomeScreenActivity"
-            android:screenOrientation="fullSensor" />
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>
