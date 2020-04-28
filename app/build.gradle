@@ -155,5 +155,10 @@ dependencies {
     // Add the annotation processor if you are using Epoxy's annotations (recommended)
     kapt 'com.airbnb.android:epoxy-processor:3.9.0'
 
+    def lottieVersion = '3.4.0'
+
+    // Lottie Animations
+    implementation "com.airbnb.android:lottie:$lottieVersion"
+
 }
 apply plugin: 'com.google.gms.google-services'
