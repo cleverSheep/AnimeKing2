@@ -5,26 +5,12 @@
     android:orientation="vertical">
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:fontFamily="@font/baloobhairegular"
-        android:gravity="center"
-        android:text="@string/fix_answer_choice"
-        android:textAlignment="center"
-        android:textSize="20sp" />
+        style="@style/Question_Incorrect_Format_Text"
+        android:text="@string/fix_answer_choice" />
 
     <Button
         android:id="@+id/accept_request_button"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:background="@color/color_correct"
-        android:clickable="true"
-        android:fontFamily="@font/baloobhairegular"
-        android:text="@string/accept"
-        android:textColor="@color/color_white"
-        android:textSize="20sp"
-        android:textStyle="bold" />
+        style="@style/Question_Incorrect_Format_Button"
+        android:text="@string/accept" />
 
 </LinearLayout>

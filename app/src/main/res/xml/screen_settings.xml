@@ -12,18 +12,15 @@
             app:useSimpleSummaryProvider="true" />
 
         <SwitchPreferenceCompat
+            android:defaultValue="true"
             app:icon="@drawable/ic_volume_up_black_24dp"
             app:key="sound_effects"
             app:title="@string/sound_effects" />
         <SwitchPreferenceCompat
+            android:defaultValue="true"
             app:icon="@drawable/ic_music_note_black_24dp"
             app:key="in_game_music"
             app:title="@string/in_game_music" />
-        <SwitchPreferenceCompat
-            app:icon="@drawable/ic_brightness_2_black_24dp"
-            app:isPreferenceVisible="false"
-            app:key="dark_mode"
-            app:title="@string/dark_mode" />
     </PreferenceCategory>
 
     <PreferenceCategory app:title="@string/other">

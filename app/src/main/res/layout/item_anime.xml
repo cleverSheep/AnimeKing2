@@ -6,9 +6,9 @@
     android:id="@+id/cardview_layout"
     android:layout_width="match_parent"
     android:layout_height="200dp"
+    android:layout_margin="4dp"
     android:clickable="true"
     android:focusable="true"
-    android:layout_margin="4dp"
     android:foreground="?android:attr/selectableItemBackground">
 
     <ImageView
@@ -28,10 +28,10 @@
         android:layout_gravity="bottom"
         android:background="@drawable/title_stroke"
         android:fontFamily="@font/baloobhairegular"
+        android:text="@string/title"
         android:textAlignment="center"
         android:textColor="@android:color/white"
         android:textSize="13sp"
-        android:text="Title"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

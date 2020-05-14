@@ -32,8 +32,8 @@
     <string name="submit_question">Enviar Pregunta</string>
     <string name="wrong_choice">Mala Decisión</string>
     <string name="correct_choice">Elección Correcta</string>
-    <string name="fix_answer_choice">Ingrese 1+ carácter para la opción de respuesta</string>
-    <string name="question_min">Ingrese más de 12 caracteres para la pregunta</string>
+    <string name="fix_answer_choice">Ingrese 1+ carácter para la opción de respuesta.</string>
+    <string name="question_min">Ingrese más de 12 caracteres para la pregunta.</string>
 
     <!-- View Results Layout -->
     <string name="game_over">Juego Terminado</string>

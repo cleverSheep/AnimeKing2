@@ -111,6 +111,7 @@ class AnswerQuestion : Fragment() {
         countDownTimer = object : CountDownTimer(QuestionUtil.QUESTION_TIMER, 1000) {
             override fun onFinish() {
                 disableAllButtons(list_buttons)
+                button_next_question.visibility = View.VISIBLE
                 showTimeUpDialog(randomQuestions, new_question, view, list_buttons)
             }
 

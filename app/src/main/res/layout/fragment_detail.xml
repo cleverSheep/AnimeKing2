@@ -124,32 +124,35 @@
     <TextView
         android:id="@+id/fragment_detail_member_count"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:background="@drawable/detail_member_count_bg"
         android:fontFamily="@font/baloobhairegular"
         android:gravity="center"
         android:paddingHorizontal="8dp"
         android:text="@string/member_count"
+        android:textAlignment="center"
         android:textColor="@color/color_white"
         android:textSize="15sp"
-        app:layout_constraintBottom_toTopOf="@+id/barrier"
+        app:layout_constraintBottom_toBottomOf="@+id/fragment_detail_poster_image"
         app:layout_constraintStart_toStartOf="@+id/fragment_detail_join"
-        app:layout_constraintTop_toTopOf="@+id/barrier4" />
+        app:layout_constraintTop_toBottomOf="@+id/fragment_detail_join" />
 
     <TextView
         android:id="@+id/fragment_detail_question_count"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_marginHorizontal="4dp"
         android:background="@drawable/detail_question_count_bg"
         android:fontFamily="@font/baloobhairegular"
         android:gravity="center"
         android:paddingHorizontal="8dp"
         android:text="@string/question_count"
+        android:textAlignment="center"
         android:textColor="@color/color_white"
         android:textSize="15sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/fragment_detail_member_count"
-        app:layout_constraintStart_toEndOf="@+id/fragment_detail_member_count" />
+        app:layout_constraintBottom_toBottomOf="@+id/fragment_detail_member_count"
+        app:layout_constraintStart_toEndOf="@+id/fragment_detail_member_count"
+        app:layout_constraintTop_toTopOf="@+id/fragment_detail_member_count" />
 
     <ImageView
         android:id="@+id/fragment_detail_poster_image"
@@ -218,9 +221,7 @@
     <Button
         android:id="@+id/fragment_detail_join"
         android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_height="wrap_content"
         android:background="@drawable/detail_join_btn_bg"
         android:drawableStart="@drawable/ic_add"
         android:fontFamily="@font/baloobhairegular"
@@ -229,7 +230,6 @@
         android:textAllCaps="false"
         android:textColor="@color/color_home_logo"
         android:textSize="15sp"
-        app:layout_constraintBottom_toTopOf="@+id/barrier4"
         app:layout_constraintStart_toStartOf="@+id/fragment_detail_title"
         app:layout_constraintTop_toBottomOf="@+id/fragment_detail_image" />
 
@@ -247,14 +247,6 @@
         android:layout_height="wrap_content"
         app:barrierDirection="bottom"
         app:constraint_referenced_ids="fragment_detail_image"
-        tools:layout_editor_absoluteY="807dp" />
-
-    <androidx.constraintlayout.widget.Barrier
-        android:id="@+id/barrier4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:barrierDirection="top"
-        app:constraint_referenced_ids="fragment_detail_member_count"
         tools:layout_editor_absoluteY="807dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

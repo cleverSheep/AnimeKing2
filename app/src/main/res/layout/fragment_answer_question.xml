@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/color_home_logo"
+    android:theme="@style/MainAppTheme"
     tools:context=".view.community.AnswerQuestion">
 
     <LinearLayout
@@ -25,7 +26,7 @@
             android:layout_weight="1"
             android:fontFamily="@font/baloobhairegular"
             android:gravity="center"
-            android:text="0/10X"
+            android:text="0/10"
             android:textColor="@color/color_white"
             android:textSize="27sp"
             android:textStyle="bold"
@@ -65,7 +66,6 @@
         app:layout_constraintTop_toBottomOf="@id/iv_answer_question_ll"
         tools:src="@drawable/castle" />
 
-
     <TextView
         android:id="@+id/tv_answer_title"
         android:layout_width="0dp"
@@ -84,113 +84,63 @@
 
     <TextView
         android:id="@+id/tv_answer_question"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
+        style="@style/AnswerQuestion_Format_Button"
         android:background="@drawable/ask_question_background"
-        android:fontFamily="@font/baloobhairegular"
-        android:textAlignment="center"
-        android:textColor="@android:color/black"
-        android:textSize="17sp"
-        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/button_choice_one"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/iv_answer_question"
         tools:text="Question" />
 
-
     <Button
         android:id="@+id/button_choice_one"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
-        android:background="@drawable/answer_question_background"
-        android:fontFamily="@font/baloobhairegular"
-        android:textAlignment="center"
-        android:textColor="@android:color/black"
-        android:textSize="17sp"
-        android:textStyle="bold"
+        style="@style/AnswerQuestion_Format_Button"
         app:layout_constraintBottom_toTopOf="@+id/button_choice_two"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_answer_question"
         tools:text="Answer Choice 1" />
 
     <Button
         android:id="@+id/button_choice_two"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
-        android:background="@drawable/answer_question_background"
-        android:fontFamily="@font/baloobhairegular"
-        android:textAlignment="center"
-        android:textColor="@android:color/black"
-        android:textSize="17sp"
-        android:textStyle="bold"
+        style="@style/AnswerQuestion_Format_Button"
         app:layout_constraintBottom_toTopOf="@+id/button_choice_three"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button_choice_one"
         tools:text="Answer Choice 2" />
 
     <Button
         android:id="@+id/button_choice_three"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
-        android:background="@drawable/answer_question_background"
-        android:fontFamily="@font/baloobhairegular"
-        android:maxLines="1"
-        android:textAlignment="center"
-        android:textColor="@android:color/black"
-        android:textSize="17sp"
-        android:textStyle="bold"
+        style="@style/AnswerQuestion_Format_Button"
         app:layout_constraintBottom_toTopOf="@+id/button_choice_four"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button_choice_two"
         tools:text="Answer Choice 3" />
 
-
     <Button
         android:id="@+id/button_choice_four"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
-        android:background="@drawable/answer_question_background"
-        android:fontFamily="@font/baloobhairegular"
-        android:textAlignment="center"
-        android:textColor="@android:color/black"
-        android:textSize="17sp"
-        android:textStyle="bold"
+        style="@style/AnswerQuestion_Format_Button"
         app:layout_constraintBottom_toTopOf="@+id/button_next_question"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button_choice_three"
         tools:text="Answer Choice 4" />
 
     <Button
         android:id="@+id/button_next_question"
+        style="@style/AnswerQuestion_ButtonText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@drawable/ask_question_background"
-        android:fontFamily="@font/baloobhairegular"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/button_next_question"
         android:text="@string/next_question"
-        android:textAllCaps="false"
         android:textColor="@android:color/black"
-        android:textSize="@dimen/button_text_size"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/button_choice_four"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@+id/button_choice_four"
-        app:layout_constraintTop_toBottomOf="@+id/button_choice_four"
         tools:visibility="visible" />
 
     <ProgressBar

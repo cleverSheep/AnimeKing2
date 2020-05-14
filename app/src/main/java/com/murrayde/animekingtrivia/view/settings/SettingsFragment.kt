@@ -3,15 +3,15 @@
 package com.murrayde.animekingtrivia.view.settings
 
 
+import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.content.res.Configuration
 import android.content.res.Resources
-import android.content.Context
 import android.os.Build
 import android.os.Bundle
 import android.util.DisplayMetrics
-import androidx.appcompat.app.AppCompatDelegate
+import android.view.View
 import androidx.navigation.Navigation
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
@@ -34,10 +34,14 @@ class SettingsFragment : PreferenceFragmentCompat(), SharedPreferences.OnSharedP
     private lateinit var gso: GoogleSignInOptions
     private lateinit var googleSignInClient: GoogleSignInClient
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        view.setBackgroundColor(resources.getColor(R.color.color_home_logo))
+        super.onViewCreated(view, savedInstanceState)
+    }
+
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         setPreferencesFromResource(R.xml.screen_settings, rootKey)
-        val dark_mode_pref: SwitchPreferenceCompat? = findPreference("dark_mode")
-        dark_mode_pref?.isVisible = Build.VERSION.SDK_INT >= Build.VERSION_CODES.P
+        //setDarkThemeBasedOnVersion()
     }
 
     override fun onResume() {
@@ -93,14 +97,14 @@ class SettingsFragment : PreferenceFragmentCompat(), SharedPreferences.OnSharedP
             }
         }
 
-        if (key == "dark_mode") {
+/*        if (key == "dark_mode") {
             val enabled = preference?.getBoolean("dark_mode", true)
             setDarkTheme(enabled!!)
             with(sharedPref.edit()) {
                 putBoolean(getString(R.string.dark_theme_enabled), preference.getBoolean("dark_theme_enabled", true))
                 commit()
             }
-        }
+        }*/
 
     }
 
@@ -115,13 +119,18 @@ class SettingsFragment : PreferenceFragmentCompat(), SharedPreferences.OnSharedP
         startActivity(refresh)
     }
 
-    private fun setDarkTheme(enabled: Boolean) {
+    private fun setDarkThemeBasedOnVersion() {
+        val dark_mode_pref: SwitchPreferenceCompat? = findPreference("dark_mode")
+        dark_mode_pref?.isVisible = Build.VERSION.SDK_INT >= Build.VERSION_CODES.P
+    }
+
+/*    private fun setDarkTheme(enabled: Boolean) {
         if (enabled) {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
         } else AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         val refresh = Intent(activity, MainActivity::class.java)
         startActivity(refresh)
 
-    }
+    }*/
 
 }

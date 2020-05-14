@@ -15,6 +15,7 @@ import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.murrayde.animekingtrivia.R
 import kotlinx.android.synthetic.main.activity_main.*
+import timber.log.Timber
 
 
 class MainActivity : AppCompatActivity() {
@@ -23,6 +24,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         fullScreenAll()
         window.addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN)
+        respondToUIVisibilityChanges()
 
         val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         imm.showSoftInput(View(this), InputMethodManager.SHOW_IMPLICIT)
@@ -46,8 +48,34 @@ class MainActivity : AppCompatActivity() {
         window.addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN)
     }
 
+    /*Screen loses focus when dialog pops up*/
+    override fun onResume() {
+        super.onResume()
+        fullScreenAll()
+        window.addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN)
+    }
+
+    override fun onWindowFocusChanged(hasFocus: Boolean) {
+        super.onWindowFocusChanged(hasFocus)
+        fullScreenAll()
+        window.addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN)
+    }
+
+    private fun respondToUIVisibilityChanges() {
+        window.decorView.setOnSystemUiVisibilityChangeListener { visibility ->
+            Timber.d("System bar is visible")
+            // Note that system bars will only be "visible" if none of the
+            // LOW_PROFILE, HIDE_NAVIGATION, or FULLSCREEN flags are set.
+            if (visibility and View.SYSTEM_UI_FLAG_FULLSCREEN == 0) {
+                fullScreenAll()
+                window.addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN)
+            }
+        }
+    }
+
     private fun fullScreenAll() {
-        if (Build.VERSION.SDK_INT in 12..18) { // lower api
+        // for lower api versions
+        if (Build.VERSION.SDK_INT in 12..18) {
             val v = this.window.decorView
             v.systemUiVisibility = View.GONE
         } else {
@@ -73,8 +101,8 @@ class MainActivity : AppCompatActivity() {
         return super.dispatchTouchEvent(ev)
     }
 
-    fun hideKeyboard(activity: Activity?) {
-        if (activity != null && activity.window != null && activity.window.decorView != null) {
+    private fun hideKeyboard(activity: Activity?) {
+        if (activity != null && activity.window != null) {
             val imm = activity.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
             imm.hideSoftInputFromWindow(activity.window.decorView.windowToken, 0)
         }

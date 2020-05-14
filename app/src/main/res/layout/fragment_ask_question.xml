@@ -11,7 +11,7 @@
         android:id="@+id/toolbar_ask_question"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/detail_gradient"
+        android:background="@drawable/fragment_list_header_toolbar"
         android:fitsSystemWindows="true"
         android:theme="@style/TestingTheme"
         android:translationZ="2dp"

@@ -119,8 +119,7 @@ class AnimeListDetail : Fragment() {
     private fun userIsInCommunity(): Boolean {
         val sharedPref = activity?.getPreferences(Context.MODE_PRIVATE) ?: return false
         val defaultValue = false
-        val joined_community = sharedPref.getBoolean(getString(R.string.community), defaultValue)
-        return joined_community
+        return sharedPref.getBoolean(getString(R.string.community), defaultValue)
     }
 
     private fun joinCommunity() {

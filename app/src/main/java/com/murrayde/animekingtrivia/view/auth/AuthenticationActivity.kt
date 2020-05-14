@@ -33,5 +33,11 @@ class AuthenticationActivity : AppCompatActivity() {
         super.onStart()
         fullScreenAll()
     }
+
+    override fun onWindowFocusChanged(hasFocus: Boolean) {
+        super.onWindowFocusChanged(hasFocus)
+        fullScreenAll()
+        window.addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN)
+    }
 }
 

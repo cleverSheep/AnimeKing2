@@ -32,8 +32,8 @@
     <string name="submit_question">Submit Question</string>
     <string name="wrong_choice">Wrong Choice</string>
     <string name="correct_choice">Correct Choice</string>
-    <string name="fix_answer_choice">Enter 1+ character for answer choice</string>
-    <string name="question_min">Enter 12+ characters for question</string>
+    <string name="fix_answer_choice">Enter 1+ character for answer choice.</string>
+    <string name="question_min">Enter 12+ characters for question.</string>
 
     <!-- View Results Layout -->
     <string name="game_over">Game Over</string>
@@ -101,5 +101,6 @@
 
     <string name="not_enough_description">Each community requires at least 5 questions.\nAdd more questions to play trivia with this anime.</string>
     <string name="not_enough_questions">Not Enough Questions</string>
+    <string name="title">Title Not Available</string>
 
 </resources>
