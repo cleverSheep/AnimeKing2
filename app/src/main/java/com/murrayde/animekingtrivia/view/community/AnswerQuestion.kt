@@ -144,6 +144,7 @@ class AnswerQuestion : Fragment() {
         alertDialog.setCanceledOnTouchOutside(false)
         button.setOnClickListener {
             alertDialog.dismiss()
+            button_next_question.visibility = View.INVISIBLE
             loadQuestions(randomQuestions, track, view, list_buttons)
         }
         alertDialog.show()
@@ -177,7 +178,7 @@ class AnswerQuestion : Fragment() {
 
     private fun alertWrongResponse(view: View, list_buttons: ArrayList<Button>, correct_response: String) {
         val button = view as Button
-        if(media_is_playing) media_wrong.start()
+        if (media_is_playing) media_wrong.start()
         button.background = resources.getDrawable(com.murrayde.animekingtrivia.R.drawable.answer_wrong_background)
         button.setTextColor(resources.getColor(R.color.color_white))
         repeat(list_buttons.size) { position ->
@@ -196,7 +197,7 @@ class AnswerQuestion : Fragment() {
     }
 
     private fun prepareForNextQuestion(communityQuestions: ArrayList<CommunityQuestion>, track: Int, view: View, list_buttons: ArrayList<Button>) {
-        if(media_is_playing) media_default.start()
+        if (media_is_playing) media_default.start()
         button_next_question.visibility = View.INVISIBLE
         repeat(list_buttons.size) { position ->
             list_buttons[position].setBackgroundColor(resources.getColor(R.color.color_white))

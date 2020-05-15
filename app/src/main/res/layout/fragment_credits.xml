@@ -19,15 +19,13 @@
         app:titleTextAppearance="@style/TextAppearance.TabsFont" />
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/crown_credit"
-        android:layout_width="0dp"
+        android:id="@+id/credits_empty_box"
+        android:layout_width="351dp"
         android:layout_height="wrap_content"
-        android:layout_margin="30dp"
         android:elevation="15dp"
         app:cardCornerRadius="15dp"
-        app:layout_constraintBottom_toTopOf="@+id/credits_empty_box"
+        app:layout_constraintBottom_toTopOf="@+id/credits_audio"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar_credits">
 
@@ -36,33 +34,6 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:autoLink="web"
-            android:drawableTop="@drawable/ic_crownlogo"
-            android:drawablePadding="15dp"
-            android:padding="15dp"
-            android:text="@string/credit_source" />
-
-    </androidx.cardview.widget.CardView>
-
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/credits_empty_box"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="30dp"
-        android:elevation="15dp"
-        app:cardCornerRadius="15dp"
-        app:layout_constraintBottom_toTopOf="@+id/credits_audio"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/crown_credit">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:autoLink="web"
-            android:drawableTop="@drawable/ic_box"
             android:drawablePadding="15dp"
             android:padding="15dp"
             android:text="@string/credit_source" />
@@ -71,16 +42,14 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/credits_audio"
-        android:layout_width="0dp"
+        android:layout_width="351dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
         android:elevation="15dp"
         android:padding="15dp"
         app:cardCornerRadius="8dp"
         app:layout_constraintBottom_toTopOf="@+id/tv_credits_author"
-        app:layout_constraintEnd_toEndOf="@id/credits_empty_box"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="@id/credits_empty_box"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/credits_empty_box">
 
         <TextView
@@ -91,7 +60,7 @@
             android:gravity="center"
             android:padding="15dp"
             android:text="@string/credits_audio"
-            android:textAlignment="center"/>
+            android:textAlignment="center" />
 
     </androidx.cardview.widget.CardView>
 

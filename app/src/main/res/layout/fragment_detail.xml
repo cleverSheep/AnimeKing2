@@ -40,7 +40,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="64dp"
         android:layout_marginEnd="20dp"
-        android:background="@drawable/home_play_background"
+        android:background="@drawable/detail_main_buttons"
         android:drawableStart="@drawable/ic_person_24px"
         android:fontFamily="@font/baloobhairegular"
         android:text="@string/single_player"
@@ -58,7 +58,7 @@
         android:layout_width="353dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:background="@drawable/home_play_background"
+        android:background="@drawable/detail_main_buttons"
         android:drawableStart="@drawable/question_answer"
         android:fontFamily="@font/baloobhairegular"
         android:text="@string/ask_question"
@@ -73,14 +73,13 @@
         android:id="@+id/fragment_detail_home"
         android:layout_width="353dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/home_compete_background"
         android:drawableStart="@drawable/ic_home_black_24dp"
         android:fontFamily="@font/baloobhairegular"
         android:text="@string/home"
         android:textColor="@color/color_home_logo"
         android:textSize="22sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/fragment_detail_ask_question"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/fragment_detail_ask_question"
@@ -92,7 +91,7 @@
         android:layout_width="353dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:background="@drawable/home_play_background"
+        android:background="@drawable/detail_main_buttons"
         android:drawableStart="@drawable/ic_people_black_24dp"
         android:fontFamily="@font/baloobhairegular"
         android:foreground="@drawable/conceal_frame"
@@ -134,8 +133,7 @@
         android:textColor="@color/color_white"
         android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="@+id/fragment_detail_poster_image"
-        app:layout_constraintStart_toStartOf="@+id/fragment_detail_join"
-        app:layout_constraintTop_toBottomOf="@+id/fragment_detail_join" />
+        app:layout_constraintStart_toStartOf="@+id/fragment_detail_join" />
 
     <TextView
         android:id="@+id/fragment_detail_question_count"
@@ -221,7 +219,8 @@
     <Button
         android:id="@+id/fragment_detail_join"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginVertical="8dp"
         android:background="@drawable/detail_join_btn_bg"
         android:drawableStart="@drawable/ic_add"
         android:fontFamily="@font/baloobhairegular"
@@ -230,6 +229,7 @@
         android:textAllCaps="false"
         android:textColor="@color/color_home_logo"
         android:textSize="15sp"
+        app:layout_constraintBottom_toTopOf="@+id/fragment_detail_member_count"
         app:layout_constraintStart_toStartOf="@+id/fragment_detail_title"
         app:layout_constraintTop_toBottomOf="@+id/fragment_detail_image" />
 

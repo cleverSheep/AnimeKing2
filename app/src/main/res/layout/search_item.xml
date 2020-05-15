@@ -26,6 +26,20 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:srcCompat="@drawable/dbzpriginal" />
 
+        <TextView
+            android:id="@+id/search_anime_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/title_stroke"
+            android:fontFamily="@font/bahnscrift"
+            android:text="@{anime_id.attributes.titles.en ?? anime_id.attributes.canonicalTitle}"
+            android:textAlignment="center"
+            android:textColor="@android:color/white"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="@+id/search_anime_image"
+            app:layout_constraintEnd_toEndOf="@+id/search_anime_image"
+            app:layout_constraintStart_toStartOf="@+id/search_anime_image" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <data>

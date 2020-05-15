@@ -1,6 +1,7 @@
 package com.murrayde.animekingtrivia.view.community.results_screen.review_questions
 
 import android.content.Context
+import android.content.res.Resources
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,6 +10,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.murrayde.animekingtrivia.R
 import com.murrayde.animekingtrivia.model.community.CommunityQuestion
+
 
 class ReviewQuestionsAdapter(val context: Context, val list_questions: Array<CommunityQuestion>) : RecyclerView.Adapter<ReviewQuestionsAdapter.ViewHolder>() {
 

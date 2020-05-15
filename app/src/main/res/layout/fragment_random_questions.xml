@@ -64,7 +64,7 @@
         android:text="Question 1"
         android:textAlignment="center"
         android:textColor="@android:color/black"
-        android:textSize="17sp"
+        android:textSize="@dimen/text_size"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

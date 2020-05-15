@@ -34,6 +34,7 @@
     <string name="correct_choice">Elección Correcta</string>
     <string name="fix_answer_choice">Ingrese 1+ carácter para la opción de respuesta.</string>
     <string name="question_min">Ingrese más de 12 caracteres para la pregunta.</string>
+    <string name="accept">Aceptar</string>
 
     <!-- View Results Layout -->
     <string name="game_over">Juego Terminado</string>
@@ -92,14 +93,12 @@
     <string name="dark_theme_enabled">dark_theme_enabled</string>
 
     <string name="credits">Credits</string>
-    <string name="credit_source">Icon made by Freepik from www.flaticon.com</string>
-    <string name="credits_audio">“Sound effects obtained from www.zapsplat.com“</string>
-    <string name="go_back_to_home_screen">Go Back To Home Screen</string>
-    <string name="accept">Accept</string>
-    <string name="compete">Compete</string>
+    <string name="credit_source">Iconos realizados por Freepik desde www.flaticon.com</string>
+    <string name="credits_audio">Efectos de sonido obtenidos de www.zapsplat.com</string>
     <string name="community">Community</string>
 
     <string name="not_enough_description">Each community requires at least 5 questions.\nAdd more questions to play trivia with this anime.</string>
     <string name="not_enough_questions">Not Enough Questions</string>
+    <string name="title">Título no disponible</string>
 
 </resources>
