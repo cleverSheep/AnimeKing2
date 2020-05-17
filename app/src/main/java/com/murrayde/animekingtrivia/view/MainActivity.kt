@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity() {
 
         navController.addOnDestinationChangedListener { controller, destination, arguments ->
             when (destination.id) {
-                R.id.answerQuestionFragment, R.id.answerRandomQuestions, R.id.viewResults, R.id.askQuestionFragment -> {
+                R.id.answerQuestionFragment, R.id.answerRandomQuestions, R.id.viewResults, R.id.askQuestionFragment, R.id.loginFragment -> {
                     bottom.visibility = View.GONE
                 }
                 else -> bottom.visibility = View.VISIBLE

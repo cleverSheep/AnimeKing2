@@ -97,19 +97,6 @@ class AnimeListDetail : Fragment() {
 
         val anime_title = attributes.titles.en ?: attributes.canonicalTitle
 
-        fragment_detail_join.setOnClickListener {
-            if (userIsInCommunity()) {
-                Toast.makeText(activity, "Already joined this community.", Toast.LENGTH_SHORT).show()
-                return@setOnClickListener
-            }
-            joinCommunity()
-            animeDetailViewModel.incrementMemberCount(anime_title)
-            Toast.makeText(activity, "Joined $anime_title community", Toast.LENGTH_SHORT).show()
-        }
-
-        animeDetailViewModel.getMemberCount(anime_title).observe(viewLifecycleOwner, Observer<Long> {
-            fragment_detail_member_count.text = "$it member(s)"
-        })
         animeDetailViewModel.getQuestionCount(anime_title).observe(viewLifecycleOwner, Observer<Long> {
             fragment_detail_question_count.text = "$it question(s)"
         })

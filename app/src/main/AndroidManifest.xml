@@ -13,11 +13,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
-        <activity
-            android:name="com.murrayde.animekingtrivia.view.auth.AuthenticationActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/MainAppTheme" />
-
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />

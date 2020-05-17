@@ -8,7 +8,7 @@ import android.view.View
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import com.murrayde.animekingtrivia.R
-import com.murrayde.animekingtrivia.view.auth.AuthenticationActivity
+import com.murrayde.animekingtrivia.view.MainActivity
 import timber.log.Timber
 import java.util.*
 import kotlin.concurrent.schedule
@@ -27,7 +27,7 @@ class SplashScreen : AppCompatActivity() {
         mediaPlayer = MediaPlayer.create(this, R.raw.splash_music)
         Timer().schedule(4500) {
             runOnUiThread {
-                startActivity(Intent(this@SplashScreen, AuthenticationActivity::class.java))
+                startActivity(Intent(this@SplashScreen, MainActivity::class.java))
                 finish()
             }
         }

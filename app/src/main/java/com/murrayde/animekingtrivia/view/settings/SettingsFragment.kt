@@ -60,7 +60,7 @@ class SettingsFragment : PreferenceFragmentCompat(), SharedPreferences.OnSharedP
             auth.signOut()
             googleSignInClient.signOut()
             loginManager.logOut()
-            val directions = SettingsFragmentDirections.actionMoreToAuthenticationActivity()
+            val directions = SettingsFragmentDirections.actionMoreToLoginFragment2()
             Navigation.findNavController(view!!).navigate(directions)
             true
         }

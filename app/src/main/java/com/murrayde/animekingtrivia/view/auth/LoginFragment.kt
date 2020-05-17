@@ -1,5 +1,6 @@
 package com.murrayde.animekingtrivia.view.auth
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import com.facebook.*
 import com.facebook.login.LoginManager
@@ -23,6 +25,7 @@ import com.google.firebase.auth.GoogleAuthProvider
 
 import com.murrayde.animekingtrivia.R
 import com.murrayde.animekingtrivia.model.player.Player
+import com.murrayde.animekingtrivia.view.community.viewmodel.ProfileViewModel
 import kotlinx.android.synthetic.main.fragment_login.*
 import timber.log.Timber
 
@@ -48,6 +51,11 @@ class LoginFragment : Fragment() {
                 .build()
         googleSignInClient = GoogleSignIn.getClient(activity!!, gso)
         return inflater.inflate(R.layout.fragment_login, container, false)
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        Timber.d("Fragment is now attached.${activity?.localClassName}")
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -118,14 +126,18 @@ class LoginFragment : Fragment() {
         if (user != null) {
             Timber.d("Login success!")
             updateProfile(user)
-            val directions = LoginFragmentDirections.actionLoginFragmentToMainActivity2()
-            Navigation.findNavController(view!!).navigate(directions)
+            val directions = LoginFragmentDirections.actionLoginFragmentToHome()
+            if (view != null) {
+                Timber.d("Login update was successful")
+                Navigation.findNavController(view!!).navigate(directions)
+            }
         } else {
             Timber.d("Login failure!")
         }
     }
 
     private fun updateProfile(user: FirebaseUser?) {
+        val viewModel = ViewModelProvider(activity!!).get(ProfileViewModel::class.java)
         user?.let { firebase_user ->
             for (profile in firebase_user.providerData) {
                 // Id of the provider (ex: google.com)
@@ -138,6 +150,8 @@ class LoginFragment : Fragment() {
                 val name = profile.displayName
                 val email = profile.email
                 val photoUrl = profile.photoUrl.toString()
+                viewModel.setProfileUID(Player(uid, name, email, photoUrl))
+                viewModel.setProfileName(name!!)
                 Timber.d(Player(uid, name, email, photoUrl).toString())
             }
         }

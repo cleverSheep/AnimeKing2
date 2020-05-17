@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_nav"
-    app:startDestination="@id/home">
+    app:startDestination="@id/loginFragment">
 
     <fragment
         android:id="@+id/home"
@@ -149,9 +149,13 @@
         android:name="com.murrayde.animekingtrivia.view.settings.SettingsFragment"
         android:label="fragment_settings">
         <action
-            android:id="@+id/action_more_to_authenticationActivity"
-            app:destination="@id/authenticationActivity"
-            app:popUpTo="@+id/authenticationActivity"
+            android:id="@+id/action_more_to_loginFragment2"
+            app:destination="@id/loginFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/more"
             app:popUpToInclusive="true" />
     </fragment>
     <fragment
@@ -163,9 +167,17 @@
             android:id="@+id/action_answerRandomQuestions_to_home"
             app:destination="@id/home" />
     </fragment>
-    <activity
-        android:id="@+id/authenticationActivity"
-        android:name="com.murrayde.animekingtrivia.view.auth.AuthenticationActivity"
-        android:label="activity_authentication"
-        tools:layout="@layout/activity_authentication" />
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.murrayde.animekingtrivia.view.auth.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/action_loginFragment_to_home"
+            app:destination="@id/home"
+            app:enterAnim="@anim/slide_in_right"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popUpTo="@id/home"
+            app:popUpToInclusive="true" />
+    </fragment>
 </navigation>
