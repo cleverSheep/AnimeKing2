@@ -45,12 +45,13 @@
     <string name="lost_quote">\"Remember the lesson, not the disappointment\"\n-Holo the Wise Wolf</string>
 
     <!-- Profile Layout -->
-    <string name="edit_profile">Edit Profile</string>
     <string name="communities">Communities</string>
     <string name="points">Points</string>
     <string name="questions">Questions</string>
     <string name="correct">Correct</string>
+    <string name="crowns">Crowns</string>
     <string name="my_communities">My Communities</string>
+    <string name="edit_profile">Edit Profile</string>
 
     <!-- Settings Layout -->
     <string name="language">Language</string>

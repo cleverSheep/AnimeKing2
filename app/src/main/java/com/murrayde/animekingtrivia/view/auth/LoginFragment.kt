@@ -125,7 +125,6 @@ class LoginFragment : Fragment() {
     private fun updateUI(user: FirebaseUser?) {
         if (user != null) {
             Timber.d("Login success!")
-            updateProfile(user)
             val directions = LoginFragmentDirections.actionLoginFragmentToHome()
             if (view != null) {
                 Timber.d("Login update was successful")
@@ -133,27 +132,6 @@ class LoginFragment : Fragment() {
             }
         } else {
             Timber.d("Login failure!")
-        }
-    }
-
-    private fun updateProfile(user: FirebaseUser?) {
-        val viewModel = ViewModelProvider(activity!!).get(ProfileViewModel::class.java)
-        user?.let { firebase_user ->
-            for (profile in firebase_user.providerData) {
-                // Id of the provider (ex: google.com)
-                val providerId = profile.providerId
-
-                // UID specific to the provider
-                val uid = profile.uid
-
-                // Name, email address, and profile photo URL
-                val name = profile.displayName
-                val email = profile.email
-                val photoUrl = profile.photoUrl.toString()
-                viewModel.setProfileUID(Player(uid, name, email, photoUrl))
-                viewModel.setProfileName(name!!)
-                Timber.d(Player(uid, name, email, photoUrl).toString())
-            }
         }
     }
 
