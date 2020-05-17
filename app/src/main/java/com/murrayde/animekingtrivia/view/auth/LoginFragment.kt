@@ -22,6 +22,7 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
 
 import com.murrayde.animekingtrivia.R
+import com.murrayde.animekingtrivia.model.player.Player
 import kotlinx.android.synthetic.main.fragment_login.*
 import timber.log.Timber
 
@@ -116,10 +117,29 @@ class LoginFragment : Fragment() {
     private fun updateUI(user: FirebaseUser?) {
         if (user != null) {
             Timber.d("Login success!")
+            updateProfile(user)
             val directions = LoginFragmentDirections.actionLoginFragmentToMainActivity2()
             Navigation.findNavController(view!!).navigate(directions)
         } else {
             Timber.d("Login failure!")
+        }
+    }
+
+    private fun updateProfile(user: FirebaseUser?) {
+        user?.let { firebase_user ->
+            for (profile in firebase_user.providerData) {
+                // Id of the provider (ex: google.com)
+                val providerId = profile.providerId
+
+                // UID specific to the provider
+                val uid = profile.uid
+
+                // Name, email address, and profile photo URL
+                val name = profile.displayName
+                val email = profile.email
+                val photoUrl = profile.photoUrl.toString()
+                Timber.d(Player(uid, name, email, photoUrl).toString())
+            }
         }
     }
 
