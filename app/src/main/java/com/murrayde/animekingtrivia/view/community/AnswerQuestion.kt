@@ -76,7 +76,8 @@ class AnswerQuestion : Fragment() {
                 tv_answer_title.text = args.animeAttributes.titles.en
                         ?: args.animeAttributes.canonicalTitle
 
-                answer_question_score.text = "0/${communityQuestions.size + 2}"
+                val question_count = if (communityQuestions.size < QuestionUtil.QUESTION_LIMIT) communityQuestions.size else QuestionUtil.QUESTION_LIMIT
+                answer_question_score.text = "0/$question_count"
                 results_view_model.resetPoints(0)
                 loadQuestions(communityQuestions, 0, view, listButtons())
             }
@@ -169,7 +170,8 @@ class AnswerQuestion : Fragment() {
                     results_view_model.updateTotalCorrect(++current_score)
                     results_view_model.incrementTimeBonus(current_time)
                     Timber.d("Time bonus incremented by $current_time")
-                    answer_question_score.text = "${current_score}/${communityQuestions.size}"
+                    val question_count = if (communityQuestions.size < QuestionUtil.QUESTION_LIMIT) communityQuestions.size else QuestionUtil.QUESTION_LIMIT
+                    answer_question_score.text = "${current_score}/$question_count"
                     alertCorrectResponse(view)
                 } else {
                     communityQuestions[question_track].setUserCorrectResponse(false)

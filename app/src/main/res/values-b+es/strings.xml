@@ -38,12 +38,13 @@
 
     <!-- View Results Layout -->
     <string name="game_over">Juego Terminado</string>
+    <string name="good_game">¡Buen juego!</string>
     <string name="time_bonus">Tiempo Extra</string>
     <string name="try_again">Inténtalo de Nuevo</string>
     <string name="quit_game">Salir del Juego</string>
     <string name="review_share_questions">Revisar y Compartir Preguntas</string>
     <string name="lost_quote">\"Recuerda la lección, no la decepción.\"\n-Holo la Lobo Sabio</string>
-    <string name="won_quote">\"Some inspirational quote :-)\"\n-Holo the Wise Wolf</string>
+    <string name="won_quote">\"El que golpea primero gana\"\n-L Lawliet</string>
 
     <!-- Profile Layout -->
     <string name="edit_profile">Editar Perfil</string>

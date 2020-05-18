@@ -42,10 +42,6 @@ class ResultsViewModel : ViewModel() {
 
     fun totalCorrect() = total_correct
 
-    fun isPositiveMessage(total_questions: Int) {
-        positive_message = (total_correct / total_questions) > 0.5
-    }
-
-    fun positiveMessage() = positive_message
+    fun positiveMessage() = (total_correct.toFloat() / total_questions.toFloat()) > 0.5
 
 }

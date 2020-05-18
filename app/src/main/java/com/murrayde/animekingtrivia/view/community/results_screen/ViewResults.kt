@@ -4,6 +4,7 @@ package com.murrayde.animekingtrivia.view.community.results_screen
 
 
 import android.content.SharedPreferences
+import android.content.res.Resources
 import android.media.MediaPlayer
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -25,6 +26,7 @@ import com.murrayde.animekingtrivia.extensions.hideView
 import com.murrayde.animekingtrivia.extensions.showView
 import com.murrayde.animekingtrivia.model.community.AnimeAttributes.Attributes
 import com.murrayde.animekingtrivia.model.community.QuestionFactory
+import com.murrayde.animekingtrivia.util.QuestionUtil
 import com.murrayde.animekingtrivia.view.community.list_anime.AnimeListDetailArgs
 import com.murrayde.animekingtrivia.view.community.list_anime.AnimeListDetailDirections
 import com.murrayde.animekingtrivia.view.community.results_screen.review_questions.ReviewQuestionsAdapter
@@ -32,6 +34,7 @@ import com.murrayde.animekingtrivia.view.community.viewmodel.ResultsViewModel
 import kotlinx.android.synthetic.main.fragment_detail.*
 import kotlinx.android.synthetic.main.fragment_view_results.*
 import kotlinx.android.synthetic.main.fragment_view_results_bottom_sheet.*
+import org.w3c.dom.Text
 import timber.log.Timber
 
 
@@ -51,10 +54,15 @@ class ViewResults : Fragment() {
         val results_correct_percentage = view.findViewById<TextView>(R.id.results_correct_percentage)
         val results_time_bonus_points = view.findViewById<TextView>(R.id.results_time_bonus_points)
         val results_total_points = view.findViewById<TextView>(R.id.results_total_points_tv)
+        val quote = view.findViewById<TextView>(R.id.quote)
+        val game_over = view.findViewById<TextView>(R.id.game_over)
 
-        results_correct_percentage.text = "${resultsViewModel.totalCorrect()} out of ${resultsViewModel.getTotalQuestions()} questions correct"
+        val question_count = if (resultsViewModel.getTotalQuestions() < QuestionUtil.QUESTION_LIMIT) resultsViewModel.getTotalQuestions() else QuestionUtil.QUESTION_LIMIT
+        results_correct_percentage.text = "${resultsViewModel.totalCorrect()} out of $question_count questions correct"
         results_time_bonus_points.text = "${resultsViewModel.totalTimeBonus().toString()} pts"
         results_total_points.text = "${resultsViewModel.totalPoints().toString()} pts"
+        quote.text = if (resultsViewModel.positiveMessage()) resources.getString(R.string.won_quote) else resources.getString(R.string.lost_quote)
+        game_over.text = if (resultsViewModel.positiveMessage()) resources.getString(R.string.good_game) else resources.getString(R.string.game_over)
 
         Timber.d("Positive message: ${resultsViewModel.positiveMessage()}")
         return view
