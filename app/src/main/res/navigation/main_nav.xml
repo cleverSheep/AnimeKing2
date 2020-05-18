@@ -140,6 +140,10 @@
         <argument
             android:name="AnimeAttributes"
             app:argType="com.murrayde.animekingtrivia.model.community.AnimeAttributes.Attributes" />
+        <action
+            android:id="@+id/action_viewResults_to_answerQuestionFragment"
+            app:destination="@id/answerQuestionFragment"
+            app:popUpTo="@id/detailFragment" />
     </fragment>
     <fragment
         android:id="@+id/profile"

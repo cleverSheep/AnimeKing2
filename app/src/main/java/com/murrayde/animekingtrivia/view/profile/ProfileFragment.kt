@@ -14,6 +14,7 @@ import com.google.firebase.auth.FirebaseAuth
 
 import com.murrayde.animekingtrivia.R
 import com.murrayde.animekingtrivia.util.ImageUtil
+import com.murrayde.animekingtrivia.util.convertToUserName
 import com.murrayde.animekingtrivia.view.community.viewmodel.ProfileViewModel
 import kotlinx.android.synthetic.main.fragment_profile.*
 import timber.log.Timber
@@ -32,7 +33,7 @@ class ProfileFragment : Fragment() {
         profileViewModel.getProfileInfoFor(auth.currentUser)
         profileViewModel.getPlayerInfo().observe(viewLifecycleOwner, Observer {
             profile_name.text = it.name
-            profile_email.text = it.email
+            profile_email.text = convertToUserName(it.email)
             ImageUtil.loadImage(profile_photo, it.photo_url)
         })
         return view

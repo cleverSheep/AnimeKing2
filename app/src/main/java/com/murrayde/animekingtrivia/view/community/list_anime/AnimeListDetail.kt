@@ -2,7 +2,6 @@
 
 package com.murrayde.animekingtrivia.view.community.list_anime
 
-import android.content.Context
 import android.content.SharedPreferences
 import android.media.MediaPlayer
 import android.os.Bundle
@@ -21,10 +20,13 @@ import androidx.navigation.ui.setupWithNavController
 import androidx.preference.PreferenceManager
 import com.bumptech.glide.Glide
 import com.murrayde.animekingtrivia.R
+import com.murrayde.animekingtrivia.model.community.AnimeAttributes.Attributes
 import com.murrayde.animekingtrivia.model.community.QuestionFactory
 import com.murrayde.animekingtrivia.util.ImageUtil
 import com.murrayde.animekingtrivia.view.community.viewmodel.AnimeDetailViewModel
+import com.murrayde.animekingtrivia.view.community.viewmodel.ResultsViewModel
 import kotlinx.android.synthetic.main.fragment_detail.*
+import timber.log.Timber
 
 
 class AnimeListDetail : Fragment() {
@@ -35,6 +37,7 @@ class AnimeListDetail : Fragment() {
     private var media_is_playing = true
     private lateinit var sharedPreferences: SharedPreferences
     private lateinit var animeDetailViewModel: AnimeDetailViewModel
+    private lateinit var resultsViewModel: ResultsViewModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -51,6 +54,7 @@ class AnimeListDetail : Fragment() {
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
         media_is_playing = sharedPreferences.getBoolean("sound_effects", true)
         animeDetailViewModel = ViewModelProvider(this).get(AnimeDetailViewModel::class.java)
+        resultsViewModel = ViewModelProvider(activity!!).get(ResultsViewModel::class.java)
 
         fragment_detail_title.text = attributes.titles.en ?: attributes.canonicalTitle
         fragment_detail_description.text = attributes.synopsis
@@ -70,17 +74,7 @@ class AnimeListDetail : Fragment() {
         fragment_detail_age_release_date.text = release_date
 
         questionFactory = QuestionFactory()
-        fragment_detail_take_quiz.setOnClickListener {
-            if (media_is_playing) media.start()
-            questionFactory.hasEnoughQuestions(attributes.titles.en
-                    ?: attributes.canonicalTitle, object : QuestionFactory.QuestionCountCallback {
-                override fun onQuestionCountCallback(hasEnoughQuestions: Boolean) {
-                    if (hasEnoughQuestions) {
-                        startQuiz(it)
-                    } else alertNotEnoughQuestions(it)
-                }
-            })
-        }
+        prepareQuiz(attributes)
         fragment_detail_ask_question.setOnClickListener {
             if (media_is_playing) media.start()
             val action = AnimeListDetailDirections.actionDetailFragmentToAskQuestionFragment(attributes)
@@ -97,23 +91,25 @@ class AnimeListDetail : Fragment() {
 
         val anime_title = attributes.titles.en ?: attributes.canonicalTitle
 
-        animeDetailViewModel.getQuestionCount(anime_title).observe(viewLifecycleOwner, Observer<Long> {
+        animeDetailViewModel.getQuestionCount(anime_title).observe(activity!!, Observer<Long> {
             fragment_detail_question_count.text = "$it question(s)"
+            resultsViewModel.setTotalQuestions(it.toInt())
+            Timber.d("Total questions: ${it.toInt()}")
         })
 
     }
 
-    private fun userIsInCommunity(): Boolean {
-        val sharedPref = activity?.getPreferences(Context.MODE_PRIVATE) ?: return false
-        val defaultValue = false
-        return sharedPref.getBoolean(getString(R.string.community), defaultValue)
-    }
-
-    private fun joinCommunity() {
-        val sharedPref = activity?.getPreferences(Context.MODE_PRIVATE) ?: return
-        with(sharedPref.edit()) {
-            putBoolean(getString(R.string.community), true)
-            commit()
+    private fun prepareQuiz(attributes: Attributes) {
+        fragment_detail_take_quiz.setOnClickListener {
+            if (media_is_playing) media.start()
+            questionFactory.hasEnoughQuestions(attributes.titles.en
+                    ?: attributes.canonicalTitle, object : QuestionFactory.QuestionCountCallback {
+                override fun onQuestionCountCallback(hasEnoughQuestions: Boolean) {
+                    if (hasEnoughQuestions) {
+                        startQuiz(it)
+                    } else alertNotEnoughQuestions(it)
+                }
+            })
         }
     }
 

@@ -65,7 +65,7 @@ class AnswerQuestion : Fragment() {
         media_wrong = create(activity, R.raw.button_click_wrong)
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
         media_is_playing = sharedPreferences.getBoolean("sound_effects", true)
-        results_view_model = ViewModelProvider(this).get(ResultsViewModel::class.java)
+        results_view_model = ViewModelProvider(activity!!).get(ResultsViewModel::class.java)
 
         QuestionFactory.RETRIEVE(attributes.titles.en
                 ?: attributes.canonicalTitle, db, object : QuestionFactory.StatusCallback {
@@ -75,6 +75,9 @@ class AnswerQuestion : Fragment() {
                 questions_list_argument = Array(list.size) { CommunityQuestion() }
                 tv_answer_title.text = args.animeAttributes.titles.en
                         ?: args.animeAttributes.canonicalTitle
+
+                answer_question_score.text = "0/${communityQuestions.size + 2}"
+                results_view_model.resetPoints(0)
                 loadQuestions(communityQuestions, 0, view, listButtons())
             }
         })
@@ -122,7 +125,7 @@ class AnswerQuestion : Fragment() {
 
             override fun onTick(time: Long) {
                 answer_question_timer.text = "${time / 1000}s"
-                current_time = time.toInt()
+                current_time = time.toInt() / 1000
             }
 
         }.start()
@@ -163,9 +166,10 @@ class AnswerQuestion : Fragment() {
                 disableAllButtons(list_buttons)
                 if (list_buttons[position].text == correct_response) {
                     communityQuestions[question_track].setUserCorrectResponse(true)
-                    results_view_model.updateTotalCorrect(current_score++)
+                    results_view_model.updateTotalCorrect(++current_score)
                     results_view_model.incrementTimeBonus(current_time)
-                    answer_question_score.text = "${current_score}/10"
+                    Timber.d("Time bonus incremented by $current_time")
+                    answer_question_score.text = "${current_score}/${communityQuestions.size}"
                     alertCorrectResponse(view)
                 } else {
                     communityQuestions[question_track].setUserCorrectResponse(false)

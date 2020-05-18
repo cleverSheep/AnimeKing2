@@ -15,9 +15,9 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/view_results_upper"
         android:layout_width="match_parent"
-        android:layout_marginTop="16dp"
         android:layout_height="match_parent"
-        android:layout_gravity="center">
+        android:layout_gravity="center"
+        android:layout_marginTop="16dp">
 
 
         <LinearLayout
@@ -68,12 +68,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginHorizontal="50dp"
-            android:layout_marginTop="16dp"
+            android:layout_margin="8dp"
             android:background="@drawable/home_compete_background"
             android:fontFamily="@font/baloobhairegular"
-            android:paddingHorizontal="50dp"
-            android:paddingVertical="20dp"
+            android:padding="16dp"
             android:text="1 out of 7 correct"
             android:textAlignment="center"
             android:textColor="@color/color_black"
@@ -87,24 +85,25 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="start"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:fontFamily="@font/baloobhairegular"
             android:text="@string/time_bonus"
             android:textColor="@android:color/white"
             android:textSize="30sp"
             android:visibility="visible"
-            app:layout_constraintStart_toStartOf="@+id/results_correct_percentage"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/results_correct_percentage"
             tools:visibility="visible" />
 
         <TextView
-            android:id="@+id/textView8"
+            android:id="@+id/results_total_points"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="start"
             android:layout_marginTop="16dp"
             android:fontFamily="@font/baloobhairegular"
-            android:text="Total Points"
+            android:text="@string/points"
             android:textColor="@android:color/white"
             android:textSize="30sp"
             android:visibility="visible"
@@ -113,22 +112,23 @@
             tools:visibility="visible" />
 
         <TextView
-            android:id="@+id/textView13"
+            android:id="@+id/results_time_bonus_points"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="start"
+            android:layout_marginEnd="16dp"
             android:fontFamily="@font/baloobhairegular"
-            android:text="12pts"
             android:textColor="@color/color_correct"
             android:textSize="30sp"
             android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="@+id/textView12"
-            app:layout_constraintEnd_toEndOf="@+id/results_correct_percentage"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/textView12"
+            tools:text="12"
             tools:visibility="visible" />
 
         <TextView
-            android:id="@+id/textView10"
+            android:id="@+id/results_total_points_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="start"
@@ -137,9 +137,10 @@
             android:textColor="@color/color_correct"
             android:textSize="30sp"
             android:visibility="visible"
-            app:layout_constraintBottom_toBottomOf="@+id/textView8"
-            app:layout_constraintEnd_toEndOf="@+id/textView13"
-            app:layout_constraintTop_toTopOf="@+id/textView8"
+            app:layout_constraintBottom_toBottomOf="@+id/results_total_points"
+            app:layout_constraintEnd_toEndOf="@+id/results_time_bonus_points"
+            app:layout_constraintTop_toTopOf="@+id/results_total_points"
+            tools:text="13"
             tools:visibility="visible" />
 
         <View
@@ -152,7 +153,7 @@
             app:layout_constraintBottom_toTopOf="@+id/questions_layout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView8" />
+            app:layout_constraintTop_toBottomOf="@+id/results_total_points" />
 
         <LinearLayout
             android:id="@+id/questions_layout"
@@ -162,8 +163,8 @@
             android:layout_marginTop="8dp"
             android:orientation="vertical"
             android:visibility="visible"
-            app:layout_constraintEnd_toEndOf="@+id/textView10"
-            app:layout_constraintStart_toStartOf="@+id/textView8"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/view">
 
             <Button

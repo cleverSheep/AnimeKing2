@@ -47,7 +47,7 @@
 
     <!-- Profile Layout -->
     <string name="communities">Communities</string>
-    <string name="points">Points</string>
+    <string name="points">Total Points</string>
     <string name="questions">Questions</string>
     <string name="correct">Correct</string>
     <string name="crowns">Crowns</string>
