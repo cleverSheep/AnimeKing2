@@ -20,6 +20,8 @@ import androidx.navigation.ui.setupWithNavController
 import androidx.preference.PreferenceManager
 import com.bumptech.glide.Glide
 import com.murrayde.animekingtrivia.R
+import com.murrayde.animekingtrivia.extensions.hideView
+import com.murrayde.animekingtrivia.extensions.showView
 import com.murrayde.animekingtrivia.model.community.AnimeAttributes.Attributes
 import com.murrayde.animekingtrivia.model.community.QuestionFactory
 import com.murrayde.animekingtrivia.util.ImageUtil
@@ -62,32 +64,17 @@ class AnimeListDetail : Fragment() {
         val poster_image = attributes.posterImage?.original ?: attributes.coverImage.original
         val age_rating = attributes.ageRating
         val release_date = attributes.createdAt.substring(0, 4)
-
         Glide.with(this)
                 .load(cover_image)
                 .placeholder(R.drawable.crown_list_screen)
                 .dontAnimate()
                 .into(fragment_detail_image)
-
         ImageUtil.loadDetailPosterImage(fragment_detail_poster_image, poster_image)
         fragment_detail_age_rating.text = age_rating
         fragment_detail_age_release_date.text = release_date
 
         questionFactory = QuestionFactory()
-        prepareQuiz(attributes)
-        fragment_detail_ask_question.setOnClickListener {
-            if (media_is_playing) media.start()
-            val action = AnimeListDetailDirections.actionDetailFragmentToAskQuestionFragment(attributes)
-            Navigation.findNavController(view).navigate(action)
-        }
-        fragment_detail_home.setOnClickListener {
-            if (media_is_playing) media.start()
-            val action = AnimeListDetailDirections.actionDetailFragmentToListFragment()
-            Navigation.findNavController(view).navigate(action)
-        }
-        fragment_detail_multiplayer.setOnClickListener {
-            Toast.makeText(activity!!, R.string.coming_soon, Toast.LENGTH_SHORT).show()
-        }
+        handleClickLogic(view)
 
         val anime_title = attributes.titles.en ?: attributes.canonicalTitle
 
@@ -99,20 +86,6 @@ class AnimeListDetail : Fragment() {
 
     }
 
-    private fun prepareQuiz(attributes: Attributes) {
-        fragment_detail_take_quiz.setOnClickListener {
-            if (media_is_playing) media.start()
-            questionFactory.hasEnoughQuestions(attributes.titles.en
-                    ?: attributes.canonicalTitle, object : QuestionFactory.QuestionCountCallback {
-                override fun onQuestionCountCallback(hasEnoughQuestions: Boolean) {
-                    if (hasEnoughQuestions) {
-                        startQuiz(it)
-                    } else alertNotEnoughQuestions(it)
-                }
-            })
-        }
-    }
-
     private fun alertNotEnoughQuestions(view: View) {
         val action = AnimeListDetailDirections.actionDetailFragmentToLowQuestionCountFragment(args.animeAttributes)
         Navigation.findNavController(view).navigate(action)
@@ -121,6 +94,34 @@ class AnimeListDetail : Fragment() {
     private fun startQuiz(view: View) {
         val action = AnimeListDetailDirections.actionDetailFragmentToAnswerQuestionFragment(args.animeAttributes)
         Navigation.findNavController(view).navigate(action)
+    }
+
+    private fun handleClickLogic(view: View) {
+        fragment_detail_take_quiz.setOnClickListener {
+            if (media_is_playing) media.start()
+            it.isEnabled = false
+            questionFactory.hasEnoughQuestions(args.animeAttributes.titles.en
+                    ?: args.animeAttributes.canonicalTitle, object : QuestionFactory.QuestionCountCallback {
+                override fun onQuestionCountCallback(hasEnoughQuestions: Boolean) {
+                    if (hasEnoughQuestions) {
+                        startQuiz(it)
+                    } else alertNotEnoughQuestions(it)
+                }
+            })
+        }
+        fragment_detail_ask_question.setOnClickListener {
+            if (media_is_playing) media.start()
+            val action = AnimeListDetailDirections.actionDetailFragmentToAskQuestionFragment(args.animeAttributes)
+            Navigation.findNavController(view).navigate(action)
+        }
+        fragment_detail_home.setOnClickListener {
+            if (media_is_playing) media.start()
+            val action = AnimeListDetailDirections.actionDetailFragmentToListFragment()
+            Navigation.findNavController(view).navigate(action)
+        }
+        fragment_detail_multiplayer.setOnClickListener {
+            Toast.makeText(activity!!, R.string.coming_soon, Toast.LENGTH_SHORT).show()
+        }
     }
 
     override fun onDestroy() {

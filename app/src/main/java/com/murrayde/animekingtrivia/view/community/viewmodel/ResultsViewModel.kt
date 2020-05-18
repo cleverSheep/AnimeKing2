@@ -10,10 +10,8 @@ class ResultsViewModel : ViewModel() {
 
     private var time_bonus = 0
     var total_time_bonus = 0
-    private var total_correct_points = 0
     private var total_correct = 0
     private var total_questions = 0
-    private var positive_message = true
 
     fun incrementTimeBonus(time: Int) {
         time_bonus += time

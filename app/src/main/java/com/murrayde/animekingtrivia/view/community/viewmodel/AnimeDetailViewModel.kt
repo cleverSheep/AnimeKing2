@@ -20,14 +20,12 @@ class AnimeDetailViewModel : ViewModel() {
 
     fun getQuestionCount(anime_title: String): LiveData<Long> {
         GlobalScope.launch {
-            GlobalScope.launch {
-                val doc_ref = db.collection("anime").document(anime_title)
-                doc_ref.get().addOnSuccessListener { doc_snapshot ->
-                    if (doc_snapshot.getLong("question_count") == null) {
-                        Timber.d("$anime_title question_count: NULL")
-                    } else {
-                        question_count.value = doc_snapshot.getLong("question_count")
-                    }
+            val doc_ref = db.collection("anime").document(anime_title)
+            doc_ref.get().addOnSuccessListener { doc_snapshot ->
+                if (doc_snapshot.getLong("question_count") == null) {
+                    Timber.d("$anime_title question_count: NULL")
+                } else {
+                    question_count.value = doc_snapshot.getLong("question_count")
                 }
             }
         }

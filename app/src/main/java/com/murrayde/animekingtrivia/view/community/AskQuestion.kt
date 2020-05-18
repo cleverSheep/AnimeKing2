@@ -63,6 +63,7 @@ class AskQuestion : Fragment() {
                     TextUtils.isEmpty(editText_correct_choice.text)) {
                 showDialogForBadAnswerChoice(view)
             } else {
+                it.isEnabled = false
                 media.start()
                 progressBar_ask_question.visibility = View.VISIBLE
                 // NOTE: For some reason, I have to initialize 'question' inside of the click listener...
