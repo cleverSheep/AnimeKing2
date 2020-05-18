@@ -15,9 +15,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 
 import com.murrayde.animekingtrivia.R
+import com.murrayde.animekingtrivia.extensions.hideView
+import com.murrayde.animekingtrivia.extensions.showView
 import com.murrayde.animekingtrivia.view.community.results_screen.review_questions.ReviewQuestionsAdapter
 import kotlinx.android.synthetic.main.fragment_view_results.*
 import kotlinx.android.synthetic.main.fragment_view_results_bottom_sheet.*
+import timber.log.Timber
 
 
 class ViewResults : Fragment() {
@@ -47,12 +50,21 @@ class ViewResults : Fragment() {
         }
 
         bottomSheetBehavior.setBottomSheetCallback(object : BottomSheetBehavior.BottomSheetCallback() {
-            override fun onSlide(p0: View, p1: Float) {
+            override fun onSlide(view: View, offset: Float) {
+                Timber.d("Bottom sheet progress: $offset")
+
+                if (offset > -0f) {
+                    view_results_upper.hideView()
+                }
+                if (offset == 0f) {
+                    view_results_upper.showView()
+                }
             }
 
             override fun onStateChanged(view: View, new_state: Int) {
-                if (new_state == BottomSheetBehavior.STATE_EXPANDED) results_toggle_button.isChecked = true
-                else if (new_state == BottomSheetBehavior.STATE_COLLAPSED) {
+                if (new_state == BottomSheetBehavior.STATE_EXPANDED) {
+                    results_toggle_button.isChecked = true
+                } else if (new_state == BottomSheetBehavior.STATE_COLLAPSED) {
                     results_toggle_button.isChecked = false
                 }
             }

@@ -35,7 +35,7 @@
             android:fontFamily="@font/baloobhairegular"
             android:text="@string/review_share_questions"
             android:textAlignment="center"
-            android:textColor="@color/color_grey"
+            android:textColor="@color/color_black"
             android:textSize="20sp" />
 
     </RelativeLayout>

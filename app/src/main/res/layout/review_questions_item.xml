@@ -22,6 +22,7 @@
         android:layout_marginStart="8dp"
         android:ellipsize="end"
         android:fontFamily="@font/baloobhairegular"
+        android:textColor="@color/color_white"
         android:textSize="15sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -35,6 +36,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/baloobhairegular"
         android:text="Correct: Minato, killed by Kurama"
+        android:textColor="@color/color_white"
         android:textSize="14sp"
         app:layout_constraintStart_toStartOf="@+id/review_question"
         app:layout_constraintTop_toBottomOf="@+id/review_question" />
