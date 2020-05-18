@@ -15,6 +15,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
 import androidx.preference.PreferenceManager
@@ -24,6 +25,7 @@ import com.murrayde.animekingtrivia.model.community.CommunityQuestion
 import com.murrayde.animekingtrivia.model.community.QuestionFactory
 import com.murrayde.animekingtrivia.util.QuestionUtil
 import com.murrayde.animekingtrivia.view.community.list_anime.AnimeListDetailArgs
+import com.murrayde.animekingtrivia.view.community.viewmodel.ResultsViewModel
 import kotlinx.android.synthetic.main.fragment_answer_question.*
 import timber.log.Timber
 
@@ -38,9 +40,11 @@ class AnswerQuestion : Fragment() {
     private lateinit var media_wrong: MediaPlayer
     private var media_is_playing = true
     private lateinit var sharedPreferences: SharedPreferences
+    private lateinit var results_view_model: ResultsViewModel
 
     private var current_score: Int = 0
     private lateinit var countDownTimer: CountDownTimer
+    private var current_time = 0
 
     private lateinit var question_correct: HashMap<Int, Boolean>
     private lateinit var questions_list_argument: Array<CommunityQuestion>
@@ -61,6 +65,7 @@ class AnswerQuestion : Fragment() {
         media_wrong = create(activity, R.raw.button_click_wrong)
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
         media_is_playing = sharedPreferences.getBoolean("sound_effects", true)
+        results_view_model = ViewModelProvider(this).get(ResultsViewModel::class.java)
 
         QuestionFactory.RETRIEVE(attributes.titles.en
                 ?: attributes.canonicalTitle, db, object : QuestionFactory.StatusCallback {
@@ -115,9 +120,9 @@ class AnswerQuestion : Fragment() {
                 showTimeUpDialog(randomQuestions, new_question, view, list_buttons)
             }
 
-            override fun onTick(p0: Long) {
-                Timber.d(p0.toString())
-                answer_question_timer.text = "${p0 / 1000}s"
+            override fun onTick(time: Long) {
+                answer_question_timer.text = "${time / 1000}s"
+                current_time = time.toInt()
             }
 
         }.start()
@@ -158,7 +163,8 @@ class AnswerQuestion : Fragment() {
                 disableAllButtons(list_buttons)
                 if (list_buttons[position].text == correct_response) {
                     communityQuestions[question_track].setUserCorrectResponse(true)
-                    current_score++
+                    results_view_model.updateTotalCorrect(current_score++)
+                    results_view_model.incrementTimeBonus(current_time)
                     answer_question_score.text = "${current_score}/10"
                     alertCorrectResponse(view)
                 } else {

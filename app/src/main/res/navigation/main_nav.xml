@@ -100,7 +100,9 @@
             app:argType="com.murrayde.animekingtrivia.model.community.AnimeAttributes.Attributes" />
         <action
             android:id="@+id/action_answerQuestionFragment_to_viewResults"
-            app:destination="@id/viewResults" />
+            app:destination="@id/viewResults"
+            app:popUpTo="@id/answerQuestionFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <activity
         android:id="@+id/homeScreenActivity"

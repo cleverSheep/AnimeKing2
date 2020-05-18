@@ -31,7 +31,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="@drawable/title_stroke"
-            android:fontFamily="@font/bahnscrift"
+            android:fontFamily="@font/baloobhairegular"
             android:text="@{anime_id.attributes.titles.en ?? anime_id.attributes.canonicalTitle}"
             android:textAlignment="center"
             android:textColor="@android:color/white"

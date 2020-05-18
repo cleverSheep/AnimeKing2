@@ -43,6 +43,7 @@
     <string name="quit_game">Quit Game</string>
     <string name="review_share_questions">Review and Share Questions</string>
     <string name="lost_quote">\"Remember the lesson, not the disappointment\"\n-Holo the Wise Wolf</string>
+    <string name="won_quote">\"Some inspirational quote :-)\"\n-Holo the Wise Wolf</string>
 
     <!-- Profile Layout -->
     <string name="communities">Communities</string>
