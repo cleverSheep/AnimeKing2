@@ -3,6 +3,7 @@
 package com.murrayde.animekingtrivia.view.community
 
 import android.content.DialogInterface
+import android.content.SharedPreferences
 import android.media.MediaPlayer
 import android.os.Bundle
 import android.text.TextUtils
@@ -10,6 +11,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.TimePicker
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
@@ -17,6 +19,7 @@ import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.navigation.ui.setupWithNavController
+import androidx.preference.PreferenceManager
 import com.bumptech.glide.Glide
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
@@ -26,6 +29,7 @@ import com.murrayde.animekingtrivia.extensions.formatQuestion
 import com.murrayde.animekingtrivia.model.community.CommunityQuestion
 import com.murrayde.animekingtrivia.view.community.list_anime.AnimeListDetailArgs
 import kotlinx.android.synthetic.main.fragment_ask_question.*
+import timber.log.Timber
 
 
 class AskQuestion : Fragment() {
@@ -33,6 +37,7 @@ class AskQuestion : Fragment() {
     private val args: AnimeListDetailArgs by navArgs()
     private val db = FirebaseFirestore.getInstance()
     private lateinit var media: MediaPlayer
+    private lateinit var sharedPreferences: SharedPreferences
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -46,6 +51,7 @@ class AskQuestion : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val attributes = args.animeAttributes
         media = MediaPlayer.create(activity, R.raw.button_click_sound_effect)
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(activity)
 
         tv_ask_question.text = attributes.titles.en ?: attributes.canonicalTitle
         Glide.with(this)
@@ -91,11 +97,16 @@ class AskQuestion : Fragment() {
         //NOTE: Question_Count reflects the database value not the HashMap<..> value
         //NOTE: This callback supposedly causes a memory leak
         val question_id = db.collection("anime")
+                .document(sharedPreferences.getString("language", "en")!!)
+                .collection("titles")
                 .document(tv_ask_question.text.toString())
                 .collection("questions")
                 .document().id
         communityQuestion.question_id = question_id
+        Timber.d("Language preference: ${sharedPreferences.getString("language", "en")}")
         db.collection("anime")
+                .document(sharedPreferences.getString("language", "en")!!)
+                .collection("titles")
                 .document(tv_ask_question.text.toString())
                 .collection("questions")
                 .document(question_id)
@@ -112,6 +123,8 @@ class AskQuestion : Fragment() {
         data["question_count"] = FieldValue.increment(1)
 
         val questionCountRef = db.collection("anime")
+                .document(sharedPreferences.getString("language", "en")!!)
+                .collection("titles")
                 .document(tv_ask_question.text.toString())
         questionCountRef.set(data, SetOptions.merge())
     }

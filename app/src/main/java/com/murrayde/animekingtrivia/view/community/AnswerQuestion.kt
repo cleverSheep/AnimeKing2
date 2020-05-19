@@ -63,12 +63,12 @@ class AnswerQuestion : Fragment() {
         media_default = create(activity, R.raw.button_click_sound_effect)
         media_correct = create(activity, R.raw.button_click_correct)
         media_wrong = create(activity, R.raw.button_click_wrong)
-        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(activity)
         media_is_playing = sharedPreferences.getBoolean("sound_effects", true)
         results_view_model = ViewModelProvider(activity!!).get(ResultsViewModel::class.java)
 
         QuestionFactory.RETRIEVE(attributes.titles.en
-                ?: attributes.canonicalTitle, db, object : QuestionFactory.StatusCallback {
+                ?: attributes.canonicalTitle, db, activity!!, object : QuestionFactory.StatusCallback {
             // NOTE: Callback used to handle asynchronous calls to Firebase Firestore
             override fun onStatusCallback(list: ArrayList<CommunityQuestion>) {
                 communityQuestions = list

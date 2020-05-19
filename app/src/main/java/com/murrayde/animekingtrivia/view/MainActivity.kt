@@ -2,8 +2,12 @@ package com.murrayde.animekingtrivia.view
 
 import android.app.Activity
 import android.content.Context
+import android.content.Intent
+import android.content.res.Configuration
+import android.content.res.Resources
 import android.os.Build
 import android.os.Bundle
+import android.util.DisplayMetrics
 import android.view.MotionEvent
 import android.view.View
 import android.view.WindowManager
@@ -14,6 +18,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
+import androidx.preference.PreferenceManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.murrayde.animekingtrivia.R
 import com.murrayde.animekingtrivia.extensions.hideView
@@ -21,6 +26,7 @@ import com.murrayde.animekingtrivia.extensions.showView
 import com.murrayde.animekingtrivia.view.community.viewmodel.MainActivityViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 import timber.log.Timber
+import java.util.*
 
 
 class MainActivity : AppCompatActivity() {

@@ -72,7 +72,7 @@ class ViewResults : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val list_questions = resultsArgs.listQuestions
         val review_questions_adapter = ReviewQuestionsAdapter(activity!!, list_questions!!)
-        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(activity)
         media = MediaPlayer.create(activity, R.raw.button_click_sound_effect)
         media_is_playing = sharedPreferences.getBoolean("sound_effects", true)
 

@@ -53,7 +53,7 @@ class AnswerRandomQuestions : Fragment() {
         media_default = create(activity!!, R.raw.button_click_sound_effect)
         media_correct = create(activity, R.raw.button_click_correct)
         media_wrong = create(activity, R.raw.button_click_wrong)
-        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(activity)
         media_is_playing = sharedPreferences.getBoolean("sound_effects", true)
         results_view_model = ViewModelProvider(activity!!).get(ResultsViewModel::class.java)
 

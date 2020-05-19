@@ -53,7 +53,7 @@ class AnimeListDetail : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val attributes = args.animeAttributes
         media = MediaPlayer.create(activity, R.raw.button_click_sound_effect)
-        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(activity)
         media_is_playing = sharedPreferences.getBoolean("sound_effects", true)
         animeDetailViewModel = ViewModelProvider(this).get(AnimeDetailViewModel::class.java)
         resultsViewModel = ViewModelProvider(activity!!).get(ResultsViewModel::class.java)
@@ -78,7 +78,7 @@ class AnimeListDetail : Fragment() {
 
         val anime_title = attributes.titles.en ?: attributes.canonicalTitle
 
-        animeDetailViewModel.getQuestionCount(anime_title).observe(activity!!, Observer<Long> {
+        animeDetailViewModel.getQuestionCount(anime_title, sharedPreferences).observe(activity!!, Observer<Long> {
             fragment_detail_question_count.text = "$it question(s)"
             resultsViewModel.setTotalQuestions(it.toInt())
             Timber.d("Total questions: ${it.toInt()}")
@@ -107,7 +107,7 @@ class AnimeListDetail : Fragment() {
                         startQuiz(it)
                     } else alertNotEnoughQuestions(it)
                 }
-            })
+            }, context!!)
         }
         fragment_detail_ask_question.setOnClickListener {
             if (media_is_playing) media.start()
