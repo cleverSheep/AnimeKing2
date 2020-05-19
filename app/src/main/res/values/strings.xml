@@ -26,6 +26,7 @@
 
     <!-- Not Enough Questions -->
     <string name="insufficient_questions">Uh oh! Our radar didn\'t detect enough questions. A minimum of 7 questions is necessary to play.</string>
+    <string name="add_questions">Add More Questions</string>
 
 
     <!-- Answer Question Layout -->

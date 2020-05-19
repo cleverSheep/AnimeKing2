@@ -22,6 +22,7 @@ import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.SetOptions
 import com.murrayde.animekingtrivia.R
+import com.murrayde.animekingtrivia.extensions.formatQuestion
 import com.murrayde.animekingtrivia.model.community.CommunityQuestion
 import com.murrayde.animekingtrivia.view.community.list_anime.AnimeListDetailArgs
 import kotlinx.android.synthetic.main.fragment_ask_question.*
@@ -71,7 +72,9 @@ class AskQuestion : Fragment() {
                         editText_wrong_one.text.toString(),
                         editText_wrong_two.text.toString(),
                         editText_wrong_three.text.toString())
-                val question = CommunityQuestion(editText_enter_question.text.toString(),
+                val stringBuilder = StringBuilder()
+                val checkQuestionFormat = stringBuilder.formatQuestion(editText_enter_question.text.toString())
+                val question = CommunityQuestion(checkQuestionFormat,
                         attributes.posterImage.original,
                         "",
                         multiple_choice,
