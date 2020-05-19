@@ -10,10 +10,15 @@ import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.murrayde.animekingtrivia.R
+import com.murrayde.animekingtrivia.extensions.hideView
+import com.murrayde.animekingtrivia.extensions.showView
+import com.murrayde.animekingtrivia.view.community.viewmodel.MainActivityViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 import timber.log.Timber
 
@@ -25,6 +30,7 @@ class MainActivity : AppCompatActivity() {
         fullScreenAll()
         window.addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN)
         respondToUIVisibilityChanges()
+        val viewModel = ViewModelProvider(this).get(MainActivityViewModel::class.java)
 
         val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         imm.showSoftInput(View(this), InputMethodManager.SHOW_IMPLICIT)
@@ -40,6 +46,18 @@ class MainActivity : AppCompatActivity() {
                 else -> bottom.visibility = View.VISIBLE
             }
         }
+
+        viewModel.networkDoneLoading().observe(this, Observer { loading ->
+            Timber.d("network is loading")
+            if (loading) {
+                Timber.d("network is loading")
+                activity_main_content.hideView()
+                activity_main_loading.showView()
+            } else {
+                activity_main_content.showView()
+                activity_main_loading.hideView()
+            }
+        })
     }
 
     override fun onStart() {

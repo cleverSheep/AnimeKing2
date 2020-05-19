@@ -1,4 +1,4 @@
-@file:Suppress("PrivatePropertyName")
+@file:Suppress("PrivatePropertyName", "LocalVariableName")
 
 package com.murrayde.animekingtrivia.view.community.list_anime
 
@@ -7,15 +7,19 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.paging.PagedList
 import androidx.recyclerview.widget.GridLayoutManager
 import com.murrayde.animekingtrivia.R
+import com.murrayde.animekingtrivia.extensions.hideView
+import com.murrayde.animekingtrivia.extensions.showView
 import com.murrayde.animekingtrivia.network.community.api.AnimeData
 import com.murrayde.animekingtrivia.util.PagingUtil
 import com.murrayde.animekingtrivia.view.community.viewmodel.MainActivityViewModel
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_list.*
 import timber.log.Timber
 
@@ -48,6 +52,17 @@ class AnimeList : Fragment() {
             }
         }
         viewModel.animeData.observe(activity!!, Observer<PagedList<AnimeData>> { listAdapter.submitList(it) })
+
+        viewModel.networkDoneLoading().observe(activity!!, Observer { loading ->
+            if (loading) {
+                rv_anime.hideView()
+                list_main_loading.showView()
+            } else {
+
+                rv_anime.showView()
+                list_main_loading.hideView()
+            }
+        })
 
     }
 

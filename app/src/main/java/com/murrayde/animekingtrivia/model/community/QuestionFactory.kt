@@ -35,7 +35,7 @@ class QuestionFactory {
             if (doc_snapshot.getLong("question_count") == null) {
                 questionCountCallback.onQuestionCountCallback(false)
             } else {
-                questionCountCallback.onQuestionCountCallback((doc_snapshot.getLong("question_count"))!! > QuestionUtil.QUESTION_COUNT_MIN)
+                questionCountCallback.onQuestionCountCallback((doc_snapshot.getLong("question_count"))!! >= QuestionUtil.QUESTION_COUNT_MIN)
             }
         }
     }

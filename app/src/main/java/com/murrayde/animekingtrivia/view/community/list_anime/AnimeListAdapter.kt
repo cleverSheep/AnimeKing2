@@ -19,7 +19,7 @@ class AnimeListAdapter : PagedListEpoxyController<AnimeData>() {
             if (currentPosition == 0) {
                 return HeaderView_()
                         .id("Header")
-                        .title(R.string.random_anime)
+                        .title(R.string.quick_play)
                         .onClickListener { view ->
                             val directions = AnimeListDirections.actionHomeToAnswerRandomQuestions()
                             Navigation.findNavController(view).navigate(directions)

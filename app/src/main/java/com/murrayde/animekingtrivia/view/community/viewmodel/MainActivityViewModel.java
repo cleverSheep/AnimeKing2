@@ -1,6 +1,7 @@
 package com.murrayde.animekingtrivia.view.community.viewmodel;
 
 import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 import androidx.paging.LivePagedListBuilder;
 import androidx.paging.PagedList;
@@ -18,6 +19,7 @@ public class MainActivityViewModel extends ViewModel {
     private CompositeDisposable compositeDisposable;
 
     private LiveData<PagedList<AnimeData>> animeData;
+    private MutableLiveData<Boolean> networkDoneLoading;
 
     public MainActivityViewModel() {
         AnimeApiComponent daggerAnimeApiComponent = DaggerAnimeApiComponent.builder()
@@ -25,7 +27,8 @@ public class MainActivityViewModel extends ViewModel {
         AnimeApiEndpoint animeApiEndpoint = daggerAnimeApiComponent.getAnimeApiEndpoint();
 
         compositeDisposable = new CompositeDisposable();
-        AnimeDataSourceFactory animeDataSourceFactory = new AnimeDataSourceFactory(animeApiEndpoint, compositeDisposable);
+        networkDoneLoading = new MutableLiveData<Boolean>();
+        AnimeDataSourceFactory animeDataSourceFactory = new AnimeDataSourceFactory(animeApiEndpoint, compositeDisposable, networkDoneLoading);
 
         PagedList.Config pagingConfig = new PagedList.Config.Builder()
                 .setPrefetchDistance(PagingUtil.PAGING_PREFETCH)
@@ -42,5 +45,9 @@ public class MainActivityViewModel extends ViewModel {
 
     public LiveData<PagedList<AnimeData>> getAnimeData() {
         return animeData;
+    }
+
+    public LiveData<Boolean> networkDoneLoading() {
+        return networkDoneLoading;
     }
 }

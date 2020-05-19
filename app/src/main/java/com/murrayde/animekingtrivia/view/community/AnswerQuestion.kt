@@ -32,7 +32,7 @@ import timber.log.Timber
 
 class AnswerQuestion : Fragment() {
 
-    private val args: AnimeListDetailArgs by navArgs()
+    private val args: AnswerQuestionArgs by navArgs()
     private val db = FirebaseFirestore.getInstance()
 
     private lateinit var media_default: MediaPlayer

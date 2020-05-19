@@ -38,7 +38,9 @@
             android:id="@+id/action_detailFragment_to_lowQuestionCountFragment"
             app:destination="@id/lowQuestionCountFragment"
             app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left" />
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
         <action
             android:id="@+id/action_detailFragment_to_askQuestionFragment"
             app:destination="@id/askQuestionFragment"
@@ -69,7 +71,9 @@
             android:id="@+id/action_lowQuestionCountFragment_to_askQuestionFragment"
             app:destination="@id/askQuestionFragment"
             app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left" />
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
         <argument
             android:name="AnimeAttributes"
             app:argType="com.murrayde.animekingtrivia.model.community.AnimeAttributes.Attributes" />
@@ -101,6 +105,8 @@
         <action
             android:id="@+id/action_answerQuestionFragment_to_viewResults"
             app:destination="@id/viewResults"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
             app:popUpTo="@id/answerQuestionFragment"
             app:popUpToInclusive="true" />
     </fragment>
@@ -172,6 +178,11 @@
         <action
             android:id="@+id/action_answerRandomQuestions_to_home"
             app:destination="@id/home" />
+        <action
+            android:id="@+id/action_answerRandomQuestions_to_viewResults"
+            app:destination="@id/viewResults"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment"

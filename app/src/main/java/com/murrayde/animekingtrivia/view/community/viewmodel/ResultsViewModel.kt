@@ -5,6 +5,8 @@ package com.murrayde.animekingtrivia.view.community.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.murrayde.animekingtrivia.util.QuestionUtil
+import timber.log.Timber
 
 class ResultsViewModel : ViewModel() {
 
@@ -22,7 +24,7 @@ class ResultsViewModel : ViewModel() {
         total_correct = correct
     }
 
-    fun getTotalQuestions() = total_questions
+    fun getTotalQuestions() = if (total_questions > QuestionUtil.QUESTION_LIMIT) 10 else total_questions
 
     fun setTotalQuestions(number_questions: Int) {
         total_questions = number_questions
@@ -40,6 +42,9 @@ class ResultsViewModel : ViewModel() {
 
     fun totalCorrect() = total_correct
 
-    fun positiveMessage() = (total_correct.toFloat() / total_questions.toFloat()) > 0.5
+    fun positiveMessage(): Boolean {
+        Timber.d("Total score: ${total_correct.toFloat() / total_questions.toFloat()}")
+        return (total_correct.toFloat() / getTotalQuestions().toFloat()) > 0.5
+    }
 
 }

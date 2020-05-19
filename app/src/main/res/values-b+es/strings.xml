@@ -10,8 +10,9 @@
     <string name="anime_image">Anime Image</string>
 
     <!-- Anime List Layout -->
-    <string name="random_anime">Anime Al Azar</string>
+    <string name="quick_play">Juego rápido</string>
     <string name="play">Jugar</string>
+    <string name="start">Comienzo</string>
 
     <!-- Anime Detail Layout -->
     <string name="take_quiz">Jugar</string>
@@ -19,10 +20,12 @@
     <string name="single_player">Una jugadora</string>
     <string name="multi_player">Multijugador</string>
     <string name="join_community">Únete a la Comunidad</string>
-    <string name="member_count">14 members</string>
-    <string name="question_count">356 questions</string>
+    <string name="question_count">0 questions</string>
     <string name="ask_question">Pregunta</string>
     <string name="coming_soon">Próximamente!</string>
+
+    <!-- Not Enough Questions -->
+    <string name="insufficient_questions">¡UH oh! Nuestro radar no detectó suficientes preguntas. Se necesita un mínimo de 7 preguntas para jugar.</string>
 
     <!-- Answer Question Layout -->
     <string name="next_question">Próxima Pregunta</string>

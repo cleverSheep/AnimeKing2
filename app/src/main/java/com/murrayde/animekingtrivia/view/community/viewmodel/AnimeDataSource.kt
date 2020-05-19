@@ -13,19 +13,18 @@ import io.reactivex.observers.DisposableSingleObserver
 import io.reactivex.schedulers.Schedulers
 
 class AnimeDataSource(private val animeApiEndpoint: AnimeApiEndpoint,
-                      private val compositeDisposable: CompositeDisposable) : PageKeyedDataSource<String, AnimeData>() {
-
-    val networkState = MutableLiveData<NetworkState>()
+                      private val compositeDisposable: CompositeDisposable,
+                      private val networkUIStateLoading: MutableLiveData<Boolean>) : PageKeyedDataSource<String, AnimeData>() {
 
     override fun loadInitial(params: LoadInitialParams<String>, callback: LoadInitialCallback<String, AnimeData>) {
-        networkState.postValue(NetworkState.LOADING)
+        networkUIStateLoading.postValue(true)
         compositeDisposable.add(
                 animeApiEndpoint.getAllPopularAnime(PagingUtil.PAGING_LIMIT, PagingUtil.PAGING_OFFSET)
                         .subscribeOn(Schedulers.newThread())
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribeWith(object : DisposableSingleObserver<AnimeComplete>() {
                             override fun onSuccess(t: AnimeComplete) {
-                                networkState.postValue(NetworkState.LOADED)
+                                networkUIStateLoading.postValue(false)
 
                                 val animeDataArrayList: ArrayList<AnimeData> = ArrayList()
                                 animeDataArrayList.addAll(t.data)
@@ -33,7 +32,7 @@ class AnimeDataSource(private val animeApiEndpoint: AnimeApiEndpoint,
                             }
 
                             override fun onError(e: Throwable) {
-                                networkState.postValue(NetworkState.error("Error loading anime titles"))
+                                networkUIStateLoading.postValue(false)
                             }
 
                         })
@@ -41,14 +40,12 @@ class AnimeDataSource(private val animeApiEndpoint: AnimeApiEndpoint,
     }
 
     override fun loadAfter(params: LoadParams<String>, callback: LoadCallback<String, AnimeData>) {
-        networkState.postValue(NetworkState.LOADING)
         compositeDisposable.add(
                 animeApiEndpoint.getAllPopularAnime(PagingUtil.PAGING_LIMIT, PagingUtil.PAGING_OFFSET())
                         .subscribeOn(Schedulers.newThread())
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribeWith(object : DisposableSingleObserver<AnimeComplete>() {
                             override fun onSuccess(t: AnimeComplete) {
-                                networkState.postValue(NetworkState.LOADED)
 
                                 val animeDataArrayList: ArrayList<AnimeData> = ArrayList()
                                 animeDataArrayList.addAll(t.data)
@@ -56,7 +53,6 @@ class AnimeDataSource(private val animeApiEndpoint: AnimeApiEndpoint,
                             }
 
                             override fun onError(e: Throwable) {
-                                networkState.postValue(NetworkState.error("Error loading anime titles"))
                             }
 
                         })

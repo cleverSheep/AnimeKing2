@@ -20,10 +20,13 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.navArgs
 import androidx.preference.PreferenceManager
 import com.murrayde.animekingtrivia.R
 import com.murrayde.animekingtrivia.model.random.Result
 import com.murrayde.animekingtrivia.util.QuestionUtil
+import com.murrayde.animekingtrivia.view.community.AnswerQuestionDirections
+import com.murrayde.animekingtrivia.view.community.viewmodel.ResultsViewModel
 import kotlinx.android.synthetic.main.fragment_random_questions.*
 import timber.log.Timber
 
@@ -36,6 +39,8 @@ class AnswerRandomQuestions : Fragment() {
     private lateinit var countDownTimer: CountDownTimer
     private var media_is_playing = true
     private lateinit var sharedPreferences: SharedPreferences
+    private lateinit var results_view_model: ResultsViewModel
+    private var current_time = 0
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -50,12 +55,14 @@ class AnswerRandomQuestions : Fragment() {
         media_wrong = create(activity, R.raw.button_click_wrong)
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
         media_is_playing = sharedPreferences.getBoolean("sound_effects", true)
+        results_view_model = ViewModelProvider(activity!!).get(ResultsViewModel::class.java)
 
         var randomQuestions: ArrayList<Result>
 
-        val randomQuestionsViewModel = ViewModelProvider(this).get(RandomQuestionsViewModel::class.java)
-        randomQuestionsViewModel.getQuestionSet().observe(this, Observer {
+        val randomQuestionsViewModel = ViewModelProvider(activity!!).get(RandomQuestionsViewModel::class.java)
+        randomQuestionsViewModel.getQuestionSet().observe(activity!!, Observer {
             randomQuestions = it as ArrayList<Result>
+            results_view_model.resetPoints(0)
             loadQuestions(randomQuestions, 0, view, listButtons())
         })
 
@@ -107,9 +114,9 @@ class AnswerRandomQuestions : Fragment() {
                 showTimeUpDialog(randomQuestions, ++current_question, view, list_buttons)
             }
 
-            override fun onTick(p0: Long) {
-                Timber.d(p0.toString())
-                random_time_tv.text = "${p0 / 1000}s"
+            override fun onTick(time: Long) {
+                random_time_tv.text = "${time / 1000}s"
+                current_time = time.toInt() / 1000
             }
 
         }.start()
@@ -151,6 +158,8 @@ class AnswerRandomQuestions : Fragment() {
                 if (list_buttons[position].text == correct_response) {
                     current_score++
                     random_question_score_tv.text = "${current_score}/10"
+                    results_view_model.updateTotalCorrect(++current_score)
+                    results_view_model.incrementTimeBonus(current_time)
                     alertCorrectResponse(view)
                 } else alertWrongResponse(view, list_buttons, correct_response)
                 random_question_next_btn.visibility = View.VISIBLE
