@@ -2,6 +2,7 @@
 
 package com.murrayde.animekingtrivia.model.community
 
+import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
 import com.murrayde.animekingtrivia.util.QuestionUtil
 
@@ -14,8 +15,9 @@ class QuestionFactory {
             val distinct_questions = ArrayList<String>()
             val final_questions = ArrayList<CommunityQuestion>()
 
-            db.collection("anime").document(anime_title).collection("questions").limit(QuestionUtil.QUESTION_LIMIT).get().addOnSuccessListener {
-                it.forEach { snapshot ->
+            db.collection("anime").document(anime_title).collection("questions").limit(QuestionUtil.QUESTION_LIMIT).get().addOnSuccessListener { query_snapshot ->
+                val collection_questions = randomlySelectQuestions(query_snapshot.documents)
+                query_snapshot.forEach { snapshot ->
                     val question = snapshot.toObject(CommunityQuestion::class.java)
                     if (!distinct_questions.contains(question.question_id)) {
                         final_questions.add(question)
@@ -26,6 +28,14 @@ class QuestionFactory {
                 status.onStatusCallback(final_questions)
             }
             return final_questions
+        }
+
+        private fun randomlySelectQuestions(documents: List<DocumentSnapshot>): List<DocumentSnapshot> {
+            val random_questions: List<DocumentSnapshot> = emptyList()
+            while (random_questions.size < QuestionUtil.QUESTION_LIMIT) {
+                val indices_list = ArrayList<Int>(documents.size)
+            }
+            return random_questions
         }
     }
 
