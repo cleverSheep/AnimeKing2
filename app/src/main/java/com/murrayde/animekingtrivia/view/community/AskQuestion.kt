@@ -5,6 +5,7 @@ package com.murrayde.animekingtrivia.view.community
 import android.content.DialogInterface
 import android.media.MediaPlayer
 import android.os.Bundle
+import android.os.LocaleList
 import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +13,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.Toolbar
+import androidx.core.os.LocaleListCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
@@ -26,6 +28,7 @@ import com.murrayde.animekingtrivia.extensions.formatQuestion
 import com.murrayde.animekingtrivia.model.community.CommunityQuestion
 import com.murrayde.animekingtrivia.view.community.list_anime.AnimeListDetailArgs
 import kotlinx.android.synthetic.main.fragment_ask_question.*
+import timber.log.Timber
 
 
 class AskQuestion : Fragment() {
@@ -90,12 +93,17 @@ class AskQuestion : Fragment() {
         //addQuestionToDatabase("anime")
         //NOTE: Question_Count reflects the database value not the HashMap<..> value
         //NOTE: This callback supposedly causes a memory leak
+        Timber.d("User's locale: ${LocaleListCompat.getDefault()[0].language}")
         val question_id = db.collection("anime")
+                .document(LocaleListCompat.getDefault()[0].language)
+                .collection("titles")
                 .document(tv_ask_question.text.toString())
                 .collection("questions")
                 .document().id
         communityQuestion.question_id = question_id
         db.collection("anime")
+                .document(LocaleListCompat.getDefault()[0].language)
+                .collection("titles")
                 .document(tv_ask_question.text.toString())
                 .collection("questions")
                 .document(question_id)
@@ -112,6 +120,8 @@ class AskQuestion : Fragment() {
         data["question_count"] = FieldValue.increment(1)
 
         val questionCountRef = db.collection("anime")
+                .document(LocaleListCompat.getDefault()[0].language)
+                .collection("titles")
                 .document(tv_ask_question.text.toString())
         questionCountRef.set(data, SetOptions.merge())
     }
