@@ -40,6 +40,7 @@ class AnimeListDetail : Fragment() {
     private lateinit var sharedPreferences: SharedPreferences
     private lateinit var animeDetailViewModel: AnimeDetailViewModel
     private lateinit var resultsViewModel: ResultsViewModel
+    private lateinit var app_language: String
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
