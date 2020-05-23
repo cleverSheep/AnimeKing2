@@ -14,16 +14,14 @@ import android.util.DisplayMetrics
 import android.view.View
 import androidx.core.os.LocaleListCompat
 import androidx.navigation.Navigation
-import androidx.preference.ListPreference
-import androidx.preference.Preference
-import androidx.preference.PreferenceFragmentCompat
-import androidx.preference.SwitchPreferenceCompat
+import androidx.preference.*
 import com.facebook.login.LoginManager
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.auth.FirebaseAuth
 import com.murrayde.animekingtrivia.R
+import com.murrayde.animekingtrivia.util.determineAppLanguage
 import com.murrayde.animekingtrivia.view.MainActivity
 import timber.log.Timber
 import java.util.*
@@ -38,16 +36,17 @@ class SettingsFragment : PreferenceFragmentCompat(), SharedPreferences.OnSharedP
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         view.setBackgroundColor(resources.getColor(R.color.color_home_logo))
+        Timber.d("onviewcreated stage")
         super.onViewCreated(view, savedInstanceState)
     }
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         setPreferencesFromResource(R.xml.screen_settings, rootKey)
-        val sharedPref = activity?.getPreferences(Context.MODE_PRIVATE) ?: return
-        sharedPref.edit().putString("language", LocaleListCompat.getDefault()[0].language).apply()
-        Timber.d("Current language: ${sharedPref.getString("language", LocaleListCompat.getDefault()[0].language)}")
+        val sharedPref = PreferenceManager.getDefaultSharedPreferences(context)
+        val current_language = sharedPref.getString("language", "en")
         val language_list_preference = findPreference<ListPreference>("language")
-        language_list_preference?.value = LocaleListCompat.getDefault()[0].language
+        language_list_preference?.value = determineAppLanguage(current_language!!, LocaleListCompat.getDefault()[0].language)
+        Timber.d("Created Preference stage")
         //setDarkThemeBasedOnVersion()
     }
 
@@ -69,14 +68,24 @@ class SettingsFragment : PreferenceFragmentCompat(), SharedPreferences.OnSharedP
             loginManager.logOut()
             val directions = SettingsFragmentDirections.actionMoreToLoginFragment2()
             Navigation.findNavController(view!!).navigate(directions)
+            Timber.d("onResume stage")
             true
         }
 
     }
 
+
     override fun onPause() {
         preferenceManager.sharedPreferences.unregisterOnSharedPreferenceChangeListener(this)
+        Timber.d("list preference should be paused ")
         super.onPause()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        val language_list_preference = findPreference<ListPreference>("language")
+        language_list_preference?.value = LocaleListCompat.getDefault()[0].language
+        Timber.d("list preference should be destroyed ")
     }
 
     override fun onSharedPreferenceChanged(preference: SharedPreferences?, key: String?) {
@@ -85,10 +94,11 @@ class SettingsFragment : PreferenceFragmentCompat(), SharedPreferences.OnSharedP
         Timber.d("Preference settings now initialized")
 
         if (key == "language") {
-            val language = preference?.getString("language", LocaleListCompat.getDefault()[0].language)
+            val language = preference?.getString("language", "en")
+            Timber.d("Update language: $language")
             setLocale(language)
             with(sharedPref.edit()) {
-                putString(getString(R.string.language), preference?.getString("language", LocaleListCompat.getDefault()[0].language)!!)
+                putString(getString(R.string.language), preference?.getString("language", language))
                 commit()
             }
         }
