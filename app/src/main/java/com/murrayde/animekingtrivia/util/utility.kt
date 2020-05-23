@@ -12,3 +12,5 @@ fun determineQuestionLanguage(app_language: String, system_language: String): St
     return if (app_language != system_language) app_language
     else system_language
 }
+
+fun questionCount(community_count: Int, question_limit: Long) = if (community_count > question_limit) question_limit else community_count

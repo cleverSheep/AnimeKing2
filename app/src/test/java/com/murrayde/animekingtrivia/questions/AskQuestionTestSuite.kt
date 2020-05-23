@@ -1,4 +1,4 @@
-package com.murrayde.animekingtrivia
+package com.murrayde.animekingtrivia.questions
 
 import org.junit.Test
 import org.junit.Assert.*

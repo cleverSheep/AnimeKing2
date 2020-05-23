@@ -24,6 +24,7 @@ import com.murrayde.animekingtrivia.R
 import com.murrayde.animekingtrivia.model.community.CommunityQuestion
 import com.murrayde.animekingtrivia.model.community.QuestionFactory
 import com.murrayde.animekingtrivia.util.QuestionUtil
+import com.murrayde.animekingtrivia.util.questionCount
 import com.murrayde.animekingtrivia.view.community.list_anime.AnimeListDetailArgs
 import com.murrayde.animekingtrivia.view.community.viewmodel.ResultsViewModel
 import kotlinx.android.synthetic.main.fragment_answer_question.*
@@ -76,8 +77,8 @@ class AnswerQuestion : Fragment() {
                 tv_answer_title.text = args.animeAttributes.titles.en
                         ?: args.animeAttributes.canonicalTitle
 
-                val question_count = if (communityQuestions.size < QuestionUtil.QUESTION_LIMIT) communityQuestions.size else QuestionUtil.QUESTION_LIMIT
-                answer_question_score.text = "0/$question_count"
+                val question_count = questionCount(communityQuestions.size, QuestionUtil.QUESTION_LIMIT)
+                answer_question_score.text = "0/${results_view_model.getTotalQuestions()}"
                 results_view_model.resetPoints(0)
                 loadQuestions(communityQuestions, 0, view, listButtons())
             }
