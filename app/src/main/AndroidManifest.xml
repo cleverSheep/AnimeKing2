@@ -4,6 +4,7 @@
     package="com.murrayde.animekingtrivia">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
         android:name="com.murrayde.animekingtrivia.application.BaseApplication"

@@ -27,6 +27,7 @@ import com.murrayde.animekingtrivia.extensions.showView
 import com.murrayde.animekingtrivia.model.community.AnimeAttributes.Attributes
 import com.murrayde.animekingtrivia.model.community.QuestionFactory
 import com.murrayde.animekingtrivia.util.QuestionUtil
+import com.murrayde.animekingtrivia.util.questionCount
 import com.murrayde.animekingtrivia.view.community.list_anime.AnimeListDetailArgs
 import com.murrayde.animekingtrivia.view.community.list_anime.AnimeListDetailDirections
 import com.murrayde.animekingtrivia.view.community.results_screen.review_questions.ReviewQuestionsAdapter
@@ -57,7 +58,7 @@ class ViewResults : Fragment() {
         val quote = view.findViewById<TextView>(R.id.quote)
         val game_over = view.findViewById<TextView>(R.id.game_over)
 
-        val question_count = if (resultsViewModel.getTotalQuestions() < QuestionUtil.QUESTION_LIMIT) resultsViewModel.getTotalQuestions() else QuestionUtil.QUESTION_LIMIT
+        val question_count = questionCount(resultsViewModel.getTotalQuestions(), QuestionUtil.QUESTION_LIMIT)
         results_correct_percentage.text = "${resultsViewModel.totalCorrect()} out of $question_count questions correct"
         results_time_bonus_points.text = "${resultsViewModel.totalTimeBonus().toString()} pts"
         results_total_points.text = "${resultsViewModel.totalPoints().toString()} pts"

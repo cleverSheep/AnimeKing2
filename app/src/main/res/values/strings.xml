@@ -47,7 +47,7 @@
     <string name="time_bonus">Time Bonus</string>
     <string name="try_again">Try Again</string>
     <string name="quit_game">Quit Game</string>
-    <string name="review_share_questions">Review and Share Questions</string>
+    <string name="review_share_questions">Review Questions</string>
     <string name="lost_quote">\"Remember the lesson, not the disappointment\"\n-Holo the Wise Wolf</string>
     <string name="won_quote">\"He who strikes first wins!\"\n-L Lawliet</string>
 
@@ -63,6 +63,7 @@
     <!-- Settings Layout -->
     <string name="language">Language</string>
     <string name="sound_effects">Sound Effects</string>
+    <string name="vibration">Vibration</string>
     <string name="in_game_music">In-Game Music</string>
     <string name="dark_mode">Dark Mode</string>
     <string name="about">About</string>
@@ -105,10 +106,10 @@
     <string name="credits_audio">Sound effects obtained from www.zapsplat.com</string>
     <string name="community">Community</string>
     <string name="credit_radar">Radar animation by Kiran Kumar at lottiefiles.com</string>
+    <string name="credit_loading_animation">Loading animation by Ashot S at lottiefiles.com</string>
 
     <string name="not_enough_description">Each community requires at least 5 questions.\nAdd more questions to play trivia with this anime.</string>
     <string name="not_enough_questions">Not Enough Questions</string>
     <string name="title">Title Not Available</string>
-    <string name="credit_loading_animation">Loading animation by Ashot S at lottiefiles.com</string>
 
 </resources>
