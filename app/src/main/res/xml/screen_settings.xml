@@ -3,13 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:title="Settings">
     <PreferenceCategory app:title="@string/basic">
-        <ListPreference
-            app:entries="@array/settings_list_preference_titles"
-            app:entryValues="@array/settings_list_preference_values"
-            app:icon="@drawable/ic_language_black_24dp"
-            app:key="language"
-            app:title="@string/language"
-            app:useSimpleSummaryProvider="true" />
+        <!--        <ListPreference
+                    app:entries="@array/settings_list_preference_titles"
+                    app:entryValues="@array/settings_list_preference_values"
+                    app:icon="@drawable/ic_language_black_24dp"
+                    app:key="language"
+                    app:title="@string/language"
+                    app:useSimpleSummaryProvider="true" />-->
 
         <SwitchPreferenceCompat
             android:defaultValue="true"

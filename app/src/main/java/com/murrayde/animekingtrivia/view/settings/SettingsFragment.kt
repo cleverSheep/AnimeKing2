@@ -24,6 +24,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.auth.FirebaseAuth
 import com.murrayde.animekingtrivia.R
+import com.murrayde.animekingtrivia.util.determineQuestionLanguage
 import com.murrayde.animekingtrivia.view.MainActivity
 import timber.log.Timber
 import java.util.*
@@ -43,10 +44,6 @@ class SettingsFragment : PreferenceFragmentCompat(), SharedPreferences.OnSharedP
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         setPreferencesFromResource(R.xml.screen_settings, rootKey)
-        val sharedPref = activity?.getPreferences(Context.MODE_PRIVATE) ?: return
-        sharedPref.edit().putString("language", LocaleListCompat.getDefault()[0].language).apply()
-        val language_list_preference = findPreference<ListPreference>("language")
-        language_list_preference?.value = LocaleListCompat.getDefault()[0].language
         //setDarkThemeBasedOnVersion()
     }
 
@@ -82,14 +79,14 @@ class SettingsFragment : PreferenceFragmentCompat(), SharedPreferences.OnSharedP
 
         val sharedPref = activity?.getPreferences(Context.MODE_PRIVATE) ?: return
 
-        if (key == "language") {
+/*        if (key == "language") {
             val language = preference?.getString("language", LocaleListCompat.getDefault()[0].language)
             setLocale(language)
             with(sharedPref.edit()) {
-                putString(getString(R.string.language), preference?.getString("language", LocaleListCompat.getDefault()[0].language)!!)
+                putString(getString(R.string.language), preference?.getString("language", language))
                 commit()
             }
-        }
+        }*/
         if (key == "sound_effects") {
             with(sharedPref.edit()) {
                 putBoolean(getString(R.string.sound_effects_enabled), preference?.getBoolean("sound_effects", true)!!)
@@ -120,7 +117,7 @@ class SettingsFragment : PreferenceFragmentCompat(), SharedPreferences.OnSharedP
 
     }
 
-    private fun setLocale(lang: String?) {
+/*    private fun setLocale(lang: String?) {
         val myLocale = Locale(lang)
         val res: Resources = resources
         val dm: DisplayMetrics = res.displayMetrics
@@ -129,12 +126,12 @@ class SettingsFragment : PreferenceFragmentCompat(), SharedPreferences.OnSharedP
         res.updateConfiguration(conf, dm)
         val refresh = Intent(activity, MainActivity::class.java)
         startActivity(refresh)
-    }
+    }*/
 
-    private fun setDarkThemeBasedOnVersion() {
+/*    private fun setDarkThemeBasedOnVersion() {
         val dark_mode_pref: SwitchPreferenceCompat? = findPreference("dark_mode")
         dark_mode_pref?.isVisible = Build.VERSION.SDK_INT >= Build.VERSION_CODES.P
-    }
+    }*/
 
 /*    private fun setDarkTheme(enabled: Boolean) {
         if (enabled) {

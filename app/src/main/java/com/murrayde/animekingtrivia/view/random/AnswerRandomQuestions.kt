@@ -25,10 +25,13 @@ import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
 import androidx.preference.PreferenceManager
 import com.murrayde.animekingtrivia.R
+import com.murrayde.animekingtrivia.extensions.hideView
+import com.murrayde.animekingtrivia.extensions.showView
 import com.murrayde.animekingtrivia.model.random.Result
 import com.murrayde.animekingtrivia.util.QuestionUtil
 import com.murrayde.animekingtrivia.view.community.AnswerQuestionDirections
 import com.murrayde.animekingtrivia.view.community.viewmodel.ResultsViewModel
+import kotlinx.android.synthetic.main.fragment_answer_question.*
 import kotlinx.android.synthetic.main.fragment_random_questions.*
 import timber.log.Timber
 
@@ -117,6 +120,7 @@ class AnswerRandomQuestions : Fragment() {
             override fun onFinish() {
                 var current_question = track
                 disableAllButtons(list_buttons)
+                random_question_next_btn.showView()
                 showTimeUpDialog(randomQuestions, ++current_question, view, list_buttons)
             }
 
@@ -150,6 +154,7 @@ class AnswerRandomQuestions : Fragment() {
         alertDialog.setCanceledOnTouchOutside(false)
         button.setOnClickListener {
             alertDialog.dismiss()
+            random_question_next_btn.hideView()
             loadQuestions(randomQuestions, track, view, list_buttons)
         }
         alertDialog.show()

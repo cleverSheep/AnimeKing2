@@ -23,6 +23,7 @@ import androidx.navigation.fragment.navArgs
 import androidx.preference.PreferenceManager
 import com.google.firebase.firestore.FirebaseFirestore
 import com.murrayde.animekingtrivia.R
+import com.murrayde.animekingtrivia.extensions.showView
 import com.murrayde.animekingtrivia.model.community.CommunityQuestion
 import com.murrayde.animekingtrivia.model.community.QuestionFactory
 import com.murrayde.animekingtrivia.util.QuestionUtil
@@ -160,7 +161,7 @@ class AnswerQuestion : Fragment() {
         alertDialog.setCanceledOnTouchOutside(false)
         button.setOnClickListener {
             alertDialog.dismiss()
-            button_next_question.visibility = View.INVISIBLE
+            button_next_question.showView()
             loadQuestions(randomQuestions, track, view, list_buttons)
         }
         alertDialog.show()
