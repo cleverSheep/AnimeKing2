@@ -45,7 +45,6 @@ class SettingsFragment : PreferenceFragmentCompat(), SharedPreferences.OnSharedP
         setPreferencesFromResource(R.xml.screen_settings, rootKey)
         val sharedPref = activity?.getPreferences(Context.MODE_PRIVATE) ?: return
         sharedPref.edit().putString("language", LocaleListCompat.getDefault()[0].language).apply()
-        Timber.d("Current language: ${sharedPref.getString("language", LocaleListCompat.getDefault()[0].language)}")
         val language_list_preference = findPreference<ListPreference>("language")
         language_list_preference?.value = LocaleListCompat.getDefault()[0].language
         //setDarkThemeBasedOnVersion()
@@ -82,7 +81,6 @@ class SettingsFragment : PreferenceFragmentCompat(), SharedPreferences.OnSharedP
     override fun onSharedPreferenceChanged(preference: SharedPreferences?, key: String?) {
 
         val sharedPref = activity?.getPreferences(Context.MODE_PRIVATE) ?: return
-        Timber.d("Preference settings now initialized")
 
         if (key == "language") {
             val language = preference?.getString("language", LocaleListCompat.getDefault()[0].language)
@@ -95,6 +93,12 @@ class SettingsFragment : PreferenceFragmentCompat(), SharedPreferences.OnSharedP
         if (key == "sound_effects") {
             with(sharedPref.edit()) {
                 putBoolean(getString(R.string.sound_effects_enabled), preference?.getBoolean("sound_effects", true)!!)
+                commit()
+            }
+        }
+        if (key == "vibration") {
+            with(sharedPref.edit()) {
+                putBoolean(getString(R.string.vibration), preference?.getBoolean("vibration", true)!!)
                 commit()
             }
         }

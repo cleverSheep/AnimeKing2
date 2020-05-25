@@ -63,6 +63,7 @@
     <!-- Settings Layout -->
     <string name="language">Language</string>
     <string name="sound_effects">Sound Effects</string>
+    <string name="vibration">Vibration</string>
     <string name="in_game_music">In-Game Music</string>
     <string name="dark_mode">Dark Mode</string>
     <string name="about">About</string>

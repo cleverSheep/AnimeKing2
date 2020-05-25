@@ -51,25 +51,28 @@
         app:layout_constraintTop_toBottomOf="@+id/review_correct_answer" />
 
 
-    <ImageButton
+    <ToggleButton
         android:id="@+id/review_thumb_up"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
         android:layout_marginTop="16dp"
-        android:background="@drawable/ic_thumb_up"
+        android:background="@drawable/button_like_selector"
+        android:hapticFeedbackEnabled="true"
+        android:padding="24dp"
         app:layout_constraintEnd_toStartOf="@+id/review_thumb_down"
         app:layout_constraintStart_toStartOf="@+id/review_correct_answer"
         app:layout_constraintTop_toBottomOf="@+id/view2" />
 
-    <ImageButton
+    <ToggleButton
         android:id="@+id/review_thumb_down"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
         android:layout_marginStart="32dp"
-        android:background="@drawable/ic_thumb_down"
+        android:background="@drawable/button_dislike_selector"
+        android:hapticFeedbackEnabled="true"
+        android:padding="24dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/review_thumb_up"
         app:layout_constraintTop_toTopOf="@+id/review_thumb_up" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

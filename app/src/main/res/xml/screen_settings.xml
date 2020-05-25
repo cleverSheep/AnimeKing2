@@ -18,9 +18,15 @@
             app:title="@string/sound_effects" />
         <SwitchPreferenceCompat
             android:defaultValue="true"
+            app:icon="@drawable/ic_vibration_24dp"
+            app:key="vibration"
+            app:title="@string/vibration" />
+        <!--
+        <SwitchPreferenceCompat
+            android:defaultValue="true"
             app:icon="@drawable/ic_music_note_black_24dp"
             app:key="in_game_music"
-            app:title="@string/in_game_music" />
+            app:title="@string/in_game_music" />-->
     </PreferenceCategory>
 
     <PreferenceCategory app:title="@string/other">

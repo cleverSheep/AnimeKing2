@@ -3,12 +3,14 @@
 package com.murrayde.animekingtrivia.view.community
 
 
+import android.content.Context
 import android.content.DialogInterface
 import android.content.SharedPreferences
 import android.media.MediaPlayer
 import android.media.MediaPlayer.create
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.os.Vibrator
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -40,6 +42,7 @@ class AnswerQuestion : Fragment() {
     private lateinit var media_correct: MediaPlayer
     private lateinit var media_wrong: MediaPlayer
     private var media_is_playing = true
+    private var vibration_is_enabled = true
     private lateinit var sharedPreferences: SharedPreferences
     private lateinit var results_view_model: ResultsViewModel
 
@@ -49,6 +52,7 @@ class AnswerQuestion : Fragment() {
 
     private lateinit var question_correct: HashMap<Int, Boolean>
     private lateinit var questions_list_argument: Array<CommunityQuestion>
+    private lateinit var vibrator: Vibrator
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -66,7 +70,9 @@ class AnswerQuestion : Fragment() {
         media_wrong = create(activity, R.raw.button_click_wrong)
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
         media_is_playing = sharedPreferences.getBoolean("sound_effects", true)
+        vibration_is_enabled = sharedPreferences.getBoolean("vibration", true)
         results_view_model = ViewModelProvider(activity!!).get(ResultsViewModel::class.java)
+        vibrator = context?.getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
 
         QuestionFactory.RETRIEVE(attributes.titles.en
                 ?: attributes.canonicalTitle, db, object : QuestionFactory.StatusCallback {
@@ -192,6 +198,7 @@ class AnswerQuestion : Fragment() {
     private fun alertWrongResponse(view: View, list_buttons: ArrayList<Button>, correct_response: String) {
         val button = view as Button
         if (media_is_playing) media_wrong.start()
+        if (vibration_is_enabled) vibrator.vibrate(250)
         button.background = resources.getDrawable(com.murrayde.animekingtrivia.R.drawable.answer_wrong_background)
         button.setTextColor(resources.getColor(R.color.color_white))
         repeat(list_buttons.size) { position ->
@@ -204,7 +211,7 @@ class AnswerQuestion : Fragment() {
 
     private fun alertCorrectResponse(view: View) {
         val button = view as Button
-        media_correct.start()
+        if (media_is_playing) media_wrong.start()
         button.background = resources.getDrawable(R.drawable.answer_correct_background)
         button.setTextColor(resources.getColor(R.color.color_white))
     }

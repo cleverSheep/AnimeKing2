@@ -2,11 +2,13 @@ package com.murrayde.animekingtrivia.view.community.results_screen.review_questi
 
 import android.content.Context
 import android.content.res.Resources
+import android.view.HapticFeedbackConstants
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.ToggleButton
 import androidx.recyclerview.widget.RecyclerView
 import com.murrayde.animekingtrivia.R
 import com.murrayde.animekingtrivia.model.community.CommunityQuestion
@@ -32,9 +34,22 @@ class ReviewQuestionsAdapter(val context: Context, val list_questions: Array<Com
 
     }
 
-    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    class ViewHolder(view: View) : RecyclerView.ViewHolder(view), View.OnClickListener {
         var review_status_icon: ImageView = view.findViewById(R.id.review_status_icon)
         var review_question: TextView = view.findViewById(R.id.review_question)
         var review_correct_answer: TextView = view.findViewById(R.id.review_correct_answer)
+
+        var review_like_button: ToggleButton = view.findViewById(R.id.review_thumb_up)
+        var review_dislike_button: ToggleButton = view.findViewById(R.id.review_thumb_down)
+
+        init {
+            review_like_button.setOnClickListener(this)
+            review_dislike_button.setOnClickListener(this)
+        }
+
+        override fun onClick(v: View?) {
+            v!!.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
+        }
     }
+
 }
