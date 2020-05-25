@@ -50,6 +50,7 @@
     <string name="review_share_questions">Review Questions</string>
     <string name="lost_quote">\"Remember the lesson, not the disappointment\"\n-Holo the Wise Wolf</string>
     <string name="won_quote">\"He who strikes first wins!\"\n-L Lawliet</string>
+    <string name="done">Done</string>
 
     <!-- Profile Layout -->
     <string name="communities">Communities</string>

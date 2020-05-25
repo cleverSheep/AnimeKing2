@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/home"
-        android:name="com.murrayde.animekingtrivia.view.community.list_anime.AnimeList"
+        android:name="com.murrayde.animekingmobile.view.community.list_anime.AnimeList"
         tools:layout="@layout/fragment_list">
         <action
             android:id="@+id/action_listFragment_to_detailFragment"
@@ -29,11 +29,11 @@
     </fragment>
     <fragment
         android:id="@+id/detailFragment"
-        android:name="com.murrayde.animekingtrivia.view.community.list_anime.AnimeListDetail"
+        android:name="com.murrayde.animekingmobile.view.community.list_anime.AnimeListDetail"
         tools:layout="@layout/fragment_detail">
         <argument
             android:name="AnimeAttributes"
-            app:argType="com.murrayde.animekingtrivia.model.community.AnimeAttributes.Attributes" />
+            app:argType="com.murrayde.animekingmobile.model.community.AnimeAttributes.Attributes" />
         <action
             android:id="@+id/action_detailFragment_to_lowQuestionCountFragment"
             app:destination="@id/lowQuestionCountFragment"
@@ -65,7 +65,7 @@
     </fragment>
     <fragment
         android:id="@+id/lowQuestionCountFragment"
-        android:name="com.murrayde.animekingtrivia.view.community.LowQuestionCount"
+        android:name="com.murrayde.animekingmobile.view.community.LowQuestionCount"
         tools:layout="@layout/fragment_low_question_count">
         <action
             android:id="@+id/action_lowQuestionCountFragment_to_askQuestionFragment"
@@ -76,15 +76,15 @@
             app:popExitAnim="@anim/slide_out_right" />
         <argument
             android:name="AnimeAttributes"
-            app:argType="com.murrayde.animekingtrivia.model.community.AnimeAttributes.Attributes" />
+            app:argType="com.murrayde.animekingmobile.model.community.AnimeAttributes.Attributes" />
     </fragment>
     <fragment
         android:id="@+id/askQuestionFragment"
-        android:name="com.murrayde.animekingtrivia.view.community.AskQuestion"
+        android:name="com.murrayde.animekingmobile.view.community.AskQuestion"
         tools:layout="@layout/fragment_ask_question">
         <argument
             android:name="AnimeAttributes"
-            app:argType="com.murrayde.animekingtrivia.model.community.AnimeAttributes.Attributes" />
+            app:argType="com.murrayde.animekingmobile.model.community.AnimeAttributes.Attributes" />
         <action
             android:id="@+id/action_askQuestionFragment_to_detailFragment"
             app:destination="@id/detailFragment"
@@ -97,11 +97,11 @@
     </fragment>
     <fragment
         android:id="@+id/answerQuestionFragment"
-        android:name="com.murrayde.animekingtrivia.view.community.AnswerQuestion"
+        android:name="com.murrayde.animekingmobile.view.community.AnswerQuestion"
         tools:layout="@layout/fragment_answer_question">
         <argument
             android:name="AnimeAttributes"
-            app:argType="com.murrayde.animekingtrivia.model.community.AnimeAttributes.Attributes" />
+            app:argType="com.murrayde.animekingmobile.model.community.AnimeAttributes.Attributes" />
         <action
             android:id="@+id/action_answerQuestionFragment_to_viewResults"
             app:destination="@id/viewResults"
@@ -112,11 +112,11 @@
     </fragment>
     <activity
         android:id="@+id/homeScreenActivity"
-        android:name="com.murrayde.animekingtrivia.view.landing_screen.HomeScreenActivity"
+        android:name="com.murrayde.animekingmobile.view.landing_screen.HomeScreenActivity"
         tools:layout="@layout/activity_home_screen" />
     <fragment
         android:id="@+id/search"
-        android:name="com.murrayde.animekingtrivia.view.search.SearchFragment"
+        android:name="com.murrayde.animekingmobile.view.search.SearchFragment"
         tools:layout="@layout/fragment_search">
         <action
             android:id="@+id/action_searchFragment_to_listFragment"
@@ -131,12 +131,12 @@
     </fragment>
     <fragment
         android:id="@+id/viewResults"
-        android:name="com.murrayde.animekingtrivia.view.community.results_screen.ViewResults"
+        android:name="com.murrayde.animekingmobile.view.community.results_screen.ViewResults"
         android:label="fragment_view_results"
         tools:layout="@layout/fragment_view_results">
         <argument
             android:name="list_questions"
-            app:argType="com.murrayde.animekingtrivia.model.community.CommunityQuestion[]"
+            app:argType="com.murrayde.animekingmobile.model.community.CommunityQuestion[]"
             app:nullable="true" />
         <action
             android:id="@+id/action_viewResults_to_detailFragment"
@@ -145,7 +145,7 @@
             app:popUpToInclusive="true" />
         <argument
             android:name="AnimeAttributes"
-            app:argType="com.murrayde.animekingtrivia.model.community.AnimeAttributes.Attributes" />
+            app:argType="com.murrayde.animekingmobile.model.community.AnimeAttributes.Attributes" />
         <action
             android:id="@+id/action_viewResults_to_answerQuestionFragment"
             app:destination="@id/answerQuestionFragment"
@@ -153,12 +153,12 @@
     </fragment>
     <fragment
         android:id="@+id/profile"
-        android:name="com.murrayde.animekingtrivia.view.profile.ProfileFragment"
+        android:name="com.murrayde.animekingmobile.view.profile.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
     <fragment
         android:id="@+id/more"
-        android:name="com.murrayde.animekingtrivia.view.settings.SettingsFragment"
+        android:name="com.murrayde.animekingmobile.view.settings.SettingsFragment"
         android:label="fragment_settings">
         <action
             android:id="@+id/action_more_to_loginFragment2"
@@ -172,7 +172,7 @@
     </fragment>
     <fragment
         android:id="@+id/answerRandomQuestions"
-        android:name="com.murrayde.animekingtrivia.view.random.AnswerRandomQuestions"
+        android:name="com.murrayde.animekingmobile.view.random.AnswerRandomQuestions"
         android:label="fragment_random_questions"
         tools:layout="@layout/fragment_random_questions">
         <action
@@ -186,7 +186,7 @@
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.murrayde.animekingtrivia.view.auth.LoginFragment"
+        android:name="com.murrayde.animekingmobile.view.auth.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login">
         <action

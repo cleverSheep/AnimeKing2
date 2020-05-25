@@ -46,10 +46,10 @@
 
         <variable
             name="listener"
-            type="com.murrayde.animekingtrivia.view.search.adapter.ClickListener" />
+            type="com.murrayde.animekingmobile.view.search.adapter.ClickListener" />
 
         <variable
             name="anime_id"
-            type="com.murrayde.animekingtrivia.network.community.api.AnimeData" />
+            type="com.murrayde.animekingmobile.network.community.api.AnimeData" />
     </data>
 </layout>

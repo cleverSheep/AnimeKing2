@@ -8,14 +8,14 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:738121527329:android:fdb9a848d6cdd4391f7360",
+        "mobilesdk_app_id": "1:738121527329:android:700d3b38ae22a75f1f7360",
         "android_client_info": {
-          "package_name": "com.murrayde.animekingtrivia"
+          "package_name": "com.murrayde.animekingmobile"
         }
       },
       "oauth_client": [
         {
-          "client_id": "738121527329-rfo4htu4olvqjhv280cg3i919d11c4ce.apps.googleusercontent.com",
+          "client_id": "738121527329-afu8qdo00r239gnqilne2jp4721urvf2.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
@@ -28,7 +28,68 @@
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "738121527329-rfo4htu4olvqjhv280cg3i919d11c4ce.apps.googleusercontent.com",
+              "client_id": "738121527329-afu8qdo00r239gnqilne2jp4721urvf2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:738121527329:android:1371b561966f554a1f7360",
+        "android_client_info": {
+          "package_name": "com.murrayde.animekingtrivia"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "738121527329-kmqn8u7anuoo6v7p4v1rd96g8c0rdaqs.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.murrayde.animekingtrivia",
+            "certificate_hash": "05521ca7f5a273c47e3119de33b50a14bd853789"
+          }
+        },
+        {
+          "client_id": "738121527329-ls7moj4klgcqit579v5r55kd90o0avq5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.murrayde.animekingtrivia",
+            "certificate_hash": "0fae1944a708ca4d6fde4dd2a56797d2e9e7ad9f"
+          }
+        },
+        {
+          "client_id": "738121527329-mjudiblt4vct6js1lt2jog0slv1ic4lc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.murrayde.animekingtrivia",
+            "certificate_hash": "1e6dd382d34281b3e70e2d22d39ebef248731939"
+          }
+        },
+        {
+          "client_id": "738121527329-djstfbmo0ogfc9u1ekimpl7j6v67rao9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.murrayde.animekingtrivia",
+            "certificate_hash": "4b10fadf3cac65ef0ca87dca121ece969b147073"
+          }
+        },
+        {
+          "client_id": "738121527329-afu8qdo00r239gnqilne2jp4721urvf2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBephRmxlEqtryakjQTXy8cpdIC5HQoiek"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "738121527329-afu8qdo00r239gnqilne2jp4721urvf2.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
