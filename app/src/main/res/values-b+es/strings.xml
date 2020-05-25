@@ -71,6 +71,7 @@
     <string name="spanish">Español</string>
     <string name="basic">Básico</string>
     <string name="other">Otro</string>
+    <string name="vibration_summary">Respuesta de respuesta incorrecta</string>
 
     <!-- Bottom Navigation Layout -->
     <string name="home">Hogar</string>

@@ -76,7 +76,7 @@ class AnswerQuestion : Fragment() {
         vibrator = context?.getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
 
         QuestionFactory.RETRIEVE(attributes.titles.en
-                ?: attributes.canonicalTitle, db, activity!!, object : QuestionFactory.StatusCallback {
+                ?: attributes.canonicalTitle, db, object : QuestionFactory.StatusCallback {
             // NOTE: Callback used to handle asynchronous calls to Firebase Firestore
             override fun onStatusCallback(list: ArrayList<CommunityQuestion>) {
                 communityQuestions = list

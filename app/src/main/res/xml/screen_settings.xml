@@ -19,6 +19,7 @@
         <SwitchPreferenceCompat
             android:defaultValue="true"
             app:icon="@drawable/ic_vibration_24dp"
+            android:summary="@string/vibration_summary"
             app:key="vibration"
             app:title="@string/vibration" />
         <!--

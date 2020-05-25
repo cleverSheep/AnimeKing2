@@ -79,7 +79,7 @@ class AnimeListDetail : Fragment() {
 
         val anime_title = attributes.titles.en ?: attributes.canonicalTitle
 
-        animeDetailViewModel.getQuestionCount(anime_title, sharedPreferences).observe(activity!!, Observer<Long> {
+        animeDetailViewModel.getQuestionCount(anime_title).observe(activity!!, Observer<Long> {
             fragment_detail_question_count.text = "$it question(s)"
             resultsViewModel.setTotalQuestions(it.toInt())
             Timber.d("Total questions: ${it.toInt()}")
@@ -108,7 +108,7 @@ class AnimeListDetail : Fragment() {
                         startQuiz(it)
                     } else alertNotEnoughQuestions(it)
                 }
-            }, context!!)
+            })
         }
         fragment_detail_ask_question.setOnClickListener {
             if (media_is_playing) media.start()
