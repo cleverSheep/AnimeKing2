@@ -34,7 +34,7 @@ class ReviewQuestionsAdapter(val context: Context, val list_questions: Array<Com
 
     }
 
-    class ViewHolder(view: View) : RecyclerView.ViewHolder(view), View.OnClickListener {
+    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         var review_status_icon: ImageView = view.findViewById(R.id.review_status_icon)
         var review_question: TextView = view.findViewById(R.id.review_question)
         var review_correct_answer: TextView = view.findViewById(R.id.review_correct_answer)
@@ -43,12 +43,16 @@ class ReviewQuestionsAdapter(val context: Context, val list_questions: Array<Com
         var review_dislike_button: ToggleButton = view.findViewById(R.id.review_thumb_down)
 
         init {
-            review_like_button.setOnClickListener(this)
-            review_dislike_button.setOnClickListener(this)
-        }
-
-        override fun onClick(v: View?) {
-            v!!.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
+            review_like_button.setOnClickListener {
+                it!!.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
+                review_like_button.background = view.context.resources.getDrawable(R.drawable.button_like_selector)
+                review_dislike_button.background = view.context.resources.getDrawable(R.drawable.ic_thumb_down)
+            }
+            review_dislike_button.setOnClickListener {
+                it!!.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
+                review_dislike_button.background = view.context.resources.getDrawable(R.drawable.button_dislike_selector)
+                review_like_button.background = view.context.resources.getDrawable(R.drawable.ic_thumb_up)
+            }
         }
     }
 
