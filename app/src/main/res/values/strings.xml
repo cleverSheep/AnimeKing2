@@ -102,9 +102,11 @@
     <string name="dark_theme_enabled">dark_theme_enabled</string>
 
     <string name="credits">Credits</string>
-    <string name="credit_source">Icons made by Freepik from www.flaticon.com</string>
+    <string name="credit_source">Crown made by Freepik from www.flaticon.com</string>
     <string name="credits_audio">Sound effects obtained from www.zapsplat.com</string>
     <string name="community">Community</string>
+    <string name="credit_radar">Radar animation by Kiran Kumar at lottiefiles.com</string>
+    <string name="credit_loading_animation">Loading animation by Ashot S at lottiefiles.com</string>
 
     <string name="not_enough_description">Each community requires at least 5 questions.\nAdd more questions to play trivia with this anime.</string>
     <string name="not_enough_questions">Not Enough Questions</string>

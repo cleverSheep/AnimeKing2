@@ -104,6 +104,8 @@
     <string name="credit_source">Iconos realizados por Freepik desde www.flaticon.com</string>
     <string name="credits_audio">Efectos de sonido obtenidos de www.zapsplat.com</string>
     <string name="community">Community</string>
+    <string name="credit_radar">Animación de radar de Kiran Kumar en lottiefiles.com</string>
+    <string name="credit_loading_animation">Cargando animación de Ashot S en lottiefiles.com</string>
 
     <string name="not_enough_description">Each community requires at least 5 questions.\nAdd more questions to play trivia with this anime.</string>
     <string name="not_enough_questions">Not Enough Questions</string>
