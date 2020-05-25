@@ -72,6 +72,7 @@
     <string name="spanish">Spanish</string>
     <string name="basic">Basic</string>
     <string name="other">Other</string>
+    <string name="vibration_summary">Incorrect response feedback</string>
 
 
     <!-- Bottom Navigation Layout -->

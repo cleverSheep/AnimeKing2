@@ -2,6 +2,7 @@
 
 package com.murrayde.animekingtrivia.model.community
 
+import androidx.core.os.LocaleListCompat
 import com.google.firebase.firestore.FirebaseFirestore
 import com.murrayde.animekingtrivia.util.QuestionUtil
 
@@ -14,7 +15,7 @@ class QuestionFactory {
             val distinct_questions = ArrayList<String>()
             val final_questions = ArrayList<CommunityQuestion>()
 
-            db.collection("anime").document(anime_title).collection("questions").limit(QuestionUtil.QUESTION_LIMIT).get().addOnSuccessListener {
+            db.collection("anime").document(LocaleListCompat.getDefault()[0].language).collection("titles").document(anime_title).collection("questions").limit(QuestionUtil.QUESTION_LIMIT).get().addOnSuccessListener {
                 it.forEach { snapshot ->
                     val question = snapshot.toObject(CommunityQuestion::class.java)
                     if (!distinct_questions.contains(question.question_id)) {
@@ -30,7 +31,7 @@ class QuestionFactory {
     }
 
     fun hasEnoughQuestions(anime_title: String, questionCountCallback: QuestionCountCallback) {
-        val doc_ref = db.collection("anime").document(anime_title)
+        val doc_ref = db.collection("anime").document(LocaleListCompat.getDefault()[0].language).collection("titles").document(anime_title)
         doc_ref.get().addOnSuccessListener { doc_snapshot ->
             if (doc_snapshot.getLong("question_count") == null) {
                 questionCountCallback.onQuestionCountCallback(false)
