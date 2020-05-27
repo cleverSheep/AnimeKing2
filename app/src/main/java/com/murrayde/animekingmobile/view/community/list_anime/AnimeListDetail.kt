@@ -23,6 +23,7 @@ import com.bumptech.glide.Glide
 import com.murrayde.animekingmobile.R
 import com.murrayde.animekingmobile.model.community.QuestionFactory
 import com.murrayde.animekingmobile.util.ImageUtil
+import com.murrayde.animekingmobile.util.removeForwardSlashes
 import com.murrayde.animekingmobile.view.community.viewmodel.AnimeDetailViewModel
 import com.murrayde.animekingmobile.view.community.viewmodel.ResultsViewModel
 import kotlinx.android.synthetic.main.fragment_detail.*
@@ -79,7 +80,7 @@ class AnimeListDetail : Fragment() {
 
         val anime_title = attributes.titles.en ?: attributes.canonicalTitle
 
-        animeDetailViewModel.getQuestionCount(anime_title).observe(activity!!, Observer<Long> {
+        animeDetailViewModel.getQuestionCount(removeForwardSlashes(anime_title)).observe(activity!!, Observer<Long> {
             fragment_detail_question_count.text = "$it question(s)"
             resultsViewModel.setTotalQuestions(it.toInt())
             Timber.d("Total questions: ${it.toInt()}")
@@ -101,7 +102,7 @@ class AnimeListDetail : Fragment() {
         fragment_detail_take_quiz.setOnClickListener {
             if (media_is_playing) media.start()
             it.isEnabled = false
-            questionFactory.hasEnoughQuestions(args.animeAttributes.titles.en
+            questionFactory.hasEnoughQuestions(removeForwardSlashes(args.animeAttributes.titles.en)
                     ?: args.animeAttributes.canonicalTitle, object : QuestionFactory.QuestionCountCallback {
                 override fun onQuestionCountCallback(hasEnoughQuestions: Boolean) {
                     if (hasEnoughQuestions) {

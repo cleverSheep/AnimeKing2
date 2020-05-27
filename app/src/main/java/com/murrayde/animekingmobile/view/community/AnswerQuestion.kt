@@ -28,6 +28,7 @@ import com.murrayde.animekingmobile.model.community.CommunityQuestion
 import com.murrayde.animekingmobile.model.community.QuestionFactory
 import com.murrayde.animekingmobile.util.QuestionUtil
 import com.murrayde.animekingmobile.util.questionCount
+import com.murrayde.animekingmobile.util.removeForwardSlashes
 import com.murrayde.animekingmobile.view.community.viewmodel.ResultsViewModel
 import kotlinx.android.synthetic.main.fragment_answer_question.*
 import timber.log.Timber
@@ -74,8 +75,7 @@ class AnswerQuestion : Fragment() {
         results_view_model = ViewModelProvider(activity!!).get(ResultsViewModel::class.java)
         vibrator = context?.getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
 
-        QuestionFactory.RETRIEVE(attributes.titles.en
-                ?: attributes.canonicalTitle, db, object : QuestionFactory.StatusCallback {
+        QuestionFactory.RETRIEVE(removeForwardSlashes(attributes.titles.en), db, object : QuestionFactory.StatusCallback {
             // NOTE: Callback used to handle asynchronous calls to Firebase Firestore
             override fun onStatusCallback(list: ArrayList<CommunityQuestion>) {
                 communityQuestions = list
