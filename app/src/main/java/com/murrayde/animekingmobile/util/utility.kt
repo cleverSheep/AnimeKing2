@@ -14,3 +14,8 @@ fun determineQuestionLanguage(app_language: String, system_language: String): St
 }
 
 fun questionCount(community_count: Int, question_limit: Long) = if (community_count > question_limit) question_limit else community_count
+
+fun removeForwardSlashes(animeTitle: String): String {
+    if (animeTitle.contains('/')) return animeTitle.replace("/", " ")
+    return animeTitle
+}

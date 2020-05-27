@@ -27,6 +27,7 @@ import com.google.firebase.firestore.SetOptions
 import com.murrayde.animekingmobile.R
 import com.murrayde.animekingmobile.extensions.formatQuestion
 import com.murrayde.animekingmobile.model.community.CommunityQuestion
+import com.murrayde.animekingmobile.util.removeForwardSlashes
 import com.murrayde.animekingmobile.view.community.list_anime.AnimeListDetailArgs
 import kotlinx.android.synthetic.main.fragment_ask_question.*
 
@@ -98,14 +99,14 @@ class AskQuestion : Fragment() {
         val question_id = db.collection("anime")
                 .document(LocaleListCompat.getDefault()[0].language)
                 .collection("titles")
-                .document(tv_ask_question.text.toString())
+                .document(removeForwardSlashes(tv_ask_question.text.toString()))
                 .collection("questions")
                 .document().id
         communityQuestion.question_id = question_id
         db.collection("anime")
                 .document(LocaleListCompat.getDefault()[0].language)
                 .collection("titles")
-                .document(tv_ask_question.text.toString())
+                .document(removeForwardSlashes(tv_ask_question.text.toString()))
                 .collection("questions")
                 .document(question_id)
                 .set(communityQuestion)
@@ -123,7 +124,7 @@ class AskQuestion : Fragment() {
         val questionCountRef = db.collection("anime")
                 .document(LocaleListCompat.getDefault()[0].language)
                 .collection("titles")
-                .document(tv_ask_question.text.toString())
+                .document(removeForwardSlashes(tv_ask_question.text.toString()))
         questionCountRef.set(data, SetOptions.merge())
     }
 
