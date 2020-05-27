@@ -18,8 +18,8 @@
             app:title="@string/sound_effects" />
         <SwitchPreferenceCompat
             android:defaultValue="true"
-            app:icon="@drawable/ic_vibration_24dp"
             android:summary="@string/vibration_summary"
+            app:icon="@drawable/ic_vibration_24dp"
             app:key="vibration"
             app:title="@string/vibration" />
         <!--
@@ -36,8 +36,8 @@
             app:key="about"
             app:title="@string/about">
             <intent
-                android:targetClass="com.murrayde.animekingtrivia.view.landing_screen.HomeScreenActivity"
-                android:targetPackage="com.murrayde.animekingtrivia" />
+                android:targetClass="com.murrayde.animekingmobile.view.landing_screen.HomeScreenActivity"
+                android:targetPackage="com.murrayde.animekingmobile" />
         </Preference>
         <Preference
             app:icon="@drawable/ic_exit_to_app_black_24dp"
