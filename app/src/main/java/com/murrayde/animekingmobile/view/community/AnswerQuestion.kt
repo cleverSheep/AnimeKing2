@@ -23,6 +23,7 @@ import androidx.navigation.fragment.navArgs
 import androidx.preference.PreferenceManager
 import com.google.firebase.firestore.FirebaseFirestore
 import com.murrayde.animekingmobile.R
+import com.murrayde.animekingmobile.extensions.hideView
 import com.murrayde.animekingmobile.extensions.showView
 import com.murrayde.animekingmobile.model.community.CommunityQuestion
 import com.murrayde.animekingmobile.model.community.QuestionFactory
@@ -127,7 +128,7 @@ class AnswerQuestion : Fragment() {
         countDownTimer = object : CountDownTimer(QuestionUtil.QUESTION_TIMER, 1000) {
             override fun onFinish() {
                 disableAllButtons(list_buttons)
-                button_next_question.visibility = View.VISIBLE
+                button_next_question.showView()
                 showTimeUpDialog(randomQuestions, new_question, view, list_buttons)
             }
 
@@ -160,7 +161,7 @@ class AnswerQuestion : Fragment() {
         alertDialog.setCanceledOnTouchOutside(false)
         button.setOnClickListener {
             alertDialog.dismiss()
-            button_next_question.showView()
+            button_next_question.hideView()
             loadQuestions(randomQuestions, track, view, list_buttons)
         }
         alertDialog.show()
