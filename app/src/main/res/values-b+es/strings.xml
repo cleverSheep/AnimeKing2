@@ -32,7 +32,7 @@
     <string name="next_question">Próxima Pregunta</string>
 
     <!-- Ask Question Layout -->
-    <string name="enter_question">Ingrese la Pregunta</string>
+    <string name="enter_question">No seas tímido ¡Hacer una pregunta!</string>
     <string name="submit_question">Enviar Pregunta</string>
     <string name="wrong_choice">Mala Decisión</string>
     <string name="correct_choice">Elección Correcta</string>

@@ -60,7 +60,7 @@ class AskQuestion : Fragment() {
                 .dontAnimate()
                 .into(iv_ask_question)
 
-        button_submit_question.setOnClickListener {
+        tv_submit_question.setOnClickListener {
             if (editText_enter_question.text.toString().length < 12) {
                 showDialogForBadQuestion(view)
             } else if (

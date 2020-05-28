@@ -33,7 +33,7 @@
     <string name="next_question">Next Question</string>
 
     <!-- Ask Question Layout -->
-    <string name="enter_question">Enter Question</string>
+    <string name="enter_question">Don\'t be shy. Ask a question!</string>
     <string name="submit_question">Submit Question</string>
     <string name="wrong_choice">Wrong Choice</string>
     <string name="correct_choice">Correct Choice</string>

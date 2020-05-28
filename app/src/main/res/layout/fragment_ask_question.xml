@@ -17,7 +17,25 @@
         android:translationZ="2dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/tv_submit_question"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_margin="8dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:drawableEnd="@drawable/ic_tick"
+            android:drawablePadding="8dp"
+            android:fontFamily="@font/baloobhairegular"
+            android:padding="8dp"
+            android:text="Submit"
+            android:textAlignment="textEnd"
+            android:textColor="@color/color_white"
+            android:textSize="22sp" />
+    </androidx.appcompat.widget.Toolbar>
 
     <ImageView
         android:id="@+id/iv_ask_question"
@@ -27,6 +45,7 @@
         android:scaleType="center"
         app:layout_constraintDimensionRatio="16:9"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:src="@drawable/castle" />
@@ -54,9 +73,10 @@
         tools:ignore="RtlSymmetry"
         tools:text="Anime Title" />
 
-    <EditText
+    <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/editText_enter_question"
         android:layout_width="0dp"
+        android:breakStrategy="high_quality"
         android:layout_height="0dp"
         android:layout_marginHorizontal="16dp"
         android:layout_marginVertical="8dp"
@@ -64,8 +84,11 @@
         android:background="@drawable/ask_question_background"
         android:fontFamily="@font/baloobhairegular"
         android:hint="@string/enter_question"
-        android:inputType="text"
-        android:textAlignment="center"
+        android:inputType="textCapSentences|textMultiLine"
+        android:maxLength="120"
+        android:maxLines="4"
+        android:scrollHorizontally="false"
+        android:textAlignment="textStart"
         android:textColor="@color/color_black"
         android:textColorHint="@color/common_google_signin_btn_text_light_focused"
         android:textCursorDrawable="@drawable/cursor_drawable"
@@ -187,6 +210,7 @@
         android:textAllCaps="false"
         android:textColor="@android:color/black"
         android:textSize="@dimen/button_text_size"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/editText_wrong_three"
         app:layout_constraintHorizontal_bias="0.0"
