@@ -30,6 +30,7 @@ import com.murrayde.animekingmobile.model.community.CommunityQuestion
 import com.murrayde.animekingmobile.util.removeForwardSlashes
 import com.murrayde.animekingmobile.view.community.list_anime.AnimeListDetailArgs
 import kotlinx.android.synthetic.main.fragment_ask_question.*
+import timber.log.Timber
 
 
 class AskQuestion : Fragment() {
@@ -79,7 +80,11 @@ class AskQuestion : Fragment() {
                         editText_wrong_two.text.toString(),
                         editText_wrong_three.text.toString())
                 val stringBuilder = StringBuilder()
-                val checkQuestionFormat = stringBuilder.formatQuestion(editText_enter_question.text.toString())
+                var checkQuestionFormat = stringBuilder.formatQuestion(editText_enter_question.text.toString())
+                if (checkQuestionFormat.contains("\n")) {
+                    checkQuestionFormat = checkQuestionFormat.replace("\n", "")
+                    Timber.d("Question has line break!")
+                }
                 val question = CommunityQuestion(checkQuestionFormat,
                         attributes.posterImage.original,
                         "",
