@@ -169,6 +169,9 @@ dependencies {
     // Add the dependency for the Performance Monitoring library
     implementation 'com.google.firebase:firebase-perf:19.0.7'
 
+    // Scalable text support
+    implementation 'com.intuit.sdp:sdp-android:1.0.6'
+
 }
 apply plugin: 'com.google.gms.google-services'
 apply plugin: 'com.google.firebase.crashlytics'
