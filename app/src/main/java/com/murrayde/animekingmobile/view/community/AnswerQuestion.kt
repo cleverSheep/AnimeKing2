@@ -73,7 +73,7 @@ class AnswerQuestion : Fragment() {
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(activity)
         media_is_playing = sharedPreferences.getBoolean("sound_effects", true)
         vibration_is_enabled = sharedPreferences.getBoolean("vibration", true)
-        results_view_model = ViewModelProvider(activity!!).get(ResultsViewModel::class.java)
+        results_view_model = ViewModelProvider(requireActivity()).get(ResultsViewModel::class.java)
         vibrator = context?.getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
 
         QuestionFactory.RETRIEVE(removeForwardSlashes(attributes.titles.en), db, object : QuestionFactory.StatusCallback {
@@ -145,10 +145,10 @@ class AnswerQuestion : Fragment() {
         val viewGroup = view.findViewById<ViewGroup>(R.id.main_view_content)
 
         //then we will inflate the custom alert dialog xml that we created
-        val dialogView = LayoutInflater.from(activity!!).inflate(R.layout.time_up_layout, viewGroup, false)
+        val dialogView = LayoutInflater.from(requireActivity()).inflate(R.layout.time_up_layout, viewGroup, false)
 
         //Now we need an AlertDialog.Builder object
-        val builder = AlertDialog.Builder(activity!!)
+        val builder = AlertDialog.Builder(requireActivity())
 
         val button = dialogView.findViewById<Button>(R.id.time_up_next_question)
 
@@ -212,7 +212,7 @@ class AnswerQuestion : Fragment() {
 
     private fun alertCorrectResponse(view: View) {
         val button = view as Button
-        if (media_is_playing) media_wrong.start()
+        if (media_is_playing) media_correct.start()
         button.background = resources.getDrawable(R.drawable.answer_correct_background)
         button.setTextColor(resources.getColor(R.color.color_white))
     }

@@ -53,19 +53,19 @@ class AnswerRandomQuestions : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        media_default = create(activity!!, R.raw.button_click_sound_effect)
+        media_default = create(requireActivity(), R.raw.button_click_sound_effect)
         media_correct = create(activity, R.raw.button_click_correct)
         media_wrong = create(activity, R.raw.button_click_wrong)
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(activity)
         media_is_playing = sharedPreferences.getBoolean("sound_effects", true)
         vibration_is_enabled = sharedPreferences.getBoolean("vibration", true)
-        results_view_model = ViewModelProvider(activity!!).get(ResultsViewModel::class.java)
+        results_view_model = ViewModelProvider(requireActivity()).get(ResultsViewModel::class.java)
         vibrator = context?.getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
 
         var randomQuestions: ArrayList<Result>
 
-        val randomQuestionsViewModel = ViewModelProvider(activity!!).get(RandomQuestionsViewModel::class.java)
-        randomQuestionsViewModel.getQuestionSet().observe(activity!!, Observer {
+        val randomQuestionsViewModel = ViewModelProvider(requireActivity()).get(RandomQuestionsViewModel::class.java)
+        randomQuestionsViewModel.getQuestionSet().observe(requireActivity(), Observer {
             randomQuestions = it as ArrayList<Result>
             results_view_model.resetPoints(0)
             loadQuestions(randomQuestions, 0, view, listButtons())
@@ -104,7 +104,7 @@ class AnswerRandomQuestions : Fragment() {
     }
 
     private fun shuffleAnswerChoices(randomQuestions: ArrayList<Result>, current_question: Int): ArrayList<String> {
-        val answer_choices = ArrayList<String>()
+        val answer_choices: ArrayList<String> = ArrayList()
         answer_choices.addAll(randomQuestions[current_question].incorrect_answers)
         answer_choices.add(randomQuestions[current_question].correct_answer)
         answer_choices.shuffle()
@@ -133,10 +133,10 @@ class AnswerRandomQuestions : Fragment() {
         val viewGroup = view.findViewById<ViewGroup>(R.id.main_view_content)
 
         //then we will inflate the custom alert dialog xml that we created
-        val dialogView = LayoutInflater.from(activity!!).inflate(R.layout.time_up_layout, viewGroup, false)
+        val dialogView = LayoutInflater.from(requireActivity()).inflate(R.layout.time_up_layout, viewGroup, false)
 
         //Now we need an AlertDialog.Builder object
-        val builder = AlertDialog.Builder(activity!!)
+        val builder = AlertDialog.Builder(requireActivity())
 
 
         val button = dialogView.findViewById<Button>(R.id.time_up_next_question)

@@ -1,5 +1,8 @@
 package com.murrayde.animekingmobile.model.random
 
+import androidx.annotation.Keep
+
+@Keep
 data class Result(
         val category: String,
         val correct_answer: String,
