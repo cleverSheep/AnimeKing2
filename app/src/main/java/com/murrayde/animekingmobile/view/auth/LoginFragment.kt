@@ -46,7 +46,7 @@ class LoginFragment : Fragment() {
                 .requestIdToken(getString(R.string.web_client_id))
                 .requestEmail()
                 .build()
-        googleSignInClient = GoogleSignIn.getClient(activity!!, gso)
+        googleSignInClient = GoogleSignIn.getClient(requireActivity(), gso)
         return inflater.inflate(R.layout.fragment_login, container, false)
     }
 
