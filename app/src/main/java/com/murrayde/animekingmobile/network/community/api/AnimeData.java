@@ -1,10 +1,13 @@
 
 package com.murrayde.animekingmobile.network.community.api;
 
+import androidx.annotation.Keep;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import com.murrayde.animekingmobile.model.community.AnimeAttributes.Attributes;
 
+@Keep
 public class AnimeData {
 
     @SerializedName("id")

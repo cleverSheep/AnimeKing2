@@ -1,11 +1,14 @@
 
 package com.murrayde.animekingmobile.network.community.api;
 
+import androidx.annotation.Keep;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
+@Keep
 public class AnimeComplete {
 
     @SerializedName("data")

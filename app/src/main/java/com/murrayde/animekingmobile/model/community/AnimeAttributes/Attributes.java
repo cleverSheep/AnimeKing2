@@ -4,6 +4,8 @@ package com.murrayde.animekingmobile.model.community.AnimeAttributes;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import androidx.annotation.Keep;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import com.murrayde.animekingmobile.model.community.AnimeAttributes.AnimeImage.CoverImage;
@@ -11,6 +13,7 @@ import com.murrayde.animekingmobile.model.community.AnimeAttributes.AnimeImage.P
 
 import java.util.List;
 
+@Keep
 public class Attributes implements Parcelable {
 
     @SerializedName("createdAt")

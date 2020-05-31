@@ -1,7 +1,10 @@
 package com.murrayde.animekingmobile.network.community.api;
 
+import androidx.annotation.Keep;
+
 import com.google.gson.annotations.SerializedName;
 
+@Keep
 public class Links {
     @SerializedName("first")
     private String first;

@@ -1,9 +1,12 @@
 
 package com.murrayde.animekingmobile.model.community.AnimeAttributes;
 
+import androidx.annotation.Keep;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+@Keep
 public class Titles {
 
     @SerializedName("en")
