@@ -29,6 +29,7 @@
     <string name="add_questions">Añadir Más Preguntas</string>
 
     <!-- Answer Question Layout -->
+    <string name="time_up">Tiempo Muerto</string>
     <string name="next_question">Próxima Pregunta</string>
 
     <!-- Ask Question Layout -->

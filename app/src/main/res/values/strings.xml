@@ -30,6 +30,7 @@
 
 
     <!-- Answer Question Layout -->
+    <string name="time_up">Time Up!</string>
     <string name="next_question">Next Question</string>
 
     <!-- Ask Question Layout -->

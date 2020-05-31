@@ -102,8 +102,7 @@ class AnimeListDetail : Fragment() {
         fragment_detail_take_quiz.setOnClickListener {
             if (media_is_playing) media.start()
             it.isEnabled = false
-            questionFactory.hasEnoughQuestions(removeForwardSlashes(args.animeAttributes.titles.en)
-                    ?: args.animeAttributes.canonicalTitle, object : QuestionFactory.QuestionCountCallback {
+            questionFactory.hasEnoughQuestions(removeForwardSlashes(args.animeAttributes.titles.en), object : QuestionFactory.QuestionCountCallback {
                 override fun onQuestionCountCallback(hasEnoughQuestions: Boolean) {
                     if (hasEnoughQuestions) {
                         startQuiz(it)
