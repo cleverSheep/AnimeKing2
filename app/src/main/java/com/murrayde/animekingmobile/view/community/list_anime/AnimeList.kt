@@ -41,7 +41,7 @@ class AnimeList : Fragment() {
 
         rv_anime.apply {
             adapter = listAdapter.adapter
-            layoutManager = GridLayoutManager(activity!!, 3)
+            layoutManager = GridLayoutManager(requireActivity(), 3)
             (layoutManager as GridLayoutManager).spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
                 override fun getSpanSize(position: Int) = when (position) {
                     0 -> 3
@@ -49,9 +49,9 @@ class AnimeList : Fragment() {
                 }
             }
         }
-        viewModel.animeData.observe(activity!!, Observer<PagedList<AnimeData>> { listAdapter.submitList(it) })
+        viewModel.animeData.observe(requireActivity(), Observer<PagedList<AnimeData>> { listAdapter.submitList(it) })
 
-        viewModel.networkDoneLoading().observe(activity!!, Observer { loading ->
+        viewModel.networkDoneLoading().observe(requireActivity(), Observer { loading ->
             if (loading) {
                 rv_anime.hideView()
                 list_main_loading.showView()

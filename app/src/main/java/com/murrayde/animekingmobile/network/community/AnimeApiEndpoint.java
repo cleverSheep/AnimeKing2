@@ -18,4 +18,10 @@ public interface AnimeApiEndpoint {
     Single<AnimeComplete> getUserRequestedAnime(
             @Query("filter[text]") String title
     );
+
+    @GET("trending/anime")
+    Single<AnimeComplete> getTrendingAnime();
+
+    @GET("trending/manga")
+    Single<AnimeComplete> getTrendingManga();
 }

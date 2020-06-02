@@ -1,14 +1,22 @@
+@file:Suppress("LocalVariableName")
+
 package com.murrayde.animekingmobile.view.auth
 
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.facebook.*
 import com.facebook.login.LoginManager
 import com.facebook.login.LoginResult
@@ -23,7 +31,12 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
 
 import com.murrayde.animekingmobile.R
-import kotlinx.android.synthetic.main.fragment_login.*
+import com.murrayde.animekingmobile.network.AppStatus
+import com.murrayde.animekingmobile.network.community.api.AnimeData
+import com.murrayde.animekingmobile.view.AutoScrollRecyclerView
+import kotlinx.android.synthetic.main.fragment_login.facebook_login_button
+import kotlinx.android.synthetic.main.fragment_login.google_login_button
+import kotlinx.android.synthetic.main.fragment_login_carousel.*
 import timber.log.Timber
 
 class LoginFragment : Fragment() {
@@ -31,10 +44,14 @@ class LoginFragment : Fragment() {
     private lateinit var callbackManager: CallbackManager
     private lateinit var auth: FirebaseAuth
     private lateinit var authStateListener: FirebaseAuth.AuthStateListener
-    private lateinit var accesTokenTracker: AccessTokenTracker
+    private lateinit var accessTokenTracker: AccessTokenTracker
     private lateinit var gso: GoogleSignInOptions
     private lateinit var googleSignInClient: GoogleSignInClient
     private val RC_SIGN_IN = 1
+    private lateinit var loginViewModel: LoginViewModel
+
+    private lateinit var anime_auto_scroll: AutoScrollRecyclerView
+    private lateinit var manga_auto_scroll: AutoScrollRecyclerView
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -47,16 +64,39 @@ class LoginFragment : Fragment() {
                 .requestEmail()
                 .build()
         googleSignInClient = GoogleSignIn.getClient(requireActivity(), gso)
-        return inflater.inflate(R.layout.fragment_login, container, false)
-    }
+        loginViewModel = ViewModelProvider(requireActivity()).get(LoginViewModel::class.java)
 
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        Timber.d("Fragment is now attached.${activity?.localClassName}")
+        if (hasNetworkConnection()) {
+            val view = inflater.inflate(R.layout.fragment_login_carousel, container, false)
+            loginViewModel.fetchAnimeImages()
+            loginViewModel.fetchMangaImages()
+            anime_auto_scroll = view.findViewById(R.id.rv_login_images_anime)
+            manga_auto_scroll = view.findViewById(R.id.rv_login_images_manga)
+            return view
+        }
+        return inflater.inflate(R.layout.fragment_login, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val list_anime_data = arrayListOf<AnimeData>()
+        val login_rv_adapter_anime = LoginFragmentRecyclerviewAdapter(list_anime_data)
+
+        val list_manga_data = arrayListOf<AnimeData>()
+        val login_rv_adapter_manga = LoginFragmentRecyclerviewAdapter(list_manga_data)
+
+        if (hasNetworkConnection()) {
+            loginViewModel.animeImages().observe(requireActivity(), Observer { list_images ->
+                login_rv_adapter_anime.updateLoginList(list_images)
+                updateAnimeList(login_rv_adapter_anime)
+            })
+
+            loginViewModel.mangaImages().observe(requireActivity(), Observer { list_images ->
+                login_rv_adapter_manga.updateLoginList(list_images)
+                updateMangaList(login_rv_adapter_manga)
+            })
+        }
 
         LoginManager.getInstance().registerCallback(callbackManager, object : FacebookCallback<LoginResult> {
             override fun onSuccess(result: LoginResult?) {
@@ -87,7 +127,7 @@ class LoginFragment : Fragment() {
             else updateUI(null)
         }
 
-        accesTokenTracker = object : AccessTokenTracker() {
+        accessTokenTracker = object : AccessTokenTracker() {
             override fun onCurrentAccessTokenChanged(oldAccessToken: AccessToken?, currentAccessToken: AccessToken?) {
                 if (currentAccessToken == null) {
                     auth.signOut()
@@ -98,12 +138,39 @@ class LoginFragment : Fragment() {
 
     }
 
+    private fun updateMangaList(loginRvAdapterManga: LoginFragmentRecyclerviewAdapter) {
+        if (!hasNetworkConnection()) return
+        if (loginRvAdapterManga.isReady) {
+            manga_auto_scroll.apply {
+                adapter = loginRvAdapterManga
+                layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
+                isLoopEnabled = true
+            }
+
+            manga_auto_scroll.openAutoScroll(25, true)
+            manga_auto_scroll.setCanTouch(false)
+        }
+    }
+
+    private fun updateAnimeList(loginRvAdapterAnime: LoginFragmentRecyclerviewAdapter) {
+        if (!hasNetworkConnection()) return
+        if (loginRvAdapterAnime.isReady) {
+            anime_auto_scroll.apply {
+                adapter = loginRvAdapterAnime
+                layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
+                isLoopEnabled = true
+            }
+            anime_auto_scroll.openAutoScroll(25, false)
+            anime_auto_scroll.setCanTouch(false)
+        }
+    }
+
     private fun handleFacebookAccessToken(token: AccessToken, view: View) {
         Timber.d("handleFacebookAccessToken:$token")
 
         val credential = FacebookAuthProvider.getCredential(token.token)
         auth.signInWithCredential(credential)
-                .addOnCompleteListener(activity!!) { task ->
+                .addOnCompleteListener(requireActivity()) { task ->
                     if (task.isSuccessful) {
                         // Sign in success, update UI with the signed-in user's information
                         Timber.d("signInWithCredential:success")
@@ -119,13 +186,18 @@ class LoginFragment : Fragment() {
                 }
     }
 
+    private fun hasNetworkConnection(): Boolean {
+        if (AppStatus.getInstance(requireActivity()).isOnline) return true
+        return false
+    }
+
     private fun updateUI(user: FirebaseUser?) {
         if (user != null) {
             Timber.d("Login success!")
             val directions = LoginFragmentDirections.actionLoginFragmentToHome()
             if (view != null) {
                 Timber.d("Login update was successful")
-                Navigation.findNavController(view!!).navigate(directions)
+                Navigation.findNavController(requireView()).navigate(directions)
             }
         } else {
             Timber.d("Login failure!")

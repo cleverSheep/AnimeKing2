@@ -58,7 +58,7 @@ class AnimeListDetail : Fragment() {
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(activity)
         media_is_playing = sharedPreferences.getBoolean("sound_effects", true)
         animeDetailViewModel = ViewModelProvider(this).get(AnimeDetailViewModel::class.java)
-        resultsViewModel = ViewModelProvider(activity!!).get(ResultsViewModel::class.java)
+        resultsViewModel = ViewModelProvider(requireActivity()).get(ResultsViewModel::class.java)
 
         fragment_detail_title.text = attributes.titles.en ?: attributes.canonicalTitle
         fragment_detail_description.text = attributes.synopsis
@@ -80,7 +80,7 @@ class AnimeListDetail : Fragment() {
 
         val anime_title = attributes.titles.en ?: attributes.canonicalTitle
 
-        animeDetailViewModel.getQuestionCount(removeForwardSlashes(anime_title)).observe(activity!!, Observer<Long> {
+        animeDetailViewModel.getQuestionCount(removeForwardSlashes(anime_title)).observe(requireActivity(), Observer<Long> {
             fragment_detail_question_count.text = "$it question(s)"
             resultsViewModel.setTotalQuestions(it.toInt())
             Timber.d("Total questions: ${it.toInt()}")
