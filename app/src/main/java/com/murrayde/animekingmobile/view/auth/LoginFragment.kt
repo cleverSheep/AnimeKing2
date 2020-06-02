@@ -188,6 +188,7 @@ class LoginFragment : Fragment() {
 
     private fun hasNetworkConnection(): Boolean {
         if (AppStatus.getInstance(requireActivity()).isOnline) return true
+        Toast.makeText(activity, "Please connect to the internet...", Toast.LENGTH_SHORT).show()
         return false
     }
 
