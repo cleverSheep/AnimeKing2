@@ -27,6 +27,7 @@
             android:gravity="center"
             android:orientation="vertical"
             app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
@@ -155,7 +156,7 @@
                 android:layout_height="1dp"
                 android:layout_marginTop="16dp"
                 android:background="@color/home_bg_center"
-                android:visibility="visible"
+                android:visibility="invisible"
                 app:layout_constraintBottom_toTopOf="@+id/questions_layout"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -165,8 +166,6 @@
                 android:id="@+id/questions_layout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginVertical="32dp"
-                android:layout_marginTop="8dp"
                 android:orientation="vertical"
                 android:visibility="visible"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -179,7 +178,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginTop="8dp"
                     android:background="@drawable/home_play_background"
                     android:fontFamily="@font/baloobhairegular"
                     android:text="@string/try_again"
