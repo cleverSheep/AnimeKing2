@@ -121,7 +121,7 @@ class AnimeListDetail : Fragment() {
             Navigation.findNavController(view).navigate(action)
         }
         fragment_detail_multiplayer.setOnClickListener {
-            Toast.makeText(activity!!, R.string.coming_soon, Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireActivity(), R.string.coming_soon, Toast.LENGTH_SHORT).show()
         }
     }
 

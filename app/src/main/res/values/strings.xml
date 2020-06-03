@@ -10,9 +10,9 @@
     <string name="anime_image">Anime Image</string>
 
     <!-- Anime List Layout -->
-    <string name="quick_play">Quick Play</string>
+    <string name="new_user">New Around Here?</string>
     <string name="play">Play</string>
-    <string name="start">Start</string>
+    <string name="practice">Practice</string>
 
     <!-- Anime Detail Layout -->
     <string name="take_quiz">Take Quiz</string>
@@ -32,6 +32,7 @@
     <!-- Answer Question Layout -->
     <string name="time_up">Time Up!</string>
     <string name="next_question">Next Question</string>
+    <string name="got_the_hang_of_it">You\'ve got the hang of it! Visit an anime community for more targeted questions.</string>
 
     <!-- Ask Question Layout -->
     <string name="enter_question">Don\'t be shy. Ask a question!</string>

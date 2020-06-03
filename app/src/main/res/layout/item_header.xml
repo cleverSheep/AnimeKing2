@@ -40,6 +40,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/header"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/header" />
+
 
     <View
         android:id="@+id/header_frame_view"
@@ -50,7 +60,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/header_title"
+        app:layout_constraintTop_toTopOf="@+id/textView9"
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
@@ -60,7 +70,7 @@
         android:drawableTop="@drawable/crown_list_screen"
         android:fontFamily="@font/baloobhairegular"
         android:paddingTop="16dp"
-        android:text="@string/quick_play"
+        android:text="@string/new_user"
         android:textAlignment="center"
         android:textColor="@color/color_white"
         android:textSize="24sp"
@@ -75,7 +85,7 @@
         android:layout_marginBottom="32dp"
         android:background="@drawable/header_play_background"
         android:fontFamily="@font/baloobhairegular"
-        android:text="@string/start"
+        android:text="@string/practice"
         android:textColor="@color/color_black"
         android:textSize="22sp"
         app:layout_constraintBottom_toBottomOf="@id/header"

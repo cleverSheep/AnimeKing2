@@ -19,7 +19,7 @@ class AnimeListAdapter : PagedListEpoxyController<AnimeData>() {
             if (currentPosition == 0) {
                 return HeaderView_()
                         .id("Header")
-                        .title(R.string.quick_play)
+                        .title(R.string.new_user)
                         .onClickListener { view ->
                             val directions = AnimeListDirections.actionHomeToAnswerRandomQuestions()
                             Navigation.findNavController(view).navigate(directions)
@@ -34,7 +34,7 @@ class AnimeListAdapter : PagedListEpoxyController<AnimeData>() {
                         val action = AnimeListDirections.actionListFragmentToDetailFragment(item.attributes)
                         Navigation.findNavController(view).navigate(action)
                     }
-                    .onLongClickListener {view ->
+                    .onLongClickListener { view ->
                         Toast.makeText(view.context, "${item.attributes?.titles?.en ?: item.attributes?.canonicalTitle}", Toast.LENGTH_SHORT).show()
                         true
                     }
