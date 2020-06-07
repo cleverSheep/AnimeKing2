@@ -31,7 +31,7 @@
             android:drawablePadding="8dp"
             android:fontFamily="@font/baloobhairegular"
             android:padding="8dp"
-            android:text="Submit"
+            android:text="@string/submit_question"
             android:textAlignment="textEnd"
             android:textColor="@color/color_white"
             android:textSize="22sp" />

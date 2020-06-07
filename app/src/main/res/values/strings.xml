@@ -36,7 +36,7 @@
 
     <!-- Ask Question Layout -->
     <string name="enter_question">Don\'t be shy. Ask a question!</string>
-    <string name="submit_question">Submit Question</string>
+    <string name="submit_question">Submit</string>
     <string name="wrong_choice">Wrong Choice</string>
     <string name="correct_choice">Correct Choice</string>
     <string name="fix_answer_choice">Enter 1+ character for answer choice.</string>

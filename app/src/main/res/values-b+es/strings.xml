@@ -35,7 +35,7 @@
 
     <!-- Ask Question Layout -->
     <string name="enter_question">No seas tímido ¡Hacer una pregunta!</string>
-    <string name="submit_question">Enviar Pregunta</string>
+    <string name="submit_question">Presentar</string>
     <string name="wrong_choice">Mala Decisión</string>
     <string name="correct_choice">Elección Correcta</string>
     <string name="fix_answer_choice">Ingrese 1+ carácter para la opción de respuesta.</string>
