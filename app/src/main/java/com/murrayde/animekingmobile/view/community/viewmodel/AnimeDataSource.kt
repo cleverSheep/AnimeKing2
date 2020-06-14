@@ -2,6 +2,7 @@ package com.murrayde.animekingmobile.view.community.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.paging.PageKeyedDataSource
+import com.murrayde.animekingmobile.extensions.lastCharacterIsDigit
 import com.murrayde.animekingmobile.network.community.api.AnimeComplete
 import com.murrayde.animekingmobile.network.community.api.AnimeData
 import com.murrayde.animekingmobile.network.community.AnimeApiEndpoint
@@ -62,18 +63,30 @@ class AnimeDataSource(private val animeApiEndpoint: AnimeApiEndpoint,
     }
 
     private fun performAnimeTitleFiltering(animeDataArrayList: ArrayList<AnimeData>): List<AnimeData> {
-        return animeDataArrayList.filter {
+        return animeDataArrayList.asSequence().filter {
             if (it.attributes.synopsis == null) return@filter false else !it.attributes.synopsis.contains("season", true)
         }.filter {
             if (it.attributes.slug == null) return@filter false else !it.attributes.slug.contains("season", true)
         }.filter {
+            if (it.attributes.slug == null) return@filter false else !it.attributes.slug.contains("ii", true)
+        }.filter {
+            if (it.attributes.slug == null) return@filter false else !it.attributes.slug.lastCharacterIsDigit()
+        }.filter {
+            if (it.attributes.slug == null) return@filter false else it.attributes.slug.isNotEmpty()
+        }.filter {
             if (it.attributes.titles.en == null) return@filter false else !it.attributes.titles.en.contains("season", true)
+        }.filter {
+            if (it.attributes.titles.en == null) return@filter false else !it.attributes.titles.en.contains("ii", true)
+        }.filter {
+            if (it.attributes.titles.en == null) return@filter false else !it.attributes.titles.en.lastCharacterIsDigit()
+        }.filter {
+            if (it.attributes.titles.en == null) return@filter false else it.attributes.titles.en.isNotEmpty()
         }.filter {
             if (it.attributes.titles.enJp == null) return@filter false else !it.attributes.titles.enJp.contains("season", true)
         }.filter {
             if (it.attributes.titles.jaJp == null) return@filter false else !it.attributes.titles.jaJp.contains("season", true)
         }.filter {
             if (it.attributes.canonicalTitle == null) return@filter false else !it.attributes.canonicalTitle.contains("season", true)
-        } as ArrayList<AnimeData>
+        }.toList() as ArrayList<AnimeData>
     }
 }
