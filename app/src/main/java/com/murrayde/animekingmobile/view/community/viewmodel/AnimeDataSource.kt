@@ -1,6 +1,5 @@
 package com.murrayde.animekingmobile.view.community.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.paging.PageKeyedDataSource
 import com.murrayde.animekingmobile.network.community.api.AnimeComplete
@@ -11,7 +10,6 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableSingleObserver
 import io.reactivex.schedulers.Schedulers
-import timber.log.Timber
 
 class AnimeDataSource(private val animeApiEndpoint: AnimeApiEndpoint,
                       private val compositeDisposable: CompositeDisposable,
@@ -29,7 +27,7 @@ class AnimeDataSource(private val animeApiEndpoint: AnimeApiEndpoint,
 
                                 val animeDataArrayList: ArrayList<AnimeData> = ArrayList()
                                 animeDataArrayList.addAll(t.data)
-                                callback.onResult(animeDataArrayList, null, t.nextLink)
+                                callback.onResult(performAnimeTitleFiltering(animeDataArrayList), null, t.nextLink)
                             }
 
                             override fun onError(e: Throwable) {
@@ -50,7 +48,7 @@ class AnimeDataSource(private val animeApiEndpoint: AnimeApiEndpoint,
 
                                 val animeDataArrayList: ArrayList<AnimeData> = ArrayList()
                                 animeDataArrayList.addAll(t.data)
-                                callback.onResult(animeDataArrayList, t.nextLink)
+                                callback.onResult(performAnimeTitleFiltering(animeDataArrayList), t.nextLink)
                             }
 
                             override fun onError(e: Throwable) {
@@ -61,5 +59,21 @@ class AnimeDataSource(private val animeApiEndpoint: AnimeApiEndpoint,
     }
 
     override fun loadBefore(params: LoadParams<String>, callback: LoadCallback<String, AnimeData>) {
+    }
+
+    private fun performAnimeTitleFiltering(animeDataArrayList: ArrayList<AnimeData>): List<AnimeData> {
+        return animeDataArrayList.filter {
+            if (it.attributes.synopsis == null) return@filter false else !it.attributes.synopsis.contains("season", true)
+        }.filter {
+            if (it.attributes.slug == null) return@filter false else !it.attributes.slug.contains("season", true)
+        }.filter {
+            if (it.attributes.titles.en == null) return@filter false else !it.attributes.titles.en.contains("season", true)
+        }.filter {
+            if (it.attributes.titles.enJp == null) return@filter false else !it.attributes.titles.enJp.contains("season", true)
+        }.filter {
+            if (it.attributes.titles.jaJp == null) return@filter false else !it.attributes.titles.jaJp.contains("season", true)
+        }.filter {
+            if (it.attributes.canonicalTitle == null) return@filter false else !it.attributes.canonicalTitle.contains("season", true)
+        } as ArrayList<AnimeData>
     }
 }
