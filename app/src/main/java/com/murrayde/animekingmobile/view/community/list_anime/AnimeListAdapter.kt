@@ -8,7 +8,7 @@ import com.airbnb.epoxy.EpoxyModel
 import com.airbnb.epoxy.paging.PagedListEpoxyController
 import com.murrayde.animekingmobile.R
 import com.murrayde.animekingmobile.network.community.api.AnimeData
-import com.murrayde.animekingmobile.view.community.list_anime.item.*
+import com.murrayde.animekingmobile.view.community.list_anime.view_items.*
 
 class AnimeListAdapter : PagedListEpoxyController<AnimeData>() {
 
