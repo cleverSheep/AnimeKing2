@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/color_home_logo"
     android:gravity="center"
-    tools:context=".view.community.results_screen.ViewResults">
+    tools:context=".view.community.quiz_results.ViewResults">
 
     <include
         layout="@layout/fragment_view_results_bottom_sheet"

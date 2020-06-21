@@ -17,7 +17,7 @@ import com.murrayde.animekingmobile.extensions.hideView
 import com.murrayde.animekingmobile.extensions.showView
 import com.murrayde.animekingmobile.network.community.api.AnimeData
 import com.murrayde.animekingmobile.util.PagingUtil
-import com.murrayde.animekingmobile.view.community.viewmodel.MainActivityViewModel
+import com.murrayde.animekingmobile.view.community.data_source.MainActivityViewModel
 import kotlinx.android.synthetic.main.fragment_list.*
 import timber.log.Timber
 

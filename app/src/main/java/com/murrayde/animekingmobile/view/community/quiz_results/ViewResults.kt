@@ -1,6 +1,6 @@
 @file:Suppress("LocalVariableName", "PrivatePropertyName")
 
-package com.murrayde.animekingmobile.view.community.results_screen
+package com.murrayde.animekingmobile.view.community.quiz_results
 
 
 import android.content.SharedPreferences
@@ -25,8 +25,7 @@ import com.murrayde.animekingmobile.extensions.showView
 import com.murrayde.animekingmobile.model.community.AnimeAttributes.Attributes
 import com.murrayde.animekingmobile.util.QuestionUtil
 import com.murrayde.animekingmobile.util.questionCount
-import com.murrayde.animekingmobile.view.community.results_screen.review_questions.ReviewQuestionsAdapter
-import com.murrayde.animekingmobile.view.community.viewmodel.ResultsViewModel
+import com.murrayde.animekingmobile.view.community.quiz_results.review_questions.ReviewQuestionsAdapter
 import kotlinx.android.synthetic.main.fragment_view_results.*
 import kotlinx.android.synthetic.main.fragment_view_results_bottom_sheet.*
 import timber.log.Timber

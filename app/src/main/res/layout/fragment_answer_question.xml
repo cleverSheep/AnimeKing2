@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/color_home_logo"
-    tools:context=".view.community.AnswerQuestion">
+    tools:context=".view.community.questions.AnswerQuestion">
 
     <LinearLayout
         android:id="@+id/iv_answer_question_ll"

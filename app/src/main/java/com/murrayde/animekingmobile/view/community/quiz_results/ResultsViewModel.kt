@@ -1,6 +1,6 @@
 @file:Suppress("PrivatePropertyName")
 
-package com.murrayde.animekingmobile.view.community.viewmodel
+package com.murrayde.animekingmobile.view.community.quiz_results
 
 import androidx.lifecycle.ViewModel
 import com.murrayde.animekingmobile.util.QuestionUtil

@@ -65,7 +65,7 @@
     </fragment>
     <fragment
         android:id="@+id/lowQuestionCountFragment"
-        android:name="com.murrayde.animekingmobile.view.community.LowQuestionCount"
+        android:name="com.murrayde.animekingmobile.view.community.questions.LowQuestionCount"
         tools:layout="@layout/fragment_low_question_count">
         <action
             android:id="@+id/action_lowQuestionCountFragment_to_askQuestionFragment"
@@ -80,7 +80,7 @@
     </fragment>
     <fragment
         android:id="@+id/askQuestionFragment"
-        android:name="com.murrayde.animekingmobile.view.community.AskQuestion"
+        android:name="com.murrayde.animekingmobile.view.community.questions.AskQuestion"
         tools:layout="@layout/fragment_ask_question">
         <argument
             android:name="AnimeAttributes"
@@ -97,7 +97,7 @@
     </fragment>
     <fragment
         android:id="@+id/answerQuestionFragment"
-        android:name="com.murrayde.animekingmobile.view.community.AnswerQuestion"
+        android:name="com.murrayde.animekingmobile.view.community.questions.AnswerQuestion"
         tools:layout="@layout/fragment_answer_question">
         <argument
             android:name="AnimeAttributes"
@@ -131,7 +131,7 @@
     </fragment>
     <fragment
         android:id="@+id/viewResults"
-        android:name="com.murrayde.animekingmobile.view.community.results_screen.ViewResults"
+        android:name="com.murrayde.animekingmobile.view.community.quiz_results.ViewResults"
         android:label="fragment_view_results"
         tools:layout="@layout/fragment_view_results">
         <argument
