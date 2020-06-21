@@ -1,4 +1,4 @@
-package com.murrayde.animekingmobile.view.community.viewmodel
+package com.murrayde.animekingmobile.view.profile
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

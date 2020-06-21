@@ -18,9 +18,8 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.murrayde.animekingmobile.R
 import com.murrayde.animekingmobile.extensions.hideView
 import com.murrayde.animekingmobile.extensions.showView
-import com.murrayde.animekingmobile.view.community.viewmodel.MainActivityViewModel
+import com.murrayde.animekingmobile.view.community.data_source.MainActivityViewModel
 import kotlinx.android.synthetic.main.activity_main.*
-import timber.log.Timber
 
 
 class MainActivity : AppCompatActivity() {
@@ -38,7 +37,7 @@ class MainActivity : AppCompatActivity() {
         val navController = findNavController(R.id.nav_host_fragment)
         findViewById<BottomNavigationView>(R.id.bottom).setupWithNavController(navController)
 
-        navController.addOnDestinationChangedListener { controller, destination, arguments ->
+        navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
                 R.id.answerQuestionFragment, R.id.answerRandomQuestions, R.id.viewResults, R.id.askQuestionFragment, R.id.loginFragment -> {
                     bottom.visibility = View.GONE
@@ -47,10 +46,9 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+        // Home screen visibility reflects the network state
         viewModel.networkDoneLoading().observe(this, Observer { loading ->
-            Timber.d("network is loading")
             if (loading) {
-                Timber.d("network is loading")
                 activity_main_content.hideView()
                 activity_main_loading.showView()
             } else {
@@ -81,7 +79,6 @@ class MainActivity : AppCompatActivity() {
 
     private fun respondToUIVisibilityChanges() {
         window.decorView.setOnSystemUiVisibilityChangeListener { visibility ->
-            Timber.d("System bar is visible")
             // Note that system bars will only be "visible" if none of the
             // LOW_PROFILE, HIDE_NAVIGATION, or FULLSCREEN flags are set.
             if (visibility and View.SYSTEM_UI_FLAG_FULLSCREEN == 0) {

@@ -14,7 +14,6 @@ import com.google.firebase.auth.FirebaseAuth
 import com.murrayde.animekingmobile.R
 import com.murrayde.animekingmobile.util.ImageUtil
 import com.murrayde.animekingmobile.util.convertToUserName
-import com.murrayde.animekingmobile.view.community.viewmodel.ProfileViewModel
 import kotlinx.android.synthetic.main.fragment_profile.*
 
 class ProfileFragment : Fragment() {

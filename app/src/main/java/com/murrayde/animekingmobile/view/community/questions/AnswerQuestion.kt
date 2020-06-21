@@ -1,6 +1,6 @@
 @file:Suppress("LocalVariableName", "PrivatePropertyName")
 
-package com.murrayde.animekingmobile.view.community
+package com.murrayde.animekingmobile.view.community.questions
 
 
 import android.content.Context
@@ -30,7 +30,9 @@ import com.murrayde.animekingmobile.model.community.QuestionFactory
 import com.murrayde.animekingmobile.util.QuestionUtil
 import com.murrayde.animekingmobile.util.questionCount
 import com.murrayde.animekingmobile.util.removeForwardSlashes
-import com.murrayde.animekingmobile.view.community.viewmodel.ResultsViewModel
+import com.murrayde.animekingmobile.view.community.AnswerQuestionArgs
+import com.murrayde.animekingmobile.view.community.AnswerQuestionDirections
+import com.murrayde.animekingmobile.view.community.quiz_results.ResultsViewModel
 import kotlinx.android.synthetic.main.fragment_answer_question.*
 import timber.log.Timber
 

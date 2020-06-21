@@ -1,4 +1,4 @@
-package com.murrayde.animekingmobile.view.community.results_screen.review_questions
+package com.murrayde.animekingmobile.view.community.quiz_results.review_questions
 
 import android.content.Context
 import android.view.HapticFeedbackConstants
