@@ -40,7 +40,7 @@ class ProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         tv_profile_edit.setOnClickListener {
-            Toast.makeText(activity!!, "Edit profile...", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireActivity(), "Edit profile...", Toast.LENGTH_SHORT).show()
         }
     }
 }
