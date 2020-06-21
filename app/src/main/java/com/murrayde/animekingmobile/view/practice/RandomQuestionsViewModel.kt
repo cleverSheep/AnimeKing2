@@ -1,6 +1,6 @@
 @file:Suppress("LocalVariableName", "PrivatePropertyName")
 
-package com.murrayde.animekingmobile.view.random
+package com.murrayde.animekingmobile.view.practice
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

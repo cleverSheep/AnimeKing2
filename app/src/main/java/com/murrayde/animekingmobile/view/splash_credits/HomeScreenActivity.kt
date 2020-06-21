@@ -1,4 +1,4 @@
-package com.murrayde.animekingmobile.view.landing_screen
+package com.murrayde.animekingmobile.view.splash_credits
 
 import android.os.Bundle
 import android.view.WindowManager

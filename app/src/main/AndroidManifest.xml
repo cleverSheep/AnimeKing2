@@ -20,7 +20,7 @@
             android:value="@string/facebook_app_id" />
 
         <activity
-            android:name="com.murrayde.animekingmobile.view.landing_screen.SplashScreen"
+            android:name="com.murrayde.animekingmobile.view.splash_credits.SplashScreen"
             android:noHistory="true"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -34,7 +34,7 @@
             android:configChanges="locale|orientation"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.murrayde.animekingmobile.view.landing_screen.HomeScreenActivity"
+            android:name="com.murrayde.animekingmobile.view.splash_credits.HomeScreenActivity"
             android:screenOrientation="portrait" />
     </application>
 

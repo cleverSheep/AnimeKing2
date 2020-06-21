@@ -29,7 +29,7 @@
     </fragment>
     <fragment
         android:id="@+id/detailFragment"
-        android:name="com.murrayde.animekingmobile.view.community.list_anime.AnimeListDetail"
+        android:name="com.murrayde.animekingmobile.view.community.list_detail.AnimeListDetail"
         tools:layout="@layout/fragment_detail">
         <argument
             android:name="AnimeAttributes"
@@ -112,7 +112,7 @@
     </fragment>
     <activity
         android:id="@+id/homeScreenActivity"
-        android:name="com.murrayde.animekingmobile.view.landing_screen.HomeScreenActivity"
+        android:name="com.murrayde.animekingmobile.view.splash_credits.HomeScreenActivity"
         tools:layout="@layout/activity_home_screen" />
     <fragment
         android:id="@+id/search"
@@ -172,7 +172,7 @@
     </fragment>
     <fragment
         android:id="@+id/answerRandomQuestions"
-        android:name="com.murrayde.animekingmobile.view.random.AnswerRandomQuestions"
+        android:name="com.murrayde.animekingmobile.view.practice.AnswerRandomQuestions"
         android:label="fragment_random_questions"
         tools:layout="@layout/fragment_random_questions">
         <action
@@ -196,7 +196,7 @@
     </fragment>
     <fragment
         android:id="@+id/randomQuizFinish"
-        android:name="com.murrayde.animekingmobile.view.random.RandomQuizFinish"
+        android:name="com.murrayde.animekingmobile.view.practice.RandomQuizFinish"
         android:label="finish_random_quiz"
         tools:layout="@layout/finish_random_quiz" >
         <action

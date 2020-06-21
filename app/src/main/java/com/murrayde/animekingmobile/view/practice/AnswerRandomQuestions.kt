@@ -1,6 +1,6 @@
 @file:Suppress("LocalVariableName", "PrivatePropertyName")
 
-package com.murrayde.animekingmobile.view.random
+package com.murrayde.animekingmobile.view.practice
 
 
 import android.content.Context

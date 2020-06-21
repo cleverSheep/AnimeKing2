@@ -48,6 +48,9 @@
     <string name="time_bonus">Tiempo Extra</string>
     <string name="try_again">Inténtalo de Nuevo</string>
     <string name="quit_game">Salir del Juego</string>
+    <string name="questions_correct_count">%1$d de %2$d preguntas correctas!</string>
+    <string name="total_time_bonus">%1$d puntos</string>
+    <string name="total_points">%1$d puntos</string>
     <string name="review_share_questions">Revisar Preguntas</string>
     <string name="lost_quote">\"Recuerda la lección, no la decepción.\"\n-Holo la Lobo Sabio</string>
     <string name="won_quote">\"El que golpea primero gana\"\n-L Lawliet</string>

@@ -1,6 +1,6 @@
 @file:Suppress("PropertyName", "PrivatePropertyName", "LocalVariableName")
 
-package com.murrayde.animekingmobile.view.community.list_anime
+package com.murrayde.animekingmobile.view.community.list_detail
 
 import android.content.SharedPreferences
 import android.media.MediaPlayer
@@ -24,7 +24,8 @@ import com.murrayde.animekingmobile.R
 import com.murrayde.animekingmobile.model.community.QuestionFactory
 import com.murrayde.animekingmobile.util.ImageUtil
 import com.murrayde.animekingmobile.util.removeForwardSlashes
-import com.murrayde.animekingmobile.view.community.viewmodel.AnimeDetailViewModel
+import com.murrayde.animekingmobile.view.community.list_anime.AnimeListDetailArgs
+import com.murrayde.animekingmobile.view.community.list_anime.AnimeListDetailDirections
 import com.murrayde.animekingmobile.view.community.viewmodel.ResultsViewModel
 import kotlinx.android.synthetic.main.fragment_detail.*
 import timber.log.Timber
