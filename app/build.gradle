@@ -118,8 +118,8 @@ dependencies {
     annotationProcessor "com.github.bumptech.glide:compiler:$glideVersion"
 
     // Architecture Comp. Navigation
-    def nav_version = "2.3.0-beta01"
-    implementation "androidx.navigation:navigation-fragment:2.3.0-beta01"
+    def nav_version = "2.3.0-rc01"
+    implementation "androidx.navigation:navigation-fragment:$nav_version"
     implementation "androidx.navigation:navigation-ui:$nav_version"
     implementation "androidx.navigation:navigation-runtime:$nav_version"
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
