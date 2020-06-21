@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/color_home_logo"
-    tools:context=".view.random.AnswerRandomQuestions">
+    tools:context=".view.practice.AnswerRandomQuestions">
 
     <LinearLayout
         android:id="@+id/random_question_ll"

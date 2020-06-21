@@ -1,4 +1,4 @@
-@file:Suppress("LocalVariableName")
+@file:Suppress("LocalVariableName", "PrivatePropertyName")
 
 package com.murrayde.animekingmobile.view.community.results_screen
 
@@ -44,7 +44,7 @@ class ViewResults : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_view_results, container, false)
-        resultsViewModel = ViewModelProvider(activity!!).get(ResultsViewModel::class.java)
+        resultsViewModel = ViewModelProvider(requireActivity()).get(ResultsViewModel::class.java)
         val results_correct_percentage = view.findViewById<TextView>(R.id.results_correct_percentage)
         val results_time_bonus_points = view.findViewById<TextView>(R.id.results_time_bonus_points)
         val results_total_points = view.findViewById<TextView>(R.id.results_total_points_tv)
@@ -52,9 +52,9 @@ class ViewResults : Fragment() {
         val game_over = view.findViewById<TextView>(R.id.game_over)
 
         val question_count = questionCount(resultsViewModel.getTotalQuestions(), QuestionUtil.QUESTION_LIMIT)
-        results_correct_percentage.text = "${resultsViewModel.totalCorrect()} out of $question_count questions correct"
-        results_time_bonus_points.text = "${resultsViewModel.totalTimeBonus().toString()} pts"
-        results_total_points.text = "${resultsViewModel.totalPoints().toString()} pts"
+        results_correct_percentage.text = String.format(view.context.getString(R.string.questions_correct_count), resultsViewModel.totalCorrect(), question_count)
+        results_time_bonus_points.text = String.format(view.context.getString(R.string.total_time_bonus), resultsViewModel.totalTimeBonus())
+        results_total_points.text = String.format(view.context.getString(R.string.total_points), resultsViewModel.totalPoints())
         quote.text = if (resultsViewModel.positiveMessage()) resources.getString(R.string.won_quote) else resources.getString(R.string.lost_quote)
         game_over.text = if (resultsViewModel.positiveMessage()) resources.getString(R.string.good_game) else resources.getString(R.string.game_over)
 
@@ -65,14 +65,14 @@ class ViewResults : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val list_questions = resultsArgs.listQuestions
-        val review_questions_adapter = ReviewQuestionsAdapter(activity!!, list_questions!!)
+        val review_questions_adapter = ReviewQuestionsAdapter(requireActivity(), list_questions!!)
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(activity)
         media = MediaPlayer.create(activity, R.raw.button_click_sound_effect)
         media_is_playing = sharedPreferences.getBoolean("sound_effects", true)
 
 
         bottom_sheet_rv.adapter = review_questions_adapter
-        bottom_sheet_rv.layoutManager = LinearLayoutManager(activity!!, LinearLayoutManager.VERTICAL, false)
+        bottom_sheet_rv.layoutManager = LinearLayoutManager(requireActivity(), LinearLayoutManager.VERTICAL, false)
 
         linearLayoutBottomSheet = view.findViewById(R.id.results_bottom_sheet)
         val bottomSheetBehavior = BottomSheetBehavior.from(linearLayoutBottomSheet)

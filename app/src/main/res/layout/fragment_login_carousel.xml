@@ -33,7 +33,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/auth_logo_title" />
 
-    <com.murrayde.animekingmobile.view.AutoScrollRecyclerView
+    <com.murrayde.animekingmobile.view.auth.AutoScrollRecyclerView
         android:id="@+id/rv_login_images_anime"
         android:layout_width="match_parent"
         android:layout_height="150dp"
@@ -43,7 +43,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
-    <com.murrayde.animekingmobile.view.AutoScrollRecyclerView
+    <com.murrayde.animekingmobile.view.auth.AutoScrollRecyclerView
         android:id="@+id/rv_login_images_manga"
         android:layout_width="match_parent"
         android:layout_height="150dp"

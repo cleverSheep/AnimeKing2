@@ -1,6 +1,6 @@
 @file:Suppress("LocalVariableName")
 
-package com.murrayde.animekingmobile.view.community.viewmodel
+package com.murrayde.animekingmobile.view.community.list_detail
 
 import androidx.core.os.LocaleListCompat
 import androidx.lifecycle.LiveData

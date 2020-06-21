@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.landing_screen.HomeScreenActivity">
+    tools:context=".view.splash_credits.HomeScreenActivity">
 
     <fragment
         android:id="@+id/nav_host_fragment"

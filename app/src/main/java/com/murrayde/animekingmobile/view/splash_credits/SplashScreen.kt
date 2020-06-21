@@ -1,4 +1,4 @@
-package com.murrayde.animekingmobile.view.landing_screen
+package com.murrayde.animekingmobile.view.splash_credits
 
 import android.content.Intent
 import android.media.MediaPlayer

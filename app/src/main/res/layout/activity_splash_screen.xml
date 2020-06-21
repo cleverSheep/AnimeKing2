@@ -8,7 +8,7 @@
     android:gravity="center"
     android:orientation="vertical"
     android:padding="@dimen/margin_regular"
-    tools:context=".view.landing_screen.SplashScreen">
+    tools:context=".view.splash_credits.SplashScreen">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"

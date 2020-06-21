@@ -1,4 +1,4 @@
-package com.murrayde.animekingmobile.view.random
+package com.murrayde.animekingmobile.view.practice
 
 import android.content.SharedPreferences
 import android.media.MediaPlayer
@@ -11,7 +11,6 @@ import androidx.navigation.Navigation
 import androidx.preference.PreferenceManager
 
 import com.murrayde.animekingmobile.R
-import com.murrayde.animekingmobile.view.community.list_anime.AnimeListDetailDirections
 import kotlinx.android.synthetic.main.finish_random_quiz.*
 
 private lateinit var media: MediaPlayer

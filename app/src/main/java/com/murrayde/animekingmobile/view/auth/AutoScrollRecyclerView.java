@@ -1,4 +1,4 @@
-package com.murrayde.animekingmobile.view;
+package com.murrayde.animekingmobile.view.auth;
 
 
 import android.content.Context;

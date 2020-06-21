@@ -1,4 +1,4 @@
-package com.murrayde.animekingmobile.view.community.list_anime.view_items;
+package com.murrayde.animekingmobile.view.community.list_anime.view_types;
 
 import android.view.View;
 import android.widget.Button;
