@@ -13,8 +13,8 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.navigation.ui.setupWithNavController
 import com.murrayde.animekingmobile.R
-import com.murrayde.animekingmobile.view.community.LowQuestionCountDirections
-import com.murrayde.animekingmobile.view.community.list_anime.AnimeListDetailArgs
+import com.murrayde.animekingmobile.view.community.questions.LowQuestionCount
+import com.murrayde.animekingmobile.view.community.list_detail.AnimeListDetailArgs
 import kotlinx.android.synthetic.main.fragment_low_question_count.*
 
 class LowQuestionCount : Fragment() {
