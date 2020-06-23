@@ -28,8 +28,8 @@ import com.murrayde.animekingmobile.R
 import com.murrayde.animekingmobile.extensions.formatQuestion
 import com.murrayde.animekingmobile.model.community.CommunityQuestion
 import com.murrayde.animekingmobile.util.removeForwardSlashes
-import com.murrayde.animekingmobile.view.community.AskQuestionDirections
-import com.murrayde.animekingmobile.view.community.list_anime.AnimeListDetailArgs
+import com.murrayde.animekingmobile.view.community.questions.AskQuestion
+import com.murrayde.animekingmobile.view.community.list_detail.AnimeListDetailArgs
 import kotlinx.android.synthetic.main.fragment_ask_question.*
 import timber.log.Timber
 
@@ -144,10 +144,10 @@ class AskQuestion : Fragment() {
         val viewGroup = view.findViewById<ViewGroup>(R.id.main_view_content)
 
         //then we will inflate the custom alert dialog xml that we created
-        val dialogView = LayoutInflater.from(activity!!).inflate(R.layout.empty_question_fix, viewGroup, false)
+        val dialogView = LayoutInflater.from(requireActivity()).inflate(R.layout.empty_question_fix, viewGroup, false)
 
         //Now we need an AlertDialog.Builder object
-        val builder = AlertDialog.Builder(activity!!)
+        val builder = AlertDialog.Builder(requireActivity())
 
 
         val button = dialogView.findViewById<Button>(R.id.accept_request_button)
@@ -169,10 +169,10 @@ class AskQuestion : Fragment() {
         val viewGroup = view.findViewById<ViewGroup>(R.id.main_view_content)
 
         //then we will inflate the custom alert dialog xml that we created
-        val dialogView = LayoutInflater.from(activity!!).inflate(R.layout.empty_answer_fix, viewGroup, false)
+        val dialogView = LayoutInflater.from(requireActivity()).inflate(R.layout.empty_answer_fix, viewGroup, false)
 
         //Now we need an AlertDialog.Builder object
-        val builder = AlertDialog.Builder(activity!!)
+        val builder = AlertDialog.Builder(requireActivity())
 
 
         val button = dialogView.findViewById<Button>(R.id.accept_request_button)

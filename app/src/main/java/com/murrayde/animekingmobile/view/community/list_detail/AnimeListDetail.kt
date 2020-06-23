@@ -24,8 +24,8 @@ import com.murrayde.animekingmobile.R
 import com.murrayde.animekingmobile.model.community.QuestionFactory
 import com.murrayde.animekingmobile.util.ImageUtil
 import com.murrayde.animekingmobile.util.removeForwardSlashes
-import com.murrayde.animekingmobile.view.community.list_anime.AnimeListDetailArgs
-import com.murrayde.animekingmobile.view.community.list_anime.AnimeListDetailDirections
+import com.murrayde.animekingmobile.view.community.list_detail.AnimeListDetailArgs
+import com.murrayde.animekingmobile.view.community.list_detail.AnimeListDetailDirections
 import com.murrayde.animekingmobile.view.community.quiz_results.ResultsViewModel
 import kotlinx.android.synthetic.main.fragment_detail.*
 import timber.log.Timber

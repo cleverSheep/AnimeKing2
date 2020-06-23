@@ -30,8 +30,8 @@ import com.murrayde.animekingmobile.model.community.QuestionFactory
 import com.murrayde.animekingmobile.util.QuestionUtil
 import com.murrayde.animekingmobile.util.questionCount
 import com.murrayde.animekingmobile.util.removeForwardSlashes
-import com.murrayde.animekingmobile.view.community.AnswerQuestionArgs
-import com.murrayde.animekingmobile.view.community.AnswerQuestionDirections
+import com.murrayde.animekingmobile.view.community.questions.AnswerQuestionArgs
+import com.murrayde.animekingmobile.view.community.questions.AnswerQuestionDirections
 import com.murrayde.animekingmobile.view.community.quiz_results.ResultsViewModel
 import kotlinx.android.synthetic.main.fragment_answer_question.*
 import timber.log.Timber
