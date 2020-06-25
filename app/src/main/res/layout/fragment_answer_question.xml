@@ -96,7 +96,9 @@
         android:textColor="@android:color/black"
         android:textSize="@dimen/text_size"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/button_choice_one"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/iv_answer_question_ll"
         tools:text="Question" />
@@ -113,7 +115,9 @@
         android:textColor="@android:color/black"
         android:textSize="17sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/button_choice_two"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_answer_question"
         tools:text="Answer Choice 1" />
@@ -130,7 +134,9 @@
         android:textColor="@android:color/black"
         android:textSize="17sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/button_choice_three"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button_choice_one"
         tools:text="Answer Choice 2" />
@@ -147,7 +153,9 @@
         android:textColor="@android:color/black"
         android:textSize="17sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/button_choice_four"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button_choice_two"
         tools:text="Answer Choice 3" />
@@ -164,7 +172,9 @@
         android:textColor="@android:color/black"
         android:textSize="17sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/button_next_question"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button_choice_three"
         tools:text="Answer Choice 4" />
@@ -180,7 +190,9 @@
         android:text="@string/next_question"
         android:textColor="@android:color/black"
         android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button_choice_four"
         tools:visibility="visible" />
