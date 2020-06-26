@@ -46,14 +46,14 @@ class SettingsFragment : PreferenceFragmentCompat(), SharedPreferences.OnSharedP
                 .requestIdToken(getString(R.string.web_client_id))
                 .requestEmail()
                 .build()
-        googleSignInClient = GoogleSignIn.getClient(activity!!, gso)
+        googleSignInClient = GoogleSignIn.getClient(requireActivity(), gso)
         authPreference?.setOnPreferenceClickListener { _ ->
             Timber.d("Sign out button clicked")
             auth.signOut()
             googleSignInClient.signOut()
             loginManager.logOut()
             val directions = SettingsFragmentDirections.actionMoreToLoginFragment2()
-            Navigation.findNavController(view!!).navigate(directions)
+            Navigation.findNavController(requireView()).navigate(directions)
             true
         }
 

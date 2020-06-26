@@ -30,6 +30,25 @@
             app:title="@string/in_game_music" />-->
     </PreferenceCategory>
 
+    <PreferenceCategory app:title="@string/legal">
+        <Preference
+            app:icon="@drawable/ic_exit_to_app_black_24dp"
+            app:key="privacy_policy"
+            app:title="Privacy">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="https://www.termsfeed.com/live/38f1f4a2-1204-4980-8248-f31d3a4fa801" />
+        </Preference>
+        <Preference
+            app:icon="@drawable/ic_exit_to_app_black_24dp"
+            app:key="terms_of_use"
+            app:title="Terms of Use">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="https://www.termsfeed.com/live/601157d7-7ff6-4663-b68f-a5c6dc34973c" />
+        </Preference>
+    </PreferenceCategory>
+
     <PreferenceCategory app:title="@string/other">
         <Preference
             app:icon="@drawable/ic_info_black_24dp"
@@ -40,7 +59,7 @@
                 android:targetPackage="com.murrayde.animekingmobile" />
         </Preference>
         <Preference
-            app:icon="@drawable/ic_exit_to_app_black_24dp"
+            app:icon="@drawable/ic_baseline_person_24"
             app:key="sign_out"
             app:title="@string/sign_out" />
     </PreferenceCategory>

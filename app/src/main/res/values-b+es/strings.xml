@@ -71,9 +71,10 @@
     <string name="vibration">Vibración</string>
     <string name="in_game_music">Música en el Juego</string>
     <string name="dark_mode">Modo Oscuro</string>
-    <string name="about">Sobre</string>
+    <string name="about">Crédito</string>
     <string name="sign_out">Desconectar</string>
     <string name="english">Inglés</string>
+    <string name="legal">Legal</string>
     <string name="spanish">Español</string>
     <string name="basic">Básico</string>
     <string name="other">Otro</string>
