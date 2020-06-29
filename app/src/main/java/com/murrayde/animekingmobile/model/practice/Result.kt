@@ -1,4 +1,4 @@
-package com.murrayde.animekingmobile.model.random
+package com.murrayde.animekingmobile.model.practice
 
 import androidx.annotation.Keep
 

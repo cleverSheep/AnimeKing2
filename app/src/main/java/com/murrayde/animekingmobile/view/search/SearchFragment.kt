@@ -12,19 +12,20 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.GridLayoutManager
 import com.murrayde.animekingmobile.R
-import com.murrayde.animekingmobile.network.community.api.AnimeData
 import com.murrayde.animekingmobile.view.search.adapter.SearchRecyclerViewAdapter
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_search.*
 
+@AndroidEntryPoint
 class SearchFragment : Fragment() {
 
     private lateinit var listAdapter: SearchRecyclerViewAdapter
-    private lateinit var viewModel: SearchFragmentViewModel
+    private val viewModel: SearchFragmentViewModel by viewModels()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -46,8 +47,7 @@ class SearchFragment : Fragment() {
             val action = SearchFragmentDirections.actionSearchFragmentToListFragment()
             Navigation.findNavController(it).navigate(action)
         }
-        viewModel = ViewModelProvider(this).get(SearchFragmentViewModel::class.java)
-        viewModel.getRequestedAnime().observe(requireActivity(), Observer<List<AnimeData>> { list_anime ->
+        viewModel.getRequestedAnime().observe(requireActivity(), Observer { list_anime ->
             listAdapter.updateList(list_anime)
         })
 

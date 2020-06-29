@@ -2,6 +2,7 @@ package com.murrayde.animekingmobile.repository.community
 
 import com.murrayde.animekingmobile.model.ui.AnimeForYou
 import com.murrayde.animekingmobile.network.community.AnimeApiClient
+import com.murrayde.animekingmobile.repository.Repository
 import io.reactivex.Single
 import io.reactivex.functions.Function3
 import javax.inject.Inject

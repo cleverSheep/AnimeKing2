@@ -1,29 +1,27 @@
 package com.murrayde.animekingmobile.view.search
 
+import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.murrayde.animekingmobile.di.community.DaggerAnimeApiComponent
 import com.murrayde.animekingmobile.network.community.api.AnimeComplete
 import com.murrayde.animekingmobile.network.community.api.AnimeData
+import com.murrayde.animekingmobile.repository.search.SearchRepo
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableSingleObserver
 import io.reactivex.schedulers.Schedulers
 import timber.log.Timber
 
-class SearchFragmentViewModel : ViewModel() {
+class SearchFragmentViewModel @ViewModelInject constructor(private val searchRepo: SearchRepo) : ViewModel() {
 
     private val list_anime = MutableLiveData<List<AnimeData>>()
-
-    val compositeDisposable = CompositeDisposable()
-    val daggerAnimeApiComponent = DaggerAnimeApiComponent.builder().build()
-    val animeApiEndpoint = daggerAnimeApiComponent.animeApiEndpoint
+    private val compositeDisposable = CompositeDisposable()
 
     fun search(anime_title: String) {
         compositeDisposable.add(
-                animeApiEndpoint.getUserRequestedAnime(anime_title)
-                        .subscribeOn(Schedulers.newThread())
+                searchRepo.getUserRequestedAnime(anime_title)
+                        .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribeWith(object : DisposableSingleObserver<AnimeComplete>() {
                             override fun onSuccess(t: AnimeComplete) {
@@ -38,9 +36,7 @@ class SearchFragmentViewModel : ViewModel() {
         )
     }
 
-    fun getRequestedAnime(): LiveData<List<AnimeData>> {
-        return list_anime
-    }
+    fun getRequestedAnime(): LiveData<List<AnimeData>> = list_anime
 
     override fun onCleared() {
         super.onCleared()

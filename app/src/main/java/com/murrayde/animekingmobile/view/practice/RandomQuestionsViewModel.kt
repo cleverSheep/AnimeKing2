@@ -5,9 +5,9 @@ package com.murrayde.animekingmobile.view.practice
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.murrayde.animekingmobile.model.random.RandomQuestion
-import com.murrayde.animekingmobile.model.random.Result
-import com.murrayde.animekingmobile.network.random.TriviaDbApiEndpoint
+import com.murrayde.animekingmobile.model.practice.RandomQuestion
+import com.murrayde.animekingmobile.model.practice.Result
+import com.murrayde.animekingmobile.network.practice.TriviaDbApiEndpoint
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableSingleObserver

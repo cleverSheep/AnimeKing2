@@ -15,4 +15,7 @@ interface AnimeApiService {
 
     @GET("trending/manga")
     fun trendingManga(): Single<AnimeComplete>
+
+    @GET("anime?page[limit]=20")
+    fun getUserRequestedAnime(@Query("filter[text]") title: String?): Single<AnimeComplete>
 }

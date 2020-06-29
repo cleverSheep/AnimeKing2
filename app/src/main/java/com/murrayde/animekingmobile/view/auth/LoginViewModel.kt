@@ -8,14 +8,14 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.murrayde.animekingmobile.network.community.api.AnimeComplete
 import com.murrayde.animekingmobile.network.community.api.AnimeData
-import com.murrayde.animekingmobile.repository.community.LoginRepo
+import com.murrayde.animekingmobile.repository.auth.AuthRepo
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableSingleObserver
 import io.reactivex.schedulers.Schedulers
 import timber.log.Timber
 
-class LoginViewModel @ViewModelInject constructor(private val loginRepo: LoginRepo) : ViewModel() {
+class LoginViewModel @ViewModelInject constructor(private val authRepo: AuthRepo) : ViewModel() {
     private val compositeDisposable = CompositeDisposable()
 
     private val anime_images = MutableLiveData<ArrayList<AnimeData>>()
@@ -26,7 +26,7 @@ class LoginViewModel @ViewModelInject constructor(private val loginRepo: LoginRe
 
     fun fetchAnimeImages() {
         compositeDisposable.add(
-                loginRepo.getTrendingAnimeTitles()
+                authRepo.getTrendingAnimeTitles()
                         .subscribeOn(Schedulers.newThread())
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribeWith(object : DisposableSingleObserver<AnimeComplete>() {
@@ -46,7 +46,7 @@ class LoginViewModel @ViewModelInject constructor(private val loginRepo: LoginRe
 
     fun fetchMangaImages() {
         compositeDisposable.add(
-                loginRepo.getTrendingMangaTitles()
+                authRepo.getTrendingMangaTitles()
                         .subscribeOn(Schedulers.newThread())
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribeWith(object : DisposableSingleObserver<AnimeComplete>() {

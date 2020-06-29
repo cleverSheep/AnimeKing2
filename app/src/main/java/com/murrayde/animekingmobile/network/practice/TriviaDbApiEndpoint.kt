@@ -1,6 +1,6 @@
-package com.murrayde.animekingmobile.network.random
+package com.murrayde.animekingmobile.network.practice
 
-import com.murrayde.animekingmobile.model.random.RandomQuestion
+import com.murrayde.animekingmobile.model.practice.RandomQuestion
 import io.reactivex.Single
 import retrofit2.http.GET
 
