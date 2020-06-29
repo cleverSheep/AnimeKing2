@@ -2,25 +2,20 @@
 
 package com.murrayde.animekingmobile.view.auth
 
-import android.util.Log
+import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.murrayde.animekingmobile.di.community.AnimeApiComponent
-import com.murrayde.animekingmobile.di.community.DaggerAnimeApiComponent
-import com.murrayde.animekingmobile.network.community.AnimeApiEndpoint
 import com.murrayde.animekingmobile.network.community.api.AnimeComplete
 import com.murrayde.animekingmobile.network.community.api.AnimeData
+import com.murrayde.animekingmobile.repository.community.LoginRepo
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableSingleObserver
 import io.reactivex.schedulers.Schedulers
 import timber.log.Timber
 
-class LoginViewModel : ViewModel() {
-    private var daggerAnimeApiComponent: AnimeApiComponent = DaggerAnimeApiComponent.builder()
-            .build()
-    private var animeApiEndpoint: AnimeApiEndpoint = daggerAnimeApiComponent.animeApiEndpoint
+class LoginViewModel @ViewModelInject constructor(private val loginRepo: LoginRepo) : ViewModel() {
     private val compositeDisposable = CompositeDisposable()
 
     private val anime_images = MutableLiveData<ArrayList<AnimeData>>()
@@ -31,12 +26,11 @@ class LoginViewModel : ViewModel() {
 
     fun fetchAnimeImages() {
         compositeDisposable.add(
-                animeApiEndpoint.trendingAnime
+                loginRepo.getTrendingAnimeTitles()
                         .subscribeOn(Schedulers.newThread())
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribeWith(object : DisposableSingleObserver<AnimeComplete>() {
                             override fun onSuccess(t: AnimeComplete) {
-                                Log.d("LoginViewModel", "Testing:${t.data[0].attributes.posterImage.original}")
                                 val animeDataArrayList: ArrayList<AnimeData> = ArrayList()
                                 animeDataArrayList.addAll(t.data)
                                 anime_images.postValue(animeDataArrayList)
@@ -52,7 +46,7 @@ class LoginViewModel : ViewModel() {
 
     fun fetchMangaImages() {
         compositeDisposable.add(
-                animeApiEndpoint.trendingManga
+                loginRepo.getTrendingMangaTitles()
                         .subscribeOn(Schedulers.newThread())
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribeWith(object : DisposableSingleObserver<AnimeComplete>() {

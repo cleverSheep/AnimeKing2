@@ -5,7 +5,6 @@ package com.murrayde.animekingmobile.view.practice
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.murrayde.animekingmobile.di.random.DaggerTriviaApiComponent
 import com.murrayde.animekingmobile.model.random.RandomQuestion
 import com.murrayde.animekingmobile.model.random.Result
 import com.murrayde.animekingmobile.network.random.TriviaDbApiEndpoint
@@ -17,7 +16,7 @@ import io.reactivex.schedulers.Schedulers
 class RandomQuestionsViewModel : ViewModel() {
 
     private var compositeDisposable: CompositeDisposable
-    private var triviaApiComponent: TriviaDbApiEndpoint
+    private lateinit var triviaApiComponent: TriviaDbApiEndpoint
 
     private val question_result: MutableLiveData<List<Result>> by lazy {
         MutableLiveData<List<Result>>().also {
@@ -25,9 +24,9 @@ class RandomQuestionsViewModel : ViewModel() {
         }
     }
 
-    init {
+    init {/*
         val daggerTriviaApiComponent = DaggerTriviaApiComponent.builder().build()
-        triviaApiComponent = daggerTriviaApiComponent.triviaApiEndpoint
+        triviaApiComponent = daggerTriviaApiComponent.triviaApiEndpoint*/
         compositeDisposable = CompositeDisposable()
     }
 

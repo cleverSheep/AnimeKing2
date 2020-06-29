@@ -1,4 +1,4 @@
-package com.murrayde.animekingmobile.view.community.list_anime.view_types;
+package com.murrayde.animekingmobile.epoxy.models;
 
 import android.view.View;
 import android.widget.ImageView;

@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.paging.PagedList
@@ -16,58 +17,28 @@ import com.murrayde.animekingmobile.R
 import com.murrayde.animekingmobile.extensions.hideView
 import com.murrayde.animekingmobile.extensions.showView
 import com.murrayde.animekingmobile.network.community.api.AnimeData
-import com.murrayde.animekingmobile.util.PagingUtil
 import com.murrayde.animekingmobile.view.community.data_source.MainActivityViewModel
 import kotlinx.android.synthetic.main.fragment_list.*
 import timber.log.Timber
+import javax.inject.Inject
 
 class AnimeList : Fragment() {
 
-    private lateinit var listAdapter: AnimeListAdapter
-
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
-        try {
-            return inflater.inflate(R.layout.fragment_list, container, false)
-        } catch (e: Exception) {
-            throw e
-        }
-    }
+    @Inject
+    lateinit var viewModelFactory: ViewModelProvider.Factory
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        listAdapter = AnimeListAdapter()
-        val viewModel = ViewModelProvider(this).get(MainActivityViewModel::class.java)
 
-        rv_anime.apply {
-            adapter = listAdapter.adapter
-            layoutManager = GridLayoutManager(requireActivity(), 3)
-            (layoutManager as GridLayoutManager).spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
-                override fun getSpanSize(position: Int) = when (position) {
-                    0 -> 3
-                    else -> 1
-                }
-            }
-        }
-        viewModel.animeData.observe(requireActivity(), Observer<PagedList<AnimeData>> { listAdapter.submitList(it) })
+        val animeListController = AnimeListController()
+        rv_anime.setController(animeListController)
 
-        viewModel.networkDoneLoading().observe(requireActivity(), Observer { loading ->
-            if (loading) {
-                rv_anime.hideView()
-                list_main_loading.showView()
-            } else {
-
-                rv_anime.showView()
-                list_main_loading.hideView()
-            }
+        super.onCreate(savedInstanceState)
+        val viewModel = ViewModelProvider(this, viewModelFactory)[MainActivityViewModel::class.java]
+        viewModel.getAnimeForYou().observe(viewLifecycleOwner, Observer { animeForYou ->
+            animeListController.setData(animeForYou)
         })
 
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        PagingUtil.RESET_PAGING_OFFSET()
-        Timber.d("List destroyed")
     }
 
 }

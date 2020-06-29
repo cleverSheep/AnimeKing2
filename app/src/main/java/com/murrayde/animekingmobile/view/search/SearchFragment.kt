@@ -18,7 +18,6 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.GridLayoutManager
 import com.murrayde.animekingmobile.R
 import com.murrayde.animekingmobile.network.community.api.AnimeData
-import com.murrayde.animekingmobile.util.PagingUtil
 import com.murrayde.animekingmobile.view.search.adapter.SearchRecyclerViewAdapter
 import kotlinx.android.synthetic.main.fragment_search.*
 
@@ -34,7 +33,7 @@ class SearchFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        listAdapter = SearchRecyclerViewAdapter(activity!!)
+        listAdapter = SearchRecyclerViewAdapter(requireActivity())
         showKeyboard()
 
         search_layout.setOnTouchListener { _, _ ->
@@ -44,12 +43,11 @@ class SearchFragment : Fragment() {
 
         cancel_search.setOnClickListener {
             hideKeyboard()
-            PagingUtil.RESET_PAGING_OFFSET()
             val action = SearchFragmentDirections.actionSearchFragmentToListFragment()
             Navigation.findNavController(it).navigate(action)
         }
         viewModel = ViewModelProvider(this).get(SearchFragmentViewModel::class.java)
-        viewModel.getRequestedAnime().observe(activity!!, Observer<List<AnimeData>> { list_anime ->
+        viewModel.getRequestedAnime().observe(requireActivity(), Observer<List<AnimeData>> { list_anime ->
             listAdapter.updateList(list_anime)
         })
 
@@ -61,12 +59,12 @@ class SearchFragment : Fragment() {
 
     private fun showKeyboard() {
         search_edit_text.requestFocus()
-        val imm = activity!!.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        val imm = requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         imm.showSoftInput(search_edit_text as View, InputMethodManager.HIDE_NOT_ALWAYS)
     }
 
     private fun hideKeyboard() {
-        val imm = activity!!.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        val imm = requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         imm.hideSoftInputFromWindow(search_layout.windowToken, InputMethodManager.HIDE_NOT_ALWAYS)
     }
 
