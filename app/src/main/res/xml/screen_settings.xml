@@ -55,7 +55,7 @@
             app:key="about"
             app:title="@string/about">
             <intent
-                android:targetClass="com.murrayde.animekingmobile.view.landing_screen.HomeScreenActivity"
+                android:targetClass="com.murrayde.animekingmobile.view.splash_credits.HomeScreenActivity"
                 android:targetPackage="com.murrayde.animekingmobile" />
         </Preference>
         <Preference
