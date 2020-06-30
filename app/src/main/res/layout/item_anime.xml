@@ -4,32 +4,33 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/cardview_layout"
-    android:layout_width="match_parent"
-    android:layout_height="200dp"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
     android:layout_margin="4dp"
-    android:clickable="true"
-    android:focusable="true"
-    android:foreground="?android:attr/selectableItemBackground">
+    app:cardCornerRadius="8dp">
 
     <ImageView
         android:id="@+id/iv_anime_image"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:contentDescription="@string/anime_image"
-        android:scaleType="fitCenter"
-        android:src="@mipmap/ic_launcher_round"
-        app:layout_constraintDimensionRatio="16:9"
-        tools:srcCompat="@drawable/dbzpriginal" />
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/abyss"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tv_anime_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
+        android:visibility="invisible"
         android:background="@drawable/title_stroke"
         android:fontFamily="@font/baloobhairegular"
+        android:gravity="center_horizontal"
         android:text="@string/title"
-        android:textAlignment="center"
         android:textColor="@android:color/white"
         android:textSize="13sp"
         app:layout_constraintBottom_toBottomOf="parent"
