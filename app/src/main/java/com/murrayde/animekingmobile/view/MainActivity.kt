@@ -9,24 +9,17 @@ import android.view.View
 import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.murrayde.animekingmobile.R
-import com.murrayde.animekingmobile.extensions.hideView
-import com.murrayde.animekingmobile.extensions.showView
-import com.murrayde.animekingmobile.view.community.data_source.MainActivityViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_main.*
 
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
-
-    private val viewModel: MainActivityViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,17 +42,6 @@ class MainActivity : AppCompatActivity() {
                 else -> bottom.visibility = View.VISIBLE
             }
         }
-
-        // Home screen visibility reflects the network state
-        viewModel.networkDoneLoading().observe(this, Observer { loading ->
-            if (loading) {
-                activity_main_content.hideView()
-                activity_main_loading.showView()
-            } else {
-                activity_main_content.showView()
-                activity_main_loading.hideView()
-            }
-        })
     }
 
     override fun onStart() {

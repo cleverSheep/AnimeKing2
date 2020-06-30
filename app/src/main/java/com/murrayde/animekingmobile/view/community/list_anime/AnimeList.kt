@@ -11,6 +11,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.murrayde.animekingmobile.R
+import com.murrayde.animekingmobile.extensions.hideView
+import com.murrayde.animekingmobile.extensions.showView
 import com.murrayde.animekingmobile.view.community.data_source.MainActivityViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_list.*
@@ -33,6 +35,17 @@ class AnimeList : Fragment() {
         super.onCreate(savedInstanceState)
         viewModel.getAnimeForYou().observe(viewLifecycleOwner, Observer { animeForYou ->
             animeListController.setData(animeForYou)
+        })
+
+        // Home screen visibility reflects the network state
+        viewModel.networkLoading.observe(viewLifecycleOwner, Observer { loading ->
+            if (loading) {
+                rv_anime.hideView()
+                list_main_loading.showView()
+            } else {
+                rv_anime.showView()
+                list_main_loading.hideView()
+            }
         })
 
     }

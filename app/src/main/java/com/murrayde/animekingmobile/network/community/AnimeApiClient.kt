@@ -11,25 +11,25 @@ class AnimeApiClient @Inject constructor(
 ) {
     fun getPopularAnimeTitles(): Single<AnimeComplete> {
         return animeApiService.allPopularAnime()
-                .subscribeOn(Schedulers.io())
+                .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
     }
 
     fun getTrendingAnimeTitles(): Single<AnimeComplete> {
         return animeApiService.trendingAnime()
-                .subscribeOn(Schedulers.io())
+                .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
     }
 
     fun getTrendingMangaTitles(): Single<AnimeComplete> {
         return animeApiService.trendingManga()
-                .subscribeOn(Schedulers.io())
+                .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
     }
 
     fun getUserRequestedAnime(title: String): Single<AnimeComplete> {
         return animeApiService.getUserRequestedAnime(title)
-                .subscribeOn(Schedulers.io())
+                .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
     }
 }
