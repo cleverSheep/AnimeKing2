@@ -23,7 +23,7 @@ fun removeForwardSlashes(animeTitle: String): String {
     return animeTitle
 }
 
-fun performAnimeTitleFiltering(animeDataArrayList: ArrayList<AnimeData>): List<AnimeData> {
+fun performAnimeTitleFiltering(animeDataArrayList: List<AnimeData>): List<AnimeData> {
     return animeDataArrayList.asSequence().filter {
         if (it.attributes.synopsis == null) return@filter false else !it.attributes.synopsis.contains("season", true)
     }.filter {

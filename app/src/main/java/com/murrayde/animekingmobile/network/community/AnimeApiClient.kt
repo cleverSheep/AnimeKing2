@@ -9,11 +9,6 @@ import javax.inject.Inject
 class AnimeApiClient @Inject constructor(
         private val animeApiService: AnimeApiService
 ) {
-    fun getPopularAnimeTitles(): Single<AnimeComplete> {
-        return animeApiService.allPopularAnime()
-                .subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread())
-    }
 
     /** Anime for you*/
     fun goofyButLovableTrivia(): Single<AnimeComplete> {

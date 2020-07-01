@@ -7,35 +7,32 @@ import retrofit2.http.Query
 
 interface AnimeApiService {
 
-    @GET("anime?sort=popularityRank")
-    fun allPopularAnime(): Single<AnimeComplete>
-
     /** Anime for you*/
-    @GET("anime?filter[categories]=comedy,romance&sort=popularityRank&filter[ageRating]=PG")
+    @GET("anime?filter[categories]=comedy,romance&sort=popularityRank&filter[ageRating]=PG&page[limit]=20")
     fun goofyButLovableTrivia(): Single<AnimeComplete>
 
-    @GET("anime?filter[categories]=psychological&sort=popularityRank")
+    @GET("anime?filter[categories]=psychological&sort=popularityRank&page[limit]=20")
     fun takeAPotatoChip(): Single<AnimeComplete>
 
-    @GET("anime?filter[categories]=magic,action&sort=popularityRank")
+    @GET("anime?filter[categories]=magic,action&sort=popularityRank&page[limit]=20")
     fun alchemyWizardsFairies(): Single<AnimeComplete>
 
-    @GET("anime?filter[categories]=Shounen,action&sort=popularityRank")
+    @GET("anime?filter[categories]=Shounen,action&sort=popularityRank&page[limit]=20")
     fun putYourSkillsInAction(): Single<AnimeComplete>
 
-    @GET("anime?filter[categories]=romance&sort=popularityRank")
+    @GET("anime?filter[categories]=romance&sort=popularityRank&page[limit]=20")
     fun buddingRomanceTrivia(): Single<AnimeComplete>
 
-    @GET("anime?filter[categories]=adventure,action&sort=popularityRank&filter[ageRating]=G,PG")
+    @GET("anime?filter[categories]=adventure,action&sort=popularityRank&filter[ageRating]=G,PG&page[limit]=20")
     fun letsGoOnAnAdventure(): Single<AnimeComplete>
 
-    @GET("anime?filter[categories]=Horror,dark&sort=popularityRank")
+    @GET("anime?filter[categories]=Horror,dark&sort=popularityRank&page[limit]=20")
     fun darkAnimeTrivia(): Single<AnimeComplete>
 
-    @GET("anime?filter[categories]=mecha,action&sort=popularityRank")
+    @GET("anime?filter[categories]=mecha,action&sort=popularityRank&page[limit]=20")
     fun everythingMecha(): Single<AnimeComplete>
 
-    @GET("anime?filter[year]=1998&sort=popularityRank")
+    @GET("anime?filter[year]=1998&sort=popularityRank&page[limit]=20")
     fun classicalAnimeTrivia(): Single<AnimeComplete>
 
     /**Used for the login screen*/
