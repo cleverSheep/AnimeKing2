@@ -12,9 +12,15 @@ import java.util.*
 
 class AnimeListController : TypedEpoxyController<AnimeForYou>() {
     override fun buildModels(data: AnimeForYou) {
-        createDataCarousel(data.allAnimeTitles)
-        createDataCarousel(data.popularAnimeTitles)
-        createDataCarousel(data.topRomanceTitles)
+        createDataCarousel(data.goofyButLovableTrivia)
+        createDataCarousel(data.takeAPotatoChip)
+        createDataCarousel(data.alchemyWizardsFairies)
+        createDataCarousel(data.putYourSkillsInAction)
+        createDataCarousel(data.buddingRomanceTrivia)
+        createDataCarousel(data.letsGoOnAnAdventure)
+        createDataCarousel(data.darkAnimeTrivia)
+        createDataCarousel(data.everythingMecha)
+        createDataCarousel(data.classicalAnimeTrivia)
     }
 
     private fun createDataCarousel(itemPair: Pair<String, List<AnimeData>>) {
