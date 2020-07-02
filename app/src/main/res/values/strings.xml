@@ -89,7 +89,7 @@
     <string name="more">More</string>
 
     <!-- Splash Layout -->
-    <string name="slogan">Who is the true king of Anime?</string>
+    <string name="slogan">Pick a title, claim you crown!</string>
     <string name="credits_author">Created by Clarmoph Games</string>
 
     <!-- Search Layout -->
@@ -119,5 +119,6 @@
     <string name="not_enough_description">Each community requires at least 5 questions.\nAdd more questions to play trivia with this anime.</string>
     <string name="not_enough_questions">Not Enough Questions</string>
     <string name="title">Title Not Available</string>
+    <string name="facec_splash" translatable="false">Face splash</string>
 
 </resources>

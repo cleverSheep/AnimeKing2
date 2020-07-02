@@ -29,7 +29,7 @@ class AnimeListController : TypedEpoxyController<AnimeForYou>() {
             models.add(
                     AnimeView_()
                             .id("item:" + item.id)
-                            .anime_title(item.attributes.canonicalTitle)
+                            .anime_title(item.attributes.titles.en)
                             .image_url(item.attributes.posterImage.original)
             )
         }

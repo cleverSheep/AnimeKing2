@@ -1,6 +1,5 @@
 package com.murrayde.animekingmobile.view.community.data_source
 
-import android.util.Log
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -29,16 +28,14 @@ class MainActivityViewModel @ViewModelInject constructor(private val mainRepo: M
                 mainRepo.getAnimeForYou().subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribeWith(object : DisposableSingleObserver<AnimeForYou>() {
-                            override fun onSuccess(t: AnimeForYou) {
+                            override fun onSuccess(forYou: AnimeForYou) {
                                 loading.postValue(false)
-                                animeForYou.value = t
-                                Log.d(MainActivityViewModel::class.qualifiedName, "Data retrieved")
+                                animeForYou.value = forYou
                             }
 
                             override fun onError(e: Throwable) {
                                 loading.postValue(false)
                                 Timber.e("Error loading titles")
-                                Log.e(MainActivityViewModel::class.qualifiedName, "Data not retrieved")
 
                             }
 
