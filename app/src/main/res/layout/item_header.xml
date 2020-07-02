@@ -7,23 +7,13 @@
     <ImageView
         android:id="@+id/header"
         android:layout_width="0dp"
-        android:layout_height="400dp"
+        android:layout_height="275dp"
         android:adjustViewBounds="true"
         android:scaleType="centerCrop"
         android:src="@drawable/dbzpriginal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/header"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/header" />
 
 
     <View
@@ -35,36 +25,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView9"
+        app:layout_constraintTop_toTopOf="@+id/header"
         app:layout_constraintVertical_bias="0.0" />
 
-    <TextView
-        android:id="@+id/header_title"
-        android:layout_width="wrap_content"
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="@dimen/_170sdp"
         android:layout_height="wrap_content"
-        android:drawableTop="@drawable/crown_list_screen"
-        android:fontFamily="@font/baloobhairegular"
-        android:paddingTop="16dp"
-        android:text="@string/new_user"
-        android:textAlignment="center"
-        android:textColor="@color/color_white"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@id/header_play_button"
+        android:contentDescription="@string/title"
+        android:src="@drawable/ic_ak_logo_dark"
+        app:layout_constraintBottom_toBottomOf="@+id/header"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/header_play_button"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
-        android:background="@drawable/header_play_background"
-        android:fontFamily="@font/baloobhairegular"
-        android:text="@string/practice"
-        android:textColor="@color/color_black"
-        android:textSize="22sp"
-        app:layout_constraintBottom_toBottomOf="@id/header"
-        app:layout_constraintEnd_toEndOf="@+id/header_title"
-        app:layout_constraintStart_toStartOf="@+id/header_title" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

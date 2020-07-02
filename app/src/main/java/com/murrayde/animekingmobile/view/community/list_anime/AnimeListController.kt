@@ -5,6 +5,7 @@ package com.murrayde.animekingmobile.view.community.list_anime
 import com.airbnb.epoxy.TypedEpoxyController
 import com.murrayde.animekingmobile.epoxy.models.AnimeView_
 import com.murrayde.animekingmobile.epoxy.models.HeaderItemViewModel_
+import com.murrayde.animekingmobile.epoxy.models.HeaderView_
 import com.murrayde.animekingmobile.epoxy.views.CarouselNoSnapModel_
 import com.murrayde.animekingmobile.model.ui.AnimeForYou
 import com.murrayde.animekingmobile.network.community.api.AnimeData
@@ -13,6 +14,9 @@ import java.util.*
 
 class AnimeListController : TypedEpoxyController<AnimeForYou>() {
     override fun buildModels(data: AnimeForYou) {
+        HeaderView_()
+                .id("List-header")
+                .addTo(this)
         createDataCarousel(data.putYourSkillsInAction)
         createDataCarousel(data.letsGoOnAnAdventure)
         createDataCarousel(data.alchemyWizardsFairies)
