@@ -26,8 +26,8 @@ class MainRepo @Inject constructor(private val animeApiClient: AnimeApiClient) :
                     buildAnimeForYou(AnimeForYou(
                             Pair("Goofy but lovable trivia", performAnimeTitleFiltering(goofyButLovableTrivia.data)),
                             Pair("I'll take a potato chip...", performAnimeTitleFiltering(takeAPotatoChip.data)),
-                            Pair("Alchemy, wizards and fairies!", performAnimeTitleFiltering(alchemyWizardsFairies.data)),
-                            Pair("Put your skills in action!", performAnimeTitleFiltering(putYourSkillsInAction.data)),
+                            Pair("Alchemy, wizards and fairies", performAnimeTitleFiltering(alchemyWizardsFairies.data)),
+                            Pair("Put your skills in action", performAnimeTitleFiltering(putYourSkillsInAction.data)),
                             Pair("Budding romance trivia", performAnimeTitleFiltering(buddingRomanceTrivia.data)),
                             Pair("Let's go on an adventure!", performAnimeTitleFiltering(letsGoOnAnAdventure.data)),
                             Pair("Dark anime trivia", performAnimeTitleFiltering(darkAnimeTrivia.data)),
