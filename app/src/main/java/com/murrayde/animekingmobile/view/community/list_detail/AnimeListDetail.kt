@@ -24,8 +24,6 @@ import com.murrayde.animekingmobile.R
 import com.murrayde.animekingmobile.model.community.QuestionFactory
 import com.murrayde.animekingmobile.util.ImageUtil
 import com.murrayde.animekingmobile.util.removeForwardSlashes
-import com.murrayde.animekingmobile.view.community.list_detail.AnimeListDetailArgs
-import com.murrayde.animekingmobile.view.community.list_detail.AnimeListDetailDirections
 import com.murrayde.animekingmobile.view.community.quiz_results.ResultsViewModel
 import kotlinx.android.synthetic.main.fragment_detail.*
 import timber.log.Timber
@@ -40,7 +38,6 @@ class AnimeListDetail : Fragment() {
     private lateinit var sharedPreferences: SharedPreferences
     private lateinit var animeDetailViewModel: AnimeDetailViewModel
     private lateinit var resultsViewModel: ResultsViewModel
-    private lateinit var app_language: String
     private lateinit var fragment_detail_question_count: TextView
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -69,7 +66,7 @@ class AnimeListDetail : Fragment() {
         val release_date = attributes.createdAt.substring(0, 4)
         Glide.with(this)
                 .load(cover_image)
-                .placeholder(R.drawable.crown_list_screen)
+                .placeholder(R.drawable.ic_crown)
                 .dontAnimate()
                 .into(fragment_detail_image)
         ImageUtil.loadDetailPosterImage(fragment_detail_poster_image, poster_image)

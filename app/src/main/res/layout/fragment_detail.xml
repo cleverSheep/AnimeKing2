@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/color_home_logo"
+    android:background="@color/color_background_white"
     tools:context=".view.community.list_detail.AnimeListDetail">
     <!--NOTE: Use theme instead of style when changing toolbar text/back arrow color-->
     <ImageView
@@ -155,7 +155,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/baloobhairegular"
         android:textAllCaps="true"
-        android:textColor="@color/color_white"
+        android:textColor="@color/color_black"
         app:layout_constraintBottom_toTopOf="@+id/fragment_detail_title"
         app:layout_constraintStart_toStartOf="@+id/fragment_detail_title"
         tools:text="PG" />
@@ -177,7 +177,7 @@
         android:layout_marginStart="4dp"
         android:fontFamily="@font/baloobhairegular"
         android:textAllCaps="false"
-        android:textColor="@color/color_white"
+        android:textColor="@color/color_black"
         app:layout_constraintBaseline_toBaselineOf="@+id/fragment_detail_age_rating"
         app:layout_constraintStart_toEndOf="@+id/view3"
         tools:text="2017" />
@@ -192,7 +192,7 @@
         android:maxLines="1"
         android:text="@string/anime_title"
         android:textAlignment="viewStart"
-        android:textColor="@android:color/white"
+        android:textColor="@color/color_black"
         android:textSize="23sp"
         app:layout_constraintBottom_toTopOf="@+id/barrier3"
         app:layout_constraintEnd_toEndOf="parent"
