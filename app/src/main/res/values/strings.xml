@@ -120,5 +120,6 @@
     <string name="not_enough_questions">Not Enough Questions</string>
     <string name="title">Title Not Available</string>
     <string name="facec_splash" translatable="false">Face splash</string>
+    <string name="dummy_text" translatable="false">Fullmetal Alchemist is the best title of all time. Fullmetal Alchemist is the best title of all time</string>
 
 </resources>

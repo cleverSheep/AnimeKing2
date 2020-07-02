@@ -1,9 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge xmlns:android="http://schemas.android.com/apk/res/android">
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <TextView
         android:id="@+id/anime_header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?attr/selectableItemBackground" />
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:drawableStart="@drawable/ic_header_drawable"
+        android:drawablePadding="6dp"
+        android:fontFamily="@font/bahnscrift"
+        android:gravity="center_vertical"
+        android:textColor="@color/color_black"
+        android:textSize="@dimen/_14sdp"
+        tools:text="Put your skills in action" />
 </merge>

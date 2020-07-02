@@ -40,7 +40,7 @@ class MainRepo @Inject constructor(private val animeApiClient: AnimeApiClient) :
 
     private fun buildAnimeForYou(animeForYou: AnimeForYou): AnimeForYou =
             AnimeForYou(
-                    animeForYou.goofyButLovableTrivia, animeForYou.takeAPotatoChip, animeForYou.alchemyWizardsFairies, animeForYou.putYourSkillsInAction, animeForYou.buddingRomanceTrivia,
-                    animeForYou.letsGoOnAnAdventure, animeForYou.darkAnimeTrivia, animeForYou.everythingMecha, animeForYou.classicalAnimeTrivia
+                    animeForYou.goofyButLovableTrivia, animeForYou.takeAPotatoChip, animeForYou.alchemyWizardsFairies, animeForYou.putYourSkillsInAction,
+                    animeForYou.buddingRomanceTrivia, animeForYou.letsGoOnAnAdventure, animeForYou.darkAnimeTrivia, animeForYou.everythingMecha, animeForYou.classicalAnimeTrivia
             )
 }

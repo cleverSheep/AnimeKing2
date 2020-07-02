@@ -1,41 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/cardview_layout"
     android:layout_width="150dp"
-    android:layout_height="150dp"
+    android:layout_height="wrap_content"
     android:layout_gravity="center"
-    android:layout_margin="4dp"
-    app:cardCornerRadius="8dp">
+    android:layout_marginStart="4dp">
 
     <ImageView
         android:id="@+id/iv_anime_image"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/color_white"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:scaleType="centerCrop"
         android:src="@drawable/fm_small"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tv_anime_name"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:background="@drawable/title_stroke"
-        android:fontFamily="@font/baloobhairegular"
-        android:gravity="center_horizontal"
-        android:text="@string/title"
-        android:textColor="@android:color/white"
-        android:textSize="13sp"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:ellipsize="end"
+        android:fontFamily="@font/bahnscrift"
+        android:maxLines="2"
+        android:textColor="@color/color_black"
+        android:textSize="@dimen/_12sdp"
+        app:layout_constraintBottom_toTopOf="@+id/tv_num_of_questions"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:text="Title" />
-</androidx.cardview.widget.CardView>
+        app:layout_constraintStart_toStartOf="@+id/iv_anime_image"
+        app:layout_constraintTop_toBottomOf="@+id/iv_anime_image"
+        tools:text="Fullmetal Alchemist is the best title of all time" />
+
+    <TextView
+        android:id="@+id/barrier_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:fontFamily="@font/bahnscrift"
+        android:maxLines="2"
+        android:text="@string/dummy_text"
+        android:textColor="@color/color_black"
+        android:textSize="@dimen/_12sdp"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/iv_anime_image"
+        app:layout_constraintTop_toBottomOf="@id/iv_anime_image" />
+
+    <TextView
+        android:id="@+id/tv_num_of_questions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/bahnscrift"
+        android:textColor="@color/color_light_gray"
+        android:textSize="@dimen/_10sdp"
+        app:layout_constraintStart_toStartOf="@+id/iv_anime_image"
+        app:layout_constraintTop_toBottomOf="@id/barrier2"
+        tools:text="14 questions" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrier2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="bottom"
+        app:constraint_referenced_ids="barrier_text"
+        tools:layout_editor_absoluteY="202dp" />
+</androidx.constraintlayout.widget.ConstraintLayout>

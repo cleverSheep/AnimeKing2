@@ -45,3 +45,5 @@ fun performAnimeTitleFiltering(animeDataArrayList: List<AnimeData>): List<AnimeD
         if (it.attributes.canonicalTitle == null) return@filter false else !it.attributes.canonicalTitle.contains("season", true)
     }.toList() as ArrayList<AnimeData>
 }
+
+fun barrierText(): String = "Fullmetal Alchemist is the best title of all time. Fullmetal Alchemist is the best title of all time"

@@ -8,16 +8,17 @@ import com.murrayde.animekingmobile.epoxy.models.HeaderItemViewModel_
 import com.murrayde.animekingmobile.epoxy.views.CarouselNoSnapModel_
 import com.murrayde.animekingmobile.model.ui.AnimeForYou
 import com.murrayde.animekingmobile.network.community.api.AnimeData
+import com.murrayde.animekingmobile.util.barrierText
 import java.util.*
 
 class AnimeListController : TypedEpoxyController<AnimeForYou>() {
     override fun buildModels(data: AnimeForYou) {
-        createDataCarousel(data.goofyButLovableTrivia)
-        createDataCarousel(data.takeAPotatoChip)
-        createDataCarousel(data.alchemyWizardsFairies)
         createDataCarousel(data.putYourSkillsInAction)
-        createDataCarousel(data.buddingRomanceTrivia)
         createDataCarousel(data.letsGoOnAnAdventure)
+        createDataCarousel(data.alchemyWizardsFairies)
+        createDataCarousel(data.goofyButLovableTrivia)
+        createDataCarousel(data.buddingRomanceTrivia)
+        createDataCarousel(data.takeAPotatoChip)
         createDataCarousel(data.darkAnimeTrivia)
         createDataCarousel(data.everythingMecha)
         createDataCarousel(data.classicalAnimeTrivia)
@@ -30,6 +31,8 @@ class AnimeListController : TypedEpoxyController<AnimeForYou>() {
                     AnimeView_()
                             .id("item:" + item.id)
                             .anime_title(item.attributes.titles.en)
+                            .num_of_questions("${(0..100).random()} question(s)")
+                            .barrier_text(barrierText())
                             .image_url(item.attributes.posterImage.original)
             )
         }
