@@ -23,18 +23,12 @@ import androidx.navigation.fragment.navArgs
 import androidx.preference.PreferenceManager
 import com.google.firebase.firestore.FirebaseFirestore
 import com.murrayde.animekingmobile.R
-import com.murrayde.animekingmobile.extensions.hideView
-import com.murrayde.animekingmobile.extensions.showView
 import com.murrayde.animekingmobile.model.community.CommunityQuestion
 import com.murrayde.animekingmobile.model.community.QuestionFactory
 import com.murrayde.animekingmobile.util.QuestionUtil
-import com.murrayde.animekingmobile.util.questionCount
 import com.murrayde.animekingmobile.util.removeForwardSlashes
-import com.murrayde.animekingmobile.view.community.questions.AnswerQuestionArgs
-import com.murrayde.animekingmobile.view.community.questions.AnswerQuestionDirections
 import com.murrayde.animekingmobile.view.community.quiz_results.ResultsViewModel
 import kotlinx.android.synthetic.main.fragment_answer_question.*
-import timber.log.Timber
 
 
 class AnswerQuestion : Fragment() {
@@ -83,11 +77,6 @@ class AnswerQuestion : Fragment() {
             override fun onStatusCallback(list: ArrayList<CommunityQuestion>) {
                 communityQuestions = list
                 questions_list_argument = Array(list.size) { CommunityQuestion() }
-                tv_answer_title.text = args.animeAttributes.titles.en
-                        ?: args.animeAttributes.canonicalTitle
-
-                val question_count = questionCount(communityQuestions.size, QuestionUtil.QUESTION_LIMIT)
-                answer_question_score.text = "0/${results_view_model.getTotalQuestions()}"
                 results_view_model.resetPoints(0)
                 loadQuestions(communityQuestions, 0, view, listButtons())
             }
@@ -105,19 +94,12 @@ class AnswerQuestion : Fragment() {
         questions_list_argument[question_track] = communityQuestions[question_track]
         val random_questions: ArrayList<String> = communityQuestions[question_track].multiple_choice.shuffled() as ArrayList<String>
 
-        QuestionUtil.setUpQuestionWithImage(iv_answer_question, communityQuestions[question_track].image_url,
-                tv_answer_question, communityQuestions[question_track].question)
-
         repeat(list_buttons.size) {
             list_buttons[it].text = random_questions.removeAt(0)
         }
 
         startTimer(communityQuestions, question_track++, view, list_buttons)
         buttonChoiceClick(list_buttons, communityQuestions, track)
-
-        button_next_question.setOnClickListener {
-            prepareForNextQuestion(communityQuestions, question_track++, view, list_buttons)
-        }
     }
 
     private fun navigateToResultsScreen(view: View) {
@@ -130,13 +112,13 @@ class AnswerQuestion : Fragment() {
         countDownTimer = object : CountDownTimer(QuestionUtil.QUESTION_TIMER, 1000) {
             override fun onFinish() {
                 disableAllButtons(list_buttons)
-                button_next_question.showView()
                 showTimeUpDialog(randomQuestions, new_question, view, list_buttons)
             }
 
             override fun onTick(time: Long) {
-                answer_question_timer.text = "${time / 1000}s"
                 current_time = time.toInt() / 1000
+                tv_timer.text = current_time.toString()
+                timer_progressbar.setProgress(current_time, true)
             }
 
         }.start()
@@ -163,7 +145,6 @@ class AnswerQuestion : Fragment() {
         alertDialog.setCanceledOnTouchOutside(false)
         button.setOnClickListener {
             alertDialog.dismiss()
-            button_next_question.hideView()
             loadQuestions(randomQuestions, track, view, list_buttons)
         }
         alertDialog.show()
@@ -179,15 +160,11 @@ class AnswerQuestion : Fragment() {
                     communityQuestions[question_track].setUserCorrectResponse(true)
                     results_view_model.updateTotalCorrect(++current_score)
                     results_view_model.incrementTimeBonus(current_time)
-                    Timber.d("Time bonus incremented by $current_time")
-                    val question_count = if (communityQuestions.size < QuestionUtil.QUESTION_LIMIT) communityQuestions.size else QuestionUtil.QUESTION_LIMIT
-                    answer_question_score.text = "${current_score}/$question_count"
                     alertCorrectResponse(view)
                 } else {
                     communityQuestions[question_track].setUserCorrectResponse(false)
                     alertWrongResponse(view, list_buttons, correct_response)
                 }
-                button_next_question.visibility = View.VISIBLE
             }
         }
     }
@@ -221,7 +198,6 @@ class AnswerQuestion : Fragment() {
 
     private fun prepareForNextQuestion(communityQuestions: ArrayList<CommunityQuestion>, track: Int, view: View, list_buttons: ArrayList<Button>) {
         if (media_is_playing) media_default.start()
-        button_next_question.visibility = View.INVISIBLE
         repeat(list_buttons.size) { position ->
             list_buttons[position].setBackgroundColor(resources.getColor(R.color.color_white))
             list_buttons[position].setTextColor(resources.getColor(R.color.color_black))

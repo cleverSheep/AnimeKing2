@@ -8,12 +8,13 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
+        android:background="@color/color_home_logo_update"
         android:fontFamily="@font/baloobhairegular"
         android:gravity="center"
         android:text="@string/time_up"
         android:textAlignment="center"
         android:textColor="@color/color_white"
-        android:textSize="30sp"
+        android:textSize="@dimen/_18sdp"
         android:textStyle="bold" />
 
     <Button
@@ -26,6 +27,6 @@
         android:fontFamily="@font/baloobhairegular"
         android:text="@string/next_question"
         android:textColor="@color/color_black"
-        android:textSize="20sp" />
+        android:textSize="@dimen/_18sdp" />
 
 </LinearLayout>

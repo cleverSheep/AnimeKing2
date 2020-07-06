@@ -121,5 +121,7 @@
     <string name="title">Title Not Available</string>
     <string name="facec_splash" translatable="false">Face splash</string>
     <string name="dummy_text" translatable="false">Fullmetal Alchemist is the best title of all time. Fullmetal Alchemist is the best title of all time</string>
+    <string name="testing_text">This is a test question. Use it to determine how the design would look. Maybe we need to add some redesigns? I don\'t know, we\'ll have to see. I don\'t know, we\'ll have to see. I don\'t know, we\'ll have to see.I don\'t know. know. kn</string>
+    <string name="actual_text_testing">Here is a little sample text for testing purposes. Come again soon.</string>
 
 </resources>

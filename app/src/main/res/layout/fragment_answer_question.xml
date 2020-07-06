@@ -9,63 +9,85 @@
     tools:context=".view.community.questions.AnswerQuestion">
 
     <ProgressBar
-        android:id="@+id/determinateBar"
+        android:id="@+id/timer_progressbar"
         style="@android:style/Widget.ProgressBar.Horizontal"
         android:layout_width="match_parent"
         android:layout_height="7dp"
         android:backgroundTint="@color/color_darkish_green"
-        android:progress="72"
+        android:indeterminate="false"
+        android:max="17"
+        android:progress="17"
         android:progressBackgroundTint="@color/color_home_logo_update"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <LinearLayout
-        android:id="@+id/iv_answer_question_ll"
-        android:layout_width="411dp"
-        android:layout_height="wrap_content"
-        android:layout_marginVertical="15dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <TextView
+        android:id="@+id/tv_timer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
         android:drawableStart="@drawable/ic_hourglass"
         android:fontFamily="@font/baloobhairegular"
         android:gravity="bottom"
-        android:paddingHorizontal="6dp"
         android:textColor="@color/color_white"
-        android:textSize="@dimen/_13sdp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iv_answer_question_ll"
+        android:textSize="@dimen/_15sdp"
+        app:layout_constraintStart_toStartOf="@+id/button_choice_one"
+        app:layout_constraintTop_toBottomOf="@+id/timer_progressbar"
         tools:text="07" />
+
+    <TextView
+        android:id="@+id/tv_score_tag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:layout_marginEnd="6dp"
+        android:background="@drawable/quiz_score_bg"
+        android:fontFamily="@font/baloobhairegular"
+        android:gravity="bottom"
+        android:text="Score"
+        android:textColor="@color/color_white"
+        android:textSize="@dimen/_15sdp"
+        app:layout_constraintEnd_toStartOf="@+id/tv_score"
+        app:layout_constraintTop_toBottomOf="@+id/timer_progressbar" />
+
+    <TextView
+        android:id="@+id/tv_score"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/baloobhairegular"
+        android:gravity="bottom"
+        android:text="0"
+        android:textColor="@color/color_white"
+        android:textSize="@dimen/_15sdp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_score_tag"
+        app:layout_constraintEnd_toEndOf="@+id/button_choice_one"
+        app:layout_constraintTop_toTopOf="@+id/tv_score_tag" />
 
     <TextView
         android:id="@+id/tv_answer_question"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:fontFamily="@font/baloobhairegular"
-        android:paddingHorizontal="6dp"
-        android:text="Question 1"
+        android:gravity="center"
+        android:padding="6dp"
+        android:text="@string/actual_text_testing"
         android:textAlignment="center"
         android:textColor="@color/color_white"
-        android:textSize="@dimen/text_size"
+        android:textSize="@dimen/_14sdp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/progressBar_two"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/progressBar_two"
-        tools:text="This is a test question. Use it to determine how the design would look. Maybe we need to add some redesigns? I don't know, we'll have to see." />
+        app:layout_constraintTop_toBottomOf="@id/tv_timer"
+        tools:text="@string/testing_text" />
 
     <Button
         android:id="@+id/button_choice_one"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="24dp"
         android:background="@drawable/answer_question_background"
         android:fontFamily="@font/baloobhairegular"
         android:textAlignment="center"
