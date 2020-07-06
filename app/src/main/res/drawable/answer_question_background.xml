@@ -12,5 +12,7 @@
         android:radius="3dp"
         android:topLeftRadius="3dp"
         android:topRightRadius="3dp" />
-    <solid android:color="@color/color_white" />
+    <stroke
+        android:width="2dp"
+        android:color="@color/color_white" />
 </shape>

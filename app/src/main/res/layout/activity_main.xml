@@ -27,8 +27,8 @@
             android:layout_height="wrap_content"
             android:background="@color/color_darkish_green"
             android:theme="@style/MeneNavTheme"
-            app:itemIconTint="@color/com_facebook_button_background_color_disabled"
-            app:itemTextColor="@color/com_facebook_button_background_color_disabled"
+            app:itemIconTint="@color/color_black"
+            app:itemTextColor="@color/color_black"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -38,13 +38,13 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/activity_main_loading"
         android:layout_width="match_parent"
-        android:visibility="invisible"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:visibility="invisible">
 
         <include
             layout="@layout/fragment_loading"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

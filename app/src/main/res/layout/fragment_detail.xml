@@ -96,7 +96,7 @@
         android:fontFamily="@font/baloobhairegular"
         android:foreground="@drawable/conceal_frame"
         android:text="@string/multi_player"
-        android:textColor="@color/color_home_logo"
+        android:textColor="@color/color_black"
         android:textSize="22sp"
         app:layout_constraintEnd_toEndOf="@+id/fragment_detail_take_quiz"
         app:layout_constraintStart_toStartOf="@+id/fragment_detail_take_quiz"

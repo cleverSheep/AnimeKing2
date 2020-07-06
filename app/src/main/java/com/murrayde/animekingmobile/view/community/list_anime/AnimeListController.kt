@@ -2,6 +2,7 @@
 
 package com.murrayde.animekingmobile.view.community.list_anime
 
+import androidx.navigation.Navigation
 import com.airbnb.epoxy.TypedEpoxyController
 import com.murrayde.animekingmobile.epoxy.models.AnimeView_
 import com.murrayde.animekingmobile.epoxy.models.HeaderItemViewModel_
@@ -34,10 +35,15 @@ class AnimeListController : TypedEpoxyController<AnimeForYou>() {
             models.add(
                     AnimeView_()
                             .id("item:" + item.id)
-                            .anime_title(item.attributes.titles.en)
-                            .num_of_questions("${(0..100).random()} question(s)")
-                            .barrier_text(barrierText())
+                            .anime_title(item.attributes.titles.en
+                                    ?: item.attributes.canonicalTitle)
                             .image_url(item.attributes.posterImage.original)
+                            .num_of_questions("${(0..100).random()} question(s)") // For testing
+                            .barrier_text(barrierText())
+                            .onClickListener { view ->
+                                val action = AnimeListDirections.actionListFragmentToDetailFragment(item.attributes)
+                                Navigation.findNavController(view).navigate(action)
+                            }
             )
         }
         HeaderItemViewModel_()
