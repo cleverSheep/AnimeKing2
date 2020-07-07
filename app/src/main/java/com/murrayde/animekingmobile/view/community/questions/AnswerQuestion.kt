@@ -28,7 +28,7 @@ import com.murrayde.animekingmobile.model.community.QuestionFactory
 import com.murrayde.animekingmobile.util.QuestionUtil
 import com.murrayde.animekingmobile.util.removeForwardSlashes
 import com.murrayde.animekingmobile.view.community.quiz_results.ResultsViewModel
-import kotlinx.android.synthetic.main.fragment_answer_question.*
+import kotlinx.android.synthetic.main.quiz_screen.*
 
 
 class AnswerQuestion : Fragment() {
@@ -54,7 +54,7 @@ class AnswerQuestion : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_answer_question, container, false)
+        return inflater.inflate(R.layout.quiz_screen, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

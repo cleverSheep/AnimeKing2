@@ -98,7 +98,7 @@
     <fragment
         android:id="@+id/answerQuestionFragment"
         android:name="com.murrayde.animekingmobile.view.community.questions.AnswerQuestion"
-        tools:layout="@layout/fragment_answer_question">
+        tools:layout="@layout/quiz_screen">
         <argument
             android:name="AnimeAttributes"
             app:argType="com.murrayde.animekingmobile.model.community.AnimeAttributes.Attributes" />

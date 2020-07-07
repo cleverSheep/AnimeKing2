@@ -48,7 +48,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:src="@drawable/castle" />
+        tools:src="@drawable/profile_stats_button" />
 
     <View
         android:id="@+id/view4"
