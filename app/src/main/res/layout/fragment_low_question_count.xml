@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
@@ -12,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fitsSystemWindows="true"
-        android:theme="@style/TestingTheme"
+        android:theme="@style/ToolbarLightTheme"
         android:translationZ="2dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -21,34 +20,35 @@
         app:titleTextAppearance="@style/TextAppearance.TabsFont" />
 
     <com.airbnb.lottie.LottieAnimationView
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/textView2"
+        android:id="@+id/lottieAnimationView2"
+        android:layout_width="215dp"
+        android:layout_height="215dp"
+        app:layout_constraintBottom_toBottomOf="@+id/progressBar2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar_low_questions"
+        app:layout_constraintTop_toTopOf="@+id/progressBar2"
         app:lottie_autoPlay="true"
         app:lottie_loop="true"
-        app:lottie_rawRes="@raw/radar" />
+        app:lottie_rawRes="@raw/radar_update" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
+        android:layout_marginTop="6dp"
         android:fontFamily="@font/baloobhairegular"
         android:padding="8dp"
         android:text="@string/insufficient_questions"
         android:textAlignment="center"
-        android:textColor="@color/color_white"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/button_transition_ask_question"
+        app:layout_constraintBottom_toBottomOf="@+id/progressBar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/progressBar" />
 
     <Button
         android:id="@+id/button_transition_ask_question"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_marginHorizontal="16dp"
@@ -57,12 +57,14 @@
         android:layout_marginBottom="16dp"
         android:background="@drawable/detail_main_buttons"
         android:fontFamily="@font/baloobhairegular"
+        android:stateListAnimator="@xml/animate_scale"
         android:text="@string/ask_question"
         android:textColor="@color/color_black"
-        android:textSize="@dimen/button_text_size"
+        android:textSize="22sp"
         app:layout_constraintBottom_toTopOf="@id/profile_bottomnav_placeholder"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/profile_bottomnav_placeholder"
@@ -72,6 +74,26 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_low_questions" />
+
+    <ProgressBar
+        android:id="@+id/progressBar2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/progressBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_low_questions" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

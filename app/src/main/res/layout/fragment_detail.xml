@@ -26,7 +26,7 @@
         android:layout_height="wrap_content"
         android:background="@drawable/fragment_list_header_toolbar"
         android:fitsSystemWindows="true"
-        android:theme="@style/TestingTheme"
+        android:theme="@style/ToolbarDarkTheme"
         android:translationZ="2dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -36,9 +36,8 @@
         android:id="@+id/fragment_detail_take_quiz"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
+        android:layout_marginHorizontal="16dp"
         android:layout_marginTop="64dp"
-        android:layout_marginEnd="20dp"
         android:background="@drawable/detail_main_buttons"
         android:drawableStart="@drawable/ic_person_24px"
         android:fontFamily="@font/baloobhairegular"
@@ -49,8 +48,7 @@
         android:textSize="22sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fragment_detail_description"
-        app:layout_constraintWidth_percent="0.9" />
+        app:layout_constraintTop_toBottomOf="@+id/fragment_detail_description" />
 
 
     <Button
@@ -61,13 +59,13 @@
         android:background="@drawable/detail_main_buttons"
         android:drawableStart="@drawable/question_answer"
         android:fontFamily="@font/baloobhairegular"
+        android:stateListAnimator="@xml/animate_scale"
         android:text="@string/ask_question"
         android:textColor="@color/color_black"
         android:textSize="22sp"
         app:layout_constraintEnd_toEndOf="@+id/fragment_detail_multiplayer"
         app:layout_constraintStart_toStartOf="@+id/fragment_detail_multiplayer"
-        app:layout_constraintTop_toBottomOf="@+id/fragment_detail_multiplayer"
-        app:layout_constraintWidth_percent="0.9" />
+        app:layout_constraintTop_toBottomOf="@+id/fragment_detail_multiplayer" />
 
     <Button
         android:id="@+id/fragment_detail_home"
@@ -77,14 +75,13 @@
         android:background="@drawable/home_compete_background"
         android:drawableStart="@drawable/ic_home_black_24dp"
         android:fontFamily="@font/baloobhairegular"
+        android:stateListAnimator="@xml/animate_scale"
         android:text="@string/home"
         android:textColor="@color/color_black"
         android:textSize="22sp"
         app:layout_constraintEnd_toEndOf="@+id/fragment_detail_ask_question"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/fragment_detail_ask_question"
-        app:layout_constraintTop_toBottomOf="@+id/fragment_detail_ask_question"
-        app:layout_constraintWidth_percent="0.9" />
+        app:layout_constraintTop_toBottomOf="@+id/fragment_detail_ask_question" />
 
     <Button
         android:id="@+id/fragment_detail_multiplayer"
@@ -100,8 +97,7 @@
         android:textSize="22sp"
         app:layout_constraintEnd_toEndOf="@+id/fragment_detail_take_quiz"
         app:layout_constraintStart_toStartOf="@+id/fragment_detail_take_quiz"
-        app:layout_constraintTop_toBottomOf="@+id/fragment_detail_take_quiz"
-        app:layout_constraintWidth_percent="0.9" />
+        app:layout_constraintTop_toBottomOf="@+id/fragment_detail_take_quiz" />
 
     <TextView
         android:id="@+id/fragment_detail_description"
@@ -139,12 +135,10 @@
         android:id="@+id/fragment_detail_poster_image"
         android:layout_width="0dp"
         android:layout_height="150dp"
-        android:layout_marginStart="8dp"
-        android:foreground="@drawable/fragment_detail_poster"
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="@+id/fragment_detail_image"
         app:layout_constraintDimensionRatio="2:3"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/fragment_detail_take_quiz"
         app:layout_constraintTop_toBottomOf="@+id/fragment_detail_image"
         tools:src="@drawable/profile_stats_button" />
 

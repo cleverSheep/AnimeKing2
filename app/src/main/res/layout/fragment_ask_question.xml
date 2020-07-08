@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:background="@drawable/fragment_list_header_toolbar"
         android:fitsSystemWindows="true"
-        android:theme="@style/TestingTheme"
+        android:theme="@style/ToolbarDarkTheme"
         android:translationZ="2dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -34,7 +34,7 @@
             android:text="@string/submit_question"
             android:textAlignment="textEnd"
             android:textColor="@color/color_white"
-            android:textSize="22sp" />
+            android:textSize="@dimen/_18sdp" />
     </androidx.appcompat.widget.Toolbar>
 
     <ImageView
@@ -77,8 +77,10 @@
         android:id="@+id/tv_ask_question"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:ellipsize="end"
         android:fontFamily="@font/baloobhairegular"
         android:gravity="start"
+        android:maxLines="2"
         android:paddingEnd="@dimen/_8sdp"
         android:textAlignment="viewStart"
         android:textColor="@android:color/white"

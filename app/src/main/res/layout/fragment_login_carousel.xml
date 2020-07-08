@@ -102,7 +102,7 @@
         android:fontFamily="@font/bahnscrift"
         android:text="@string/credits_author"
         android:textAlignment="center"
-        android:textColor="@color/color_white"
+        android:textColor="@color/color_black"
         android:textSize="@dimen/_14sdp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"

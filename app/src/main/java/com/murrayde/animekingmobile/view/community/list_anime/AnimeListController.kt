@@ -24,8 +24,8 @@ class AnimeListController : TypedEpoxyController<AnimeForYou>() {
         createDataCarousel(data.goofyButLovableTrivia)
         createDataCarousel(data.buddingRomanceTrivia)
         createDataCarousel(data.takeAPotatoChip)
-        createDataCarousel(data.darkAnimeTrivia)
         createDataCarousel(data.everythingMecha)
+        createDataCarousel(data.darkAnimeTrivia)
         createDataCarousel(data.classicalAnimeTrivia)
     }
 

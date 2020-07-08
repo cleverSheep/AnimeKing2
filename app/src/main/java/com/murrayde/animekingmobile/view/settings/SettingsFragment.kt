@@ -27,13 +27,12 @@ class SettingsFragment : PreferenceFragmentCompat(), SharedPreferences.OnSharedP
     private lateinit var googleSignInClient: GoogleSignInClient
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        view.setBackgroundColor(resources.getColor(R.color.color_home_logo))
+        view.setBackgroundColor(resources.getColor(R.color.color_background_white))
         super.onViewCreated(view, savedInstanceState)
     }
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         setPreferencesFromResource(R.xml.screen_settings, rootKey)
-        //setDarkThemeBasedOnVersion()
     }
 
     override fun onResume() {
@@ -68,14 +67,6 @@ class SettingsFragment : PreferenceFragmentCompat(), SharedPreferences.OnSharedP
 
         val sharedPref = activity?.getPreferences(Context.MODE_PRIVATE) ?: return
 
-/*        if (key == "language") {
-            val language = preference?.getString("language", LocaleListCompat.getDefault()[0].language)
-            setLocale(language)
-            with(sharedPref.edit()) {
-                putString(getString(R.string.language), preference?.getString("language", language))
-                commit()
-            }
-        }*/
         if (key == "sound_effects") {
             with(sharedPref.edit()) {
                 putBoolean(getString(R.string.sound_effects_enabled), preference?.getBoolean("sound_effects", true)!!)
@@ -95,40 +86,6 @@ class SettingsFragment : PreferenceFragmentCompat(), SharedPreferences.OnSharedP
             }
         }
 
-/*        if (key == "dark_mode") {
-            val enabled = preference?.getBoolean("dark_mode", true)
-            setDarkTheme(enabled!!)
-            with(sharedPref.edit()) {
-                putBoolean(getString(R.string.dark_theme_enabled), preference.getBoolean("dark_theme_enabled", true))
-                commit()
-            }
-        }*/
-
     }
-
-/*    private fun setLocale(lang: String?) {
-        val myLocale = Locale(lang)
-        val res: Resources = resources
-        val dm: DisplayMetrics = res.displayMetrics
-        val conf: Configuration = res.configuration
-        conf.locale = myLocale
-        res.updateConfiguration(conf, dm)
-        val refresh = Intent(activity, MainActivity::class.java)
-        startActivity(refresh)
-    }*/
-
-/*    private fun setDarkThemeBasedOnVersion() {
-        val dark_mode_pref: SwitchPreferenceCompat? = findPreference("dark_mode")
-        dark_mode_pref?.isVisible = Build.VERSION.SDK_INT >= Build.VERSION_CODES.P
-    }*/
-
-/*    private fun setDarkTheme(enabled: Boolean) {
-        if (enabled) {
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-        } else AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-        val refresh = Intent(activity, MainActivity::class.java)
-        startActivity(refresh)
-
-    }*/
 
 }

@@ -7,6 +7,7 @@
     <TextView
         style="@style/Question_Incorrect_Format_Text"
         android:layout_weight="1"
+        android:background="@color/color_black"
         android:text="@string/fix_answer_choice" />
 
     <Button
@@ -14,7 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:background="@color/colorAccent"
+        android:background="@color/colorAccentLight"
         android:clickable="true"
         android:fontFamily="@font/baloobhairegular"
         android:text="@string/accept"

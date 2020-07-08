@@ -123,5 +123,6 @@
     <string name="dummy_text" translatable="false">Fullmetal Alchemist is the best title of all time. Fullmetal Alchemist is the best title of all time</string>
     <string name="testing_text">This is a test question. Use it to determine how the design would look. Maybe we need to add some redesigns? I don\'t know, we\'ll have to see. I don\'t know, we\'ll have to see. I don\'t know, we\'ll have to see.I don\'t know. know. kn</string>
     <string name="actual_text_testing">Here is a little sample text for testing purposes. Come again soon.</string>
+    <string name="connect_internet">Please connect to the internet.</string>
 
 </resources>

@@ -36,22 +36,18 @@
             android:hint="@string/search_for_anime"
             android:imeOptions="actionSearch"
             android:inputType="text"
-            android:padding="8dp"
-            android:textColor="@color/color_white"
-            android:textColorHint="@color/color_white"
-            android:textCursorDrawable="@color/color_white" />
+            android:padding="8dp" />
     </androidx.appcompat.widget.Toolbar>
 
     <TextView
-        android:theme="@style/Theme.AppCompat.DayNight"
         android:id="@+id/cancel_search"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:fontFamily="@font/baloobhairegular"
         android:text="@string/cancel"
-        android:textColor="@color/color_white"
         android:textSize="20sp"
+        android:theme="@style/Theme.AppCompat.DayNight"
         app:layout_constraintBottom_toBottomOf="@+id/toolbar_search"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/toolbar_search" />
@@ -60,13 +56,19 @@
         android:id="@+id/search_rv"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_margin="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/profile_bottomnav_placeholder"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar_search" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/profile_bottomnav_placeholder"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

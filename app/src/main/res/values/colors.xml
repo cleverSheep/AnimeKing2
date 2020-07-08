@@ -2,7 +2,8 @@
 <resources>
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#FFEB3B</color>
+    <color name="colorAccent">#196740</color>
+    <color name="colorAccentLight">#FFEB3B</color>
     <color name="title_bg">#CC2E2E2E</color>
     <color name="home_bg_center">#26FFFEFE</color>
     <color name="detail_gradient_bg">#00FFFFFF</color>
@@ -19,9 +20,10 @@
     <color name="auth_frame_start">#000000</color>
     <color name="auth_frame_end">#00000000</color>
     <color name="color_grey">#707070</color>
-    <color name="color_black">#000</color>
+    <color name="color_black">#424242</color>
+    <color name="color_black_dark">#2E2E2E</color>
     <color name="facebook_color">#4267B2</color>
-    <color name="concealer">#802E2E2E</color>
+    <color name="concealer">#80196740</color>
     <color name="color_detail_title">#80FFFFFF</color>
     <color name="color_darker_grey">#505050</color>
     <color name="color_home_logo">#2E2E2E</color>
@@ -35,8 +37,11 @@
     <color name="color_dark_mode">#141414</color>
 
     <color name="color_darkish_green">#33CF80</color>
+    <color name="color_darkish_green_dark">#196740</color>
     <color name="color_home_logo_update">#001522</color>
-    <color name="goldish_color">#fcf580</color>
+    <color name="goldish_color">#FCA63B</color>
+    <color name="goldish_color_light">#fcf580</color>
+    <color name="color_bg_white_dark">#D8D8D8</color>
     <color name="color_background_white">#F1F1F1</color>
     <color name="color_google_bg_signin">#4285F4</color>
     <color name="color_light_gray">#4E555E</color>

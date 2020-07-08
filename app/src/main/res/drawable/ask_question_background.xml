@@ -12,5 +12,5 @@
         android:radius="3dp"
         android:topLeftRadius="3dp"
         android:topRightRadius="3dp" />
-    <solid android:color="@color/colorAccent" />
+    <solid android:color="@color/colorAccentLight" />
 </shape>
