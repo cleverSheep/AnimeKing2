@@ -13,14 +13,13 @@ import androidx.lifecycle.Observer
 import com.murrayde.animekingmobile.R
 import com.murrayde.animekingmobile.extensions.hideView
 import com.murrayde.animekingmobile.extensions.showView
-import com.murrayde.animekingmobile.view.community.data_source.MainActivityViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_list.*
 
 @AndroidEntryPoint
 class AnimeList : Fragment() {
 
-    private val viewModel: MainActivityViewModel by viewModels()
+    private val viewModel: AnimeListViewModel by viewModels()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_list, container, false)

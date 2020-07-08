@@ -48,6 +48,7 @@
     <string name="time_bonus">Tiempo Extra</string>
     <string name="try_again">Inténtalo de Nuevo</string>
     <string name="quit_game">Salir del Juego</string>
+    <string name="review_correct_choice">Correcto: %1$s</string>
     <string name="questions_correct_count">%1$d de %2$d preguntas correctas!</string>
     <string name="total_time_bonus">%1$d puntos</string>
     <string name="total_points">%1$d puntos</string>

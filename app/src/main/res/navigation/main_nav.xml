@@ -80,7 +80,7 @@
     </fragment>
     <fragment
         android:id="@+id/askQuestionFragment"
-        android:name="com.murrayde.animekingmobile.view.community.questions.AskQuestion"
+        android:name="com.murrayde.animekingmobile.view.community.questions.ask_question.AskQuestion"
         tools:layout="@layout/fragment_ask_question">
         <argument
             android:name="AnimeAttributes"
@@ -97,8 +97,8 @@
     </fragment>
     <fragment
         android:id="@+id/answerQuestionFragment"
-        android:name="com.murrayde.animekingmobile.view.community.questions.AnswerQuestion"
-        tools:layout="@layout/quiz_screen">
+        android:name="com.murrayde.animekingmobile.view.community.questions.answer_question.AnswerQuestion"
+        tools:layout="@layout/answer_question_screen">
         <argument
             android:name="AnimeAttributes"
             app:argType="com.murrayde.animekingmobile.model.community.AnimeAttributes.Attributes" />
@@ -112,7 +112,7 @@
     </fragment>
     <activity
         android:id="@+id/homeScreenActivity"
-        android:name="com.murrayde.animekingmobile.view.splash_credits.HomeScreenActivity"
+        android:name="com.murrayde.animekingmobile.view.splash_credits.CreditsActivity"
         tools:layout="@layout/activity_home_screen" />
     <fragment
         android:id="@+id/search"
@@ -131,7 +131,7 @@
     </fragment>
     <fragment
         android:id="@+id/viewResults"
-        android:name="com.murrayde.animekingmobile.view.community.quiz_results.ViewResults"
+        android:name="com.murrayde.animekingmobile.view.community.quiz_results.ViewResultsList"
         android:label="fragment_view_results"
         tools:layout="@layout/fragment_view_results">
         <argument

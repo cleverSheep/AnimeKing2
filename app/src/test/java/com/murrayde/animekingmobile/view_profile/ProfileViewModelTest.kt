@@ -1,10 +1,10 @@
-package com.murrayde.animekingmobile.profile
+package com.murrayde.animekingmobile.view_profile
 
 import org.junit.Test
 import org.junit.Assert.*
 
 
-class ProfileTestSuite {
+class ProfileViewModelTest {
 
     @Test
     fun emailConvertedToUserName_TrueReturned() {

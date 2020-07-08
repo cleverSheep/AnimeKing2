@@ -1,4 +1,4 @@
-package com.murrayde.animekingmobile.view.community.data_source
+package com.murrayde.animekingmobile.view.community.list_anime
 
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
@@ -12,7 +12,7 @@ import io.reactivex.observers.DisposableSingleObserver
 import io.reactivex.schedulers.Schedulers
 import timber.log.Timber
 
-class MainActivityViewModel @ViewModelInject constructor(private val mainRepo: MainRepo) : ViewModel() {
+class AnimeListViewModel @ViewModelInject constructor(private val mainRepo: MainRepo) : ViewModel() {
 
     private val disposable = CompositeDisposable()
     private val animeForYou = MutableLiveData<AnimeForYou>()

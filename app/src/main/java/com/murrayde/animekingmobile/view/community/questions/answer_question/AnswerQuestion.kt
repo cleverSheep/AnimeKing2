@@ -1,6 +1,6 @@
 @file:Suppress("LocalVariableName", "PrivatePropertyName")
 
-package com.murrayde.animekingmobile.view.community.questions
+package com.murrayde.animekingmobile.view.community.questions.answer_question
 
 
 import android.content.Context
@@ -17,6 +17,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
@@ -27,8 +28,10 @@ import com.murrayde.animekingmobile.model.community.CommunityQuestion
 import com.murrayde.animekingmobile.model.community.QuestionFactory
 import com.murrayde.animekingmobile.util.QuestionUtil
 import com.murrayde.animekingmobile.util.removeForwardSlashes
+import com.murrayde.animekingmobile.view.community.questions.AnswerQuestionArgs
+import com.murrayde.animekingmobile.view.community.questions.AnswerQuestionDirections
 import com.murrayde.animekingmobile.view.community.quiz_results.ResultsViewModel
-import kotlinx.android.synthetic.main.quiz_screen.*
+import kotlinx.android.synthetic.main.answer_question_screen.*
 
 
 class AnswerQuestion : Fragment() {
@@ -43,6 +46,7 @@ class AnswerQuestion : Fragment() {
     private var vibration_is_enabled = true
     private lateinit var sharedPreferences: SharedPreferences
     private lateinit var results_view_model: ResultsViewModel
+    private val viewModel: AnswerQuestionViewModel by viewModels()
 
     private var current_score: Int = 0
     private lateinit var countDownTimer: CountDownTimer
@@ -54,7 +58,7 @@ class AnswerQuestion : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.quiz_screen, container, false)
+        return inflater.inflate(R.layout.answer_question_screen, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -94,6 +98,7 @@ class AnswerQuestion : Fragment() {
         questions_list_argument[question_track] = communityQuestions[question_track]
         val random_questions: ArrayList<String> = communityQuestions[question_track].multiple_choice.shuffled() as ArrayList<String>
 
+        tv_answer_question.text = communityQuestions[question_track].question
         repeat(list_buttons.size) {
             list_buttons[it].text = random_questions.removeAt(0)
         }

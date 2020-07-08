@@ -1,10 +1,11 @@
-package com.murrayde.animekingmobile.questions
+@file:Suppress("LocalVariableName")
 
-import com.murrayde.animekingmobile.util.QuestionUtil
+package com.murrayde.animekingmobile.view_community_questions_askquestion
+
+import org.junit.Assert.assertEquals
 import org.junit.Test
-import org.junit.Assert.*
 
-class AskQuestionTestSuite {
+class AskQuestionViewModelTest {
 
     @Test
     fun animeTitle_CorrectlyFormatted_ReturnTrue() {
@@ -26,7 +27,7 @@ class AskQuestionTestSuite {
     fun animeTitle_CorrectlyFormatTitle() {
         val anime_title = "Fate/Zero"
         val formattedTitle = correctlyFormatTitle(anime_title)
-        val formatted = isFormatted(anime_title)
+        isFormatted(anime_title)
         assertEquals(formattedTitle, "Fate Zero")
     }
 

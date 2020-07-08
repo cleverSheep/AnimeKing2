@@ -9,7 +9,7 @@
     android:background="@color/color_home_logo_update"
     app:applyMotionScene="true"
     app:showPaths="true"
-    tools:context=".view.community.questions.AnswerQuestion">
+    tools:context=".view.community.questions.answer_question.AnswerQuestion">
 
     <ProgressBar
         android:id="@+id/timer_progressbar"

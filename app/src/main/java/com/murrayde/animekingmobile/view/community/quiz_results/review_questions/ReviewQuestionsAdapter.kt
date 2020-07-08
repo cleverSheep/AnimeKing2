@@ -1,3 +1,5 @@
+@file:Suppress("PropertyName")
+
 package com.murrayde.animekingmobile.view.community.quiz_results.review_questions
 
 import android.content.Context
@@ -13,7 +15,7 @@ import com.murrayde.animekingmobile.R
 import com.murrayde.animekingmobile.model.community.CommunityQuestion
 
 
-class ReviewQuestionsAdapter(val context: Context, val list_questions: Array<CommunityQuestion>) : RecyclerView.Adapter<ReviewQuestionsAdapter.ViewHolder>() {
+class ReviewQuestionsAdapter(val context: Context, private val list_questions: Array<CommunityQuestion>) : RecyclerView.Adapter<ReviewQuestionsAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.review_questions_item, parent, false)
@@ -29,7 +31,7 @@ class ReviewQuestionsAdapter(val context: Context, val list_questions: Array<Com
         } else holder.review_status_icon.setImageResource(R.drawable.ic_results_wrong_icon)
 
         holder.review_question.text = list_questions[position].question
-        holder.review_correct_answer.text = "Correct: ${list_questions[position].correctResponse}"
+        holder.review_correct_answer.text = String.format(context.getString(R.string.review_correct_choice, list_questions[position].correctResponse))
 
     }
 

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/color_home_logo"
-    tools:context=".view.community.questions.AskQuestion">
+    tools:context=".view.community.questions.ask_question.AskQuestion">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar_ask_question"

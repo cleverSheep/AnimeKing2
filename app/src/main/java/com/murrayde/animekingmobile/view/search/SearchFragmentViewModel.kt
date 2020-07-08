@@ -1,3 +1,5 @@
+@file:Suppress("PrivatePropertyName")
+
 package com.murrayde.animekingmobile.view.search
 
 import androidx.hilt.lifecycle.ViewModelInject

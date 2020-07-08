@@ -31,7 +31,7 @@ import kotlinx.android.synthetic.main.fragment_view_results_bottom_sheet.*
 import timber.log.Timber
 
 
-class ViewResults : Fragment() {
+class ViewResultsList : Fragment() {
 
     private val resultsArgs: ViewResultsArgs by navArgs()
     private lateinit var linearLayoutBottomSheet: LinearLayout

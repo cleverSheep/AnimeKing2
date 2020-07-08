@@ -1,10 +1,12 @@
-package com.murrayde.animekingmobile.questions
+@file:Suppress("LocalVariableName")
+
+package com.murrayde.animekingmobile.view_community_questions_answerquestion
 
 import com.murrayde.animekingmobile.util.QuestionUtil
+import org.junit.Assert.assertEquals
 import org.junit.Test
-import org.junit.Assert.*
 
-class AnswerQuestionTestSuite {
+class AnswerQuestionViewModelTest {
 
     @Test
     fun testCorrectQuestionSize_ReturnQuestionLimit() {
@@ -23,5 +25,6 @@ class AnswerQuestionTestSuite {
     }
 
     @Suppress("SameParameterValue")
+    /**This logic needs to be in a viewmodel*/
     private fun questionCount(community_count: Int, question_limit: Long) = if (community_count > question_limit) question_limit else community_count
 }

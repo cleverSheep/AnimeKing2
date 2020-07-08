@@ -1,6 +1,6 @@
 @file:Suppress("LocalVariableName")
 
-package com.murrayde.animekingmobile.view.community.questions
+package com.murrayde.animekingmobile.view.community.questions.ask_question
 
 import android.content.DialogInterface
 import android.content.SharedPreferences
@@ -28,8 +28,8 @@ import com.murrayde.animekingmobile.R
 import com.murrayde.animekingmobile.extensions.formatQuestion
 import com.murrayde.animekingmobile.model.community.CommunityQuestion
 import com.murrayde.animekingmobile.util.removeForwardSlashes
-import com.murrayde.animekingmobile.view.community.questions.AskQuestion
 import com.murrayde.animekingmobile.view.community.list_detail.AnimeListDetailArgs
+import com.murrayde.animekingmobile.view.community.questions.AskQuestionDirections
 import kotlinx.android.synthetic.main.fragment_ask_question.*
 import timber.log.Timber
 
