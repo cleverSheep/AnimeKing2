@@ -17,7 +17,6 @@ import android.view.ViewGroup
 import android.widget.Button
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
@@ -28,8 +27,6 @@ import com.murrayde.animekingmobile.model.community.CommunityQuestion
 import com.murrayde.animekingmobile.model.community.QuestionFactory
 import com.murrayde.animekingmobile.util.QuestionUtil
 import com.murrayde.animekingmobile.util.removeForwardSlashes
-import com.murrayde.animekingmobile.view.community.questions.AnswerQuestionArgs
-import com.murrayde.animekingmobile.view.community.questions.AnswerQuestionDirections
 import com.murrayde.animekingmobile.view.community.quiz_results.ResultsViewModel
 import kotlinx.android.synthetic.main.answer_question_screen.*
 
@@ -46,7 +43,6 @@ class AnswerQuestion : Fragment() {
     private var vibration_is_enabled = true
     private lateinit var sharedPreferences: SharedPreferences
     private lateinit var results_view_model: ResultsViewModel
-    private val viewModel: AnswerQuestionViewModel by viewModels()
 
     private var current_score: Int = 0
     private lateinit var countDownTimer: CountDownTimer
@@ -55,15 +51,16 @@ class AnswerQuestion : Fragment() {
     private lateinit var question_correct: HashMap<Int, Boolean>
     private lateinit var questions_list_argument: Array<CommunityQuestion>
     private lateinit var vibrator: Vibrator
+    private lateinit var animeTitle: String
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
+        animeTitle = if (args.animeAttributes.titles.en != null) args.animeAttributes.titles.en else args.animeAttributes.canonicalTitle
         return inflater.inflate(R.layout.answer_question_screen, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val attributes = args.animeAttributes
         var communityQuestions: ArrayList<CommunityQuestion>
         question_correct = HashMap()
 
@@ -76,7 +73,7 @@ class AnswerQuestion : Fragment() {
         results_view_model = ViewModelProvider(requireActivity()).get(ResultsViewModel::class.java)
         vibrator = context?.getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
 
-        QuestionFactory.RETRIEVE(removeForwardSlashes(attributes.titles.en), db, object : QuestionFactory.StatusCallback {
+        QuestionFactory.RETRIEVE(removeForwardSlashes(animeTitle), db, object : QuestionFactory.StatusCallback {
             // NOTE: Callback used to handle asynchronous calls to Firebase Firestore
             override fun onStatusCallback(list: ArrayList<CommunityQuestion>) {
                 communityQuestions = list

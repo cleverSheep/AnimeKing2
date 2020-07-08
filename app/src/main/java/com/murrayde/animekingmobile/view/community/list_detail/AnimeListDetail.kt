@@ -5,6 +5,7 @@ package com.murrayde.animekingmobile.view.community.list_detail
 import android.content.SharedPreferences
 import android.media.MediaPlayer
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -39,6 +40,7 @@ class AnimeListDetail : Fragment() {
     private lateinit var animeDetailViewModel: AnimeDetailViewModel
     private lateinit var resultsViewModel: ResultsViewModel
     private lateinit var fragment_detail_question_count: TextView
+    private lateinit var animeTitle: String
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -46,6 +48,8 @@ class AnimeListDetail : Fragment() {
         val toolbar = view.findViewById<Toolbar>(R.id.toolbar_detail)
         toolbar.setupWithNavController(findNavController())
         fragment_detail_question_count = view.findViewById(R.id.fragment_detail_question_count)
+        animeTitle = if (args.animeAttributes.titles.en != null) args.animeAttributes.titles.en else args.animeAttributes.canonicalTitle
+        Log.d(AnimeListDetail::class.qualifiedName, "anime title: $animeTitle")
         return view
     }
 
@@ -58,7 +62,7 @@ class AnimeListDetail : Fragment() {
         animeDetailViewModel = ViewModelProvider(this).get(AnimeDetailViewModel::class.java)
         resultsViewModel = ViewModelProvider(requireActivity()).get(ResultsViewModel::class.java)
 
-        fragment_detail_title.text = attributes.titles.en ?: attributes.canonicalTitle
+        fragment_detail_title.text = animeTitle
         fragment_detail_description.text = attributes.synopsis
         val cover_image = attributes.coverImage?.original ?: attributes.posterImage.original
         val poster_image = attributes.posterImage?.original ?: attributes.coverImage.original
@@ -76,12 +80,10 @@ class AnimeListDetail : Fragment() {
         questionFactory = QuestionFactory()
         handleClickLogic(view)
 
-        val anime_title = attributes.titles.en ?: attributes.canonicalTitle
-
-        animeDetailViewModel.getQuestionCount(removeForwardSlashes(anime_title)).observe(requireActivity(), Observer<Long> {
-            fragment_detail_question_count.text = "$it question(s)"
-            resultsViewModel.setTotalQuestions(it.toInt())
-            Timber.d("Total questions: ${it.toInt()}")
+        animeDetailViewModel.getQuestionCount(removeForwardSlashes(animeTitle)).observe(requireActivity(), Observer { num_questions ->
+            fragment_detail_question_count.text = String.format(view.context.getString(R.string.number_questions), num_questions)
+            resultsViewModel.setTotalQuestions(num_questions.toInt())
+            Timber.d("Total questions: ${num_questions.toInt()}")
         })
 
     }
@@ -100,7 +102,7 @@ class AnimeListDetail : Fragment() {
         fragment_detail_take_quiz.setOnClickListener {
             if (media_is_playing) media.start()
             it.isEnabled = false
-            questionFactory.hasEnoughQuestions(removeForwardSlashes(args.animeAttributes.titles.en), object : QuestionFactory.QuestionCountCallback {
+            questionFactory.hasEnoughQuestions(removeForwardSlashes(animeTitle), object : QuestionFactory.QuestionCountCallback {
                 override fun onQuestionCountCallback(hasEnoughQuestions: Boolean) {
                     if (hasEnoughQuestions) {
                         startQuiz(it)

@@ -23,6 +23,7 @@
     <string name="question_count">0 questions</string>
     <string name="ask_question">Ask Question</string>
     <string name="coming_soon">Coming Soon!</string>
+    <string name="number_questions">%1$s questions</string>
 
     <!-- Not Enough Questions -->
     <string name="insufficient_questions">Uh oh! Our radar didn\'t detect enough questions. A minimum of 7 questions is necessary to play.</string>

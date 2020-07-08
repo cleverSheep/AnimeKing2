@@ -1,3 +1,5 @@
+@file:Suppress("LocalVariableName")
+
 package com.murrayde.animekingmobile.view_profile
 
 import org.junit.Test

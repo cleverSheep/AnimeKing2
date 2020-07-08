@@ -33,7 +33,7 @@ import timber.log.Timber
 
 class ViewResultsList : Fragment() {
 
-    private val resultsArgs: ViewResultsArgs by navArgs()
+    private val resultsArgs: ViewResultsListArgs by navArgs()
     private lateinit var linearLayoutBottomSheet: LinearLayout
     private lateinit var resultsViewModel: ResultsViewModel
     private lateinit var media: MediaPlayer
@@ -115,7 +115,7 @@ class ViewResultsList : Fragment() {
         })
 
         results_quit_game.setOnClickListener { v ->
-            val direction = ViewResultsDirections.actionViewResultsToDetailFragment(resultsArgs.animeAttributes)
+            val direction = ViewResultsListDirections.actionViewResultsToDetailFragment(resultsArgs.animeAttributes)
             Navigation.findNavController(v).navigate(direction)
         }
     }
@@ -126,7 +126,7 @@ class ViewResultsList : Fragment() {
     }
 
     private fun startQuiz(view: View) {
-        val action = ViewResultsDirections.actionViewResultsToAnswerQuestionFragment(resultsArgs.animeAttributes)
+        val action = ViewResultsListDirections.actionViewResultsToAnswerQuestionFragment(resultsArgs.animeAttributes)
         Navigation.findNavController(view).navigate(action)
     }
 }
