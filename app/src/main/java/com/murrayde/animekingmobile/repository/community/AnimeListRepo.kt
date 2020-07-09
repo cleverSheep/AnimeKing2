@@ -1,14 +1,14 @@
 package com.murrayde.animekingmobile.repository.community
 
 import com.murrayde.animekingmobile.model.ui.AnimeForYou
-import com.murrayde.animekingmobile.network.community.AnimeApiClient
+import com.murrayde.animekingmobile.network.community.clients.AnimeApiClient
 import com.murrayde.animekingmobile.repository.Repository
 import com.murrayde.animekingmobile.util.performAnimeTitleFiltering
 import io.reactivex.Single
 import io.reactivex.functions.Function9
 import javax.inject.Inject
 
-class MainRepo @Inject constructor(private val animeApiClient: AnimeApiClient) : Repository {
+class AnimeListRepo @Inject constructor(private val animeApiClient: AnimeApiClient) : Repository {
 
     fun getAnimeForYou(): Single<AnimeForYou> {
         return Single.zip(

@@ -49,6 +49,6 @@
 
         <variable
             name="anime_id"
-            type="com.murrayde.animekingmobile.network.community.api.AnimeData" />
+            type="com.murrayde.animekingmobile.network.community.api_models.AnimeData" />
     </data>
 </layout>

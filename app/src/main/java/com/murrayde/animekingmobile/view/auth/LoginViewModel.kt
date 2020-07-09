@@ -6,8 +6,8 @@ import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.murrayde.animekingmobile.network.community.api.AnimeComplete
-import com.murrayde.animekingmobile.network.community.api.AnimeData
+import com.murrayde.animekingmobile.network.community.api_models.AnimeComplete
+import com.murrayde.animekingmobile.network.community.api_models.AnimeData
 import com.murrayde.animekingmobile.repository.auth.AuthRepo
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable

@@ -1,6 +1,6 @@
 package com.murrayde.animekingmobile.model.ui
 
-import com.murrayde.animekingmobile.network.community.api.AnimeData
+import com.murrayde.animekingmobile.network.community.api_models.AnimeData
 
 data class AnimeForYou(
         val goofyButLovableTrivia: Pair<String, List<AnimeData>>,

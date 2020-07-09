@@ -2,14 +2,13 @@
 
 package com.murrayde.animekingmobile.view.auth
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.murrayde.animekingmobile.R
-import com.murrayde.animekingmobile.network.community.api.AnimeData
+import com.murrayde.animekingmobile.network.community.api_models.AnimeData
 import com.murrayde.animekingmobile.util.ImageUtil
 
 class LoginFragmentRecyclerviewAdapter(private val anime_data_list: ArrayList<AnimeData>) : RecyclerView.Adapter<LoginFragmentRecyclerviewAdapter.ViewHolder>() {

@@ -1,6 +1,7 @@
-package com.murrayde.animekingmobile.network.community
+package com.murrayde.animekingmobile.network.community.clients
 
-import com.murrayde.animekingmobile.network.community.api.AnimeComplete
+import com.murrayde.animekingmobile.network.community.services.AnimeApiService
+import com.murrayde.animekingmobile.network.community.api_models.AnimeComplete
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers

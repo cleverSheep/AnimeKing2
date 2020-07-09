@@ -1,4 +1,4 @@
-package com.murrayde.animekingmobile.network
+package com.murrayde.animekingmobile.util
 
 import android.content.Context
 import android.net.ConnectivityManager

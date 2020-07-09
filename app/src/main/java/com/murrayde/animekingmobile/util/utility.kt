@@ -3,7 +3,7 @@
 package com.murrayde.animekingmobile.util
 
 import com.murrayde.animekingmobile.extensions.lastCharacterIsDigit
-import com.murrayde.animekingmobile.network.community.api.AnimeData
+import com.murrayde.animekingmobile.network.community.api_models.AnimeData
 
 
 fun convertToUserName(email: String?): String {

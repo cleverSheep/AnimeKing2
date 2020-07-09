@@ -1,5 +1,5 @@
 
-package com.murrayde.animekingmobile.network.community.api;
+package com.murrayde.animekingmobile.network.community.api_models;
 
 import androidx.annotation.Keep;
 

@@ -1,7 +1,7 @@
 package com.murrayde.animekingmobile.di.community
 
-import com.murrayde.animekingmobile.network.community.AnimeApiClient
-import com.murrayde.animekingmobile.repository.community.MainRepo
+import com.murrayde.animekingmobile.network.community.clients.AnimeApiClient
+import com.murrayde.animekingmobile.repository.community.AnimeListRepo
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -16,7 +16,7 @@ object RepositoryModule {
     @ActivityRetainedScoped
     fun provideMainRepository(
             animeApiClient: AnimeApiClient
-    ): MainRepo {
-        return MainRepo(animeApiClient)
+    ): AnimeListRepo {
+        return AnimeListRepo(animeApiClient)
     }
 }

@@ -17,24 +17,23 @@ import android.view.ViewGroup
 import android.widget.Button
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
 import androidx.preference.PreferenceManager
-import com.google.firebase.firestore.FirebaseFirestore
 import com.murrayde.animekingmobile.R
 import com.murrayde.animekingmobile.model.community.CommunityQuestion
-import com.murrayde.animekingmobile.model.community.QuestionFactory
 import com.murrayde.animekingmobile.util.QuestionUtil
-import com.murrayde.animekingmobile.util.removeForwardSlashes
 import com.murrayde.animekingmobile.view.community.quiz_results.ResultsViewModel
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.answer_question_screen.*
 
-
+@AndroidEntryPoint
 class AnswerQuestion : Fragment() {
 
     private val args: AnswerQuestionArgs by navArgs()
-    private val db = FirebaseFirestore.getInstance()
 
     private lateinit var media_default: MediaPlayer
     private lateinit var media_correct: MediaPlayer
@@ -43,6 +42,7 @@ class AnswerQuestion : Fragment() {
     private var vibration_is_enabled = true
     private lateinit var sharedPreferences: SharedPreferences
     private lateinit var results_view_model: ResultsViewModel
+    private val answerQuestionViewModel: AnswerQuestionViewModel by viewModels()
 
     private var current_score: Int = 0
     private lateinit var countDownTimer: CountDownTimer
@@ -56,12 +56,13 @@ class AnswerQuestion : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         animeTitle = if (args.animeAttributes.titles.en != null) args.animeAttributes.titles.en else args.animeAttributes.canonicalTitle
+        answerQuestionViewModel.getQuestions(animeTitle)
         return inflater.inflate(R.layout.answer_question_screen, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        var communityQuestions: ArrayList<CommunityQuestion>
+        var communityQuestions: List<CommunityQuestion>
         question_correct = HashMap()
 
         media_default = create(activity, R.raw.button_click_sound_effect)
@@ -73,19 +74,15 @@ class AnswerQuestion : Fragment() {
         results_view_model = ViewModelProvider(requireActivity()).get(ResultsViewModel::class.java)
         vibrator = context?.getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
 
-        QuestionFactory.RETRIEVE(removeForwardSlashes(animeTitle), db, object : QuestionFactory.StatusCallback {
-            // NOTE: Callback used to handle asynchronous calls to Firebase Firestore
-            override fun onStatusCallback(list: ArrayList<CommunityQuestion>) {
-                communityQuestions = list
-                questions_list_argument = Array(list.size) { CommunityQuestion() }
-                results_view_model.resetPoints(0)
-                loadQuestions(communityQuestions, 0, view, listButtons())
-            }
+        answerQuestionViewModel.getListOfQuestions().observe(requireActivity(), Observer { listQuestions ->
+            communityQuestions = listQuestions
+            questions_list_argument = Array(listQuestions.size) { CommunityQuestion() }
+            results_view_model.resetPoints(0)
+            loadQuestions(communityQuestions, 0, view, listButtons())
         })
     }
 
-    // TODO: WRITE TEST FOR loadQuestions(...)
-    private fun loadQuestions(communityQuestions: ArrayList<CommunityQuestion>, track: Int, view: View, list_buttons: ArrayList<Button>) {
+    private fun loadQuestions(communityQuestions: List<CommunityQuestion>, track: Int, view: View, list_buttons: ArrayList<Button>) {
         // NOTE: Make sure to explicitly return or else the remaining lines of code will be executed
         if (track >= communityQuestions.size) {
             navigateToResultsScreen(view)
@@ -109,7 +106,7 @@ class AnswerQuestion : Fragment() {
         Navigation.findNavController(view).navigate(action)
     }
 
-    private fun startTimer(randomQuestions: ArrayList<CommunityQuestion>, track: Int, view: View, list_buttons: ArrayList<Button>) {
+    private fun startTimer(randomQuestions: List<CommunityQuestion>, track: Int, view: View, list_buttons: ArrayList<Button>) {
         val new_question = track + 1
         countDownTimer = object : CountDownTimer(QuestionUtil.QUESTION_TIMER, 1000) {
             override fun onFinish() {
@@ -126,7 +123,7 @@ class AnswerQuestion : Fragment() {
         }.start()
     }
 
-    private fun showTimeUpDialog(randomQuestions: ArrayList<CommunityQuestion>, track: Int, view: View, list_buttons: ArrayList<Button>) {
+    private fun showTimeUpDialog(randomQuestions: List<CommunityQuestion>, track: Int, view: View, list_buttons: ArrayList<Button>) {
         //before inflating the custom alert dialog layout, we will get the current activity viewgroup
         val viewGroup = view.findViewById<ViewGroup>(R.id.main_view_content)
 
@@ -152,7 +149,7 @@ class AnswerQuestion : Fragment() {
         alertDialog.show()
     }
 
-    private fun buttonChoiceClick(list_buttons: ArrayList<Button>, communityQuestions: ArrayList<CommunityQuestion>, question_track: Int) {
+    private fun buttonChoiceClick(list_buttons: ArrayList<Button>, communityQuestions: List<CommunityQuestion>, question_track: Int) {
         val correct_response = communityQuestions[question_track].multiple_choice[0]
         repeat(list_buttons.size) { position ->
             list_buttons[position].setOnClickListener { view ->

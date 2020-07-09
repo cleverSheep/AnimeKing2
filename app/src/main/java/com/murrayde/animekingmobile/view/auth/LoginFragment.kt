@@ -26,8 +26,8 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
 import com.murrayde.animekingmobile.R
-import com.murrayde.animekingmobile.network.AppStatus
-import com.murrayde.animekingmobile.network.community.api.AnimeData
+import com.murrayde.animekingmobile.util.AppStatus
+import com.murrayde.animekingmobile.network.community.api_models.AnimeData
 import kotlinx.android.synthetic.main.fragment_login.*
 import timber.log.Timber
 

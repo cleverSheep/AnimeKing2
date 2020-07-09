@@ -1,7 +1,7 @@
 package com.murrayde.animekingmobile.repository.auth
 
-import com.murrayde.animekingmobile.network.community.AnimeApiClient
-import com.murrayde.animekingmobile.network.community.api.AnimeComplete
+import com.murrayde.animekingmobile.network.community.clients.AnimeApiClient
+import com.murrayde.animekingmobile.network.community.api_models.AnimeComplete
 import com.murrayde.animekingmobile.repository.Repository
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers

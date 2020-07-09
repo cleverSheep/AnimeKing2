@@ -5,14 +5,14 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.murrayde.animekingmobile.model.ui.AnimeForYou
-import com.murrayde.animekingmobile.repository.community.MainRepo
+import com.murrayde.animekingmobile.repository.community.AnimeListRepo
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableSingleObserver
 import io.reactivex.schedulers.Schedulers
 import timber.log.Timber
 
-class AnimeListViewModel @ViewModelInject constructor(private val mainRepo: MainRepo) : ViewModel() {
+class AnimeListViewModel @ViewModelInject constructor(private val animeListRepo: AnimeListRepo) : ViewModel() {
 
     private val disposable = CompositeDisposable()
     private val animeForYou = MutableLiveData<AnimeForYou>()
@@ -25,7 +25,7 @@ class AnimeListViewModel @ViewModelInject constructor(private val mainRepo: Main
     private fun fetchAnimeForYou() {
         loading.postValue(true)
         disposable.add(
-                mainRepo.getAnimeForYou().subscribeOn(Schedulers.io())
+                animeListRepo.getAnimeForYou().subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribeWith(object : DisposableSingleObserver<AnimeForYou>() {
                             override fun onSuccess(forYou: AnimeForYou) {

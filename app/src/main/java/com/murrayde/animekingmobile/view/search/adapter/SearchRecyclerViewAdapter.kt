@@ -11,7 +11,7 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.murrayde.animekingmobile.R
 import com.murrayde.animekingmobile.databinding.SearchItemBinding
-import com.murrayde.animekingmobile.network.community.api.AnimeData
+import com.murrayde.animekingmobile.network.community.api_models.AnimeData
 import com.murrayde.animekingmobile.view.search.SearchFragmentDirections
 
 class SearchRecyclerViewAdapter(val context: Context) : RecyclerView.Adapter<SearchRecyclerViewAdapter.ViewHolder>(), ClickListener {

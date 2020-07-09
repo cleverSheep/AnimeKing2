@@ -148,6 +148,9 @@ dependencies {
     annotationProcessor "com.jakewharton:butterknife:$butterKnifeVersion"
     annotationProcessor "com.jakewharton:butterknife-compiler:$butterKnifeVersion"
 
+    // RxFirestoreKt (RxJava firebase wrapper)
+    implementation 'de.aaronoe:rxfirestorekt:0.1.1'
+
     //PagingUtil
     def paging_version = "2.1.2"
     implementation "androidx.paging:paging-runtime:$paging_version"

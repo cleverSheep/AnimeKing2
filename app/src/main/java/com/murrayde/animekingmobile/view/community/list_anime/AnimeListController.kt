@@ -9,7 +9,7 @@ import com.murrayde.animekingmobile.epoxy.models.HeaderItemViewModel_
 import com.murrayde.animekingmobile.epoxy.models.HeaderView_
 import com.murrayde.animekingmobile.epoxy.views.CarouselNoSnapModel_
 import com.murrayde.animekingmobile.model.ui.AnimeForYou
-import com.murrayde.animekingmobile.network.community.api.AnimeData
+import com.murrayde.animekingmobile.network.community.api_models.AnimeData
 import com.murrayde.animekingmobile.util.barrierText
 import java.util.*
 
