@@ -19,11 +19,12 @@ import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
 import androidx.preference.PreferenceManager
 import com.murrayde.animekingmobile.R
+import com.murrayde.animekingmobile.extensions.hideView
+import com.murrayde.animekingmobile.extensions.showView
 import com.murrayde.animekingmobile.model.community.CommunityQuestion
 import com.murrayde.animekingmobile.util.QuestionUtil
 import com.murrayde.animekingmobile.view.community.quiz_results.ResultsViewModel
@@ -41,8 +42,8 @@ class AnswerQuestion : Fragment() {
     private var media_is_playing = true
     private var vibration_is_enabled = true
     private lateinit var sharedPreferences: SharedPreferences
-    private lateinit var results_view_model: ResultsViewModel
     private val answerQuestionViewModel: AnswerQuestionViewModel by viewModels()
+    private val results_view_model: ResultsViewModel by viewModels()
 
     private var current_score: Int = 0
     private lateinit var countDownTimer: CountDownTimer
@@ -71,7 +72,6 @@ class AnswerQuestion : Fragment() {
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(activity)
         media_is_playing = sharedPreferences.getBoolean("sound_effects", true)
         vibration_is_enabled = sharedPreferences.getBoolean("vibration", true)
-        results_view_model = ViewModelProvider(requireActivity()).get(ResultsViewModel::class.java)
         vibrator = context?.getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
 
         answerQuestionViewModel.getListOfQuestions().observe(requireActivity(), Observer { listQuestions ->
@@ -88,17 +88,21 @@ class AnswerQuestion : Fragment() {
             navigateToResultsScreen(view)
             return
         }
-        var question_track = track
-        questions_list_argument[question_track] = communityQuestions[question_track]
-        val random_questions: ArrayList<String> = communityQuestions[question_track].multiple_choice.shuffled() as ArrayList<String>
+        questions_list_argument[track] = communityQuestions[track]
+        val random_questions: ArrayList<String> = communityQuestions[track].multiple_choice.shuffled() as ArrayList<String>
 
-        tv_answer_question.text = communityQuestions[question_track].question
+        tv_answer_question.text = communityQuestions[track].question
         repeat(list_buttons.size) {
             list_buttons[it].text = random_questions.removeAt(0)
         }
 
-        startTimer(communityQuestions, question_track++, view, list_buttons)
+        startTimer(communityQuestions, track, view, list_buttons)
         buttonChoiceClick(list_buttons, communityQuestions, track)
+
+        button_next_question.setOnClickListener {
+            val new_question = track + 1
+            prepareForNextQuestion(communityQuestions, new_question, view, list_buttons)
+        }
     }
 
     private fun navigateToResultsScreen(view: View) {
@@ -111,6 +115,7 @@ class AnswerQuestion : Fragment() {
         countDownTimer = object : CountDownTimer(QuestionUtil.QUESTION_TIMER, 1000) {
             override fun onFinish() {
                 disableAllButtons(list_buttons)
+                button_next_question.showView()
                 showTimeUpDialog(randomQuestions, new_question, view, list_buttons)
             }
 
@@ -145,6 +150,7 @@ class AnswerQuestion : Fragment() {
         button.setOnClickListener {
             alertDialog.dismiss()
             loadQuestions(randomQuestions, track, view, list_buttons)
+            button_next_question.hideView()
         }
         alertDialog.show()
     }
@@ -156,14 +162,16 @@ class AnswerQuestion : Fragment() {
                 countDownTimer.cancel()
                 disableAllButtons(list_buttons)
                 if (list_buttons[position].text == correct_response) {
+                    tv_score.text = "${++current_score * 10}"
                     communityQuestions[question_track].setUserCorrectResponse(true)
-                    results_view_model.updateTotalCorrect(++current_score)
-                    results_view_model.incrementTimeBonus(current_time)
+/*                    results_view_model.updateTotalCorrect(++current_score)
+                    results_view_model.incrementTimeBonus(current_time)*/
                     alertCorrectResponse(view)
                 } else {
                     communityQuestions[question_track].setUserCorrectResponse(false)
                     alertWrongResponse(view, list_buttons, correct_response)
                 }
+                button_next_question.showView()
             }
         }
     }
@@ -183,7 +191,7 @@ class AnswerQuestion : Fragment() {
         repeat(list_buttons.size) { position ->
             if (list_buttons[position].text == correct_response) {
                 list_buttons[position].background = resources.getDrawable(R.drawable.answer_correct_background)
-                list_buttons[position].setTextColor(resources.getColor(R.color.color_white))
+                list_buttons[position].setTextColor(resources.getColor(R.color.color_background_white))
             }
         }
     }
@@ -195,11 +203,12 @@ class AnswerQuestion : Fragment() {
         button.setTextColor(resources.getColor(R.color.color_white))
     }
 
-    private fun prepareForNextQuestion(communityQuestions: ArrayList<CommunityQuestion>, track: Int, view: View, list_buttons: ArrayList<Button>) {
+    private fun prepareForNextQuestion(communityQuestions: List<CommunityQuestion>, track: Int, view: View, list_buttons: ArrayList<Button>) {
         if (media_is_playing) media_default.start()
+        button_next_question.hideView()
         repeat(list_buttons.size) { position ->
             list_buttons[position].setBackgroundColor(resources.getColor(R.color.color_white))
-            list_buttons[position].setTextColor(resources.getColor(R.color.color_black))
+            list_buttons[position].setTextColor(resources.getColor(R.color.color_background_white))
             list_buttons[position].background = resources.getDrawable(R.drawable.answer_question_background)
             list_buttons[position].isClickable = true
         }
@@ -213,11 +222,6 @@ class AnswerQuestion : Fragment() {
         list_buttons.add(button_choice_three)
         list_buttons.add(button_choice_four)
         return list_buttons
-    }
-
-    override fun onStop() {
-        super.onStop()
-        countDownTimer.cancel()
     }
 
     override fun onDestroy() {

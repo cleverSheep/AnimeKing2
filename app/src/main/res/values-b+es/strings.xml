@@ -23,6 +23,7 @@
     <string name="question_count">0 questions</string>
     <string name="ask_question">Pregunta</string>
     <string name="coming_soon">Próximamente!</string>
+    <string name="number_questions">%1$s preguntas</string>
 
     <!-- Not Enough Questions -->
     <string name="insufficient_questions">¡UH oh! Nuestro radar no detectó suficientes preguntas. Se necesita un mínimo de 7 preguntas para jugar.</string>
@@ -30,7 +31,7 @@
 
     <!-- Answer Question Layout -->
     <string name="time_up">Tiempo Muerto</string>
-    <string name="next_question">Próxima Pregunta</string>
+    <string name="next_question">Próxima Pregunta!</string>
     <string name="got_the_hang_of_it">Tienes el truco! Visita una comunidad de anime para preguntas más específicas.</string>
 
     <!-- Ask Question Layout -->

@@ -72,7 +72,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:background="@drawable/home_compete_background"
+        android:background="@drawable/detail_main_buttons"
         android:drawableStart="@drawable/ic_home_black_24dp"
         android:fontFamily="@font/baloobhairegular"
         android:stateListAnimator="@xml/animate_scale"

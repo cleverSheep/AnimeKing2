@@ -73,16 +73,15 @@
         android:layout_height="0dp"
         android:fontFamily="@font/baloobhairegular"
         android:gravity="center"
-        android:padding="6dp"
         android:text="@string/actual_text_testing"
         android:textAlignment="center"
         android:textColor="@color/color_white"
         android:textSize="@dimen/_14sdp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/progressBar_two"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_timer"
+        app:layout_constraintEnd_toEndOf="@+id/button_choice_one"
+        app:layout_constraintStart_toStartOf="@+id/button_choice_one"
+        app:layout_constraintTop_toBottomOf="@+id/tv_timer"
         tools:text="@string/testing_text" />
 
     <Button
@@ -152,6 +151,24 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button_choice_three"
         tools:text="Answer Choice 4" />
+
+    <Button
+        android:id="@+id/button_next_question"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/button_next_question"
+        android:fontFamily="@font/baloobhairegular"
+        android:text="@string/next_question"
+        android:textAlignment="center"
+        android:textColor="@color/color_black_dark"
+        android:textSize="@dimen/_13sdp"
+        android:textStyle="bold"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_choice_four" />
 
     <ProgressBar
         android:id="@+id/progressBar_ask_question"

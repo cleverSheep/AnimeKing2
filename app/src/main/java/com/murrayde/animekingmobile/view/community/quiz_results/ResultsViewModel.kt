@@ -1,4 +1,4 @@
-@file:Suppress("PrivatePropertyName", "MemberVisibilityCanBePrivate")
+@file:Suppress("PrivatePropertyName", "MemberVisibilityCanBePrivate", "PropertyName")
 
 package com.murrayde.animekingmobile.view.community.quiz_results
 
