@@ -19,6 +19,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
 import androidx.preference.PreferenceManager
@@ -43,9 +44,10 @@ class AnswerQuestion : Fragment() {
     private var vibration_is_enabled = true
     private lateinit var sharedPreferences: SharedPreferences
     private val answerQuestionViewModel: AnswerQuestionViewModel by viewModels()
-    private val results_view_model: ResultsViewModel by viewModels()
+    private lateinit var results_view_model: ResultsViewModel
 
-    private var current_score: Int = 0
+    private var current_score = 0
+    private var total_correct = 0
     private lateinit var countDownTimer: CountDownTimer
     private var current_time = 0
 
@@ -73,6 +75,7 @@ class AnswerQuestion : Fragment() {
         media_is_playing = sharedPreferences.getBoolean("sound_effects", true)
         vibration_is_enabled = sharedPreferences.getBoolean("vibration", true)
         vibrator = context?.getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
+        results_view_model = ViewModelProvider(requireActivity()).get(ResultsViewModel::class.java)
 
         answerQuestionViewModel.getListOfQuestions().observe(requireActivity(), Observer { listQuestions ->
             communityQuestions = listQuestions
@@ -162,10 +165,12 @@ class AnswerQuestion : Fragment() {
                 countDownTimer.cancel()
                 disableAllButtons(list_buttons)
                 if (list_buttons[position].text == correct_response) {
-                    tv_score.text = "${++current_score * 10}"
+                    current_score = (current_score + 1) * 10
+                    tv_score.text = "$current_score"
                     communityQuestions[question_track].setUserCorrectResponse(true)
-/*                    results_view_model.updateTotalCorrect(++current_score)
-                    results_view_model.incrementTimeBonus(current_time)*/
+                    results_view_model.updateTotalCorrect(++total_correct)
+                    results_view_model.updateCurrentScore(current_score)
+                    results_view_model.incrementTimeBonus(current_time)
                     alertCorrectResponse(view)
                 } else {
                     communityQuestions[question_track].setUserCorrectResponse(false)

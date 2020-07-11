@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/color_home_logo"
+    android:background="@color/color_home_logo_update"
     android:gravity="center"
     tools:context=".view.community.quiz_results.ViewResultsList">
 
@@ -76,15 +76,14 @@
             android:layout_gravity="center"
             android:background="@drawable/home_compete_background"
             android:fontFamily="@font/baloobhairegular"
-            android:padding="16dp"
-            android:text="1 out of 7 correct"
             android:textAlignment="center"
             android:textColor="@color/color_black"
             android:textSize="25sp"
             app:layout_constraintBottom_toBottomOf="@+id/progressBar7"
             app:layout_constraintEnd_toEndOf="@+id/results_time_bonus_points"
             app:layout_constraintStart_toStartOf="@+id/textView12"
-            app:layout_constraintTop_toTopOf="@+id/progressBar7" />
+            app:layout_constraintTop_toTopOf="@+id/progressBar7"
+            tools:text="0 out of 10 questions correct!" />
 
         <TextView
             android:id="@+id/textView12"
@@ -168,7 +167,6 @@
             android:layout_height="wrap_content"
             android:layout_gravity="start"
             android:fontFamily="@font/baloobhairegular"
-            android:text="24pts"
             android:textColor="@color/color_correct"
             android:textSize="30sp"
             android:visibility="visible"

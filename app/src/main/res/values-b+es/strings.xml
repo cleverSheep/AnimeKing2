@@ -26,7 +26,7 @@
     <string name="number_questions">%1$s preguntas</string>
 
     <!-- Not Enough Questions -->
-    <string name="insufficient_questions">¡UH oh! Nuestro radar no detectó suficientes preguntas. Se necesita un mínimo de 7 preguntas para jugar.</string>
+    <string name="insufficient_questions">Esto es incómodo. Se necesita un mínimo de 7 preguntas para jugar. ¡Ayúdanos haciendo preguntas!</string>
     <string name="add_questions">Añadir Más Preguntas</string>
 
     <!-- Answer Question Layout -->

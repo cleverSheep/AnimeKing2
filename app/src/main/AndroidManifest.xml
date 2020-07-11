@@ -37,7 +37,8 @@
             android:theme="@style/BaseTheme" />
         <activity
             android:name="com.murrayde.animekingmobile.view.splash_credits.CreditsActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:theme="@style/BaseTheme" />
     </application>
 
 </manifest>

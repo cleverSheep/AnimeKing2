@@ -6,31 +6,30 @@ package com.murrayde.animekingmobile.view.community.quiz_results
 import android.content.SharedPreferences
 import android.media.MediaPlayer
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
 import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetBehavior
-
 import com.murrayde.animekingmobile.R
 import com.murrayde.animekingmobile.extensions.hideView
 import com.murrayde.animekingmobile.extensions.showView
-import com.murrayde.animekingmobile.model.community.AnimeAttributes.Attributes
 import com.murrayde.animekingmobile.util.QuestionUtil
 import com.murrayde.animekingmobile.util.questionCount
 import com.murrayde.animekingmobile.view.community.quiz_results.review_questions.ReviewQuestionsAdapter
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_view_results.*
 import kotlinx.android.synthetic.main.fragment_view_results_bottom_sheet.*
-import timber.log.Timber
 
 
+@AndroidEntryPoint
 class ViewResultsList : Fragment() {
 
     private val resultsArgs: ViewResultsListArgs by navArgs()
@@ -56,8 +55,6 @@ class ViewResultsList : Fragment() {
         results_total_points.text = String.format(view.context.getString(R.string.total_points), resultsViewModel.totalPoints())
         quote.text = if (resultsViewModel.positiveMessage()) resources.getString(R.string.won_quote) else resources.getString(R.string.lost_quote)
         game_over.text = if (resultsViewModel.positiveMessage()) resources.getString(R.string.good_game) else resources.getString(R.string.game_over)
-
-        Timber.d("Positive message: ${resultsViewModel.positiveMessage()}")
         return view
     }
 
@@ -77,7 +74,7 @@ class ViewResultsList : Fragment() {
         val bottomSheetBehavior = BottomSheetBehavior.from(linearLayoutBottomSheet)
 
         results_try_again.setOnClickListener { view ->
-            prepareQuiz(resultsArgs.animeAttributes, view)
+            prepareQuiz(view)
         }
 
         results_toggle_button.setOnCheckedChangeListener { _, isChecked ->
@@ -85,19 +82,13 @@ class ViewResultsList : Fragment() {
             else bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
         }
 
-        //results_total_points_tv.text = resultsViewModel.totalPoints().toString()
-
         bottomSheetBehavior.setBottomSheetCallback(object : BottomSheetBehavior.BottomSheetCallback() {
             override fun onSlide(view: View, offset: Float) {
-                Timber.d("Bottom sheet progress: $offset")
 
                 if (offset > -0f) {
                     done_reviewing.showView()
                     view_results_upper.hideView()
-                }/*
-                if (offset < 0.5f) {
-                    done_reviewing.hideView()
-                }*/
+                }
                 if (offset == 0f) {
                     done_reviewing.hideView()
                     view_results_upper.showView()
@@ -120,7 +111,7 @@ class ViewResultsList : Fragment() {
         }
     }
 
-    private fun prepareQuiz(attributes: Attributes, view: View) {
+    private fun prepareQuiz(view: View) {
         if (media_is_playing) media.start()
         startQuiz(view)
     }

@@ -2,16 +2,18 @@
 
 package com.murrayde.animekingmobile.view.community.quiz_results
 
+import android.util.Log
+import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.ViewModel
 import com.murrayde.animekingmobile.util.QuestionUtil
-import timber.log.Timber
 
-class ResultsViewModel : ViewModel() {
+class ResultsViewModel @ViewModelInject() constructor() : ViewModel() {
 
     private var time_bonus = 0
     var total_time_bonus = 0
     private var total_correct = 0
     private var total_questions = 0
+    private var total_score = 0
 
     fun incrementTimeBonus(time: Int) {
         time_bonus += time
@@ -30,7 +32,7 @@ class ResultsViewModel : ViewModel() {
 
     fun totalTimeBonus() = total_time_bonus
 
-    fun totalPoints() = time_bonus + (total_correct * 2)
+    fun totalPoints() = time_bonus + total_score
 
     fun resetPoints(points: Int) {
         time_bonus = points
@@ -41,8 +43,12 @@ class ResultsViewModel : ViewModel() {
     fun totalCorrect() = total_correct
 
     fun positiveMessage(): Boolean {
-        Timber.d("Total score: ${total_correct.toFloat() / total_questions.toFloat()}")
+        Log.d(ResultsViewModel::class.qualifiedName, "Total score: ${total_correct.toFloat() / total_questions.toFloat()}")
         return (total_correct.toFloat() / getTotalQuestions().toFloat()) > 0.5
+    }
+
+    fun updateCurrentScore(currentScore: Int) {
+        total_score = currentScore
     }
 
 }

@@ -18,9 +18,10 @@
 
 
     <style name="BaseTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="colorControlNormal">@color/color_background_white</item>
+        <item name="colorControlNormal">@color/color_white</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:textColor">@color/color_black</item>
+        <item name="background">@color/color_white</item>
     </style>
 
     <style name="ToolbarLightTheme" parent="ThemeOverlay.AppCompat.Light" />
