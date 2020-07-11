@@ -27,7 +27,7 @@
     <color name="color_detail_title">#80FFFFFF</color>
     <color name="color_darker_grey">#505050</color>
     <color name="color_home_logo">#2E2E2E</color>
-    <color name="color_correct">#00FF00</color>
+    <color name="color_correct">#33CF80</color>
     <color name="color_detail_member_count">#99e6ff</color>
     <color name="color_detail_question_count">#cca4b8</color>
     <color name="color_detail_online_count">#52588d</color>

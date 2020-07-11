@@ -42,10 +42,7 @@ class ResultsViewModel @ViewModelInject() constructor() : ViewModel() {
 
     fun totalCorrect() = total_correct
 
-    fun positiveMessage(): Boolean {
-        Log.d(ResultsViewModel::class.qualifiedName, "Total score: ${total_correct.toFloat() / total_questions.toFloat()}")
-        return (total_correct.toFloat() / getTotalQuestions().toFloat()) > 0.5
-    }
+    fun positiveMessage(): Boolean = (total_correct.toFloat() / getTotalQuestions().toFloat()) > 0.5
 
     fun updateCurrentScore(currentScore: Int) {
         total_score = currentScore

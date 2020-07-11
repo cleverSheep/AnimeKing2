@@ -11,6 +11,7 @@ import android.media.MediaPlayer.create
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.os.Vibrator
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -165,10 +166,12 @@ class AnswerQuestion : Fragment() {
                 countDownTimer.cancel()
                 disableAllButtons(list_buttons)
                 if (list_buttons[position].text == correct_response) {
-                    current_score = (current_score + 1) * 10
+                    total_correct += 1
+                    current_score = total_correct * 10
+                    Log.d(AnswerQuestion::class.qualifiedName, "Current score: $current_score")
                     tv_score.text = "$current_score"
                     communityQuestions[question_track].setUserCorrectResponse(true)
-                    results_view_model.updateTotalCorrect(++total_correct)
+                    results_view_model.updateTotalCorrect(total_correct)
                     results_view_model.updateCurrentScore(current_score)
                     results_view_model.incrementTimeBonus(current_time)
                     alertCorrectResponse(view)

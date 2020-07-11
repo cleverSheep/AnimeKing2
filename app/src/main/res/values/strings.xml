@@ -49,7 +49,7 @@
     <string name="good_game">Good Game!</string>
     <string name="time_bonus">Time Bonus</string>
     <string name="try_again">Try Again</string>
-    <string name="quit_game">Quit Game</string>
+    <string name="quit_game">Return Home</string>
     <string name="review_correct_choice">Correct: %1$s</string>
     <string name="questions_correct_count">%1$d out of %2$d questions correct!</string>
     <string name="total_time_bonus">%1$d pts</string>
@@ -92,7 +92,7 @@
 
     <!-- Splash Layout -->
     <string name="slogan">Pick a title, claim you crown!</string>
-    <string name="credits_author">Created by Clarmoph Games</string>
+    <string name="credits_author">Clarmoph Games</string>
 
     <!-- Search Layout -->
     <string name="search_for_anime">Search for anime</string>
@@ -115,16 +115,19 @@
     <string name="credit_source">Crown made by Freepik from www.flaticon.com</string>
     <string name="credits_audio">Sound effects obtained from www.zapsplat.com</string>
     <string name="community">Community</string>
-    <string name="credit_radar">Radar animation by Kiran Kumar at lottiefiles.com</string>
-    <string name="credit_loading_animation">Loading animation by Ashot S at lottiefiles.com</string>
+    <string name="credit_radar">Airplane animation by Mark Geyer at lottiefiles.com</string>
+    <string name="credit_loading_animation">Loading animation by Nopey Com at lottiefiles.com</string>
 
     <string name="not_enough_description">Each community requires at least 5 questions.\nAdd more questions to play trivia with this anime.</string>
     <string name="not_enough_questions">Not Enough Questions</string>
     <string name="title">Title Not Available</string>
     <string name="facec_splash" translatable="false">Face splash</string>
     <string name="dummy_text" translatable="false">Fullmetal Alchemist is the best title of all time. Fullmetal Alchemist is the best title of all time</string>
-    <string name="testing_text">This is a test question. Use it to determine how the design would look. Maybe we need to add some redesigns? I don\'t know, we\'ll have to see. I don\'t know, we\'ll have to see. I don\'t know, we\'ll have to see.I don\'t know. know. kn</string>
-    <string name="actual_text_testing">Here is a little sample text for testing purposes. Come again soon.</string>
+    <string name="testing_text" translatable="false">This is a test question. Use it to determine how the design would look. Maybe we need to add some redesigns? I don\'t know, we\'ll have to see. I don\'t know, we\'ll have to see. I don\'t know, we\'ll have to see.I don\'t know. know. kn</string>
+    <string name="actual_text_testing" translatable="false">Here is a little sample text for testing purposes. Come again soon.</string>
     <string name="connect_internet">Please connect to the internet.</string>
+    <string name="image_detail_description" translatable="false">image detail description</string>
+    <string name="return_home">Return Home</string>
+    <string name="exit_quiz">Exit Quiz</string>
 
 </resources>

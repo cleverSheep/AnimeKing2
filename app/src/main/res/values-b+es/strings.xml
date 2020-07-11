@@ -48,7 +48,7 @@
     <string name="good_game">¡Buen juego!</string>
     <string name="time_bonus">Tiempo Extra</string>
     <string name="try_again">Inténtalo de Nuevo</string>
-    <string name="quit_game">Salir del Juego</string>
+    <string name="quit_game">Volver a casa</string>
     <string name="review_correct_choice">Correcto: %1$s</string>
     <string name="questions_correct_count">%1$d de %2$d preguntas correctas!</string>
     <string name="total_time_bonus">%1$d puntos</string>
@@ -90,7 +90,7 @@
 
     <!-- Splash Layout -->
     <string name="slogan">¡Elige un título, reclama tu corona!</string>
-    <string name="credits_author">Creado por Clarmoph Games</string>
+    <string name="credits_author">Clarmoph Games</string>
 
     <!-- Search Layout -->
     <string name="search_for_anime">Buscar anime</string>
@@ -114,11 +114,14 @@
     <string name="credit_source">Iconos realizados por Freepik desde www.flaticon.com</string>
     <string name="credits_audio">Efectos de sonido obtenidos de www.zapsplat.com</string>
     <string name="community">Community</string>
-    <string name="credit_radar">Animación de radar de Kiran Kumar en lottiefiles.com</string>
-    <string name="credit_loading_animation">Cargando animación de Ashot S en lottiefiles.com</string>
+    <string name="credit_radar">Animación de radar de Mark Geyer en lottiefiles.com</string>
+    <string name="credit_loading_animation">Cargando animación de Nopey Com en lottiefiles.com</string>
 
     <string name="not_enough_description">Each community requires at least 5 questions.\nAdd more questions to play trivia with this anime.</string>
     <string name="not_enough_questions">Not Enough Questions</string>
+    <string name="connect_internet">Por favor conectarse a Internet.</string>
     <string name="title">Título no disponible</string>
+    <string name="return_home">Volver a casa</string>
+    <string name="exit_quiz">Prueba de salida</string>
 
 </resources>

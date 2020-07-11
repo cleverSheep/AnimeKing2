@@ -49,7 +49,6 @@ class AnimeListDetail : Fragment() {
         toolbar.setupWithNavController(findNavController())
         fragment_detail_question_count = view.findViewById(R.id.fragment_detail_question_count)
         animeTitle = if (args.animeAttributes.titles.en != null) args.animeAttributes.titles.en else args.animeAttributes.canonicalTitle
-        Log.d(AnimeListDetail::class.qualifiedName, "anime title: $animeTitle")
         return view
     }
 

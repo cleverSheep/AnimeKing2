@@ -4,7 +4,7 @@
     android:id="@+id/results_bottom_sheet"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/color_home_logo"
+    android:background="@color/color_home_logo_update"
     android:orientation="vertical"
     app:behavior_peekHeight="?actionBarSize"
     app:layout_behavior="@string/bottom_sheet_behavior">
@@ -36,7 +36,7 @@
             android:text="@string/review_share_questions"
             android:textAlignment="center"
             android:textColor="@color/color_black"
-            android:textSize="20sp" />
+            android:textSize="@dimen/_15sdp" />
 
         <TextView
             android:id="@+id/done_reviewing"

@@ -37,14 +37,16 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="6dp"
         android:fontFamily="@font/baloobhairegular"
-        android:paddingHorizontal="8dp"
+        android:paddingHorizontal="16dp"
         android:text="@string/insufficient_questions"
         android:textAlignment="textStart"
         android:textSize="@dimen/_15sdp"
         app:layout_constraintBottom_toBottomOf="@+id/progressBar"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/button_transition_ask_question"
-        app:layout_constraintTop_toTopOf="@+id/progressBar" />
+        app:layout_constraintTop_toTopOf="@+id/progressBar"
+        app:layout_constraintVertical_bias="0.509" />
 
     <Button
         android:id="@+id/button_transition_ask_question"
@@ -56,12 +58,43 @@
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
         android:background="@drawable/detail_ask_question_button"
+        android:drawableStart="@drawable/question_answer"
         android:fontFamily="@font/baloobhairegular"
         android:stateListAnimator="@xml/animate_scale"
         android:text="@string/ask_question"
         android:textColor="@color/color_background_white"
-        android:textSize="22sp"
-        app:layout_constraintBottom_toTopOf="@id/profile_bottomnav_placeholder"
+        android:textSize="@dimen/_16sdp"
+        app:layout_constraintBottom_toBottomOf="@+id/progressBar9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/progressBar9" />
+
+    <Button
+        android:id="@+id/button_transition_return_home"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/detail_ask_question_button"
+        android:drawableStart="@drawable/ic_home_black_24dp"
+        android:fontFamily="@font/baloobhairegular"
+        android:stateListAnimator="@xml/animate_scale"
+        android:text="@string/return_home"
+        android:textColor="@color/color_background_white"
+        android:textSize="@dimen/_16sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_transition_ask_question" />
+
+    <ProgressBar
+        android:id="@+id/progressBar9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/profile_bottomnav_placeholder"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />

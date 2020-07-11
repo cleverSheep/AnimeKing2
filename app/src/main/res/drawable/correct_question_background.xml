@@ -12,5 +12,5 @@
         android:radius="4dp"
         android:topLeftRadius="4dp"
         android:topRightRadius="4dp" />
-    <solid android:color="@color/color_correct" />
+    <solid android:color="@color/color_darkish_green" />
 </shape>

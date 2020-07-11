@@ -130,7 +130,7 @@
         android:maxLines="1"
         android:textAlignment="center"
         android:textColor="@color/color_black"
-        android:textColorHint="@color/common_google_signin_btn_text_light_focused"
+        android:textColorHint="@color/color_white"
         android:textCursorDrawable="@drawable/cursor_drawable"
         android:textSize="@dimen/text_size"
         android:textStyle="bold"

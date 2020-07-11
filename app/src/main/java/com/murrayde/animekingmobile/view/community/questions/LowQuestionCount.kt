@@ -35,6 +35,11 @@ class LowQuestionCount : Fragment() {
             val action = LowQuestionCountDirections.actionLowQuestionCountFragmentToAskQuestionFragment(attributes)
             Navigation.findNavController(view).navigate(action)
         }
+
+        button_transition_return_home.setOnClickListener {
+            val action = LowQuestionCountDirections.actionLowQuestionCountFragmentToHome()
+            Navigation.findNavController(view).navigate(action)
+        }
     }
 
 }
