@@ -11,6 +11,7 @@ import com.airbnb.epoxy.EpoxyAttribute;
 import com.airbnb.epoxy.EpoxyHolder;
 import com.airbnb.epoxy.EpoxyModelClass;
 import com.airbnb.epoxy.EpoxyModelWithHolder;
+import com.airbnb.epoxy.ModelView;
 import com.murrayde.animekingmobile.R;
 import com.murrayde.animekingmobile.util.ImageUtil;
 

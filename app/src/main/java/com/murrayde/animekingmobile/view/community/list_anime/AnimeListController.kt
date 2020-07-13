@@ -32,13 +32,15 @@ class AnimeListController : TypedEpoxyController<AnimeForYou>() {
     private fun createDataCarousel(itemPair: Pair<String, List<AnimeData>>) {
         val models = ArrayList<AnimeView_>()
         for (item in itemPair.second) {
+            val animeTitle = item.attributes.titles.en
+                    ?: item.attributes.canonicalTitle
+            val showType = item.attributes.ageRating ?: "--"
             models.add(
                     AnimeView_()
                             .id("item:" + item.id)
-                            .anime_title(item.attributes.titles.en
-                                    ?: item.attributes.canonicalTitle)
+                            .anime_title(animeTitle)
                             .image_url(item.attributes.posterImage.original)
-                            .num_of_questions("${(0..100).random()} question(s)") // For testing
+                            .num_of_questions(showType) // For testing
                             .barrier_text(barrierText())
                             .onClickListener { view ->
                                 val action = AnimeListDirections.actionListFragmentToDetailFragment(item.attributes)

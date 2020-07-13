@@ -2,6 +2,7 @@ package com.murrayde.animekingmobile.di.community
 
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import com.murrayde.animekingmobile.network.community.clients.AnimeApiClient
+import com.murrayde.animekingmobile.network.community.clients.FirebaseApiClient
 import com.murrayde.animekingmobile.network.community.services.AnimeApiService
 import dagger.Module
 import dagger.Provides
@@ -51,7 +52,14 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    fun provideAnimeApiClient(animeApiService: AnimeApiService): AnimeApiClient {
+    fun providesFirebaseApiClient(): FirebaseApiClient {
+        return FirebaseApiClient()
+    }
+
+
+    @Provides
+    @Singleton
+    fun provideAnimeApiClient(animeApiService: AnimeApiService, firebaseApiClient: FirebaseApiClient): AnimeApiClient {
         return AnimeApiClient(animeApiService)
     }
 }

@@ -22,6 +22,16 @@ public class AnimeData {
     @Expose
     private Attributes attributes;
 
+    private long numOfQuestions;
+
+    public long getNumOfQuestions() {
+        return numOfQuestions;
+    }
+
+    public void setNumOfQuestions(long numOfQuestions) {
+        this.numOfQuestions = numOfQuestions;
+    }
+
     public String getId() {
         return id;
     }

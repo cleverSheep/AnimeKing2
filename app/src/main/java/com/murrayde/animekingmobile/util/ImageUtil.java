@@ -26,19 +26,13 @@ public class ImageUtil {
     }
 
     public static void loadImageLogin(ImageView imageView, String url) {
-        RequestOptions options = new RequestOptions()
-                .transform(new CenterCrop(), new RoundedCorners(32));
         Glide.with(imageView.getContext())
-                .setDefaultRequestOptions(options)
                 .load(url)
                 .into(imageView);
     }
 
     public static void loadImageAnimeItem(ImageView imageView, String url) {
-        RequestOptions options = new RequestOptions()
-                .transform(new CenterCrop(), new RoundedCorners(32));
         Glide.with(imageView.getContext())
-                .setDefaultRequestOptions(options)
                 .load(url)
                 .into(imageView);
     }
