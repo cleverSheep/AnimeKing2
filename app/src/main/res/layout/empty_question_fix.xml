@@ -7,20 +7,21 @@
     <TextView
         style="@style/Question_Incorrect_Format_Text"
         android:layout_weight="1"
-        android:background="@color/color_black"
-        android:text="@string/question_min" />
+        android:background="@color/color_home_logo_update"
+        android:text="@string/question_min"
+        android:textSize="@dimen/_15sdp" />
 
     <Button
         android:id="@+id/accept_request_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:background="@color/colorAccentLight"
+        android:background="@color/goldish_color_light"
         android:clickable="true"
         android:fontFamily="@font/baloobhairegular"
         android:text="@string/accept"
         android:textColor="@color/color_black"
-        android:textSize="20sp"
+        android:textSize="@dimen/_15sdp"
         android:textStyle="bold" />
 
 </LinearLayout>

@@ -34,7 +34,7 @@
             android:text="@string/submit_question"
             android:textAlignment="textEnd"
             android:textColor="@color/color_white"
-            android:textSize="@dimen/_16sdp" />
+            android:textSize="@dimen/_15sdp" />
     </androidx.appcompat.widget.Toolbar>
 
     <ImageView
@@ -129,7 +129,7 @@
         android:inputType="text"
         android:maxLines="1"
         android:textAlignment="center"
-        android:textColor="@color/color_black"
+        android:textColor="@color/color_white"
         android:textColorHint="@color/color_white"
         android:textCursorDrawable="@drawable/cursor_drawable"
         android:textSize="@dimen/_15sdp"
@@ -151,7 +151,7 @@
         android:maxLines="1"
         android:textAlignment="center"
         android:textColor="@color/color_white"
-        android:textColorHint="@color/com_facebook_primary_button_pressed_text_color"
+        android:textColorHint="@color/color_white"
         android:textCursorDrawable="@drawable/cursor_drawable"
         android:textSize="@dimen/_15sdp"
         android:textStyle="bold"
@@ -172,7 +172,7 @@
         android:maxLines="1"
         android:textAlignment="center"
         android:textColor="@color/color_white"
-        android:textColorHint="@color/com_facebook_primary_button_pressed_text_color"
+        android:textColorHint="@color/color_white"
         android:textCursorDrawable="@drawable/cursor_drawable"
         android:textSize="@dimen/_15sdp"
         android:textStyle="bold"
@@ -193,7 +193,7 @@
         android:maxLines="1"
         android:textAlignment="center"
         android:textColor="@color/color_white"
-        android:textColorHint="@color/com_facebook_primary_button_pressed_text_color"
+        android:textColorHint="@color/color_white"
         android:textCursorDrawable="@drawable/cursor_drawable"
         android:textSize="@dimen/_15sdp"
         android:textStyle="bold"
