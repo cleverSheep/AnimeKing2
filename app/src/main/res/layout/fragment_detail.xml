@@ -44,7 +44,7 @@
         android:stateListAnimator="@xml/animate_scale"
         android:text="@string/single_player"
         android:textColor="@color/color_background_white"
-        android:textSize="@dimen/_16sdp"
+        android:textSize="@dimen/_15sdp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/fragment_detail_description" />
@@ -61,7 +61,7 @@
         android:stateListAnimator="@xml/animate_scale"
         android:text="@string/ask_question"
         android:textColor="@color/color_background_white"
-        android:textSize="@dimen/_16sdp"
+        android:textSize="@dimen/_15sdp"
         app:layout_constraintEnd_toEndOf="@+id/fragment_detail_multiplayer"
         app:layout_constraintStart_toStartOf="@+id/fragment_detail_multiplayer"
         app:layout_constraintTop_toBottomOf="@+id/fragment_detail_multiplayer" />
@@ -77,7 +77,7 @@
         android:stateListAnimator="@xml/animate_scale"
         android:text="@string/return_home"
         android:textColor="@color/color_background_white"
-        android:textSize="@dimen/_16sdp"
+        android:textSize="@dimen/_15sdp"
         app:layout_constraintEnd_toEndOf="@+id/fragment_detail_ask_question"
         app:layout_constraintStart_toStartOf="@+id/fragment_detail_ask_question"
         app:layout_constraintTop_toBottomOf="@+id/fragment_detail_ask_question" />
@@ -93,7 +93,7 @@
         android:foreground="@drawable/conceal_frame"
         android:text="@string/multi_player"
         android:textColor="@color/color_background_white"
-        android:textSize="@dimen/_16sdp"
+        android:textSize="@dimen/_15sdp"
         app:layout_constraintEnd_toEndOf="@+id/fragment_detail_take_quiz"
         app:layout_constraintStart_toStartOf="@+id/fragment_detail_take_quiz"
         app:layout_constraintTop_toBottomOf="@+id/fragment_detail_take_quiz" />
@@ -126,7 +126,7 @@
         android:text="@string/question_count"
         android:textAlignment="center"
         android:textColor="@color/color_white"
-        android:textSize="15sp"
+        android:textSize="@dimen/_12sdp"
         app:layout_constraintStart_toStartOf="@+id/fragment_detail_title"
         app:layout_constraintTop_toBottomOf="@+id/fragment_detail_image" />
 
@@ -159,6 +159,7 @@
         android:fontFamily="@font/baloobhairegular"
         android:textAllCaps="true"
         android:textColor="@color/color_black"
+        android:textSize="@dimen/_10sdp"
         app:layout_constraintBottom_toTopOf="@+id/fragment_detail_title"
         app:layout_constraintStart_toStartOf="@+id/fragment_detail_title"
         tools:text="PG" />
@@ -181,6 +182,7 @@
         android:fontFamily="@font/baloobhairegular"
         android:textAllCaps="false"
         android:textColor="@color/color_black"
+        android:textSize="@dimen/_10sdp"
         app:layout_constraintBaseline_toBaselineOf="@+id/fragment_detail_age_rating"
         app:layout_constraintStart_toEndOf="@+id/view3"
         tools:text="2017" />
@@ -196,7 +198,7 @@
         android:text="@string/anime_title"
         android:textAlignment="viewStart"
         android:textColor="@color/color_black"
-        android:textSize="23sp"
+        android:textSize="@dimen/_20sdp"
         app:layout_constraintBottom_toTopOf="@+id/barrier3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/cardview_anime_image_poster"

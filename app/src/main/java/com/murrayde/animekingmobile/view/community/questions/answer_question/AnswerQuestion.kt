@@ -11,11 +11,12 @@ import android.media.MediaPlayer.create
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.os.Vibrator
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ProgressBar
+import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -56,6 +57,9 @@ class AnswerQuestion : Fragment() {
     private lateinit var questions_list_argument: Array<CommunityQuestion>
     private lateinit var vibrator: Vibrator
     private lateinit var animeTitle: String
+    private lateinit var tv_timer: TextView
+    private lateinit var timer_progressbar: ProgressBar
+    private lateinit var button_next_question: Button
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -72,11 +76,14 @@ class AnswerQuestion : Fragment() {
         media_default = create(activity, R.raw.button_click_sound_effect)
         media_correct = create(activity, R.raw.button_click_correct)
         media_wrong = create(activity, R.raw.button_click_wrong)
-        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(activity)
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
         media_is_playing = sharedPreferences.getBoolean("sound_effects", true)
         vibration_is_enabled = sharedPreferences.getBoolean("vibration", true)
         vibrator = context?.getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
         results_view_model = ViewModelProvider(requireActivity()).get(ResultsViewModel::class.java)
+        tv_timer = view.findViewById(R.id.tv_timer)
+        timer_progressbar = view.findViewById(R.id.timer_progressbar)
+        button_next_question = view.findViewById(R.id.button_next_question)
 
         answerQuestionViewModel.getListOfQuestions().observe(requireActivity(), Observer { listQuestions ->
             communityQuestions = listQuestions
@@ -137,7 +144,7 @@ class AnswerQuestion : Fragment() {
         val viewGroup = view.findViewById<ViewGroup>(R.id.main_view_content)
 
         //then we will inflate the custom alert dialog xml that we created
-        val dialogView = LayoutInflater.from(requireActivity()).inflate(R.layout.time_up_layout, viewGroup, false)
+        val dialogView = LayoutInflater.from(activity).inflate(R.layout.time_up_layout, viewGroup, false)
 
         //Now we need an AlertDialog.Builder object
         val builder = AlertDialog.Builder(requireActivity())
@@ -168,7 +175,6 @@ class AnswerQuestion : Fragment() {
                 if (list_buttons[position].text == correct_response) {
                     total_correct += 1
                     current_score = total_correct * 10
-                    Log.d(AnswerQuestion::class.qualifiedName, "Current score: $current_score")
                     tv_score.text = "$current_score"
                     communityQuestions[question_track].setUserCorrectResponse(true)
                     results_view_model.updateTotalCorrect(total_correct)
@@ -190,6 +196,25 @@ class AnswerQuestion : Fragment() {
         }
     }
 
+    private fun prepareForNextQuestion(communityQuestions: List<CommunityQuestion>, track: Int, view: View, list_buttons: ArrayList<Button>) {
+        if (media_is_playing) media_default.start()
+        button_next_question.hideView()
+        repeat(list_buttons.size) { position ->
+            list_buttons[position].setBackgroundColor(resources.getColor(R.color.color_white))
+            list_buttons[position].setTextColor(resources.getColor(R.color.color_background_white))
+            list_buttons[position].background = resources.getDrawable(R.drawable.answer_question_background)
+            list_buttons[position].isClickable = true
+        }
+        loadQuestions(communityQuestions, track, view, list_buttons)
+    }
+
+    private fun alertCorrectResponse(view: View) {
+        val button = view as Button
+        if (media_is_playing) media_correct.start()
+        button.background = resources.getDrawable(R.drawable.answer_correct_background)
+        button.setTextColor(resources.getColor(R.color.color_white))
+    }
+
     private fun alertWrongResponse(view: View, list_buttons: ArrayList<Button>, correct_response: String) {
         val button = view as Button
         if (media_is_playing) media_wrong.start()
@@ -204,24 +229,11 @@ class AnswerQuestion : Fragment() {
         }
     }
 
-    private fun alertCorrectResponse(view: View) {
-        val button = view as Button
-        if (media_is_playing) media_correct.start()
-        button.background = resources.getDrawable(R.drawable.answer_correct_background)
-        button.setTextColor(resources.getColor(R.color.color_white))
+    override fun onStop() {
+        super.onStop()
+        countDownTimer.cancel()
     }
 
-    private fun prepareForNextQuestion(communityQuestions: List<CommunityQuestion>, track: Int, view: View, list_buttons: ArrayList<Button>) {
-        if (media_is_playing) media_default.start()
-        button_next_question.hideView()
-        repeat(list_buttons.size) { position ->
-            list_buttons[position].setBackgroundColor(resources.getColor(R.color.color_white))
-            list_buttons[position].setTextColor(resources.getColor(R.color.color_background_white))
-            list_buttons[position].background = resources.getDrawable(R.drawable.answer_question_background)
-            list_buttons[position].isClickable = true
-        }
-        loadQuestions(communityQuestions, track, view, list_buttons)
-    }
 
     private fun listButtons(): ArrayList<Button> {
         val list_buttons = ArrayList<Button>()

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/color_home_logo"
+    android:background="@color/color_home_logo_update"
     tools:context=".view.community.questions.ask_question.AskQuestion">
 
     <androidx.appcompat.widget.Toolbar
@@ -34,7 +34,7 @@
             android:text="@string/submit_question"
             android:textAlignment="textEnd"
             android:textColor="@color/color_white"
-            android:textSize="@dimen/_18sdp" />
+            android:textSize="@dimen/_16sdp" />
     </androidx.appcompat.widget.Toolbar>
 
     <ImageView
@@ -84,7 +84,7 @@
         android:paddingEnd="@dimen/_8sdp"
         android:textAlignment="viewStart"
         android:textColor="@android:color/white"
-        android:textSize="25sp"
+        android:textSize="@dimen/_20sdp"
         app:layout_constraintBottom_toBottomOf="@+id/iv_ask_question"
         app:layout_constraintEnd_toStartOf="@+id/imageView2"
         app:layout_constraintStart_toStartOf="@+id/editText_enter_question"
@@ -110,7 +110,7 @@
         android:textColor="@color/color_black"
         android:textColorHint="@color/common_google_signin_btn_text_light_focused"
         android:textCursorDrawable="@drawable/cursor_drawable"
-        android:textSize="@dimen/text_size"
+        android:textSize="@dimen/_15sdp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/editText_correct_choice"
         app:layout_constraintEnd_toEndOf="parent"
@@ -132,7 +132,7 @@
         android:textColor="@color/color_black"
         android:textColorHint="@color/color_white"
         android:textCursorDrawable="@drawable/cursor_drawable"
-        android:textSize="@dimen/text_size"
+        android:textSize="@dimen/_15sdp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/editText_wrong_one"
         app:layout_constraintEnd_toEndOf="parent"
@@ -153,7 +153,7 @@
         android:textColor="@color/color_white"
         android:textColorHint="@color/com_facebook_primary_button_pressed_text_color"
         android:textCursorDrawable="@drawable/cursor_drawable"
-        android:textSize="@dimen/text_size"
+        android:textSize="@dimen/_15sdp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/editText_wrong_two"
         app:layout_constraintEnd_toEndOf="parent"
@@ -174,7 +174,7 @@
         android:textColor="@color/color_white"
         android:textColorHint="@color/com_facebook_primary_button_pressed_text_color"
         android:textCursorDrawable="@drawable/cursor_drawable"
-        android:textSize="20sp"
+        android:textSize="@dimen/_15sdp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/editText_wrong_three"
         app:layout_constraintEnd_toEndOf="parent"
@@ -195,7 +195,7 @@
         android:textColor="@color/color_white"
         android:textColorHint="@color/com_facebook_primary_button_pressed_text_color"
         android:textCursorDrawable="@drawable/cursor_drawable"
-        android:textSize="@dimen/text_size"
+        android:textSize="@dimen/_15sdp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/button_submit_question"
         app:layout_constraintEnd_toEndOf="parent"

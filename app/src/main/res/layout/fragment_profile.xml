@@ -28,6 +28,7 @@
             android:id="@+id/cardView"
             android:layout_width="175dp"
             android:layout_height="175dp"
+            app:cardCornerRadius="8dp"
             android:elevation="16dp"
             app:layout_constraintBottom_toBottomOf="@+id/progressBar3"
             app:layout_constraintEnd_toEndOf="parent"
