@@ -63,7 +63,7 @@
         android:stateListAnimator="@xml/animate_scale"
         android:text="@string/ask_question"
         android:textColor="@color/color_background_white"
-        android:textSize="@dimen/_16sdp"
+        android:textSize="@dimen/_15sdp"
         app:layout_constraintBottom_toBottomOf="@+id/progressBar9"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -84,7 +84,7 @@
         android:stateListAnimator="@xml/animate_scale"
         android:text="@string/return_home"
         android:textColor="@color/color_background_white"
-        android:textSize="@dimen/_16sdp"
+        android:textSize="@dimen/_15sdp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button_transition_ask_question" />
