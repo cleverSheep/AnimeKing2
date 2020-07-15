@@ -13,6 +13,15 @@
     <string name="new_user">¿Nuevo por Aquí?</string>
     <string name="play">Jugar</string>
     <string name="practice">Práctica</string>
+    <string name="skills_in_action">¡Pon tus habilidades en acción!</string>
+    <string name="go_on_adventure">¡Vamos a una aventura!</string>
+    <string name="alchemy_wizards">Alquimia, magos y hadas!</string>
+    <string name="goofy_lovable">Trivia tonta pero adorable</string>
+    <string name="budding_romance">Trivia romántica incipiente</string>
+    <string name="potato_chip">Tomaré una papa frita …</string>
+    <string name="dark_anime">Tomaré una papa frita …</string>
+    <string name="everything_mecha">Todo mecha!</string>
+    <string name="classical_anime">Trivia de anime clásica</string>
 
     <!-- Anime Detail Layout -->
     <string name="take_quiz">Jugar</string>
@@ -33,6 +42,7 @@
     <string name="time_up">Tiempo Muerto</string>
     <string name="next_question">Próxima Pregunta!</string>
     <string name="got_the_hang_of_it">Tienes el truco! Visita una comunidad de anime para preguntas más específicas.</string>
+    <string name="score">Marcador</string>
 
     <!-- Ask Question Layout -->
     <string name="enter_question">No seas tímido ¡Hacer una pregunta!</string>
@@ -81,6 +91,8 @@
     <string name="basic">Básico</string>
     <string name="other">Otro</string>
     <string name="vibration_summary">Respuesta de respuesta incorrecta</string>
+    <string name="terms_of_use">Términos de Uso</string>
+    <string name="privacy">Política de Privacidad</string>
 
     <!-- Bottom Navigation Layout -->
     <string name="home">Hogar</string>
@@ -123,5 +135,6 @@
     <string name="title">Título no disponible</string>
     <string name="return_home">Volver a casa</string>
     <string name="exit_quiz">Prueba de salida</string>
+    <string name="_0">0</string>
 
 </resources>

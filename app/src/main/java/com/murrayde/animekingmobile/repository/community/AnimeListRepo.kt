@@ -1,5 +1,7 @@
 package com.murrayde.animekingmobile.repository.community
 
+import com.murrayde.animekingmobile.R
+import com.murrayde.animekingmobile.application.BaseApplication
 import com.murrayde.animekingmobile.model.ui.AnimeForYou
 import com.murrayde.animekingmobile.network.community.clients.AnimeApiClient
 import com.murrayde.animekingmobile.repository.Repository
@@ -24,15 +26,15 @@ class AnimeListRepo @Inject constructor(private val animeApiClient: AnimeApiClie
                 Function9 { goofyButLovableTrivia, takeAPotatoChip, alchemyWizardsFairies, putYourSkillsInAction, buddingRomanceTrivia, letsGoOnAnAdventure,
                             darkAnimeTrivia, everythingMecha, classicalAnimeTrivia ->
                     buildAnimeForYou(AnimeForYou(
-                            Pair("Goofy but lovable trivia", performAnimeTitleFiltering(goofyButLovableTrivia.data)),
-                            Pair("I'll take a potato chip...", performAnimeTitleFiltering(takeAPotatoChip.data)),
-                            Pair("Alchemy, wizards and fairies", performAnimeTitleFiltering(alchemyWizardsFairies.data)),
-                            Pair("Put your skills in action", performAnimeTitleFiltering(putYourSkillsInAction.data)),
-                            Pair("Budding romance trivia", performAnimeTitleFiltering(buddingRomanceTrivia.data)),
-                            Pair("Let's go on an adventure!", performAnimeTitleFiltering(letsGoOnAnAdventure.data)),
-                            Pair("Dark anime trivia", performAnimeTitleFiltering(darkAnimeTrivia.data)),
-                            Pair("Everything mecha", performAnimeTitleFiltering(everythingMecha.data)),
-                            Pair("Classical anime trivia", performAnimeTitleFiltering(classicalAnimeTrivia.data))
+                            Pair(BaseApplication.getResourses().getString(R.string.goofy_lovable), performAnimeTitleFiltering(goofyButLovableTrivia.data)),
+                            Pair(BaseApplication.getResourses().getString(R.string.potato_chip), performAnimeTitleFiltering(takeAPotatoChip.data)),
+                            Pair(BaseApplication.getResourses().getString(R.string.alchemy_wizards), performAnimeTitleFiltering(alchemyWizardsFairies.data)),
+                            Pair(BaseApplication.getResourses().getString(R.string.skills_in_action), performAnimeTitleFiltering(putYourSkillsInAction.data)),
+                            Pair(BaseApplication.getResourses().getString(R.string.budding_romance), performAnimeTitleFiltering(buddingRomanceTrivia.data)),
+                            Pair(BaseApplication.getResourses().getString(R.string.go_on_adventure), performAnimeTitleFiltering(letsGoOnAnAdventure.data)),
+                            Pair(BaseApplication.getResourses().getString(R.string.dark_anime), performAnimeTitleFiltering(darkAnimeTrivia.data)),
+                            Pair(BaseApplication.getResourses().getString(R.string.everything_mecha), performAnimeTitleFiltering(everythingMecha.data)),
+                            Pair(BaseApplication.getResourses().getString(R.string.classical_anime), performAnimeTitleFiltering(classicalAnimeTrivia.data))
                     ))
                 }
         )

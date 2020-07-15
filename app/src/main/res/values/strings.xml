@@ -13,6 +13,16 @@
     <string name="new_user">New Around Here?</string>
     <string name="play">Play</string>
     <string name="practice">Practice</string>
+    <string name="skills_in_action">Put your skills in action!</string>
+    <string name="go_on_adventure">Let\'s go on an adventure!</string>
+    <string name="alchemy_wizards">Alchemy, wizards and fairies!</string>
+    <string name="goofy_lovable">Goofy but lovable trivia</string>
+    <string name="budding_romance">Budding romance trivia</string>
+    <string name="potato_chip">I\'ll take a potato chip…</string>
+    <string name="dark_anime">Dark anime trivia</string>
+    <string name="everything_mecha">Everything mecha!</string>
+    <string name="classical_anime">Classical anime trivia</string>
+
 
     <!-- Anime Detail Layout -->
     <string name="take_quiz">Take Quiz</string>
@@ -34,6 +44,7 @@
     <string name="time_up">Time Up!</string>
     <string name="next_question">Next Question!</string>
     <string name="got_the_hang_of_it">You\'ve got the hang of it! Visit an anime community for more targeted questions.</string>
+    <string name="score">Score</string>
 
     <!-- Ask Question Layout -->
     <string name="enter_question">Don\'t be shy. Ask a question!</string>
@@ -82,6 +93,8 @@
     <string name="basic">Basic</string>
     <string name="other">Other</string>
     <string name="vibration_summary">Incorrect response feedback</string>
+    <string name="terms_of_use">Terms of Use</string>
+    <string name="privacy">Privacy</string>
 
 
     <!-- Bottom Navigation Layout -->
@@ -129,5 +142,6 @@
     <string name="image_detail_description" translatable="false">image detail description</string>
     <string name="return_home">Return Home</string>
     <string name="exit_quiz">Exit Quiz</string>
+    <string name="_0">0</string>
 
 </resources>
