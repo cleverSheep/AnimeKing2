@@ -26,8 +26,9 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
 import com.murrayde.animekingmobile.R
-import com.murrayde.animekingmobile.util.AppStatus
+import com.murrayde.animekingmobile.extensions.mayNavigate
 import com.murrayde.animekingmobile.network.community.api_models.AnimeData
+import com.murrayde.animekingmobile.util.AppStatus
 import kotlinx.android.synthetic.main.fragment_login.*
 import timber.log.Timber
 
@@ -186,10 +187,8 @@ class LoginFragment : Fragment() {
 
     private fun updateUI(user: FirebaseUser?) {
         if (user != null) {
-            Timber.d("Login success!")
             val directions = LoginFragmentDirections.actionLoginFragmentToHome()
-            if (view != null) {
-                Timber.d("Login update was successful")
+            if (view != null && mayNavigate()) {
                 Navigation.findNavController(requireView()).navigate(directions)
             }
         } else {
