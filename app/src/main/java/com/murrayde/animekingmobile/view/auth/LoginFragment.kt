@@ -21,10 +21,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
-import com.google.firebase.auth.FacebookAuthProvider
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.auth.GoogleAuthProvider
+import com.google.firebase.auth.*
 import com.murrayde.animekingmobile.R
 import com.murrayde.animekingmobile.extensions.mayNavigate
 import com.murrayde.animekingmobile.network.community.api_models.AnimeData
@@ -40,7 +37,7 @@ class LoginFragment : Fragment() {
     private lateinit var accessTokenTracker: AccessTokenTracker
     private lateinit var gso: GoogleSignInOptions
     private lateinit var googleSignInClient: GoogleSignInClient
-    private val RC_SIGN_IN = 1
+    private val RC_SIGN_IN = 1001
     private lateinit var loginViewModel: LoginViewModel
 
     private lateinit var anime_auto_scroll: AutoScrollRecyclerView
@@ -94,7 +91,7 @@ class LoginFragment : Fragment() {
         LoginManager.getInstance().registerCallback(callbackManager, object : FacebookCallback<LoginResult> {
             override fun onSuccess(result: LoginResult?) {
                 Timber.d("facebook:onSuccess:$result")
-                handleFacebookAccessToken(result!!.accessToken, view)
+                firebaseAuthWithFacebook(result!!.accessToken)
             }
 
             override fun onCancel() {
@@ -131,6 +128,102 @@ class LoginFragment : Fragment() {
 
     }
 
+    private fun firebaseAuthWithFacebook(accessToken: AccessToken) {
+        val facebookAccessToken = accessToken.token
+        val credential = FacebookAuthProvider.getCredential(facebookAccessToken)
+        if (auth.currentUser != null) {
+            auth.currentUser!!.linkWithCredential(credential)
+                    .addOnCompleteListener { task ->
+                        if (task.isSuccessful) {
+                            Timber.d("linkWithCredential:success")
+                            /*val user = task.result?.user
+                            updateUI(user)*/
+                        } else {
+                            Timber.d("linkWithCredential:failure")
+                            Toast.makeText(context, "Sign in failed. Try Connecting with Google.",
+                                    Toast.LENGTH_SHORT).show()
+                            mergeUserData(credential)
+                        }
+                    }
+
+        } else {
+            Toast.makeText(context, "Authentication failed.",
+                    Toast.LENGTH_SHORT).show()
+            mergeUserData(credential)
+        }
+    }
+
+    private fun firebaseAuthWithGoogle(acct: GoogleSignInAccount) {
+        val googleIdToken = acct.idToken
+        val credential = GoogleAuthProvider.getCredential(googleIdToken, null)
+        if (auth.currentUser != null) {
+            auth.currentUser!!.linkWithCredential(credential)
+                    .addOnCompleteListener { task ->
+                        if (task.isSuccessful) {
+                            Timber.d("linkWithCredential:success")
+                            /*val user = task.result?.user
+                            updateUI(user)*/
+                        } else {
+                            Timber.d("linkWithCredential:failure")
+                            Toast.makeText(context, "Authentication failed.",
+                                    Toast.LENGTH_SHORT).show()
+                            mergeUserData(credential)
+                        }
+                    }
+
+        } else {
+            mergeUserData(credential)
+        }
+    }
+
+    private fun googleSignIn() {
+        val signInIntent = googleSignInClient.signInIntent
+        startActivityForResult(signInIntent, RC_SIGN_IN)
+    }
+
+    private fun updateUI(user: FirebaseUser?) {
+        if (user != null) {
+            val directions = LoginFragmentDirections.actionLoginFragmentToHome()
+            if (view != null && mayNavigate()) {
+                Timber.d("User may navigate!")
+                Navigation.findNavController(requireView()).navigate(directions)
+            }
+        } else {
+            Timber.d("Login failure!")
+        }
+    }
+
+    private fun mergeUserData(credential: AuthCredential) {
+        auth.signInWithCredential(credential).addOnCompleteListener { task ->
+            if (task.isSuccessful) {
+                Timber.d("linkWithCredential:success")
+                val user = task.result?.user
+                updateUI(user)
+            }
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        // Pass the activity result back to the Facebook SDK
+        callbackManager.onActivityResult(requestCode, resultCode, data)
+        super.onActivityResult(requestCode, resultCode, data)
+
+        // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
+        if (requestCode == RC_SIGN_IN) {
+            val task = GoogleSignIn.getSignedInAccountFromIntent(data)
+            try {
+                // Google Sign In was successful, authenticate with Firebase
+                val account = task.getResult(ApiException::class.java)
+                firebaseAuthWithGoogle(account!!)
+            } catch (e: ApiException) {
+                // Google Sign In failed, update UI appropriately
+                Timber.w("Google sign in failed: ${e.printStackTrace()}")
+            }
+        }
+
+    }
+
+
     private fun updateMangaList(loginRvAdapterManga: LoginFragmentRecyclerviewAdapter) {
         if (!hasNetworkConnection()) return
         if (loginRvAdapterManga.isReady) {
@@ -158,86 +251,10 @@ class LoginFragment : Fragment() {
         }
     }
 
-    private fun handleFacebookAccessToken(token: AccessToken, view: View) {
-        Timber.d("handleFacebookAccessToken:$token")
-
-        val credential = FacebookAuthProvider.getCredential(token.token)
-        auth.signInWithCredential(credential)
-                .addOnCompleteListener(requireActivity()) { task ->
-                    if (task.isSuccessful) {
-                        // Sign in success, update UI with the signed-in user's information
-                        Timber.d("signInWithCredential:success")
-                        val user = auth.currentUser
-                        updateUI(user)
-                    } else {
-                        // If sign in fails, display a message to the user.
-                        Timber.w("signInWithCredential:failure")
-                        Toast.makeText(activity, "Authentication failed.",
-                                Toast.LENGTH_SHORT).show()
-                        updateUI(null)
-                    }
-                }
-    }
-
     private fun hasNetworkConnection(): Boolean {
         if (AppStatus.getInstance(requireActivity()).isOnline) return true
         Toast.makeText(activity, "Please connect to the internet...", Toast.LENGTH_SHORT).show()
         return false
-    }
-
-    private fun updateUI(user: FirebaseUser?) {
-        if (user != null) {
-            val directions = LoginFragmentDirections.actionLoginFragmentToHome()
-            if (view != null && mayNavigate()) {
-                Navigation.findNavController(requireView()).navigate(directions)
-            }
-        } else {
-            Timber.d("Login failure!")
-        }
-    }
-
-    private fun googleSignIn() {
-        val signInIntent = googleSignInClient.signInIntent
-        startActivityForResult(signInIntent, RC_SIGN_IN)
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        // Pass the activity result back to the Facebook SDK
-        callbackManager.onActivityResult(requestCode, resultCode, data)
-        super.onActivityResult(requestCode, resultCode, data)
-
-        // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
-        if (requestCode == RC_SIGN_IN) {
-            val task = GoogleSignIn.getSignedInAccountFromIntent(data)
-            try {
-                // Google Sign In was successful, authenticate with Firebase
-                val account = task.getResult(ApiException::class.java)
-                firebaseAuthWithGoogle(account!!)
-            } catch (e: ApiException) {
-                // Google Sign In failed, update UI appropriately
-                Timber.w("Google sign in failed: ${e.printStackTrace()}")
-            }
-        }
-
-    }
-
-    private fun firebaseAuthWithGoogle(acct: GoogleSignInAccount) {
-        Timber.d("firebaseAuthWithGoogle:")
-
-        val credential = GoogleAuthProvider.getCredential(acct.idToken, null)
-        auth.signInWithCredential(credential)
-                .addOnCompleteListener { task ->
-                    if (task.isSuccessful) {
-                        // Sign in success, update UI with the signed-in user's information
-                        Timber.d("signInWithCredential:success")
-                        val user = auth.currentUser
-                        updateUI(user)
-                    } else {
-                        // If sign in fails, display a message to the user.
-                        Timber.w("signInWithCredential:failure")
-                        updateUI(null)
-                    }
-                }
     }
 
     override fun onStart() {
