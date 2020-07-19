@@ -10,9 +10,11 @@ import javax.inject.Inject
 
 class AnswerQuestionRepo @Inject constructor(private val firebaseApiClient: FirebaseApiClient) : Repository {
 
+/*
     fun getQuestions(anime_title: String): Single<List<CommunityQuestion>> {
         return firebaseApiClient.getQuestions(anime_title)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
     }
+*/
 }
