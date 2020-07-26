@@ -43,6 +43,7 @@
     <color name="goldish_color_light">#fcf580</color>
     <color name="color_bg_white_dark">#D8D8D8</color>
     <color name="color_background_white">#F1F1F1</color>
+    <color name="color_background_white_second">#8CF1F1F1</color>
     <color name="color_google_bg_signin">#4285F4</color>
     <color name="color_light_gray">#4E555E</color>
 </resources>

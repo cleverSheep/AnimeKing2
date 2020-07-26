@@ -9,6 +9,7 @@
         android:layout_width="0dp"
         android:layout_height="275dp"
         android:adjustViewBounds="true"
+        android:foreground="@drawable/item_header_second_view"
         android:scaleType="centerCrop"
         android:src="@drawable/dbzpriginal"
         app:layout_constraintEnd_toEndOf="parent"
