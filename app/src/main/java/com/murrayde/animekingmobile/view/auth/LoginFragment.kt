@@ -9,10 +9,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.facebook.*
 import com.facebook.login.LoginManager
 import com.facebook.login.LoginResult
@@ -28,7 +26,6 @@ import com.google.firebase.auth.GoogleAuthProvider
 import com.murrayde.animekingmobile.R
 import com.murrayde.animekingmobile.extensions.mayNavigate
 import com.murrayde.animekingmobile.network.community.api_models.AnimeData
-import com.murrayde.animekingmobile.util.AppStatus
 import kotlinx.android.synthetic.main.fragment_login.*
 import timber.log.Timber
 
@@ -43,9 +40,6 @@ class LoginFragment : Fragment() {
     private val RC_SIGN_IN = 1
     private lateinit var loginViewModel: LoginViewModel
 
-    private lateinit var anime_auto_scroll: AutoScrollRecyclerView
-    private lateinit var manga_auto_scroll: AutoScrollRecyclerView
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         auth = FirebaseAuth.getInstance()
@@ -58,16 +52,8 @@ class LoginFragment : Fragment() {
                 .build()
         googleSignInClient = GoogleSignIn.getClient(requireActivity(), gso)
         loginViewModel = ViewModelProvider(requireActivity()).get(LoginViewModel::class.java)
+        return inflater.inflate(R.layout.fragment_login_carousel, container, false)
 
-        if (hasNetworkConnection()) {
-            val view = inflater.inflate(R.layout.fragment_login_carousel, container, false)
-            loginViewModel.fetchAnimeImages()
-            loginViewModel.fetchMangaImages()
-            anime_auto_scroll = view.findViewById(R.id.rv_login_images_anime)
-            manga_auto_scroll = view.findViewById(R.id.rv_login_images_manga)
-            return view
-        }
-        return inflater.inflate(R.layout.fragment_login, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -78,18 +64,6 @@ class LoginFragment : Fragment() {
 
         val list_manga_data = arrayListOf<AnimeData>()
         val login_rv_adapter_manga = LoginFragmentRecyclerviewAdapter(list_manga_data)
-
-        if (hasNetworkConnection()) {
-            loginViewModel.animeImages().observe(requireActivity(), Observer { list_images ->
-                login_rv_adapter_anime.updateLoginList(list_images)
-                updateAnimeList(login_rv_adapter_anime)
-            })
-
-            loginViewModel.mangaImages().observe(requireActivity(), Observer { list_images ->
-                login_rv_adapter_manga.updateLoginList(list_images)
-                updateMangaList(login_rv_adapter_manga)
-            })
-        }
 
         LoginManager.getInstance().registerCallback(callbackManager, object : FacebookCallback<LoginResult> {
             override fun onSuccess(result: LoginResult?) {
@@ -131,33 +105,6 @@ class LoginFragment : Fragment() {
 
     }
 
-    private fun updateMangaList(loginRvAdapterManga: LoginFragmentRecyclerviewAdapter) {
-        if (!hasNetworkConnection()) return
-        if (loginRvAdapterManga.isReady) {
-            manga_auto_scroll.apply {
-                adapter = loginRvAdapterManga
-                layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
-                isLoopEnabled = true
-            }
-
-            manga_auto_scroll.openAutoScroll(25, true)
-            manga_auto_scroll.setCanTouch(false)
-        }
-    }
-
-    private fun updateAnimeList(loginRvAdapterAnime: LoginFragmentRecyclerviewAdapter) {
-        if (!hasNetworkConnection()) return
-        if (loginRvAdapterAnime.isReady) {
-            anime_auto_scroll.apply {
-                adapter = loginRvAdapterAnime
-                layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
-                isLoopEnabled = true
-            }
-            anime_auto_scroll.openAutoScroll(25, false)
-            anime_auto_scroll.setCanTouch(false)
-        }
-    }
-
     private fun handleFacebookAccessToken(token: AccessToken, view: View) {
         Timber.d("handleFacebookAccessToken:$token")
 
@@ -177,12 +124,6 @@ class LoginFragment : Fragment() {
                         updateUI(null)
                     }
                 }
-    }
-
-    private fun hasNetworkConnection(): Boolean {
-        if (AppStatus.getInstance(requireActivity()).isOnline) return true
-        Toast.makeText(activity, "Please connect to the internet...", Toast.LENGTH_SHORT).show()
-        return false
     }
 
     private fun updateUI(user: FirebaseUser?) {

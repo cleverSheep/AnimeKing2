@@ -103,4 +103,39 @@
         <item name="android:layout_height">wrap_content</item>
     </style>
 
+    <style name="OrganicFtuxText">
+        <item name="android:textSize">@dimen/organic_ftux_text_size</item>
+        <item name="android:textColor">@color/adaptive_black_70_or_night_mode_white</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+    <style name="OrganicFtuxHeader" parent="OrganicFtuxText">
+        <item name="android:textSize">@dimen/organic_ftux_header_text_size</item>
+    </style>
+
+    <style name="OnBoardingLTUXText">
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textColor">@color/adaptive_black_85_or_night_mode_white</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+
+    <style name="DisclaimerLinkStyle">
+        <item name="android:textSize">10sp</item>
+        <item name="android:textIsSelectable">false</item>
+        <item name="android:layout_marginStart">28dp</item>
+        <item name="android:layout_marginEnd">28dp</item>
+        <item name="android:linksClickable">true</item>
+        <item name="android:focusable">true</item>
+        <item name="android:clickable">true</item>
+        <item name="android:textColorHighlight">#3668ff</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textColor">#4a4a4a</item>
+        <item name="android:textColorLink">#4a4a4a</item>
+    </style>
+
 </resources>
