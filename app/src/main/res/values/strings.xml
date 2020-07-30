@@ -146,5 +146,7 @@
     <string name="return_home">Return Home</string>
     <string name="exit_quiz">Exit Quiz</string>
     <string name="_0">0</string>
+    <string name="pick_your_anime">Pick your anime.</string>
+    <string name="claim_your_crown">Claim your crown.</string>
 
 </resources>
