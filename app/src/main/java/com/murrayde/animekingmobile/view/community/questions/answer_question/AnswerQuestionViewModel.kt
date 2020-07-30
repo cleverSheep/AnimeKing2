@@ -67,7 +67,6 @@ class AnswerQuestionViewModel @ViewModelInject constructor(private val answerQue
                     }
                 }
             }
-            /*checkQuestionSize()*/
         }
     }
 
