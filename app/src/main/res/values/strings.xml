@@ -39,7 +39,7 @@
     <string name="number_questions">%1$s questions</string>
 
     <!-- Not Enough Questions -->
-    <string name="insufficient_questions">Uh oh! We can\'t find enough questions. A minimum of 7 questions is necessary to play. Help us out by asking a question!</string>
+    <string name="insufficient_questions">Uh oh! We can\'t find enough questions. A minimum of 10 questions is necessary to play. Help us out by asking a question!</string>
     <string name="add_questions">Add More Questions</string>
 
 
