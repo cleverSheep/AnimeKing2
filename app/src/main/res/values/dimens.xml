@@ -4,4 +4,7 @@
     <dimen name="button_text_size">25sp</dimen>
     <dimen name="text_size">22sp</dimen>
     <dimen name="auth_text_size">15sp</dimen>
+
+    <dimen name="organic_ftux_header_text_size">30sp</dimen>
+    <dimen name="organic_ftux_text_size">18sp</dimen>
 </resources>

@@ -42,7 +42,14 @@
     <color name="goldish_color">#FCA63B</color>
     <color name="goldish_color_light">#fcf580</color>
     <color name="color_bg_white_dark">#D8D8D8</color>
-    <color name="color_background_white">#F1F1F1</color>
+    <color name="color_background_white">#FFF</color>
+    <color name="color_background_white_second">#8CF1F1F1</color>
     <color name="color_google_bg_signin">#4285F4</color>
     <color name="color_light_gray">#4E555E</color>
+
+    <color name="adaptive_black_85_or_night_mode_white">@color/black_85_percent</color>
+    <color name="adaptive_black_70_or_night_mode_white">@color/black_70_percent</color>
+
+    <color name="black_85_percent">#D9000000</color>
+    <color name="black_70_percent">#4a4a4a</color>
 </resources>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="VerticalScrollingImageView">
+        <attr name="src" format="reference"/>
+        <attr name="scroll_ms" format="integer|reference"/>
+        <attr name="translate_offset" format="float|reference"/>
+    </declare-styleable>
+</resources>
