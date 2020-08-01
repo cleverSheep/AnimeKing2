@@ -7,10 +7,12 @@ import android.os.Parcelable;
 import androidx.annotation.Keep;
 import androidx.annotation.RequiresApi;
 
+import com.murrayde.animekingmobile.model.question.Reviewable;
+
 import java.util.ArrayList;
 
 @Keep
-public class CommunityQuestion implements Parcelable {
+public class CommunityQuestion extends Reviewable implements Parcelable {
     private String question;
     private String image_url;
     private String question_id;

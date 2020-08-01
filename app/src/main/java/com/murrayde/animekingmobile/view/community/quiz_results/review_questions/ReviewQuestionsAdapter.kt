@@ -33,6 +33,21 @@ class ReviewQuestionsAdapter(val context: Context, private val list_questions: A
         holder.review_question.text = list_questions[position].question
         holder.review_correct_answer.text = String.format(context.getString(R.string.review_correct_choice, list_questions[position].correctResponse))
 
+        holder.review_like_button.setOnClickListener {
+            list_questions[position].likeQuestion()
+            it!!.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
+            it.background = it.context.resources.getDrawable(R.drawable.button_like_selector)
+            it.background = it.context.resources.getDrawable(R.drawable.ic_thumb_down)
+
+        }
+        holder.review_dislike_button.setOnClickListener {
+            list_questions[position].dislikeQuestion()
+            it!!.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
+            it.background = it.context.resources.getDrawable(R.drawable.button_dislike_selector)
+            it.background = it.context.resources.getDrawable(R.drawable.ic_thumb_up)
+        }
+
+
     }
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -42,19 +57,6 @@ class ReviewQuestionsAdapter(val context: Context, private val list_questions: A
 
         var review_like_button: ToggleButton = view.findViewById(R.id.review_thumb_up)
         var review_dislike_button: ToggleButton = view.findViewById(R.id.review_thumb_down)
-
-        init {
-            review_like_button.setOnClickListener {
-                it!!.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
-                review_like_button.background = view.context.resources.getDrawable(R.drawable.button_like_selector)
-                review_dislike_button.background = view.context.resources.getDrawable(R.drawable.ic_thumb_down)
-            }
-            review_dislike_button.setOnClickListener {
-                it!!.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
-                review_dislike_button.background = view.context.resources.getDrawable(R.drawable.button_dislike_selector)
-                review_like_button.background = view.context.resources.getDrawable(R.drawable.ic_thumb_up)
-            }
-        }
     }
 
 }

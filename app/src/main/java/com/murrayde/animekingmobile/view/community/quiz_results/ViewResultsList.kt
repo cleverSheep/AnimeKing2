@@ -12,6 +12,7 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
@@ -27,6 +28,7 @@ import com.murrayde.animekingmobile.view.community.quiz_results.review_questions
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_view_results.*
 import kotlinx.android.synthetic.main.fragment_view_results_bottom_sheet.*
+import timber.log.Timber
 
 
 @AndroidEntryPoint
@@ -103,6 +105,18 @@ class ViewResultsList : Fragment() {
                 }
             }
 
+        })
+
+        done_reviewing.setOnClickListener {
+            val reviewedQuestions = list_questions.filter {
+                it.isLiked || it.isDisliked
+            }
+            resultsViewModel.submitQuestionReviews(reviewedQuestions)
+        }
+
+        resultsViewModel.questionsAreReviewed().observe(requireActivity(), Observer { questionsAreReviewed ->
+            if (questionsAreReviewed) Timber.d("Question reviews are submitted!")
+            else Timber.d("Question reviews are processing!")
         })
 
         results_quit_game.setOnClickListener { v ->
