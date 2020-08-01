@@ -9,10 +9,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.facebook.*
 import com.facebook.login.LoginManager
 import com.facebook.login.LoginResult
@@ -21,11 +19,13 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
-import com.google.firebase.auth.*
+import com.google.firebase.auth.FacebookAuthProvider
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.auth.GoogleAuthProvider
 import com.murrayde.animekingmobile.R
 import com.murrayde.animekingmobile.extensions.mayNavigate
 import com.murrayde.animekingmobile.network.community.api_models.AnimeData
-import com.murrayde.animekingmobile.util.AppStatus
 import kotlinx.android.synthetic.main.fragment_login.*
 import timber.log.Timber
 
@@ -37,11 +37,8 @@ class LoginFragment : Fragment() {
     private lateinit var accessTokenTracker: AccessTokenTracker
     private lateinit var gso: GoogleSignInOptions
     private lateinit var googleSignInClient: GoogleSignInClient
-    private val RC_SIGN_IN = 1001
+    private val RC_SIGN_IN = 1
     private lateinit var loginViewModel: LoginViewModel
-
-    private lateinit var anime_auto_scroll: AutoScrollRecyclerView
-    private lateinit var manga_auto_scroll: AutoScrollRecyclerView
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -55,16 +52,8 @@ class LoginFragment : Fragment() {
                 .build()
         googleSignInClient = GoogleSignIn.getClient(requireActivity(), gso)
         loginViewModel = ViewModelProvider(requireActivity()).get(LoginViewModel::class.java)
+        return inflater.inflate(R.layout.fragment_login_carousel, container, false)
 
-        if (hasNetworkConnection()) {
-            val view = inflater.inflate(R.layout.fragment_login_carousel, container, false)
-            loginViewModel.fetchAnimeImages()
-            loginViewModel.fetchMangaImages()
-            anime_auto_scroll = view.findViewById(R.id.rv_login_images_anime)
-            manga_auto_scroll = view.findViewById(R.id.rv_login_images_manga)
-            return view
-        }
-        return inflater.inflate(R.layout.fragment_login, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -76,22 +65,10 @@ class LoginFragment : Fragment() {
         val list_manga_data = arrayListOf<AnimeData>()
         val login_rv_adapter_manga = LoginFragmentRecyclerviewAdapter(list_manga_data)
 
-        if (hasNetworkConnection()) {
-            loginViewModel.animeImages().observe(requireActivity(), Observer { list_images ->
-                login_rv_adapter_anime.updateLoginList(list_images)
-                updateAnimeList(login_rv_adapter_anime)
-            })
-
-            loginViewModel.mangaImages().observe(requireActivity(), Observer { list_images ->
-                login_rv_adapter_manga.updateLoginList(list_images)
-                updateMangaList(login_rv_adapter_manga)
-            })
-        }
-
         LoginManager.getInstance().registerCallback(callbackManager, object : FacebookCallback<LoginResult> {
             override fun onSuccess(result: LoginResult?) {
                 Timber.d("facebook:onSuccess:$result")
-                firebaseAuthWithFacebook(result!!.accessToken)
+                handleFacebookAccessToken(result!!.accessToken, view)
             }
 
             override fun onCancel() {
@@ -128,64 +105,31 @@ class LoginFragment : Fragment() {
 
     }
 
-    private fun firebaseAuthWithFacebook(accessToken: AccessToken) {
-        val facebookAccessToken = accessToken.token
-        val credential = FacebookAuthProvider.getCredential(facebookAccessToken)
-        if (auth.currentUser != null) {
-            auth.currentUser!!.linkWithCredential(credential)
-                    .addOnCompleteListener { task ->
-                        if (task.isSuccessful) {
-                            Timber.d("linkWithCredential:success")
-                            /*val user = task.result?.user
-                            updateUI(user)*/
-                        } else {
-                            Timber.d("linkWithCredential:failure")
-                            Toast.makeText(context, "Sign in failed. Try Connecting with Google.",
-                                    Toast.LENGTH_SHORT).show()
-                            mergeUserData(credential)
-                        }
+    private fun handleFacebookAccessToken(token: AccessToken, view: View) {
+        Timber.d("handleFacebookAccessToken:$token")
+
+        val credential = FacebookAuthProvider.getCredential(token.token)
+        auth.signInWithCredential(credential)
+                .addOnCompleteListener(requireActivity()) { task ->
+                    if (task.isSuccessful) {
+                        // Sign in success, update UI with the signed-in user's information
+                        Timber.d("signInWithCredential:success")
+                        val user = auth.currentUser
+                        updateUI(user)
+                    } else {
+                        // If sign in fails, display a message to the user.
+                        Timber.w("signInWithCredential:failure")
+                        Toast.makeText(activity, "Authentication failed.",
+                                Toast.LENGTH_SHORT).show()
+                        updateUI(null)
                     }
-
-        } else {
-            Toast.makeText(context, "Authentication failed.",
-                    Toast.LENGTH_SHORT).show()
-            mergeUserData(credential)
-        }
-    }
-
-    private fun firebaseAuthWithGoogle(acct: GoogleSignInAccount) {
-        val googleIdToken = acct.idToken
-        val credential = GoogleAuthProvider.getCredential(googleIdToken, null)
-        if (auth.currentUser != null) {
-            auth.currentUser!!.linkWithCredential(credential)
-                    .addOnCompleteListener { task ->
-                        if (task.isSuccessful) {
-                            Timber.d("linkWithCredential:success")
-                            /*val user = task.result?.user
-                            updateUI(user)*/
-                        } else {
-                            Timber.d("linkWithCredential:failure")
-                            Toast.makeText(context, "Authentication failed.",
-                                    Toast.LENGTH_SHORT).show()
-                            mergeUserData(credential)
-                        }
-                    }
-
-        } else {
-            mergeUserData(credential)
-        }
-    }
-
-    private fun googleSignIn() {
-        val signInIntent = googleSignInClient.signInIntent
-        startActivityForResult(signInIntent, RC_SIGN_IN)
+                }
     }
 
     private fun updateUI(user: FirebaseUser?) {
         if (user != null) {
             val directions = LoginFragmentDirections.actionLoginFragmentToHome()
             if (view != null && mayNavigate()) {
-                Timber.d("User may navigate!")
                 Navigation.findNavController(requireView()).navigate(directions)
             }
         } else {
@@ -193,14 +137,9 @@ class LoginFragment : Fragment() {
         }
     }
 
-    private fun mergeUserData(credential: AuthCredential) {
-        auth.signInWithCredential(credential).addOnCompleteListener { task ->
-            if (task.isSuccessful) {
-                Timber.d("linkWithCredential:success")
-                val user = task.result?.user
-                updateUI(user)
-            }
-        }
+    private fun googleSignIn() {
+        val signInIntent = googleSignInClient.signInIntent
+        startActivityForResult(signInIntent, RC_SIGN_IN)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -223,38 +162,23 @@ class LoginFragment : Fragment() {
 
     }
 
+    private fun firebaseAuthWithGoogle(acct: GoogleSignInAccount) {
+        Timber.d("firebaseAuthWithGoogle:")
 
-    private fun updateMangaList(loginRvAdapterManga: LoginFragmentRecyclerviewAdapter) {
-        if (!hasNetworkConnection()) return
-        if (loginRvAdapterManga.isReady) {
-            manga_auto_scroll.apply {
-                adapter = loginRvAdapterManga
-                layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
-                isLoopEnabled = true
-            }
-
-            manga_auto_scroll.openAutoScroll(25, true)
-            manga_auto_scroll.setCanTouch(false)
-        }
-    }
-
-    private fun updateAnimeList(loginRvAdapterAnime: LoginFragmentRecyclerviewAdapter) {
-        if (!hasNetworkConnection()) return
-        if (loginRvAdapterAnime.isReady) {
-            anime_auto_scroll.apply {
-                adapter = loginRvAdapterAnime
-                layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
-                isLoopEnabled = true
-            }
-            anime_auto_scroll.openAutoScroll(25, false)
-            anime_auto_scroll.setCanTouch(false)
-        }
-    }
-
-    private fun hasNetworkConnection(): Boolean {
-        if (AppStatus.getInstance(requireActivity()).isOnline) return true
-        Toast.makeText(activity, "Please connect to the internet...", Toast.LENGTH_SHORT).show()
-        return false
+        val credential = GoogleAuthProvider.getCredential(acct.idToken, null)
+        auth.signInWithCredential(credential)
+                .addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        // Sign in success, update UI with the signed-in user's information
+                        Timber.d("signInWithCredential:success")
+                        val user = auth.currentUser
+                        updateUI(user)
+                    } else {
+                        // If sign in fails, display a message to the user.
+                        Timber.w("signInWithCredential:failure")
+                        updateUI(null)
+                    }
+                }
     }
 
     override fun onStart() {
