@@ -96,6 +96,6 @@ class ResultsViewModel @ViewModelInject() constructor() : ViewModel() {
         }
     }
 
-    fun questionsAreReviewed(): LiveData<Boolean> = questionsAreReviewed()
+    fun questionsAreReviewed(): LiveData<Boolean> = questionReviewsSubmitted
 
 }

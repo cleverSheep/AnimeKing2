@@ -37,14 +37,14 @@ class ReviewQuestionsAdapter(val context: Context, private val list_questions: A
             list_questions[position].likeQuestion()
             it!!.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
             it.background = it.context.resources.getDrawable(R.drawable.button_like_selector)
-            it.background = it.context.resources.getDrawable(R.drawable.ic_thumb_down)
+            holder.review_dislike_button.background = it.context.resources.getDrawable(R.drawable.ic_thumb_down)
 
         }
         holder.review_dislike_button.setOnClickListener {
             list_questions[position].dislikeQuestion()
             it!!.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
             it.background = it.context.resources.getDrawable(R.drawable.button_dislike_selector)
-            it.background = it.context.resources.getDrawable(R.drawable.ic_thumb_up)
+            holder.review_like_button.background = it.context.resources.getDrawable(R.drawable.ic_thumb_up)
         }
 
 
