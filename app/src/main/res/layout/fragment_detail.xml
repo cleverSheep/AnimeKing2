@@ -62,9 +62,9 @@
         android:text="@string/ask_question"
         android:textColor="@color/color_background_white"
         android:textSize="@dimen/_15sdp"
-        app:layout_constraintEnd_toEndOf="@+id/fragment_detail_multiplayer"
-        app:layout_constraintStart_toStartOf="@+id/fragment_detail_multiplayer"
-        app:layout_constraintTop_toBottomOf="@+id/fragment_detail_multiplayer" />
+        app:layout_constraintEnd_toEndOf="@+id/fragment_detail_take_quiz"
+        app:layout_constraintStart_toStartOf="@+id/fragment_detail_take_quiz"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_detail_take_quiz" />
 
     <Button
         android:id="@+id/fragment_detail_home"
@@ -94,6 +94,7 @@
         android:text="@string/multi_player"
         android:textColor="@color/color_background_white"
         android:textSize="@dimen/_15sdp"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="@+id/fragment_detail_take_quiz"
         app:layout_constraintStart_toStartOf="@+id/fragment_detail_take_quiz"
         app:layout_constraintTop_toBottomOf="@+id/fragment_detail_take_quiz" />

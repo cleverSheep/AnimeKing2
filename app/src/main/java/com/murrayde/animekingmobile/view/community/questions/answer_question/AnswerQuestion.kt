@@ -3,6 +3,10 @@
 package com.murrayde.animekingmobile.view.community.questions.answer_question
 
 
+import android.animation.Animator
+import android.animation.AnimatorSet
+import android.animation.ObjectAnimator
+import android.animation.PropertyValuesHolder
 import android.content.Context
 import android.content.DialogInterface
 import android.content.SharedPreferences
@@ -14,6 +18,7 @@ import android.os.Vibrator
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.OvershootInterpolator
 import android.widget.Button
 import android.widget.ProgressBar
 import android.widget.TextView
@@ -26,7 +31,9 @@ import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
 import androidx.preference.PreferenceManager
 import com.murrayde.animekingmobile.R
+import com.murrayde.animekingmobile.extensions.animateQuizItems
 import com.murrayde.animekingmobile.extensions.hideView
+import com.murrayde.animekingmobile.extensions.reverseAnimate
 import com.murrayde.animekingmobile.extensions.showView
 import com.murrayde.animekingmobile.model.community.CommunityQuestion
 import com.murrayde.animekingmobile.util.QuestionUtil
@@ -111,9 +118,19 @@ class AnswerQuestion : Fragment() {
         buttonChoiceClick(list_buttons, communityQuestions, track)
 
         button_next_question.setOnClickListener {
-            val new_question = track + 1
-            prepareForNextQuestion(communityQuestions, new_question, view, list_buttons)
+            transitionToNextQuestion(track, communityQuestions, view, list_buttons)
         }
+
+        AnimatorSet().apply {
+            play(animateQuestion(tv_answer_question)).before(animateButtons(list_buttons))
+            startDelay = 1500
+            start()
+        }
+    }
+
+    private fun transitionToNextQuestion(track: Int, communityQuestions: List<CommunityQuestion>, view: View, list_buttons: ArrayList<Button>) {
+        val new_question = track + 1
+        prepareForNextQuestion(communityQuestions, new_question, view, list_buttons)
     }
 
     private fun navigateToResultsScreen(view: View) {
@@ -180,12 +197,11 @@ class AnswerQuestion : Fragment() {
                     results_view_model.updateTotalCorrect(total_correct)
                     results_view_model.updateCurrentScore(current_score)
                     results_view_model.incrementTimeBonus(current_time)
-                    alertCorrectResponse(view)
+                    alertCorrectResponse(view, list_buttons, correct_response, communityQuestions, question_track, list_buttons[position])
                 } else {
                     communityQuestions[question_track].setUserCorrectResponse(false)
-                    alertWrongResponse(view, list_buttons, correct_response)
+                    alertWrongResponse(view, list_buttons, correct_response, question_track, communityQuestions, list_buttons[position])
                 }
-                button_next_question.showView()
             }
         }
     }
@@ -199,23 +215,40 @@ class AnswerQuestion : Fragment() {
     private fun prepareForNextQuestion(communityQuestions: List<CommunityQuestion>, track: Int, view: View, list_buttons: ArrayList<Button>) {
         if (media_is_playing) media_default.start()
         button_next_question.hideView()
+        tv_answer_question.alpha = 0f
         repeat(list_buttons.size) { position ->
             list_buttons[position].setBackgroundColor(resources.getColor(R.color.color_white))
             list_buttons[position].setTextColor(resources.getColor(R.color.color_background_white))
             list_buttons[position].background = resources.getDrawable(R.drawable.answer_question_background)
             list_buttons[position].isClickable = true
+            list_buttons[position].alpha = 0f
         }
         loadQuestions(communityQuestions, track, view, list_buttons)
     }
 
-    private fun alertCorrectResponse(view: View) {
+    private fun alertCorrectResponse(view: View, list_buttons: ArrayList<Button>, correct_response: String, communityQuestions: List<CommunityQuestion>, question_track: Int, correctButton: Button) {
         val button = view as Button
         if (media_is_playing) media_correct.start()
         button.background = resources.getDrawable(R.drawable.answer_correct_background)
         button.setTextColor(resources.getColor(R.color.color_white))
+        val listOfButtonsToReverseAnimate = list_buttons.filter {
+            it.text != correct_response
+        }
+        reverseAnimateButtons(listOfButtonsToReverseAnimate)
+        view.postDelayed({
+            AnimatorSet().apply {
+                playTogether(
+                        tv_answer_question.reverseAnimate(),
+                        correctButton.reverseAnimate()
+                )
+                duration = 200
+                start()
+            }
+        }, 2500)
+        view.postDelayed({ transitionToNextQuestion(question_track, communityQuestions, view, list_buttons) }, 3000)
     }
 
-    private fun alertWrongResponse(view: View, list_buttons: ArrayList<Button>, correct_response: String) {
+    private fun alertWrongResponse(view: View, list_buttons: ArrayList<Button>, correct_response: String, question_track: Int, communityQuestions: List<CommunityQuestion>, correctButton: Button) {
         val button = view as Button
         if (media_is_playing) media_wrong.start()
         if (vibration_is_enabled) vibrator.vibrate(250)
@@ -227,13 +260,27 @@ class AnswerQuestion : Fragment() {
                 list_buttons[position].setTextColor(resources.getColor(R.color.color_background_white))
             }
         }
+        val listOfButtonsToReverseAnimate = list_buttons.filter {
+            it.text != correct_response
+        }
+        reverseAnimateButtons(listOfButtonsToReverseAnimate)
+        view.postDelayed({
+            AnimatorSet().apply {
+                playTogether(
+                        tv_answer_question.reverseAnimate(),
+                        correctButton.reverseAnimate()
+                )
+                duration = 200
+                start()
+            }
+        }, 2500)
+        view.postDelayed({ transitionToNextQuestion(question_track, communityQuestions, view, list_buttons) }, 3000)
     }
 
     override fun onStop() {
         super.onStop()
         countDownTimer.cancel()
     }
-
 
     private fun listButtons(): ArrayList<Button> {
         val list_buttons = ArrayList<Button>()
@@ -242,6 +289,52 @@ class AnswerQuestion : Fragment() {
         list_buttons.add(button_choice_three)
         list_buttons.add(button_choice_four)
         return list_buttons
+    }
+
+    private fun animateQuestion(question: TextView): Animator {
+        val scaleX = PropertyValuesHolder.ofFloat(View.SCALE_X, 0.25f, 1f)
+        val scaleY = PropertyValuesHolder.ofFloat(View.SCALE_Y, 0.25f, 1f)
+        val alpha = PropertyValuesHolder.ofFloat(View.ALPHA, 0f, 1f)
+
+        return ObjectAnimator.ofPropertyValuesHolder(question, scaleX, scaleY, alpha).apply {
+            duration = 450
+            interpolator = OvershootInterpolator()
+        }
+
+    }
+
+    private fun animateButtons(list_buttons: ArrayList<Button>): AnimatorSet {
+        val firstButton = list_buttons[0]
+        val secondButton = list_buttons[1]
+        val thirdButton = list_buttons[2]
+        val fourthButton = list_buttons[3]
+        return AnimatorSet().apply {
+            playSequentially(
+                    firstButton.animateQuizItems(),
+                    secondButton.animateQuizItems(),
+                    thirdButton.animateQuizItems(),
+                    fourthButton.animateQuizItems()
+            )
+            duration = 215
+            startDelay = 1000
+            interpolator = OvershootInterpolator()
+        }
+    }
+
+    private fun reverseAnimateButtons(list_buttons: List<Button>): AnimatorSet {
+        val firstButton = list_buttons[0]
+        val secondButton = list_buttons[1]
+        val thirdButton = list_buttons[2]
+        return AnimatorSet().apply {
+            playTogether(
+                    firstButton.reverseAnimate(),
+                    secondButton.reverseAnimate(),
+                    thirdButton.reverseAnimate()
+            )
+            duration = 200
+            startDelay = 1000
+            start()
+        }
     }
 
     override fun onDestroy() {
