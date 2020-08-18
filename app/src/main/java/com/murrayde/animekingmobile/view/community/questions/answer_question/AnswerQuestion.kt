@@ -185,6 +185,7 @@ class AnswerQuestion : Fragment() {
 
     private fun buttonChoiceClick(list_buttons: ArrayList<Button>, communityQuestions: List<CommunityQuestion>, question_track: Int) {
         val correct_response = communityQuestions[question_track].multiple_choice[0]
+        val correctButton = Button(context)
         repeat(list_buttons.size) { position ->
             list_buttons[position].setOnClickListener { view ->
                 countDownTimer.cancel()
@@ -200,7 +201,7 @@ class AnswerQuestion : Fragment() {
                     alertCorrectResponse(view, list_buttons, correct_response, communityQuestions, question_track, list_buttons[position])
                 } else {
                     communityQuestions[question_track].setUserCorrectResponse(false)
-                    alertWrongResponse(view, list_buttons, correct_response, question_track, communityQuestions, list_buttons[position])
+                    alertWrongResponse(view, list_buttons, correct_response, question_track, communityQuestions)
                 }
             }
         }
@@ -248,7 +249,7 @@ class AnswerQuestion : Fragment() {
         view.postDelayed({ transitionToNextQuestion(question_track, communityQuestions, view, list_buttons) }, 3000)
     }
 
-    private fun alertWrongResponse(view: View, list_buttons: ArrayList<Button>, correct_response: String, question_track: Int, communityQuestions: List<CommunityQuestion>, correctButton: Button) {
+    private fun alertWrongResponse(view: View, list_buttons: ArrayList<Button>, correct_response: String, question_track: Int, communityQuestions: List<CommunityQuestion>) {
         val button = view as Button
         if (media_is_playing) media_wrong.start()
         if (vibration_is_enabled) vibrator.vibrate(250)
@@ -263,6 +264,7 @@ class AnswerQuestion : Fragment() {
         val listOfButtonsToReverseAnimate = list_buttons.filter {
             it.text != correct_response
         }
+        val correctButton = list_buttons.filter { it.text == correct_response }[0]
         reverseAnimateButtons(listOfButtonsToReverseAnimate)
         view.postDelayed({
             AnimatorSet().apply {
