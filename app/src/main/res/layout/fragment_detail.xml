@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/color_white"
-    tools:context=".view.community.list_detail.AnimeListDetail">
+    tools:context=".screen.main.detail.AnimeListDetail">
     <!--NOTE: Use theme instead of style when changing toolbar text/back arrow color-->
     <ImageView
         android:id="@+id/fragment_detail_image"

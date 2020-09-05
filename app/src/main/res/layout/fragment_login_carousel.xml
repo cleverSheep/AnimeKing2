@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="@color/color_home_logo_update">
 
-    <com.murrayde.animekingmobile.view.auth.VerticalScrollingImageView
+    <com.murrayde.animekingmobile.screen.auth.VerticalScrollingImageView
         android:id="@+id/verticalScrollingImageView"
         android:layout_width="0dp"
         android:layout_height="0dp"

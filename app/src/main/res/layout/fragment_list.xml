@@ -6,7 +6,7 @@
     android:id="@+id/fragment_list"
     android:layout_height="match_parent"
     android:background="@color/color_background_white"
-    tools:context=".view.community.list_anime.AnimeList">
+    tools:context=".screen.main.master.AnimeList">
 
     <com.airbnb.epoxy.EpoxyRecyclerView
         android:id="@+id/rv_anime"

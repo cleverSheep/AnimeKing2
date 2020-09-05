@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <color name="color_accent">#FFF780</color>
+    <color name="color_background_dark">#2B2C39</color>
+    <color name="color_positive_light">#33CF80</color>
+    <color name="color_positive_dark">#00CD6C</color>
+    <color name="color_negative">#FF333E</color>
+    <color name="color_bronze">#FCA63B</color>
+
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#196740</color>

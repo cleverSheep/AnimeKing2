@@ -11,9 +11,7 @@
     <!-- Main app theme. -->
     <style name="MainAppTheme" parent="Theme.AppCompat.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@android:color/black</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="background">@color/color_background_dark</item>
     </style>
 
 
@@ -28,39 +26,13 @@
 
     <style name="ToolbarDarkTheme" parent="ThemeOverlay.AppCompat.Dark" />
 
-
     <style name="TextAppearance.TabsFont" parent="android:TextAppearance">
         <item name="android:fontFamily">@font/baloobhairegular</item>
         <item name="android:textSize">20sp</item>
     </style>
 
-    <style name="MeneNavTheme">
+    <style name="MenuNavTheme">
         <item name="android:fontFamily">@font/baloobhairegular</item>
-    </style>
-
-    <style name="facebook_style">
-        <item name="android:background">@drawable/facebook_drawable</item>
-        <item name="android:textSize">17sp</item>
-        <item name="android:layout_gravity">center</item>
-        <item name="android:fontFamily">@font/baloobhairegular</item>
-    </style>
-
-    <style name="AnswerQuestion_ButtonText">
-        <item name="android:textSize">@dimen/button_text_size</item>
-        <item name="android:textAllCaps">false</item>
-        <item name="fontFamily">@font/baloobhairegular</item>
-    </style>
-
-    <style name="Question_Incorrect_Format_Button">
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_width">match_parent</item>
-        <item name="background">@color/colorAccent</item>
-        <item name="android:clickable">true</item>
-        <item name="android:layout_margin">8dp</item>
-        <item name="fontFamily">@font/baloobhairegular</item>
-        <item name="android:textSize">20sp</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:textColor">@color/color_black</item>
     </style>
 
     <style name="Question_Incorrect_Format_Text">
@@ -72,35 +44,6 @@
         <item name="android:textColor">@color/color_white</item>
         <item name="android:textAlignment">center</item>
         <item name="android:textSize">20sp</item>
-    </style>
-
-    <style name="AnswerQuestion_Format_Button">
-        <item name="android:layout_width">0dp</item>
-        <item name="android:layout_height">0dp</item>
-        <item name="android:layout_marginVertical">16dp</item>
-        <item name="android:layout_marginHorizontal">16dp</item>
-        <item name="background">@drawable/answer_question_background</item>
-        <item name="fontFamily">@font/baloobhairegular</item>
-        <item name="android:textAlignment">center</item>
-        <item name="android:textColor">@color/color_black</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:textSize">17sp</item>
-    </style>
-
-    <style name="AskQuestion_Format_Edit_Wrong">
-        <item name="android:inputType">text</item>
-        <item name="android:maxLines">1</item>
-        <item name="android:textColor">@color/color_white</item>
-        <item name="android:textAlignment">center</item>
-        <item name="android:textColorHint">@color/color_white</item>
-        <item name="android:hint">@string/wrong_choice</item>
-        <item name="android:textCursorDrawable">@drawable/cursor_drawable</item>
-        <item name="fontFamily">@font/baloobhairegular</item>
-        <item name="background">@drawable/wrong_question_background</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:textSize">@dimen/text_size</item>
-        <item name="android:layout_width">0dp</item>
-        <item name="android:layout_height">wrap_content</item>
     </style>
 
     <style name="OrganicFtuxText">
@@ -136,6 +79,12 @@
         <item name="android:textAlignment">center</item>
         <item name="android:textColor">#4a4a4a</item>
         <item name="android:textColorLink">#4a4a4a</item>
+    </style>
+
+    <style name="QuizScreenAnswerChoice" parent="@style/ThemeOverlay.AppCompat.Dark">
+        <item name="android:drawableEnd">@drawable/ic_ellipse_2</item>
+        <item name="android:fontFamily">@font/gilroy_extra_bold</item>
+        <item name="android:textSize">15sp</item>
     </style>
 
 </resources>

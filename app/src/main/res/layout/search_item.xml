@@ -45,7 +45,7 @@
 
         <variable
             name="listener"
-            type="com.murrayde.animekingmobile.view.search.adapter.ClickListener" />
+            type="com.murrayde.animekingmobile.screen.search.adapter.ClickListener" />
 
         <variable
             name="anime_id"

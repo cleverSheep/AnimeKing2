@@ -6,10 +6,7 @@
     android:id="@+id/quiz_motion_scene"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/color_home_logo_update"
-    app:applyMotionScene="true"
-    app:showPaths="true"
-    tools:context=".view.community.questions.answer_question.AnswerQuestion">
+    android:background="@color/color_background_dark">
 
     <ProgressBar
         android:id="@+id/timer_progressbar"
@@ -21,6 +18,7 @@
         android:max="10"
         android:progress="10"
         android:progressBackgroundTint="@color/color_home_logo_update"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -31,10 +29,11 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:drawableStart="@drawable/ic_hourglass"
-        android:fontFamily="@font/baloobhairegular"
+        android:fontFamily="@font/gilroy_extra_bold"
         android:gravity="bottom"
         android:textColor="@color/color_white"
         android:textSize="@dimen/_13sdp"
+        android:visibility="invisible"
         app:layout_constraintStart_toStartOf="@+id/button_choice_one"
         app:layout_constraintTop_toBottomOf="@+id/timer_progressbar"
         tools:text="07" />
@@ -45,11 +44,12 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:fontFamily="@font/bahnscrift"
+        android:fontFamily="@font/gilroy_extra_bold"
         android:text="@string/score"
         android:textColor="@color/color_white"
         android:textSize="13sp"
         android:textStyle="bold"
+        android:visibility="invisible"
         app:layout_constraintEnd_toStartOf="@+id/tv_score"
         app:layout_constraintTop_toBottomOf="@+id/timer_progressbar" />
 
@@ -57,60 +57,186 @@
         android:id="@+id/tv_score"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/baloobhairegular"
+        android:fontFamily="@font/gilroy_extra_bold"
         android:gravity="bottom"
         android:text="@string/_0"
         android:textColor="@color/color_white"
         android:textSize="@dimen/_13sdp"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="@+id/tv_score_tag"
         app:layout_constraintEnd_toEndOf="@+id/button_choice_one"
         app:layout_constraintTop_toTopOf="@+id/tv_score_tag" />
 
-    <TextView
-        android:id="@+id/tv_answer_question"
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:background="@drawable/game_score_outline_accent"
+        android:orientation="horizontal"
+        android:paddingVertical="0dp"
+        android:paddingStart="0dp"
+        android:paddingEnd="@dimen/_10sdp"
+        app:layout_constraintBottom_toTopOf="@+id/question_frame"
+        app:layout_constraintEnd_toStartOf="@+id/linearLayout3"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_7sdp"
+            android:background="@drawable/game_score_ng_accent"
+            android:fontFamily="@font/gilroy_extra_bold"
+            android:paddingHorizontal="@dimen/_12sdp"
+            android:paddingVertical="@dimen/_4sdp"
+            android:text="Lives"
+            android:textColor="@color/color_background_dark"
+            android:textSize="@dimen/_12sdp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/gilroy_extra_bold"
+            android:text="0"
+            android:textColor="@color/color_white"
+            android:textSize="@dimen/_14sdp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/game_score_outline_accent"
+        android:orientation="horizontal"
+        android:paddingVertical="0dp"
+        android:paddingStart="0dp"
+        android:paddingEnd="@dimen/_10sdp"
+        app:layout_constraintBottom_toBottomOf="@+id/linearLayout"
+        app:layout_constraintEnd_toStartOf="@+id/linearLayout2"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/linearLayout">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_7sdp"
+            android:background="@drawable/game_score_ng_accent"
+            android:fontFamily="@font/gilroy_extra_bold"
+            android:paddingHorizontal="@dimen/_12sdp"
+            android:paddingVertical="@dimen/_4sdp"
+            android:text="Score"
+            android:textColor="@color/color_background_dark"
+            android:textSize="@dimen/_12sdp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/gilroy_extra_bold"
+            android:text="0"
+            android:textColor="@color/color_white"
+            android:textSize="@dimen/_14sdp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/game_score_outline_accent"
+        android:orientation="horizontal"
+        android:paddingVertical="0dp"
+        android:paddingStart="0dp"
+        android:paddingEnd="@dimen/_10sdp"
+        app:layout_constraintBottom_toBottomOf="@+id/linearLayout3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/linearLayout3">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_7sdp"
+            android:background="@drawable/game_score_ng_accent"
+            android:fontFamily="@font/gilroy_extra_bold"
+            android:paddingHorizontal="@dimen/_12sdp"
+            android:paddingVertical="@dimen/_4sdp"
+            android:text="Time"
+            android:textColor="@color/color_background_dark"
+            android:textSize="@dimen/_12sdp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/gilroy_extra_bold"
+            android:text="0"
+            android:textColor="@color/color_white"
+            android:textSize="@dimen/_14sdp" />
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/question_frame"
         android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:alpha="0"
-        android:fontFamily="@font/baloobhairegular"
-        android:gravity="center"
-        android:text="@string/actual_text_testing"
-        android:textAlignment="center"
-        android:textColor="@color/color_white"
-        android:textSize="@dimen/_14sdp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/progressBar_two"
+        android:layout_height="wrap_content"
+        android:background="@drawable/game_question_background"
+        android:elevation="@dimen/_7sdp"
         app:layout_constraintEnd_toEndOf="@+id/button_choice_one"
         app:layout_constraintStart_toStartOf="@+id/button_choice_one"
-        app:layout_constraintTop_toBottomOf="@+id/tv_timer"
-        tools:text="@string/testing_text" />
+        app:layout_constraintTop_toTopOf="@+id/progressBar_two">
+
+        <TextView
+            android:id="@+id/tv_answer_question"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:alpha="0"
+            android:fontFamily="@font/gilroy_extra_bold"
+            android:padding="15dp"
+            android:text="@string/actual_text_testing"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textColor="@color/color_white"
+            android:textSize="@dimen/_14sdp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/progressBar_two"
+            app:layout_constraintEnd_toEndOf="@+id/button_choice_one"
+            app:layout_constraintStart_toStartOf="@+id/button_choice_one"
+            app:layout_constraintTop_toBottomOf="@+id/tv_timer"
+            tools:text="Why is it taboo to be interested in what happens outside the walls?" />
+
+    </FrameLayout>
 
     <Button
         android:id="@+id/button_choice_one"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="32dp"
         android:alpha="0"
         android:background="@drawable/answer_question_background"
-        android:fontFamily="@font/baloobhairegular"
+        android:fontFamily="@font/gilroy_extra_bold"
         android:textAlignment="center"
         android:textColor="@color/color_white"
-        android:textSize="@dimen/_13sdp"
+        android:textSize="@dimen/_12sdp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_answer_question"
-        tools:text="Answer Choice 1" />
+        app:layout_constraintTop_toBottomOf="@+id/question_frame"
+        tools:text="It ignores the threat of the titans" />
 
     <Button
         android:id="@+id/button_choice_two"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="24dp"
         android:alpha="0"
         android:background="@drawable/answer_question_background"
-        android:fontFamily="@font/baloobhairegular"
+        android:fontFamily="@font/gilroy_extra_bold"
         android:textAlignment="center"
         android:textColor="@color/color_white"
         android:textSize="@dimen/_13sdp"
@@ -118,17 +244,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button_choice_one"
-        tools:text="Answer Choice 2" />
+        tools:text="It's viewed as disturbing the peace" />
 
     <Button
         android:id="@+id/button_choice_three"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="24dp"
         android:alpha="0"
         android:background="@drawable/answer_question_background"
-        android:fontFamily="@font/baloobhairegular"
+        android:fontFamily="@font/gilroy_extra_bold"
         android:textAlignment="center"
         android:textColor="@color/color_white"
         android:textSize="@dimen/_13sdp"
@@ -136,17 +262,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button_choice_two"
-        tools:text="Answer Choice 3" />
+        tools:text="It's viewed as religious persecution" />
 
     <Button
         android:id="@+id/button_choice_four"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="24dp"
         android:alpha="0"
         android:background="@drawable/answer_question_background"
-        android:fontFamily="@font/baloobhairegular"
+        android:fontFamily="@font/gilroy_extra_bold"
         android:textAlignment="center"
         android:textColor="@color/color_white"
         android:textSize="@dimen/_13sdp"
@@ -154,7 +280,71 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button_choice_three"
-        tools:text="Answer Choice 4" />
+        tools:text="It's viewed as lazy" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableEnd="@drawable/ic_game_art"
+        android:drawablePadding="@dimen/_7sdp"
+        android:fontFamily="@font/gilroy_extra_bold"
+        android:text="Power Up"
+        android:textColor="@color/color_white"
+        android:textSize="@dimen/_14sdp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/button_choice_four"
+        app:layout_constraintTop_toBottomOf="@+id/progressBar11" />
+
+    <ProgressBar
+        android:id="@+id/progressBar11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/progressBar_ask_question" />
+
+    <Button
+        android:id="@+id/button8"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/game_button_3d_states"
+        android:fontFamily="@font/gilroy_extra_bold"
+        android:text="Senzu Bean"
+        android:textColor="@color/color_background_dark"
+        android:textSize="@dimen/_13sdp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/progressBar10"
+        app:layout_constraintEnd_toStartOf="@+id/progressBar10"
+        app:layout_constraintStart_toStartOf="@+id/button_choice_four"
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+    <Button
+        android:id="@+id/button7"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/game_button_3d_states"
+        android:fontFamily="@font/gilroy_extra_bold"
+        android:text="Shinigaymi's Eye"
+        android:textColor="@color/color_background_dark"
+        android:textSize="@dimen/_13sdp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/button_choice_four"
+        app:layout_constraintStart_toEndOf="@+id/progressBar10"
+        app:layout_constraintTop_toTopOf="@+id/button8" />
+
+    <ProgressBar
+        android:id="@+id/progressBar10"
+        android:layout_width="8dp"
+        android:layout_height="1dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     <Button
         android:id="@+id/button_next_question"
@@ -163,13 +353,13 @@
         android:layout_marginHorizontal="16dp"
         android:layout_marginTop="16dp"
         android:background="@drawable/button_next_question"
-        android:fontFamily="@font/baloobhairegular"
+        android:fontFamily="@font/gilroy_extra_bold"
         android:text="@string/next_question"
         android:textAlignment="center"
         android:textColor="@color/color_black_dark"
         android:textSize="@dimen/_13sdp"
         android:textStyle="bold"
-        android:visibility="invisible"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button_choice_four" />
@@ -199,15 +389,6 @@
         app:layout_constraintLeft_toRightOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/profile_bottomnav_placeholder"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

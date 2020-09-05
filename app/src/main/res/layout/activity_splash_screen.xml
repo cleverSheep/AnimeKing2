@@ -7,7 +7,7 @@
     android:background="@color/color_darkish_green"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".view.splash_credits.SplashScreen">
+    tools:context=".screen.splash_credits.SplashScreen">
 
     <ImageView
         android:id="@+id/imageView5"

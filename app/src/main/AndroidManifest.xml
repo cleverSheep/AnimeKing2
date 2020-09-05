@@ -20,7 +20,7 @@
             android:value="@string/facebook_app_id" />
 
         <activity
-            android:name="com.murrayde.animekingmobile.view.splash_credits.SplashScreen"
+            android:name="com.murrayde.animekingmobile.screen.splash_credits.SplashScreen"
             android:noHistory="true"
             android:screenOrientation="portrait"
             android:theme="@style/BaseTheme">
@@ -31,12 +31,12 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.murrayde.animekingmobile.view.MainActivity"
+            android:name="com.murrayde.animekingmobile.screen.MainActivity"
             android:configChanges="locale|orientation"
             android:screenOrientation="portrait"
-            android:theme="@style/BaseTheme" />
+            android:theme="@style/MainAppTheme" />
         <activity
-            android:name="com.murrayde.animekingmobile.view.splash_credits.CreditsActivity"
+            android:name="com.murrayde.animekingmobile.screen.splash_credits.CreditsActivity"
             android:screenOrientation="portrait"
             android:theme="@style/BaseTheme" />
     </application>
