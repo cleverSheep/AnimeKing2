@@ -66,8 +66,6 @@ class AnswerQuestion : Fragment() {
     private lateinit var questions_list_argument: Array<CommunityQuestion>
     private lateinit var vibrator: Vibrator
     private lateinit var animeTitle: String
-    private lateinit var tv_timer: TextView
-    private lateinit var timer_progressbar: ProgressBar
     private lateinit var button_next_question: Button
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -90,8 +88,6 @@ class AnswerQuestion : Fragment() {
         vibration_is_enabled = sharedPreferences.getBoolean("vibration", true)
         vibrator = context?.getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
         results_view_model = ViewModelProvider(requireActivity()).get(ResultsViewModel::class.java)
-        tv_timer = view.findViewById(R.id.tv_timer)
-        timer_progressbar = view.findViewById(R.id.timer_progressbar)
         button_next_question = view.findViewById(R.id.button_next_question)
 
         answerQuestionViewModel.getListOfQuestions().observe(requireActivity(), Observer { listQuestions ->
@@ -151,8 +147,6 @@ class AnswerQuestion : Fragment() {
 
             override fun onTick(time: Long) {
                 current_time = time.toInt() / 1000
-                tv_timer.text = current_time.toString()
-                timer_progressbar.setProgress(current_time, true)
             }
 
         }.start()
@@ -195,7 +189,6 @@ class AnswerQuestion : Fragment() {
                 if (list_buttons[position].text == correct_response) {
                     total_correct += 1
                     current_score = total_correct * 10
-                    tv_score.text = "$current_score"
                     communityQuestions[question_track].setUserCorrectResponse(true)
                     results_view_model.updateTotalCorrect(total_correct)
                     results_view_model.updateCurrentScore(current_score)

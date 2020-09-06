@@ -6,11 +6,7 @@
         android:left="15dp"
         android:right="15dp"
         android:top="15dp" />
-    <corners
-        android:bottomLeftRadius="3dp"
-        android:bottomRightRadius="3dp"
-        android:radius="3dp"
-        android:topLeftRadius="3dp"
-        android:topRightRadius="3dp" />
-    <solid android:color="@color/color_wrong" />
+    <corners android:radius="10dp" />
+    <solid
+        android:color="@color/color_negative" />
 </shape>

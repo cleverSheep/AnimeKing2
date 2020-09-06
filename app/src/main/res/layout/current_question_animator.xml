@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.murrayde.animekingmobile.screen.game.CurrentQuestionView
+        android:id="@+id/animator_one"
+        android:layout_width="32dp"
+        android:layout_height="8dp"
+        android:layout_gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/animator_two"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.murrayde.animekingmobile.screen.game.CurrentQuestionView
+        android:id="@+id/animator_two"
+        android:layout_width="32dp"
+        android:layout_height="8dp"
+        android:layout_gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/animator_three"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/animator_one"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.murrayde.animekingmobile.screen.game.CurrentQuestionView
+        android:id="@+id/animator_three"
+        android:layout_width="32dp"
+        android:layout_height="8dp"
+        android:layout_gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/animator_four"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/animator_two"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.murrayde.animekingmobile.screen.game.CurrentQuestionView
+        android:id="@+id/animator_four"
+        android:layout_width="32dp"
+        android:layout_height="8dp"
+        android:layout_gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/animator_five"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/animator_three"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.murrayde.animekingmobile.screen.game.CurrentQuestionView
+        android:id="@+id/animator_five"
+        android:layout_width="32dp"
+        android:layout_height="8dp"
+        android:layout_gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/animator_six"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/animator_four"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.murrayde.animekingmobile.screen.game.CurrentQuestionView
+        android:id="@+id/animator_six"
+        android:layout_width="32dp"
+        android:layout_height="8dp"
+        android:layout_gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/animator_seven"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/animator_five"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.murrayde.animekingmobile.screen.game.CurrentQuestionView
+        android:id="@+id/animator_seven"
+        android:layout_width="32dp"
+        android:layout_height="8dp"
+        android:layout_gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/animator_eight"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/animator_six"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.murrayde.animekingmobile.screen.game.CurrentQuestionView
+        android:id="@+id/animator_eight"
+        android:layout_width="32dp"
+        android:layout_height="8dp"
+        android:layout_gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/animator_nine"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/animator_seven"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.murrayde.animekingmobile.screen.game.CurrentQuestionView
+        android:id="@+id/animator_nine"
+        android:layout_width="32dp"
+        android:layout_height="8dp"
+        android:layout_gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/animator_ten"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/animator_eight"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.murrayde.animekingmobile.screen.game.CurrentQuestionView
+        android:id="@+id/animator_ten"
+        android:layout_width="32dp"
+        android:layout_height="8dp"
+        android:layout_gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/animator_nine"
+        app:layout_constraintTop_toTopOf="parent" />
+</merge>

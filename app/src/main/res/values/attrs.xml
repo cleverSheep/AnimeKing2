@@ -5,4 +5,11 @@
         <attr name="scroll_ms" format="integer|reference"/>
         <attr name="translate_offset" format="float|reference"/>
     </declare-styleable>
+    <declare-styleable name="CurrentQuestionView">
+        <attr name="square_color" format="color" />
+    </declare-styleable>
+    <declare-styleable name="CurrentQuestionAnimator">
+        <attr name="rect_color" format="color" />
+        <attr name="current_state" format="integer" />
+    </declare-styleable>
 </resources>

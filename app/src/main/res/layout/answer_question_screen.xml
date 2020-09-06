@@ -8,65 +8,6 @@
     android:layout_height="match_parent"
     android:background="@color/color_background_dark">
 
-    <ProgressBar
-        android:id="@+id/timer_progressbar"
-        style="@android:style/Widget.ProgressBar.Horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="7dp"
-        android:backgroundTint="@color/color_darkish_green"
-        android:indeterminate="false"
-        android:max="10"
-        android:progress="10"
-        android:progressBackgroundTint="@color/color_home_logo_update"
-        android:visibility="invisible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/tv_timer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:drawableStart="@drawable/ic_hourglass"
-        android:fontFamily="@font/gilroy_extra_bold"
-        android:gravity="bottom"
-        android:textColor="@color/color_white"
-        android:textSize="@dimen/_13sdp"
-        android:visibility="invisible"
-        app:layout_constraintStart_toStartOf="@+id/button_choice_one"
-        app:layout_constraintTop_toBottomOf="@+id/timer_progressbar"
-        tools:text="07" />
-
-    <TextView
-        android:id="@+id/tv_score_tag"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:fontFamily="@font/gilroy_extra_bold"
-        android:text="@string/score"
-        android:textColor="@color/color_white"
-        android:textSize="13sp"
-        android:textStyle="bold"
-        android:visibility="invisible"
-        app:layout_constraintEnd_toStartOf="@+id/tv_score"
-        app:layout_constraintTop_toBottomOf="@+id/timer_progressbar" />
-
-    <TextView
-        android:id="@+id/tv_score"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/gilroy_extra_bold"
-        android:gravity="bottom"
-        android:text="@string/_0"
-        android:textColor="@color/color_white"
-        android:textSize="@dimen/_13sdp"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_score_tag"
-        app:layout_constraintEnd_toEndOf="@+id/button_choice_one"
-        app:layout_constraintTop_toTopOf="@+id/tv_score_tag" />
-
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="wrap_content"
@@ -293,8 +234,9 @@
         android:textColor="@color/color_white"
         android:textSize="@dimen/_14sdp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/progressBar12"
         app:layout_constraintStart_toStartOf="@+id/button_choice_four"
-        app:layout_constraintTop_toBottomOf="@+id/progressBar11" />
+        app:layout_constraintTop_toTopOf="@+id/progressBar12" />
 
     <ProgressBar
         android:id="@+id/progressBar11"
@@ -306,11 +248,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/progressBar_ask_question" />
 
+    <ProgressBar
+        android:id="@+id/progressBar12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/progressBar11" />
+
     <Button
         android:id="@+id/button8"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="24dp"
         android:background="@drawable/game_button_3d_states"
         android:fontFamily="@font/gilroy_extra_bold"
         android:text="Senzu Bean"
@@ -319,7 +271,7 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/progressBar10"
         app:layout_constraintEnd_toStartOf="@+id/progressBar10"
-        app:layout_constraintStart_toStartOf="@+id/button_choice_four"
+        app:layout_constraintStart_toStartOf="@+id/textView4"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     <Button
