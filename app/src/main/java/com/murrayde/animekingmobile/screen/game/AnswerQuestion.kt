@@ -111,8 +111,7 @@ class AnswerQuestion : Fragment() {
         repeat(list_buttons.size) {
             list_buttons[it].text = random_questions.removeAt(0)
         }
-
-        startTimer(communityQuestions, track, view, list_buttons)
+        /*startTimer(communityQuestions, track, view, list_buttons)*/
         buttonChoiceClick(list_buttons, communityQuestions, track)
 
         button_next_question.setOnClickListener {
@@ -128,6 +127,7 @@ class AnswerQuestion : Fragment() {
 
     private fun transitionToNextQuestion(track: Int, communityQuestions: List<CommunityQuestion>, view: View, list_buttons: ArrayList<Button>) {
         val new_question = track + 1
+        currentQuestionAnimator.nextQuestion()
         prepareForNextQuestion(communityQuestions, new_question, view, list_buttons)
     }
 
@@ -181,10 +181,8 @@ class AnswerQuestion : Fragment() {
 
     private fun buttonChoiceClick(list_buttons: ArrayList<Button>, communityQuestions: List<CommunityQuestion>, question_track: Int) {
         val correct_response = communityQuestions[question_track].multiple_choice[0]
-        val correctButton = Button(context)
         repeat(list_buttons.size) { position ->
             list_buttons[position].setOnClickListener { view ->
-                countDownTimer.cancel()
                 disableAllButtons(list_buttons)
                 if (list_buttons[position].text == correct_response) {
                     total_correct += 1
@@ -272,11 +270,6 @@ class AnswerQuestion : Fragment() {
             }
         }, 2500)
         view.postDelayed({ transitionToNextQuestion(question_track, communityQuestions, view, list_buttons) }, 3000)
-    }
-
-    override fun onStop() {
-        super.onStop()
-        countDownTimer.cancel()
     }
 
     private fun listButtons(): ArrayList<Button> {

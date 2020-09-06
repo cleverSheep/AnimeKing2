@@ -12,16 +12,14 @@
         android:id="@+id/linearLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
+        android:layout_marginBottom="8dp"
         android:background="@drawable/game_score_outline_accent"
         android:orientation="horizontal"
         android:paddingVertical="0dp"
         android:paddingStart="0dp"
         android:paddingEnd="@dimen/_10sdp"
-        app:layout_constraintBottom_toTopOf="@+id/question_frame"
-        app:layout_constraintEnd_toStartOf="@+id/linearLayout3"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintBottom_toTopOf="@+id/textView6"
+        app:layout_constraintStart_toStartOf="@+id/textView6">
 
         <TextView
             android:layout_width="wrap_content"
@@ -93,7 +91,7 @@
         android:paddingStart="0dp"
         android:paddingEnd="@dimen/_10sdp"
         app:layout_constraintBottom_toBottomOf="@+id/linearLayout3"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/currentQuestionAnimator"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/linearLayout3">
 
@@ -119,6 +117,28 @@
             android:textSize="@dimen/_14sdp" />
 
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:fontFamily="@font/gilroy_extra_bold"
+        android:text="Question 4"
+        android:textColor="@color/color_white"
+        android:textSize="@dimen/_13sdp"
+        app:layout_constraintBottom_toTopOf="@+id/currentQuestionAnimator"
+        app:layout_constraintStart_toStartOf="@+id/currentQuestionAnimator"
+        tools:text="Question 4" />
+
+    <com.murrayde.animekingmobile.screen.game.CurrentQuestionAnimator
+        android:id="@+id/currentQuestionAnimator"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/question_frame"
+        app:layout_constraintEnd_toEndOf="@+id/question_frame"
+        app:layout_constraintStart_toStartOf="@+id/question_frame" />
 
     <FrameLayout
         android:id="@+id/question_frame"
