@@ -26,7 +26,7 @@ class ReviewQuestionsAdapter(val context: Context, private val list_questions: A
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         // Initialize icon based on whether the response was correct
-        if (list_questions[position].user_correct_response) {
+        if (list_questions[position].user_correct_response != null) {
             holder.review_status_icon.setImageResource(R.drawable.ic_results_correct_check)
         } else holder.review_status_icon.setImageResource(R.drawable.ic_results_wrong_icon)
 

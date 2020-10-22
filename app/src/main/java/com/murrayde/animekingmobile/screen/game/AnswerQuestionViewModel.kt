@@ -9,12 +9,11 @@ import androidx.lifecycle.ViewModel
 import com.google.firebase.firestore.FieldPath
 import com.google.firebase.firestore.FirebaseFirestore
 import com.murrayde.animekingmobile.model.community.CommunityQuestion
-import com.murrayde.animekingmobile.repository.community.AnswerQuestionRepo
 import com.murrayde.animekingmobile.util.QuestionUtil
 import com.murrayde.animekingmobile.util.removeForwardSlashes
 import io.reactivex.disposables.CompositeDisposable
 
-class AnswerQuestionViewModel @ViewModelInject constructor(private val answerQuestionRepo: AnswerQuestionRepo) : ViewModel() {
+class AnswerQuestionViewModel @ViewModelInject constructor() : ViewModel() {
 
     private var listQuestions = MutableLiveData<List<CommunityQuestion>>()
     private val compositeDisposable = CompositeDisposable()
@@ -33,14 +32,15 @@ class AnswerQuestionViewModel @ViewModelInject constructor(private val answerQue
         questionsRef.whereGreaterThanOrEqualTo(FieldPath.documentId(), key).limit(QuestionUtil.QUESTION_LIMIT).get().addOnSuccessListener { documents ->
             if (documents.size() > 0) {
                 documents.forEach { listOfQuestions.add(it.toObject(CommunityQuestion::class.java)) }
-                checkQuestionSize()
+                /*checkQuestionSize()*/
             } else {
                 questionsRef.whereGreaterThanOrEqualTo(FieldPath.documentId(), " ").limit(QuestionUtil.QUESTION_LIMIT).get().addOnSuccessListener {
                     documents.forEach { listOfQuestions.add(it.toObject(CommunityQuestion::class.java)) }
-                    checkQuestionSize()
+                    /*checkQuestionSize()*/
                 }
             }
-            if (listOfQuestions.size < QuestionUtil.QUESTION_LIMIT) {
+            listQuestions.value = listOfQuestions
+/*            if (listOfQuestions.size < QuestionUtil.QUESTION_LIMIT) {
                 Log.d(AnswerQuestionViewModel::class.qualifiedName, " Add more questions!")
                 questionsRef.whereGreaterThanOrEqualTo(FieldPath.documentId(), key).limit(QuestionUtil.QUESTION_LIMIT - listOfQuestions.size).get().addOnSuccessListener { documents ->
                     if (documents.size() > 0) {
@@ -66,21 +66,23 @@ class AnswerQuestionViewModel @ViewModelInject constructor(private val answerQue
                         }
                     }
                 }
-            }
+            }*/
         }
     }
 
 
     fun getListOfQuestions(): LiveData<List<CommunityQuestion>> = listQuestions
 
-    private fun checkQuestionSize() {
-        if (lock >= 2) return
-        if (listOfQuestions.size.toLong() == QuestionUtil.QUESTION_LIMIT) {
-            Log.d(AnswerQuestionViewModel::class.qualifiedName, " Total number of questions: ${listOfQuestions.size}")
+/*    private fun checkQuestionSize() {
+        if (lock >= 2) {
+            Log.d(AnswerQuestionViewModel::class.qualifiedName, " lock > 2 : true ")
             listQuestions.value = listOfQuestions
+            return
+        } else if (listOfQuestions.size.toLong() <= QuestionUtil.QUESTION_LIMIT) {
+            Log.d(AnswerQuestionViewModel::class.qualifiedName, " Total number of questions: ${listOfQuestions.size}")
             lock += 1
         }
-    }
+    }*/
 
     override fun onCleared() {
         super.onCleared()

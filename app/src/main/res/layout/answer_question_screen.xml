@@ -18,8 +18,8 @@
         android:paddingVertical="0dp"
         android:paddingStart="0dp"
         android:paddingEnd="@dimen/_10sdp"
-        app:layout_constraintBottom_toTopOf="@+id/textView6"
-        app:layout_constraintStart_toStartOf="@+id/textView6">
+        app:layout_constraintBottom_toTopOf="@+id/tv_current_question"
+        app:layout_constraintStart_toStartOf="@+id/tv_current_question">
 
         <TextView
             android:layout_width="wrap_content"
@@ -34,11 +34,12 @@
             android:textSize="@dimen/_12sdp" />
 
         <TextView
+            android:id="@+id/tv_remaining_lives"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:fontFamily="@font/gilroy_extra_bold"
-            android:text="0"
+            android:text="3"
             android:textColor="@color/color_white"
             android:textSize="@dimen/_14sdp" />
 
@@ -71,6 +72,7 @@
             android:textSize="@dimen/_12sdp" />
 
         <TextView
+            android:id="@+id/tv_game_score"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -107,29 +109,44 @@
             android:textColor="@color/color_background_dark"
             android:textSize="@dimen/_12sdp" />
 
-        <TextView
+        <FrameLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:fontFamily="@font/gilroy_extra_bold"
-            android:text="0"
-            android:textColor="@color/color_white"
-            android:textSize="@dimen/_14sdp" />
+            android:layout_gravity="center">
+
+            <TextView
+                android:id="@+id/game_screen_timer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/gilroy_extra_bold"
+                android:text="17"
+                android:textColor="@color/color_white"
+                android:textSize="@dimen/_14sdp" />
+
+            <TextView
+                android:id="@+id/place_holder"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/gilroy_extra_bold"
+                android:text="17"
+                android:textColor="@color/color_white"
+                android:textSize="@dimen/_14sdp"
+                android:visibility="invisible" />
+        </FrameLayout>
 
     </LinearLayout>
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/tv_current_question"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:fontFamily="@font/gilroy_extra_bold"
-        android:text="Question 4"
+        android:text="Question 1"
         android:textColor="@color/color_white"
         android:textSize="@dimen/_13sdp"
         app:layout_constraintBottom_toTopOf="@+id/currentQuestionAnimator"
-        app:layout_constraintStart_toStartOf="@+id/currentQuestionAnimator"
-        tools:text="Question 4" />
+        app:layout_constraintStart_toStartOf="@+id/currentQuestionAnimator" />
 
     <com.murrayde.animekingmobile.screen.game.CurrentQuestionAnimator
         android:id="@+id/currentQuestionAnimator"

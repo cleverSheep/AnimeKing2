@@ -43,7 +43,7 @@ fun View.animateQuizItems(): Animator {
     val alpha = android.animation.PropertyValuesHolder.ofFloat(View.ALPHA, 0f, 1f)
 
     return android.animation.ObjectAnimator.ofPropertyValuesHolder(this, scaleX, scaleY, alpha).apply {
-        duration = 450
+        duration = 200
         interpolator = android.view.animation.LinearInterpolator()
     }
 }

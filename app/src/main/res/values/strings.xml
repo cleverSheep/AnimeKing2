@@ -48,6 +48,7 @@
     <string name="next_question">Next Question!</string>
     <string name="got_the_hang_of_it">You\'ve got the hang of it! Visit an anime community for more targeted questions.</string>
     <string name="score">Score</string>
+    <string name="current_question">Question %1$d</string>
 
     <!-- Ask Question Layout -->
     <string name="enter_question">Don\'t be shy. Ask a question!</string>

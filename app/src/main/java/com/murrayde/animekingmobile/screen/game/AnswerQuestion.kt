@@ -20,7 +20,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.animation.OvershootInterpolator
 import android.widget.Button
-import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
@@ -37,8 +36,6 @@ import com.murrayde.animekingmobile.extensions.reverseAnimate
 import com.murrayde.animekingmobile.extensions.showView
 import com.murrayde.animekingmobile.model.community.CommunityQuestion
 import com.murrayde.animekingmobile.util.QuestionUtil
-import com.murrayde.animekingmobile.screen.game.AnswerQuestionArgs
-import com.murrayde.animekingmobile.screen.game.AnswerQuestionDirections
 import com.murrayde.animekingmobile.screen.quiz_results.ResultsViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.answer_question_screen.*
@@ -61,6 +58,8 @@ class AnswerQuestion : Fragment() {
     private var total_correct = 0
     private lateinit var countDownTimer: CountDownTimer
     private var current_time = 0
+    private var current_question = 1
+    private var remaining_lives = 3
 
     private lateinit var question_correct: HashMap<Int, Boolean>
     private lateinit var questions_list_argument: Array<CommunityQuestion>
@@ -111,24 +110,16 @@ class AnswerQuestion : Fragment() {
         repeat(list_buttons.size) {
             list_buttons[it].text = random_questions.removeAt(0)
         }
-        /*startTimer(communityQuestions, track, view, list_buttons)*/
         buttonChoiceClick(list_buttons, communityQuestions, track)
-
         button_next_question.setOnClickListener {
             transitionToNextQuestion(track, communityQuestions, view, list_buttons)
         }
-
+        startTimer(communityQuestions, track, view, list_buttons)
+        tv_current_question.text = String.format(view.context.getString(R.string.current_question), current_question)
         AnimatorSet().apply {
             play(animateQuestion(tv_answer_question)).before(animateButtons(list_buttons))
-            startDelay = 1500
             start()
         }
-    }
-
-    private fun transitionToNextQuestion(track: Int, communityQuestions: List<CommunityQuestion>, view: View, list_buttons: ArrayList<Button>) {
-        val new_question = track + 1
-        currentQuestionAnimator.nextQuestion()
-        prepareForNextQuestion(communityQuestions, new_question, view, list_buttons)
     }
 
     private fun navigateToResultsScreen(view: View) {
@@ -147,6 +138,7 @@ class AnswerQuestion : Fragment() {
 
             override fun onTick(time: Long) {
                 current_time = time.toInt() / 1000
+                game_screen_timer.text = "$current_time"
             }
 
         }.start()
@@ -173,7 +165,7 @@ class AnswerQuestion : Fragment() {
         alertDialog.setCanceledOnTouchOutside(false)
         button.setOnClickListener {
             alertDialog.dismiss()
-            loadQuestions(randomQuestions, track, view, list_buttons)
+            transitionToNextQuestion(track, randomQuestions, view, list_buttons)
             button_next_question.hideView()
         }
         alertDialog.show()
@@ -183,16 +175,18 @@ class AnswerQuestion : Fragment() {
         val correct_response = communityQuestions[question_track].multiple_choice[0]
         repeat(list_buttons.size) { position ->
             list_buttons[position].setOnClickListener { view ->
+                countDownTimer.cancel()
                 disableAllButtons(list_buttons)
                 if (list_buttons[position].text == correct_response) {
-                    total_correct += 1
-                    current_score = total_correct * 10
+                    current_score += 1
                     communityQuestions[question_track].setUserCorrectResponse(true)
                     results_view_model.updateTotalCorrect(total_correct)
                     results_view_model.updateCurrentScore(current_score)
                     results_view_model.incrementTimeBonus(current_time)
                     alertCorrectResponse(view, list_buttons, correct_response, communityQuestions, question_track, list_buttons[position])
                 } else {
+                    remaining_lives -= 1
+                    tv_remaining_lives.text = remaining_lives.toString()
                     communityQuestions[question_track].setUserCorrectResponse(false)
                     alertWrongResponse(view, list_buttons, correct_response, question_track, communityQuestions)
                 }
@@ -204,6 +198,13 @@ class AnswerQuestion : Fragment() {
         repeat(list_buttons.size) {
             list_buttons[it].isClickable = false
         }
+    }
+
+    private fun transitionToNextQuestion(track: Int, communityQuestions: List<CommunityQuestion>, view: View, list_buttons: ArrayList<Button>) {
+        val new_question = track + 1
+        current_question += 1
+        currentQuestionAnimator.nextQuestion()
+        prepareForNextQuestion(communityQuestions, new_question, view, list_buttons)
     }
 
     private fun prepareForNextQuestion(communityQuestions: List<CommunityQuestion>, track: Int, view: View, list_buttons: ArrayList<Button>) {
@@ -222,6 +223,7 @@ class AnswerQuestion : Fragment() {
 
     private fun alertCorrectResponse(view: View, list_buttons: ArrayList<Button>, correct_response: String, communityQuestions: List<CommunityQuestion>, question_track: Int, correctButton: Button) {
         val button = view as Button
+        tv_game_score.text = current_score.toString()
         if (media_is_playing) media_correct.start()
         button.background = resources.getDrawable(R.drawable.answer_correct_background)
         button.setTextColor(resources.getColor(R.color.color_white))
@@ -243,6 +245,10 @@ class AnswerQuestion : Fragment() {
     }
 
     private fun alertWrongResponse(view: View, list_buttons: ArrayList<Button>, correct_response: String, question_track: Int, communityQuestions: List<CommunityQuestion>) {
+        if (remaining_lives <= 0) {
+            navigateToResultsScreen(view)
+            return
+        }
         val button = view as Button
         if (media_is_playing) media_wrong.start()
         if (vibration_is_enabled) vibrator.vibrate(250)
@@ -306,7 +312,6 @@ class AnswerQuestion : Fragment() {
                     fourthButton.animateQuizItems()
             )
             duration = 215
-            startDelay = 1000
             interpolator = OvershootInterpolator()
         }
     }
@@ -325,6 +330,11 @@ class AnswerQuestion : Fragment() {
             startDelay = 1000
             start()
         }
+    }
+
+    override fun onStop() {
+        super.onStop()
+        if (countDownTimer != null) countDownTimer.cancel()
     }
 
     override fun onDestroy() {
