@@ -264,15 +264,29 @@
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:drawableEnd="@drawable/ic_game_art"
         android:drawablePadding="@dimen/_7sdp"
         android:fontFamily="@font/gilroy_extra_bold"
-        android:text="Power Up"
+        android:text="Power Ups"
         android:textColor="@color/color_white"
         android:textSize="@dimen/_14sdp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/progressBar12"
         app:layout_constraintStart_toStartOf="@+id/button_choice_four"
+        app:layout_constraintTop_toTopOf="@+id/progressBar12" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/ic_game_art"
+        android:drawablePadding="@dimen/_7sdp"
+        android:fontFamily="@font/gilroy_extra_bold"
+        android:text="10"
+        android:textColor="@color/color_white"
+        android:textSize="@dimen/_14sdp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/progressBar12"
+        app:layout_constraintEnd_toEndOf="@+id/button7"
         app:layout_constraintTop_toTopOf="@+id/progressBar12" />
 
     <ProgressBar
@@ -311,19 +325,36 @@
         app:layout_constraintStart_toStartOf="@+id/textView4"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
-    <Button
+    <androidx.cardview.widget.CardView
         android:id="@+id/button7"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:background="@drawable/game_button_3d_states"
         android:fontFamily="@font/gilroy_extra_bold"
         android:text="Shinigaymi's Eye"
         android:textColor="@color/color_background_dark"
         android:textSize="@dimen/_13sdp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/button8"
         app:layout_constraintEnd_toEndOf="@+id/button_choice_four"
         app:layout_constraintStart_toEndOf="@+id/progressBar10"
-        app:layout_constraintTop_toTopOf="@+id/button8" />
+        app:layout_constraintTop_toTopOf="@+id/button8">
+
+        <Button
+            android:id="@+id/button9"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/game_button_3d_states"
+            android:fontFamily="@font/gilroy_extra_bold"
+            android:text="Shinigaymi's Eye"
+            android:textColor="@color/color_background_dark"
+            android:textSize="@dimen/_13sdp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/button8"
+            app:layout_constraintEnd_toEndOf="@+id/button_choice_four"
+            app:layout_constraintStart_toEndOf="@+id/progressBar10"
+            app:layout_constraintTop_toTopOf="@+id/button8" />
+    </androidx.cardview.widget.CardView>
 
     <ProgressBar
         android:id="@+id/progressBar10"

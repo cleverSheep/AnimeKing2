@@ -31,7 +31,7 @@ class ReviewQuestionsAdapter(val context: Context, private val list_questions: A
         } else holder.review_status_icon.setImageResource(R.drawable.ic_results_wrong_icon)
 
         holder.review_question.text = list_questions[position].question
-        holder.review_correct_answer.text = String.format(context.getString(R.string.review_correct_choice, list_questions[position].correctResponse))
+        //holder.review_correct_answer.text = String.format(context.getString(R.string.review_correct_choice, list_questions[position].correctResponse))
 
         holder.review_like_button.setOnClickListener {
             list_questions[position].likeQuestion()

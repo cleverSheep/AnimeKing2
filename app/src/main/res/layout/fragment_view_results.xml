@@ -1,193 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/color_home_logo_update"
-    android:gravity="center"
+    android:layout_gravity="center"
+    android:background="#393B48"
     tools:context=".screen.quiz_results.ViewResultsList">
 
-    <include
-        layout="@layout/fragment_view_results_bottom_sheet"
-        app:layout_constraintBottom_toBottomOf="parent" />
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_lottie_game_over_symbols"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/view_results_upper"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center">
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/color_background_main"
+        android:foreground="@drawable/circle"
+        app:cardElevation="0dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView7"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView7">
 
-        <ProgressBar
-            android:id="@+id/progressBar8"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:visibility="invisible"
-            app:layout_constraintBottom_toTopOf="@+id/progressBar7"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/game_over"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:fontFamily="@font/baloobhairegular"
-            android:textAlignment="center"
-            android:textColor="@android:color/white"
-            android:textSize="@dimen/_40sdp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/progressBar8"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/progressBar8"
-            tools:text="Good Game!" />
-
-
-        <TextView
-            android:id="@+id/quote"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:fontFamily="@font/baloobhairegular"
-            android:textAlignment="center"
-            android:textColor="@android:color/white"
-            android:textSize="@dimen/_16sdp"
-            app:layout_constraintEnd_toEndOf="@+id/game_over"
-            app:layout_constraintStart_toStartOf="@+id/game_over"
-            app:layout_constraintTop_toBottomOf="@+id/game_over"
-            tools:text="@string/won_quote" />
-
-        <ProgressBar
-            android:id="@+id/progressBar7"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:visibility="invisible"
-            app:layout_constraintBottom_toTopOf="@+id/profile_bottomnav_placeholder"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/results_correct_percentage"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:background="@drawable/home_compete_background"
-            android:fontFamily="@font/baloobhairegular"
-            android:textAlignment="center"
-            android:textColor="@color/color_black"
-            android:textSize="@dimen/_16sdp"
-            app:layout_constraintBottom_toBottomOf="@+id/progressBar7"
-            app:layout_constraintEnd_toEndOf="@+id/results_time_bonus_points"
-            app:layout_constraintStart_toStartOf="@+id/textView12"
-            app:layout_constraintTop_toTopOf="@+id/progressBar7"
-            tools:text="0 out of 10 questions correct!" />
-
-        <TextView
-            android:id="@+id/textView12"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="start"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:fontFamily="@font/baloobhairegular"
-            android:text="@string/time_bonus"
-            android:textColor="@android:color/white"
-            android:textSize="@dimen/_22sdp"
-            android:visibility="visible"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/results_correct_percentage" />
-
-        <TextView
-            android:id="@+id/results_total_points"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="start"
-            android:fontFamily="@font/baloobhairegular"
-            android:text="@string/points"
-            android:textColor="@android:color/white"
-            android:textSize="@dimen/_22sdp"
-            android:visibility="visible"
-            app:layout_constraintStart_toStartOf="@+id/textView12"
-            app:layout_constraintTop_toBottomOf="@+id/textView12" />
-
-        <Button
-            android:id="@+id/results_try_again"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/home_play_background"
-            android:fontFamily="@font/baloobhairegular"
-            android:stateListAnimator="@xml/animate_scale"
-            android:text="@string/try_again"
-            android:textColor="@color/color_white"
-            android:textSize="@dimen/_16sdp"
-            app:layout_constraintBottom_toTopOf="@+id/results_quit_game"
-            app:layout_constraintEnd_toEndOf="@+id/results_total_points_tv"
-            app:layout_constraintStart_toStartOf="@+id/results_total_points"
-            app:layout_constraintTop_toBottomOf="@+id/results_total_points" />
-
-        <Button
-            android:id="@+id/results_quit_game"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/results_quit_game"
-            android:fontFamily="@font/baloobhairegular"
-            android:stateListAnimator="@xml/animate_scale"
-            android:text="@string/exit_quiz"
-            android:textColor="@color/color_white"
-            android:textSize="@dimen/_16sdp"
-            app:layout_constraintEnd_toEndOf="@+id/results_try_again"
-            app:layout_constraintStart_toStartOf="@+id/results_try_again"
-            app:layout_constraintTop_toBottomOf="@+id/results_try_again" />
-
-        <TextView
-            android:id="@+id/results_time_bonus_points"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="start"
-            android:layout_marginEnd="16dp"
-            android:fontFamily="@font/baloobhairegular"
-            android:textColor="@color/color_correct"
-            android:textSize="@dimen/_22sdp"
-            android:visibility="visible"
-            app:layout_constraintBottom_toBottomOf="@+id/textView12"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/textView12"
-            tools:text="12"
-            tools:visibility="visible" />
-
-        <TextView
-            android:id="@+id/results_total_points_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="start"
-            android:fontFamily="@font/baloobhairegular"
-            android:textColor="@color/color_correct"
-            android:textSize="@dimen/_22sdp"
-            android:visibility="visible"
-            app:layout_constraintBottom_toBottomOf="@+id/results_total_points"
-            app:layout_constraintEnd_toEndOf="@+id/results_time_bonus_points"
-            app:layout_constraintTop_toTopOf="@+id/results_total_points"
-            tools:text="13"
-            tools:visibility="visible" />
-
-
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/profile_bottomnav_placeholder"
-            android:layout_width="0dp"
-            android:layout_height="?actionBarSize"
-            android:visibility="invisible"
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/lottieAnimationView3"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/lottie_game_over" />
+    </androidx.cardview.widget.CardView>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    <Button
+        android:layout_width="0dp"
+        android:layout_height="18dp"
+        android:layout_marginHorizontal="21dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/lottie_game_over_capsule"
+        android:clickable="false"
+        android:fontFamily="@font/gilroy_extra_bold"
+        android:text="@string/game_over"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textColor="@color/color_background_main"
+        android:textSize="@dimen/_8sdp"
+        app:layout_constraintBottom_toBottomOf="@+id/cardView2"
+        app:layout_constraintEnd_toEndOf="@+id/cardView2"
+        app:layout_constraintStart_toStartOf="@+id/cardView2" />
 
-
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
