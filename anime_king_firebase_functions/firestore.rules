@@ -1,0 +1,10 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // This rule requires user auth
+    match /{document=**} {
+      allow read, write: if request.auth.uid != null
+    }
+  }
+}
