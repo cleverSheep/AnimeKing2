@@ -6,7 +6,7 @@ import org.junit.Assert
 import org.junit.Assert.assertEquals
 import org.junit.Test
 
-class ResultsViewModelTest {
+class GameOverViewModelTest {
 
     @Test
     fun testPositiveMessage_ReturnPositive() {

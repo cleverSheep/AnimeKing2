@@ -140,7 +140,7 @@
     </fragment>
     <fragment
         android:id="@+id/viewResults"
-        android:name="com.murrayde.animekingmobile.screen.quiz_results.ViewResultsList"
+        android:name="com.murrayde.animekingmobile.screen.game_over.GameOverResultsList"
         android:label="fragment_view_results"
         tools:layout="@layout/fragment_view_results">
         <argument

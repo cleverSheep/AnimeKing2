@@ -35,8 +35,8 @@ import com.murrayde.animekingmobile.extensions.hideView
 import com.murrayde.animekingmobile.extensions.reverseAnimate
 import com.murrayde.animekingmobile.extensions.showView
 import com.murrayde.animekingmobile.model.community.CommunityQuestion
+import com.murrayde.animekingmobile.screen.game_over.GameOverViewModel
 import com.murrayde.animekingmobile.util.QuestionUtil
-import com.murrayde.animekingmobile.screen.quiz_results.ResultsViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.answer_question_screen.*
 
@@ -52,7 +52,7 @@ class AnswerQuestion : Fragment() {
     private var vibration_is_enabled = true
     private lateinit var sharedPreferences: SharedPreferences
     private val answerQuestionViewModel: AnswerQuestionViewModel by viewModels()
-    private lateinit var results_view_model: ResultsViewModel
+    private lateinit var gameOver_view_model: GameOverViewModel
 
     private var current_score = 0
     private var total_correct = 0
@@ -86,13 +86,13 @@ class AnswerQuestion : Fragment() {
         media_is_playing = sharedPreferences.getBoolean("sound_effects", true)
         vibration_is_enabled = sharedPreferences.getBoolean("vibration", true)
         vibrator = context?.getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
-        results_view_model = ViewModelProvider(requireActivity()).get(ResultsViewModel::class.java)
+        gameOver_view_model = ViewModelProvider(requireActivity()).get(GameOverViewModel::class.java)
         button_next_question = view.findViewById(R.id.button_next_question)
 
         answerQuestionViewModel.getListOfQuestions().observe(requireActivity(), Observer { listQuestions ->
             communityQuestions = listQuestions
             questions_list_argument = Array(listQuestions.size) { CommunityQuestion() }
-            results_view_model.resetPoints(0)
+            gameOver_view_model.resetPoints(0)
             loadQuestions(communityQuestions, 0, view, listButtons())
         })
     }
@@ -180,9 +180,9 @@ class AnswerQuestion : Fragment() {
                 if (list_buttons[position].text == correct_response) {
                     current_score += 1
                     communityQuestions[question_track].setUserCorrectResponse(true)
-                    results_view_model.updateTotalCorrect(total_correct)
-                    results_view_model.updateCurrentScore(current_score)
-                    results_view_model.incrementTimeBonus(current_time)
+                    gameOver_view_model.updateTotalCorrect(total_correct)
+                    gameOver_view_model.updateCurrentScore(current_score)
+                    gameOver_view_model.incrementTimeBonus(current_time)
                     alertCorrectResponse(view, list_buttons, correct_response, communityQuestions, question_track, list_buttons[position])
                 } else {
                     remaining_lives -= 1

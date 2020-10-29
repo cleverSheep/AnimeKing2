@@ -87,4 +87,9 @@
         <item name="android:textSize">15sp</item>
     </style>
 
+    <style name="SampleProgress">
+        <item name="android:layout_width">@dimen/content_width</item>
+        <item name="android:layout_height">23dp</item>
+    </style>
+
 </resources>

@@ -24,9 +24,7 @@ import com.murrayde.animekingmobile.R
 import com.murrayde.animekingmobile.model.community.QuestionFactory
 import com.murrayde.animekingmobile.util.ImageUtil
 import com.murrayde.animekingmobile.util.removeForwardSlashes
-import com.murrayde.animekingmobile.screen.main.detail.AnimeListDetailArgs
-import com.murrayde.animekingmobile.screen.main.detail.AnimeListDetailDirections
-import com.murrayde.animekingmobile.screen.quiz_results.ResultsViewModel
+import com.murrayde.animekingmobile.screen.game_over.GameOverViewModel
 import kotlinx.android.synthetic.main.fragment_detail.*
 import timber.log.Timber
 
@@ -39,7 +37,7 @@ class AnimeListDetail : Fragment() {
     private var media_is_playing = true
     private lateinit var sharedPreferences: SharedPreferences
     private lateinit var animeDetailViewModel: AnimeDetailViewModel
-    private lateinit var resultsViewModel: ResultsViewModel
+    private lateinit var gameOverViewModel: GameOverViewModel
     private lateinit var fragment_detail_question_count: TextView
     private lateinit var animeTitle: String
 
@@ -60,7 +58,7 @@ class AnimeListDetail : Fragment() {
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(activity)
         media_is_playing = sharedPreferences.getBoolean("sound_effects", true)
         animeDetailViewModel = ViewModelProvider(this).get(AnimeDetailViewModel::class.java)
-        resultsViewModel = ViewModelProvider(requireActivity()).get(ResultsViewModel::class.java)
+        gameOverViewModel = ViewModelProvider(requireActivity()).get(GameOverViewModel::class.java)
 
         fragment_detail_title.text = animeTitle
         fragment_detail_description.text = attributes.synopsis
@@ -82,7 +80,7 @@ class AnimeListDetail : Fragment() {
 
         animeDetailViewModel.getQuestionCount(removeForwardSlashes(animeTitle)).observe(requireActivity(), Observer { num_questions ->
             fragment_detail_question_count.text = String.format(view.context.getString(R.string.number_questions), num_questions)
-            resultsViewModel.setTotalQuestions(num_questions.toInt())
+            gameOverViewModel.setTotalQuestions(num_questions.toInt())
             Timber.d("Total questions: ${num_questions.toInt()}")
         })
 
