@@ -5,16 +5,13 @@ import android.animation.AnimatorListenerAdapter;
 import android.animation.ValueAnimator;
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.os.Build;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.util.AttributeSet;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.LinearLayout;
 
-import androidx.annotation.FloatRange;
 import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
 import androidx.customview.view.AbsSavedState;
 
 import com.murrayde.animekingmobile.R;
@@ -39,11 +36,6 @@ public abstract class AnimatedRoundCornerProgressBar extends BaseRoundCornerProg
 
     public AnimatedRoundCornerProgressBar(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-    }
-
-    @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
-    public AnimatedRoundCornerProgressBar(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
-        super(context, attrs, defStyleAttr, defStyleRes);
     }
 
     @Override
@@ -117,17 +109,8 @@ public abstract class AnimatedRoundCornerProgressBar extends BaseRoundCornerProg
         }
     }
 
-    @FloatRange(from = 0.2f, to = 5f)
-    public float getAnimationSpeedScale() {
-        return animationSpeedScale;
-    }
-
     public void enableAnimation() {
         this.isAnimationEnabled = true;
-    }
-
-    public void disableAnimation() {
-        this.isAnimationEnabled = false;
     }
 
     protected void onProgressChangeAnimationUpdate(LinearLayout layout, float current, float to) {
