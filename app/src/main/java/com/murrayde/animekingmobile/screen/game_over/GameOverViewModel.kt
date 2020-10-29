@@ -1,6 +1,6 @@
 @file:Suppress("PrivatePropertyName", "MemberVisibilityCanBePrivate", "PropertyName")
 
-package com.murrayde.animekingmobile.screen.quiz_results
+package com.murrayde.animekingmobile.screen.game_over
 
 import androidx.core.os.LocaleListCompat
 import androidx.hilt.lifecycle.ViewModelInject
@@ -14,7 +14,7 @@ import com.murrayde.animekingmobile.model.community.CommunityQuestion
 import com.murrayde.animekingmobile.util.QuestionUtil
 import timber.log.Timber
 
-class ResultsViewModel @ViewModelInject() constructor() : ViewModel() {
+class GameOverViewModel @ViewModelInject() constructor() : ViewModel() {
 
     private var time_bonus = 0
     var total_time_bonus = 0

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:layout_gravity="center"
     android:background="#393B48"
-    tools:context=".screen.quiz_results.ViewResultsList">
+    tools:context=".screen.game_over.GameOverResultsList">
 
     <ImageView
         android:id="@+id/imageView7"
@@ -43,6 +43,7 @@
     </androidx.cardview.widget.CardView>
 
     <Button
+        android:id="@+id/button5"
         android:layout_width="0dp"
         android:layout_height="18dp"
         android:layout_marginHorizontal="21dp"
@@ -58,5 +59,65 @@
         app:layout_constraintBottom_toBottomOf="@+id/cardView2"
         app:layout_constraintEnd_toEndOf="@+id/cardView2"
         app:layout_constraintStart_toStartOf="@+id/cardView2" />
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:layout_marginHorizontal="32dp"
+        android:backgroundTint="#61626D"
+        app:cardCornerRadius="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/decrease_progress"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.murrayde.animekingmobile.screen.game_over.custom_view.RoundCornerProgressBar
+            android:id="@+id/progressBarSimpleCustom"
+            style="@style/SampleProgress"
+            android:layout_gravity="center"
+            app:rcAnimationEnable="false"
+            app:rcBackgroundColor="#80393B48"
+            app:rcBackgroundPadding="4dp"
+            app:rcMax="100"
+            app:rcProgress="20"
+            app:rcProgressColor="@color/sample_progress_primary"
+            app:rcRadius="50dp"
+            app:rcSecondaryProgress="30"
+            app:rcSecondaryProgressColor="@color/sample_progress_secondary" />
+    </androidx.cardview.widget.CardView>
+
+    <Button
+        android:id="@+id/decrease_progress"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="8dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/game_button_3d_states"
+        android:fontFamily="@font/gilroy_extra_bold"
+        android:text="Decrease"
+        android:textColor="@color/color_background_dark"
+        android:textSize="@dimen/_13sdp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/increase_progress"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/increase_progress"
+        android:layout_width="0dp"
+        android:layout_height="53dp"
+        android:layout_marginHorizontal="8dp"
+        android:background="@drawable/game_button_3d_states"
+        android:fontFamily="@font/gilroy_extra_bold"
+        android:text="Increase"
+        android:textColor="@color/color_background_dark"
+        android:textSize="@dimen/_13sdp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/decrease_progress"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/decrease_progress" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -28,7 +28,7 @@ import com.murrayde.animekingmobile.extensions.hideView
 import com.murrayde.animekingmobile.extensions.showView
 import com.murrayde.animekingmobile.model.practice.Result
 import com.murrayde.animekingmobile.util.QuestionUtil
-import com.murrayde.animekingmobile.screen.quiz_results.ResultsViewModel
+import com.murrayde.animekingmobile.screen.game_over.GameOverViewModel
 import kotlinx.android.synthetic.main.fragment_random_questions.*
 
 class AnswerRandomQuestions : Fragment() {
@@ -41,7 +41,7 @@ class AnswerRandomQuestions : Fragment() {
     private var media_is_playing = true
     private var vibration_is_enabled = true
     private lateinit var sharedPreferences: SharedPreferences
-    private lateinit var results_view_model: ResultsViewModel
+    private lateinit var gameOver_view_model: GameOverViewModel
     private var current_time = 0
     private lateinit var vibrator: Vibrator
 
@@ -59,7 +59,7 @@ class AnswerRandomQuestions : Fragment() {
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(activity)
         media_is_playing = sharedPreferences.getBoolean("sound_effects", true)
         vibration_is_enabled = sharedPreferences.getBoolean("vibration", true)
-        results_view_model = ViewModelProvider(requireActivity()).get(ResultsViewModel::class.java)
+        gameOver_view_model = ViewModelProvider(requireActivity()).get(GameOverViewModel::class.java)
         vibrator = context?.getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
 
         var randomQuestions: ArrayList<Result>
@@ -67,7 +67,7 @@ class AnswerRandomQuestions : Fragment() {
         val randomQuestionsViewModel = ViewModelProvider(requireActivity()).get(RandomQuestionsViewModel::class.java)
         randomQuestionsViewModel.getQuestionSet().observe(requireActivity(), Observer {
             randomQuestions = it as ArrayList<Result>
-            results_view_model.resetPoints(0)
+            gameOver_view_model.resetPoints(0)
             loadQuestions(randomQuestions, 0, view, listButtons())
         })
 
@@ -165,8 +165,8 @@ class AnswerRandomQuestions : Fragment() {
                 if (list_buttons[position].text == correct_response) {
                     current_score++
                     random_question_score_tv.text = "${current_score}/10"
-                    results_view_model.updateTotalCorrect(++current_score)
-                    results_view_model.incrementTimeBonus(current_time)
+                    gameOver_view_model.updateTotalCorrect(++current_score)
+                    gameOver_view_model.incrementTimeBonus(current_time)
                     alertCorrectResponse(view)
                 } else alertWrongResponse(view, list_buttons, correct_response)
                 random_question_next_btn.visibility = View.VISIBLE
