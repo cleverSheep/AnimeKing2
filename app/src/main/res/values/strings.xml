@@ -62,17 +62,24 @@
     <!-- View Results Layout -->
     <string name="game_over">Game Over</string>
     <string name="good_game">Good Game!</string>
-    <string name="time_bonus">Time Bonus</string>
     <string name="try_again">Try Again</string>
     <string name="quit_game">Return Home</string>
     <string name="review_correct_choice">Correct: %1$s</string>
     <string name="questions_correct_count">%1$d out of %2$d questions correct!</string>
+    <string name="questions_correct">%1$d questions correct!</string>
     <string name="total_time_bonus">%1$d pts</string>
     <string name="total_points">%1$d pts</string>
     <string name="review_share_questions">Review Questions</string>
     <string name="lost_quote">\"Remember the lesson, not the disappointment\"\n-Holo the Wise Wolf</string>
     <string name="won_quote">\"He who strikes first wins!\"\n-L Lawliet</string>
     <string name="done">Done</string>
+    <string name="exit_game">Exit Game</string>
+    <string name="play_again">Play Again</string>
+    <string name="to_level_up">to level up</string>
+    <string name="quiz_score">Quiz Score</string>
+    <string name="high_score_bonus">High Score Bonus</string>
+    <string name="power_up_bonus">Power Up Bonus</string>
+    <string name="time_bonus">Time Bonus</string>
 
     <!-- Profile Layout -->
     <string name="communities">Communities</string>
