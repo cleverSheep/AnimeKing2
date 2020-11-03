@@ -230,11 +230,11 @@
         android:textColor="@color/color_background_dark"
         android:textSize="@dimen/_13sdp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/progressBar22"
+        app:layout_constraintBottom_toTopOf="@+id/imageView12"
         app:layout_constraintEnd_toStartOf="@+id/increase_progress"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/progressBar19">
+        app:layout_constraintTop_toBottomOf="@+id/imageView9">
 
         <ImageView
             android:id="@+id/imageView15"
@@ -342,8 +342,8 @@
         android:layout_height="35dp"
         android:src="@drawable/ic_game_over_category_bg"
         app:layout_constraintBottom_toTopOf="@+id/imageView10"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/cardView3"
+        app:layout_constraintStart_toStartOf="@+id/cardView3"
         app:layout_constraintTop_toBottomOf="@+id/cardView3" />
 
     <TextView
@@ -377,9 +377,9 @@
         android:layout_width="wrap_content"
         android:layout_height="35dp"
         android:src="@drawable/ic_game_over_category_bg"
-        app:layout_constraintBottom_toTopOf="@+id/imageView11"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/decrease_progress"
+        app:layout_constraintEnd_toEndOf="@+id/cardView3"
+        app:layout_constraintStart_toStartOf="@+id/cardView3"
         app:layout_constraintTop_toBottomOf="@+id/imageView10" />
 
     <TextView
@@ -414,8 +414,8 @@
         android:layout_height="35dp"
         android:src="@drawable/ic_game_over_category_bg"
         app:layout_constraintBottom_toTopOf="@+id/imageView9"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/cardView3"
+        app:layout_constraintStart_toStartOf="@+id/cardView3"
         app:layout_constraintTop_toBottomOf="@+id/imageView8"
         tools:visibility="visible" />
 
@@ -444,42 +444,6 @@
         app:layout_constraintBottom_toBottomOf="@+id/imageView10"
         app:layout_constraintEnd_toEndOf="@+id/imageView10"
         app:layout_constraintTop_toTopOf="@+id/imageView10" />
-
-    <ImageView
-        android:id="@+id/imageView11"
-        android:layout_width="wrap_content"
-        android:layout_height="36dp"
-        android:src="@drawable/ic_game_over_category_bg"
-        app:layout_constraintBottom_toTopOf="@+id/decrease_progress"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView9" />
-
-    <TextView
-        android:id="@+id/textView10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:fontFamily="@font/gilroy_extra_bold"
-        android:text="@string/time_bonus"
-        android:textColor="@color/color_white"
-        android:textSize="15sp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView11"
-        app:layout_constraintStart_toStartOf="@+id/imageView11"
-        app:layout_constraintTop_toTopOf="@+id/imageView11" />
-
-    <TextView
-        android:id="@+id/time_bonus"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:fontFamily="@font/gilroy_extra_bold"
-        android:text="10 pts"
-        android:textColor="@color/color_white"
-        android:textSize="15sp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView11"
-        app:layout_constraintEnd_toEndOf="@+id/imageView11"
-        app:layout_constraintTop_toTopOf="@+id/imageView11" />
 
 
     <ImageView

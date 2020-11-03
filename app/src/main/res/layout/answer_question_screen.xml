@@ -331,7 +331,7 @@
         android:layout_height="0dp"
         android:background="@drawable/game_button_3d_states"
         android:fontFamily="@font/gilroy_extra_bold"
-        android:text="Shinigaymi's Eye"
+        android:text="Sharingan"
         android:textColor="@color/color_background_dark"
         android:textSize="@dimen/_13sdp"
         android:textStyle="bold"

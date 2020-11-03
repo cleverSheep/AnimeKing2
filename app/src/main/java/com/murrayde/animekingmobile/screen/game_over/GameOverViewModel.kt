@@ -22,6 +22,10 @@ class GameOverViewModel @ViewModelInject() constructor() : ViewModel() {
     private var total_questions = 0
     private var total_score = 0
 
+    private var quiz_score = 0
+    private var high_score_bonus = 0
+    private var power_up_bonus = 0
+
     private val questionReviewsSubmitted = MutableLiveData<Boolean>()
     private val db = FirebaseFirestore.getInstance()
 

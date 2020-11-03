@@ -12,14 +12,15 @@
         android:layout_height="200dp"
         android:scaleType="fitCenter"
         android:src="@drawable/radial_gradient"
+        app:layout_constraintBottom_toBottomOf="@id/cardView"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@id/cardView" />
 
     <LinearLayout
         android:id="@+id/cardView"
         android:layout_width="150dp"
         android:layout_height="120dp"
-        app:layout_constraintBottom_toBottomOf="@+id/image_user_profile"
+        android:layout_marginTop="32dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -71,6 +72,7 @@
         tools:text="Must...sleep...cozy...cookies??" />
 
     <Button
+        android:id="@+id/button6"
         android:layout_width="75dp"
         android:layout_height="18dp"
         android:layout_marginHorizontal="21dp"
