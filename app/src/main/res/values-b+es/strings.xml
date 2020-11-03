@@ -60,10 +60,10 @@
     <!-- View Results Layout -->
     <string name="game_over">Juego Terminado</string>
     <string name="good_game">¡Buen juego!</string>
-    <string name="time_bonus">Tiempo Extra</string>
     <string name="try_again">Inténtalo de Nuevo</string>
     <string name="quit_game">Volver a casa</string>
     <string name="review_correct_choice">Correcto: %1$s</string>
+    <string name="questions_correct">%1$d preguntas correctas!</string>
     <string name="questions_correct_count">%1$d de %2$d preguntas correctas!</string>
     <string name="total_time_bonus">%1$d puntos</string>
     <string name="total_points">%1$d puntos</string>
@@ -71,6 +71,13 @@
     <string name="lost_quote">\"Recuerda la lección, no la decepción.\"\n-Holo la Lobo Sabio</string>
     <string name="won_quote">\"El que golpea primero gana\"\n-L Lawliet</string>
     <string name="done">Terminar</string>
+    <string name="exit_game">Salir del Juego</string>
+    <string name="play_again">Juega de Nuevo</string>
+    <string name="to_level_up">subir de nivel</string>
+    <string name="quiz_score">Puntaje de Prueba</string>
+    <string name="high_score_bonus">Bono de Puntuación más Alta</string>
+    <string name="power_up_bonus">Bono de Encendido</string>
+    <string name="time_bonus">Tiempo Extra</string>
 
     <!-- Profile Layout -->
     <string name="edit_profile">Editar Perfil</string>
