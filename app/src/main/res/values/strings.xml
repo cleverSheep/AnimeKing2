@@ -45,7 +45,7 @@
 
     <!-- Answer Question Layout -->
     <string name="time_up">Time Up!</string>
-    <string name="next_question">Next Question!</string>
+    <string name="next_question">Next Question</string>
     <string name="got_the_hang_of_it">You\'ve got the hang of it! Visit an anime community for more targeted questions.</string>
     <string name="score">Score</string>
     <string name="current_question">Question %1$d</string>

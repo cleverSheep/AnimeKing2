@@ -43,7 +43,7 @@
 
     <!-- Answer Question Layout -->
     <string name="time_up">Tiempo Muerto</string>
-    <string name="next_question">Próxima Pregunta!</string>
+    <string name="next_question">Próxima Pregunta</string>
     <string name="got_the_hang_of_it">Tienes el truco! Visita una comunidad de anime para preguntas más específicas.</string>
     <string name="score">Marcador</string>
     <string name="current_question">Pregunta %1$d</string>
