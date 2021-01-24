@@ -10,7 +10,7 @@
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="wrap_content"
+        android:layout_width="110dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:background="@drawable/game_score_outline_accent"
@@ -85,7 +85,7 @@
 
     <LinearLayout
         android:id="@+id/linearLayout2"
-        android:layout_width="wrap_content"
+        android:layout_width="110dp"
         android:layout_height="wrap_content"
         android:background="@drawable/game_score_outline_accent"
         android:orientation="horizontal"
@@ -93,7 +93,7 @@
         android:paddingStart="0dp"
         android:paddingEnd="@dimen/_10sdp"
         app:layout_constraintBottom_toBottomOf="@+id/linearLayout3"
-        app:layout_constraintEnd_toEndOf="@+id/currentQuestionAnimator"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/linearLayout3">
 
@@ -301,6 +301,7 @@
         android:id="@+id/button_quit_game"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
         android:background="@drawable/game_button_3d_states"
         android:fontFamily="@font/gilroy_extra_bold"
         android:text="@string/exit_game"
@@ -308,9 +309,8 @@
         android:textColor="@color/color_black_dark"
         android:textSize="@dimen/_13sdp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/progressBar12"
-        app:layout_constraintStart_toStartOf="@+id/button_choice_four"
-        app:layout_constraintTop_toBottomOf="@+id/progressBar12" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/button_choice_four" />
 
     <ProgressBar
         android:id="@+id/progressBar_ask_question"

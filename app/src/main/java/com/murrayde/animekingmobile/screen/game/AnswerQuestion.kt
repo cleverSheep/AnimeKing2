@@ -66,6 +66,7 @@ class AnswerQuestion : Fragment() {
     private lateinit var vibrator: Vibrator
     private lateinit var animeTitle: String
     private lateinit var button_next_question: Button
+    private lateinit var button_quit_game: Button
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -88,6 +89,7 @@ class AnswerQuestion : Fragment() {
         vibrator = context?.getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
         gameOver_view_model = ViewModelProvider(requireActivity()).get(GameOverViewModel::class.java)
         button_next_question = view.findViewById(R.id.button_next_question)
+        button_quit_game = view.findViewById(R.id.button_quit_game)
 
         answerQuestionViewModel.getListOfQuestions().observe(requireActivity(), Observer { listQuestions ->
             communityQuestions = listQuestions
@@ -113,6 +115,9 @@ class AnswerQuestion : Fragment() {
         buttonChoiceClick(list_buttons, communityQuestions, track)
         button_next_question.setOnClickListener {
             transitionToNextQuestion(track, communityQuestions, view, list_buttons)
+        }
+        button_quit_game.setOnClickListener {
+            navigateToResultsScreen(view)
         }
         startTimer(communityQuestions, track, view, list_buttons)
         tv_current_question.text = String.format(view.context.getString(R.string.current_question), current_question)
