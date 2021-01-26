@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".screen.main.detail.AnimeListDetail">
+    tools:context=".screen.main.detail.AnimeListDetail"
+    android:background="@color/color_background_dark">
     <!--NOTE: Use theme instead of style when changing toolbar text/back arrow color-->
     <ImageView
         android:id="@+id/fragment_detail_image"
@@ -31,55 +32,110 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
+    <LinearLayout
         android:id="@+id/fragment_detail_take_quiz"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
         android:layout_marginTop="64dp"
-        android:background="@drawable/detail_main_buttons"
-        android:drawableStart="@drawable/ic_person_24px"
-        android:fontFamily="@font/baloobhairegular"
-        android:stateListAnimator="@xml/animate_scale"
-        android:text="@string/single_player"
-        android:textColor="@color/color_background_white"
-        android:textSize="@dimen/_15sdp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:weightSum="1.0"
+        android:background="@drawable/anime_detail_3d_button_states"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fragment_detail_description" />
+        app:layout_constraintTop_toBottomOf="@+id/fragment_detail_description">
 
+        <ImageView
+            android:id="@+id/imageView9"
+            android:layout_width="0dp"
+            android:layout_weight="0.30"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_person_24px"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="0dp"
+            android:layout_weight="0.70"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/baloobhairegular"
+            android:text="@string/single_player"
+            android:textColor="@color/color_black"
+            android:textSize="@dimen/_16sdp"
+            app:layout_constraintTop_toTopOf="@+id/imageView9"
+            tools:layout_editor_absoluteX="146dp" />
+    </LinearLayout>
+
+    <LinearLayout
         android:id="@+id/fragment_detail_ask_question"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:background="@drawable/detail_main_buttons"
-        android:drawableStart="@drawable/question_answer"
-        android:fontFamily="@font/baloobhairegular"
-        android:stateListAnimator="@xml/animate_scale"
-        android:text="@string/ask_question"
-        android:textColor="@color/color_background_white"
-        android:textSize="@dimen/_15sdp"
-        app:layout_constraintEnd_toEndOf="@+id/fragment_detail_take_quiz"
-        app:layout_constraintStart_toStartOf="@+id/fragment_detail_take_quiz"
-        app:layout_constraintTop_toBottomOf="@+id/fragment_detail_take_quiz" />
+        android:background="@drawable/anime_detail_3d_button_states"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:weightSum="1.0"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_detail_take_quiz">
 
-    <Button
+        <ImageView
+            android:id="@+id/imageView10"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.30"
+            android:src="@drawable/question_answer"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.70"
+            android:fontFamily="@font/baloobhairegular"
+            android:text="@string/ask_question"
+            android:textColor="@color/color_black"
+            android:textSize="@dimen/_16sdp"
+            app:layout_constraintTop_toTopOf="@+id/imageView9"
+            tools:layout_editor_absoluteX="146dp" />
+    </LinearLayout>
+
+    <LinearLayout
         android:id="@+id/fragment_detail_home"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:background="@drawable/detail_main_buttons"
-        android:drawableStart="@drawable/ic_home_black_24dp"
-        android:fontFamily="@font/baloobhairegular"
-        android:stateListAnimator="@xml/animate_scale"
-        android:text="@string/return_home"
-        android:textColor="@color/color_background_white"
-        android:textSize="@dimen/_15sdp"
-        app:layout_constraintEnd_toEndOf="@+id/fragment_detail_ask_question"
-        app:layout_constraintStart_toStartOf="@+id/fragment_detail_ask_question"
-        app:layout_constraintTop_toBottomOf="@+id/fragment_detail_ask_question" />
+        android:background="@drawable/anime_detail_3d_button_states"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:weightSum="1.0"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_detail_ask_question">
+
+        <ImageView
+            android:id="@+id/imageView11"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.30"
+            android:src="@drawable/ic_home_black_24dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.70"
+            android:fontFamily="@font/baloobhairegular"
+            android:text="@string/return_home"
+            android:textColor="@color/color_black"
+            android:textSize="@dimen/_16sdp"
+            app:layout_constraintTop_toTopOf="@+id/imageView9"
+            tools:layout_editor_absoluteX="146dp" />
+    </LinearLayout>
 
     <Button
         android:id="@+id/fragment_detail_multiplayer"
@@ -125,7 +181,7 @@
         android:paddingHorizontal="8dp"
         android:text="@string/question_count"
         android:textAlignment="center"
-        android:textColor="@color/color_white"
+        android:textColor="@color/color_black"
         android:textSize="@dimen/_12sdp"
         app:layout_constraintStart_toStartOf="@+id/fragment_detail_title"
         app:layout_constraintTop_toBottomOf="@+id/fragment_detail_image" />
@@ -134,10 +190,11 @@
         android:id="@+id/cardview_anime_image_poster"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
         android:elevation="8dp"
         app:cardCornerRadius="8dp"
         app:layout_constraintBottom_toBottomOf="@+id/fragment_detail_image"
-        app:layout_constraintStart_toStartOf="@+id/fragment_detail_take_quiz"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/fragment_detail_image">
 
         <ImageView
@@ -158,7 +215,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/baloobhairegular"
         android:textAllCaps="true"
-        android:textColor="@color/color_black"
+        android:textColor="@color/color_white"
         android:textSize="@dimen/_10sdp"
         app:layout_constraintBottom_toTopOf="@+id/fragment_detail_title"
         app:layout_constraintStart_toStartOf="@+id/fragment_detail_title"
@@ -181,7 +238,7 @@
         android:layout_marginStart="4dp"
         android:fontFamily="@font/baloobhairegular"
         android:textAllCaps="false"
-        android:textColor="@color/color_black"
+        android:textColor="@color/color_white"
         android:textSize="@dimen/_10sdp"
         app:layout_constraintBaseline_toBaselineOf="@+id/fragment_detail_age_rating"
         app:layout_constraintStart_toEndOf="@+id/view3"
@@ -197,7 +254,7 @@
         android:maxLines="1"
         android:text="@string/anime_title"
         android:textAlignment="viewStart"
-        android:textColor="@color/color_black"
+        android:textColor="@color/color_white"
         android:textSize="@dimen/_20sdp"
         app:layout_constraintBottom_toTopOf="@+id/barrier3"
         app:layout_constraintEnd_toEndOf="parent"
