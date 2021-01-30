@@ -12,13 +12,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.widget.Toolbar
 import androidx.core.os.LocaleListCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
-import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import androidx.navigation.ui.setupWithNavController
 import androidx.preference.PreferenceManager
 import com.bumptech.glide.Glide
 import com.google.firebase.firestore.FieldValue
@@ -27,9 +24,8 @@ import com.google.firebase.firestore.SetOptions
 import com.murrayde.animekingmobile.R
 import com.murrayde.animekingmobile.extensions.formatQuestion
 import com.murrayde.animekingmobile.model.community.CommunityQuestion
-import com.murrayde.animekingmobile.util.removeForwardSlashes
 import com.murrayde.animekingmobile.screen.main.detail.AnimeListDetailArgs
-import com.murrayde.animekingmobile.screen.ask_question.AskQuestionDirections
+import com.murrayde.animekingmobile.util.removeForwardSlashes
 import kotlinx.android.synthetic.main.fragment_ask_question.*
 import timber.log.Timber
 
@@ -43,10 +39,7 @@ class AskQuestion : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.fragment_ask_question, container, false)
-        val toolbar = view.findViewById<Toolbar>(R.id.toolbar_ask_question)
-        toolbar.setupWithNavController(findNavController())
-        return view
+        return inflater.inflate(R.layout.fragment_ask_question, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -95,6 +88,9 @@ class AskQuestion : Fragment() {
                         false)
                 addQuestionToDatabase(question, view)
             }
+        }
+        aq_return_home_button.setOnClickListener {
+            navigateBackToDetailScreen(it)
         }
     }
 

@@ -6,11 +6,6 @@
         android:left="15dp"
         android:right="15dp"
         android:top="15dp" />
-    <corners
-        android:bottomLeftRadius="4dp"
-        android:bottomRightRadius="4dp"
-        android:radius="4dp"
-        android:topLeftRadius="4dp"
-        android:topRightRadius="4dp" />
-    <solid android:color="@color/color_darkish_green" />
+    <corners android:radius="10dp" />
+    <stroke android:color="@color/color_darkish_green" android:width="2dp" />
 </shape>

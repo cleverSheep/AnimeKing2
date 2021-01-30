@@ -7,7 +7,7 @@
     <TextView
         style="@style/Question_Incorrect_Format_Text"
         android:layout_weight="1"
-        android:background="@color/color_home_logo_update"
+        android:background="@color/color_background_dark"
         android:text="@string/question_min"
         android:textSize="@dimen/_15sdp" />
 

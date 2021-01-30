@@ -4,81 +4,38 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/color_home_logo_update"
+    android:background="@color/color_background_dark"
     tools:context=".screen.ask_question.AskQuestion">
-
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar_ask_question"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/fragment_list_header_toolbar"
-        android:fitsSystemWindows="true"
-        android:theme="@style/ToolbarDarkTheme"
-        android:translationZ="2dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <TextView
-            android:id="@+id/tv_submit_question"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:layout_margin="8dp"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:clickable="true"
-            android:drawableEnd="@drawable/ic_tick"
-            android:drawablePadding="8dp"
-            android:fontFamily="@font/baloobhairegular"
-            android:padding="8dp"
-            android:text="@string/submit_question"
-            android:textAlignment="textEnd"
-            android:textColor="@color/color_white"
-            android:textSize="@dimen/_15sdp" />
-    </androidx.appcompat.widget.Toolbar>
 
     <ImageView
         android:id="@+id/iv_ask_question"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:contentDescription="@string/anime_image"
-        android:scaleType="center"
+        android:scaleType="centerCrop"
+        android:visibility="visible"
         app:layout_constraintDimensionRatio="16:9"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:src="@drawable/profile_stats_button" />
+        tools:src="@drawable/dbzpriginal" />
 
     <View
-        android:id="@+id/view4"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="@color/title_bg"
-        app:layout_constraintBottom_toBottomOf="@id/tv_ask_question"
-        app:layout_constraintTop_toTopOf="@+id/tv_ask_question" />
-
-    <ImageButton
-        android:id="@+id/imageView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:background="?attr/selectableItemBackgroundBorderless"
-        android:contentDescription="@string/anime_image"
-        android:padding="8dp"
-        android:src="@drawable/ic_photo_camera_black_24dp"
-        android:visibility="invisible"
+        android:background="@drawable/ask_question_foreground"
         app:layout_constraintBottom_toBottomOf="@+id/iv_ask_question"
-        app:layout_constraintDimensionRatio=""
-        app:layout_constraintEnd_toEndOf="@+id/editText_enter_question"
-        app:layout_constraintTop_toTopOf="@+id/view4" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tv_ask_question"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:ellipsize="end"
-        android:fontFamily="@font/baloobhairegular"
+        android:fontFamily="@font/gilroy_extra_bold"
         android:gravity="start"
         android:maxLines="2"
         android:paddingEnd="@dimen/_8sdp"
@@ -86,7 +43,7 @@
         android:textColor="@android:color/white"
         android:textSize="@dimen/_20sdp"
         app:layout_constraintBottom_toBottomOf="@+id/iv_ask_question"
-        app:layout_constraintEnd_toStartOf="@+id/imageView2"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/editText_enter_question"
         tools:ignore="RtlSymmetry"
         tools:text="Anime Title" />
@@ -94,25 +51,25 @@
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/editText_enter_question"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="125dp"
         android:layout_marginHorizontal="16dp"
         android:layout_marginVertical="8dp"
+        android:layout_marginTop="16dp"
         android:autofillHints="Enter Question"
         android:background="@drawable/ask_question_background"
         android:breakStrategy="high_quality"
-        android:fontFamily="@font/baloobhairegular"
+        android:fontFamily="@font/gilroy_extra_bold"
+        android:gravity="top"
         android:hint="@string/enter_question"
         android:inputType="textCapSentences|textMultiLine"
         android:maxLength="120"
         android:maxLines="4"
         android:scrollHorizontally="false"
-        android:textAlignment="textStart"
-        android:textColor="@color/color_black"
-        android:textColorHint="@color/common_google_signin_btn_text_light_focused"
+        android:textColor="@color/color_white"
+        android:textColorHint="#B3FFFFFF"
         android:textCursorDrawable="@drawable/cursor_drawable"
-        android:textSize="@dimen/_15sdp"
+        android:textSize="@dimen/_14sdp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/editText_correct_choice"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/iv_ask_question" />
@@ -122,85 +79,100 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
         android:background="@drawable/correct_question_background"
-        android:fontFamily="@font/baloobhairegular"
+        android:backgroundTint="#3333CF80"
+        android:backgroundTintMode="src_in"
+        android:fontFamily="@font/gilroy_extra_bold"
         android:hint="@string/correct_choice"
         android:inputType="text"
         android:maxLines="1"
         android:textAlignment="center"
         android:textColor="@color/color_white"
-        android:textColorHint="@color/color_white"
+        android:textColorHint="#B3FFFFFF"
         android:textCursorDrawable="@drawable/cursor_drawable"
-        android:textSize="@dimen/_15sdp"
+        android:textSize="@dimen/_12sdp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/editText_wrong_one"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <EditText
-        android:id="@+id/editText_wrong_one"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginBottom="8dp"
-        android:background="@drawable/wrong_question_background"
-        android:fontFamily="@font/baloobhairegular"
-        android:hint="@string/wrong_choice"
-        android:inputType="text"
-        android:maxLines="1"
-        android:textAlignment="center"
-        android:textColor="@color/color_white"
-        android:textColorHint="@color/color_white"
-        android:textCursorDrawable="@drawable/cursor_drawable"
-        android:textSize="@dimen/_15sdp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/editText_wrong_two"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText_enter_question" />
 
     <EditText
         android:id="@+id/editText_wrong_two"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
         android:background="@drawable/wrong_question_background"
-        android:fontFamily="@font/baloobhairegular"
+        android:backgroundTint="#33FF333E"
+        android:backgroundTintMode="src_in"
+        android:fontFamily="@font/gilroy_extra_bold"
         android:hint="@string/wrong_choice"
         android:inputType="text"
         android:maxLines="1"
         android:textAlignment="center"
         android:textColor="@color/color_white"
-        android:textColorHint="@color/color_white"
+        android:textColorHint="#B3FFFFFF"
         android:textCursorDrawable="@drawable/cursor_drawable"
-        android:textSize="@dimen/_15sdp"
+        android:textSize="@dimen/_12sdp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/editText_wrong_three"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText_wrong_one" />
 
     <EditText
         android:id="@+id/editText_wrong_three"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
         android:background="@drawable/wrong_question_background"
+        android:backgroundTint="#33FF333E"
+        android:backgroundTintMode="src_in"
         android:fontFamily="@font/baloobhairegular"
         android:hint="@string/wrong_choice"
         android:inputType="text"
         android:maxLines="1"
         android:textAlignment="center"
         android:textColor="@color/color_white"
-        android:textColorHint="@color/color_white"
+        android:textColorHint="#B3FFFFFF"
         android:textCursorDrawable="@drawable/cursor_drawable"
-        android:textSize="@dimen/_15sdp"
+        android:textSize="@dimen/_12sdp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/button_submit_question"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText_wrong_two" />
+
+    <EditText
+        android:id="@+id/editText_wrong_one"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/wrong_question_background"
+        android:backgroundTint="#33FF333E"
+        android:backgroundTintMode="src_in"
+        android:fontFamily="@font/gilroy_extra_bold"
+        android:hint="@string/wrong_choice"
+        android:inputType="text"
+        android:maxLines="1"
+        android:textAlignment="center"
+        android:textColor="@color/color_white"
+        android:textColorHint="#B3FFFFFF"
+        android:textCursorDrawable="@drawable/cursor_drawable"
+        android:textSize="@dimen/_12sdp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText_correct_choice" />
 
     <Button
         android:id="@+id/button_submit_question"
@@ -231,5 +203,87 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteX="146dp"
         tools:layout_editor_absoluteY="315dp" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/aq_return_home_button"
+        android:layout_width="165dp"
+        android:layout_height="54dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/game_button_3d_states"
+        android:paddingHorizontal="@dimen/_24sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/tv_submit_question"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText_wrong_three">
+
+        <ImageView
+            android:id="@+id/imageView15"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:src="@drawable/ic_arrow_back_ios_24px"
+            app:layout_constraintBottom_toBottomOf="@+id/textView67"
+            app:layout_constraintEnd_toStartOf="@+id/textView67"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/textView67" />
+
+        <TextView
+            android:id="@+id/textView67"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/gilroy_extra_bold"
+            android:text="@string/back"
+            android:textColor="@color/color_black"
+            android:textSize="@dimen/_15sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/imageView15"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/tv_submit_question"
+        android:layout_width="165dp"
+        android:layout_height="54dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/game_button_3d_states"
+        android:paddingHorizontal="@dimen/_24sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/aq_return_home_button"
+        app:layout_constraintTop_toBottomOf="@+id/editText_wrong_three">
+
+        <ImageView
+            android:id="@+id/imageView16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:src="@drawable/ic_check_24px"
+            app:layout_constraintBottom_toBottomOf="@+id/textView68"
+            app:layout_constraintEnd_toStartOf="@+id/textView68"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/textView68" />
+
+        <TextView
+            android:id="@+id/textView68"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/gilroy_extra_bold"
+            android:text="@string/submit_question"
+            android:textColor="@color/color_black"
+            android:textSize="@dimen/_15sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/imageView16"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
