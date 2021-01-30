@@ -33,8 +33,7 @@
         <activity
             android:name="com.murrayde.animekingmobile.screen.MainActivity"
             android:configChanges="locale|orientation"
-            android:screenOrientation="portrait"
-            android:theme="@style/MainAppTheme" />
+            android:screenOrientation="portrait"/>
         <activity
             android:name="com.murrayde.animekingmobile.screen.splash_credits.CreditsActivity"
             android:screenOrientation="portrait"

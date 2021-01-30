@@ -27,7 +27,7 @@ class SettingsFragment : PreferenceFragmentCompat(), SharedPreferences.OnSharedP
     private lateinit var googleSignInClient: GoogleSignInClient
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        view.setBackgroundColor(resources.getColor(R.color.color_background_white))
+        view.setBackgroundColor(resources.getColor(R.color.color_background_dark))
         super.onViewCreated(view, savedInstanceState)
     }
 
