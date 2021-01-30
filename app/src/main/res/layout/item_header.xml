@@ -11,7 +11,7 @@
         android:adjustViewBounds="true"
         android:foreground="@drawable/ask_question_foreground"
         android:scaleType="centerCrop"
-        android:src="@drawable/dbzpriginal"
+        android:src="@drawable/aot_cover_image"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
