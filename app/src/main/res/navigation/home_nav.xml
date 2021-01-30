@@ -7,6 +7,5 @@
     <fragment
         android:id="@+id/credits"
         android:name="com.murrayde.animekingmobile.screen.splash_credits.CreditsFragment"
-        android:label="About"
         tools:layout="@layout/fragment_credits" />
 </navigation>

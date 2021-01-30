@@ -4,19 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/color_background_dark"
     tools:context=".screen.splash_credits.CreditsFragment">
     <!--NOTE: Use theme instead of style when changing toolbar text/back arrow color-->
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar_credits"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fitsSystemWindows="true"
-        android:translationZ="2dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:title="@string/credits"
-        app:titleTextAppearance="@style/TextAppearance.TabsFont" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/credit_loading_animation"
@@ -36,6 +26,7 @@
             android:layout_gravity="center"
             android:autoLink="web"
             android:gravity="center"
+            android:fontFamily="@font/gilroy_extra_bold"
             android:padding="15dp"
             android:text="@string/credit_loading_animation"
             android:textAlignment="center" />
@@ -60,6 +51,7 @@
             android:layout_gravity="center"
             android:autoLink="web"
             android:gravity="center"
+            android:fontFamily="@font/gilroy_extra_bold"
             android:padding="15dp"
             android:text="@string/credit_radar"
             android:textAlignment="center" />
@@ -84,6 +76,7 @@
             android:layout_gravity="center"
             android:autoLink="web"
             android:gravity="center"
+            android:fontFamily="@font/gilroy_extra_bold"
             android:padding="15dp"
             android:text="@string/credits_audio"
             android:textAlignment="center" />
@@ -98,10 +91,10 @@
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:fontFamily="@font/bahnscrift"
+        android:fontFamily="@font/gilroy_extra_bold"
         android:text="@string/credits_author"
         android:textAlignment="center"
-        android:textColor="@color/color_black"
+        android:textColor="@color/color_white"
         android:textSize="@dimen/_10sdp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
