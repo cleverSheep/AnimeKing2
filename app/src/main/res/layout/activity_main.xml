@@ -25,7 +25,7 @@
             android:id="@+id/bottom"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/color_darkish_green_dark"
+            android:background="#392b33"
             android:theme="@style/MenuNavTheme"
             app:itemIconTint="@color/color_white"
             app:itemTextColor="@color/color_white"

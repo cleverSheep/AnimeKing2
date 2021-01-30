@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:id="@+id/fragment_list"
     android:layout_height="match_parent"
-    android:background="@color/color_background_white"
+    android:background="@color/color_background_dark"
     tools:context=".screen.main.master.AnimeList">
 
     <com.airbnb.epoxy.EpoxyRecyclerView
