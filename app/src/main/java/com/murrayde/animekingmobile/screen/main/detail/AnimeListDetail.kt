@@ -10,21 +10,18 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
-import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
-import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import androidx.navigation.ui.setupWithNavController
 import androidx.preference.PreferenceManager
 import com.bumptech.glide.Glide
 import com.murrayde.animekingmobile.R
 import com.murrayde.animekingmobile.model.community.QuestionFactory
+import com.murrayde.animekingmobile.screen.game_over.GameOverViewModel
 import com.murrayde.animekingmobile.util.ImageUtil
 import com.murrayde.animekingmobile.util.removeForwardSlashes
-import com.murrayde.animekingmobile.screen.game_over.GameOverViewModel
 import kotlinx.android.synthetic.main.fragment_detail.*
 import timber.log.Timber
 
@@ -44,8 +41,6 @@ class AnimeListDetail : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_detail, container, false)
-        val toolbar = view.findViewById<Toolbar>(R.id.toolbar_detail)
-        toolbar.setupWithNavController(findNavController())
         fragment_detail_question_count = view.findViewById(R.id.fragment_detail_question_count)
         animeTitle = if (args.animeAttributes.titles.en != null) args.animeAttributes.titles.en else args.animeAttributes.canonicalTitle
         return view
