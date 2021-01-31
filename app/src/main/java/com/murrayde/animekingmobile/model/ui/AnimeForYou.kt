@@ -13,3 +13,9 @@ data class AnimeForYou(
         val everythingMecha: Pair<String, List<AnimeData>>,
         val classicalAnimeTrivia: Pair<String, List<AnimeData>>
 )
+
+sealed class NetworkResponse {
+    object Success : NetworkResponse()
+    object Error : NetworkResponse()
+    object Loading : NetworkResponse()
+}

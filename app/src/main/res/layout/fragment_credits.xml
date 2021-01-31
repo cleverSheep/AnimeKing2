@@ -25,8 +25,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:autoLink="web"
-            android:gravity="center"
             android:fontFamily="@font/gilroy_extra_bold"
+            android:gravity="center"
             android:padding="15dp"
             android:text="@string/credit_loading_animation"
             android:textAlignment="center" />
@@ -50,8 +50,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:autoLink="web"
-            android:gravity="center"
             android:fontFamily="@font/gilroy_extra_bold"
+            android:gravity="center"
             android:padding="15dp"
             android:text="@string/credit_radar"
             android:textAlignment="center" />
@@ -65,7 +65,7 @@
         android:elevation="15dp"
         android:padding="15dp"
         app:cardCornerRadius="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/tv_credits_author"
+        app:layout_constraintBottom_toTopOf="@+id/credit_error_loading"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/credit_radar">
@@ -75,10 +75,35 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:autoLink="web"
-            android:gravity="center"
             android:fontFamily="@font/gilroy_extra_bold"
+            android:gravity="center"
             android:padding="15dp"
             android:text="@string/credits_audio"
+            android:textAlignment="center" />
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/credit_error_loading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:elevation="15dp"
+        android:padding="15dp"
+        app:cardCornerRadius="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/tv_credits_author"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/credit_sound_effects">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:autoLink="web"
+            android:fontFamily="@font/gilroy_extra_bold"
+            android:gravity="center"
+            android:padding="15dp"
+            android:text="@string/credits_error_loading_anim"
             android:textAlignment="center" />
 
     </androidx.cardview.widget.CardView>
@@ -88,9 +113,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center|bottom"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
         android:fontFamily="@font/gilroy_extra_bold"
         android:text="@string/credits_author"
         android:textAlignment="center"
@@ -99,5 +121,6 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/credit_error_loading" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -13,6 +13,7 @@ import androidx.lifecycle.Observer
 import com.murrayde.animekingmobile.R
 import com.murrayde.animekingmobile.extensions.hideView
 import com.murrayde.animekingmobile.extensions.showView
+import com.murrayde.animekingmobile.model.ui.NetworkResponse
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_list.*
 
@@ -37,14 +38,25 @@ class AnimeList : Fragment() {
         })
 
         // Home screen visibility reflects the network state
-        viewModel.networkLoading.observe(viewLifecycleOwner, Observer { loading ->
-            if (loading) {
-                rv_anime.hideView()
-                list_main_loading.showView()
-            } else {
-                rv_anime.showView()
-                list_main_loading.hideView()
+        viewModel.networkResponse.observe(viewLifecycleOwner, Observer { response ->
+            when (response) {
+                is NetworkResponse.Success -> {
+                    rv_anime.showView()
+                    list_main_loading.hideView()
+                    list_main_loading_error.hideView()
+                }
+                is NetworkResponse.Loading -> {
+                    rv_anime.hideView()
+                    list_main_loading.showView()
+                    list_main_loading_error.hideView()
+                }
+                is NetworkResponse.Error -> {
+                    rv_anime.hideView()
+                    list_main_loading.hideView()
+                    list_main_loading_error.showView()
+                }
             }
+
         })
 
     }

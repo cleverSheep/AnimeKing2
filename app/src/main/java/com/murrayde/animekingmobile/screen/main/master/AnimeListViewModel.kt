@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.murrayde.animekingmobile.model.ui.AnimeForYou
+import com.murrayde.animekingmobile.model.ui.NetworkResponse
 import com.murrayde.animekingmobile.repository.community.AnimeListRepo
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -16,25 +17,26 @@ class AnimeListViewModel @ViewModelInject constructor(private val animeListRepo:
 
     private val disposable = CompositeDisposable()
     private val animeForYou = MutableLiveData<AnimeForYou>()
-    private val loading = MutableLiveData<Boolean>()
+    //private val loading = MutableLiveData<Boolean>()
+    private val response = MutableLiveData<NetworkResponse>()
 
     init {
         fetchAnimeForYou()
     }
 
     private fun fetchAnimeForYou() {
-        loading.postValue(true)
+        response.postValue(NetworkResponse.Loading)
         disposable.add(
                 animeListRepo.getAnimeForYou().subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribeWith(object : DisposableSingleObserver<AnimeForYou>() {
                             override fun onSuccess(forYou: AnimeForYou) {
-                                loading.postValue(false)
+                                response.postValue(NetworkResponse.Success)
                                 animeForYou.value = forYou
                             }
 
                             override fun onError(e: Throwable) {
-                                loading.postValue(false)
+                                response.postValue(NetworkResponse.Error)
                                 Timber.e("Error loading titles")
 
                             }
@@ -45,7 +47,8 @@ class AnimeListViewModel @ViewModelInject constructor(private val animeListRepo:
 
     fun getAnimeForYou(): LiveData<AnimeForYou> = animeForYou
 
-    val networkLoading: LiveData<Boolean> = loading
+    //val networkLoading: LiveData<Boolean> = loading
+    val networkResponse: LiveData<NetworkResponse> = response
 
     override fun onCleared() {
         super.onCleared()

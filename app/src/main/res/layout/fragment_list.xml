@@ -2,8 +2,8 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
     android:id="@+id/fragment_list"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/color_background_dark"
     tools:context=".screen.main.master.AnimeList">
@@ -33,5 +33,11 @@
         layout="@layout/fragment_loading"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
+
+    <include android:id="@+id/list_main_loading_error"
+        layout="@layout/list_main_error"
+        android:visibility="invisible"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

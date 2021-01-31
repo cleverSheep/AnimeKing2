@@ -25,6 +25,8 @@
     <string name="dark_anime">Tomaré una papa frita …</string>
     <string name="everything_mecha">Todo mecha!</string>
     <string name="classical_anime">Trivia de anime clásica</string>
+    <string name="server_down_sorry">Servidor caido. Lo siento :-(</string>
+    <string name="give_us_a_second">Danos una segunda o dos para arreglar esto.</string>
 
     <!-- Anime Detail Layout -->
     <string name="take_quiz">Jugar</string>
@@ -140,6 +142,7 @@
     <string name="community">Community</string>
     <string name="credit_radar">Animación de radar de Mark Geyer en lottiefiles.com</string>
     <string name="credit_loading_animation">Cargando animación de zhejun bao en lottiefiles.com</string>
+    <string name="credits_error_loading_anim">Animación de error de Сергій Корсак en lottiefiles.com</string>
 
     <string name="not_enough_description">Each community requires at least 5 questions.\nAdd more questions to play trivia with this anime.</string>
     <string name="not_enough_questions">Not Enough Questions</string>
