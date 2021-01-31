@@ -32,24 +32,47 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:src="@drawable/ic_number_correct_bg"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_detail_description" />
+
+    <TextView
+        android:id="@+id/ak_detail_high_score"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/gilroy_extra_bold"
+        android:text="Highscore: 0"
+        android:textColor="@color/color_black"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView3"
+        app:layout_constraintEnd_toEndOf="@+id/imageView3"
+        app:layout_constraintStart_toStartOf="@+id/imageView3"
+        app:layout_constraintTop_toTopOf="@+id/imageView3" />
+
     <LinearLayout
         android:id="@+id/fragment_detail_take_quiz"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:weightSum="1.0"
+        android:layout_marginTop="32dp"
         android:background="@drawable/anime_detail_3d_button_states"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:weightSum="1.0"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fragment_detail_description">
+        app:layout_constraintTop_toBottomOf="@+id/imageView3">
 
         <ImageView
             android:id="@+id/imageView9"
             android:layout_width="0dp"
-            android:layout_weight="0.30"
             android:layout_height="wrap_content"
+            android:layout_weight="0.30"
             android:src="@drawable/ic_person_24px"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -57,8 +80,8 @@
         <TextView
             android:id="@+id/textView4"
             android:layout_width="0dp"
-            android:layout_weight="0.70"
             android:layout_height="wrap_content"
+            android:layout_weight="0.70"
             android:fontFamily="@font/baloobhairegular"
             android:text="@string/single_player"
             android:textColor="@color/color_black"

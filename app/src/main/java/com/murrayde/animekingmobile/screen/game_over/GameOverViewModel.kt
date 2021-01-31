@@ -11,7 +11,10 @@ import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import com.murrayde.animekingmobile.model.community.CommunityQuestion
+import com.murrayde.animekingmobile.model.community.PlayHistory
 import com.murrayde.animekingmobile.util.QuestionUtil
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import timber.log.Timber
 
 class GameOverViewModel @ViewModelInject() constructor() : ViewModel() {
@@ -21,6 +24,7 @@ class GameOverViewModel @ViewModelInject() constructor() : ViewModel() {
     private var total_correct = 0
     private var total_questions = 0
     private var total_score = 0
+    private var high_score = 0
 
     private var quiz_score = 0
     private var high_score_bonus = 0
@@ -35,9 +39,25 @@ class GameOverViewModel @ViewModelInject() constructor() : ViewModel() {
         total_time_bonus = time_bonus
     }
 
-    fun updateTotalCorrect(correct: Int) {
-        total_correct = correct
+    fun updateTotalCorrect() {
+        total_correct += 1
     }
+
+    fun getTotalCorrect(): Int = total_correct
+
+    fun updateHighScore(highScore: Int) {
+        high_score = highScore
+    }
+
+    fun updateBackendHighScore(userId: String, animeTitle: String, highScore: Int) {
+        val playHistory = PlayHistory(highScore)
+        GlobalScope.launch {
+            db.collection("users").document("$userId").collection("play_history").document("$animeTitle")
+                    .set(playHistory)
+        }
+    }
+
+    fun getHighScore(): Int = high_score
 
     fun getTotalQuestions() = if (total_questions > QuestionUtil.QUESTION_LIMIT) 10 else total_questions
 

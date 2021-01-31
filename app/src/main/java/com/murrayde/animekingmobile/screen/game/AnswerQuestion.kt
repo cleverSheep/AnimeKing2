@@ -185,7 +185,7 @@ class AnswerQuestion : Fragment() {
                 if (list_buttons[position].text == correct_response) {
                     current_score += 1
                     communityQuestions[question_track].setUserCorrectResponse(true)
-                    gameOver_view_model.updateTotalCorrect(total_correct)
+                    gameOver_view_model.updateTotalCorrect()
                     gameOver_view_model.updateCurrentScore(current_score)
                     gameOver_view_model.incrementTimeBonus(current_time)
                     alertCorrectResponse(view, list_buttons, correct_response, communityQuestions, question_track, list_buttons[position])

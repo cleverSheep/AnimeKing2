@@ -165,7 +165,7 @@ class AnswerRandomQuestions : Fragment() {
                 if (list_buttons[position].text == correct_response) {
                     current_score++
                     random_question_score_tv.text = "${current_score}/10"
-                    gameOver_view_model.updateTotalCorrect(++current_score)
+                    gameOver_view_model.updateTotalCorrect()
                     gameOver_view_model.incrementTimeBonus(current_time)
                     alertCorrectResponse(view)
                 } else alertWrongResponse(view, list_buttons, correct_response)

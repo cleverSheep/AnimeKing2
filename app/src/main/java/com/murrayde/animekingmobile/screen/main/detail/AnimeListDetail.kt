@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
@@ -22,10 +23,11 @@ import com.murrayde.animekingmobile.model.community.QuestionFactory
 import com.murrayde.animekingmobile.screen.game_over.GameOverViewModel
 import com.murrayde.animekingmobile.util.ImageUtil
 import com.murrayde.animekingmobile.util.removeForwardSlashes
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_detail.*
 import timber.log.Timber
 
-
+@AndroidEntryPoint
 class AnimeListDetail : Fragment() {
 
     private val args: AnimeListDetailArgs by navArgs()
@@ -33,7 +35,7 @@ class AnimeListDetail : Fragment() {
     private lateinit var media: MediaPlayer
     private var media_is_playing = true
     private lateinit var sharedPreferences: SharedPreferences
-    private lateinit var animeDetailViewModel: AnimeDetailViewModel
+    private val animeDetailViewModel: AnimeDetailViewModel by viewModels()
     private lateinit var gameOverViewModel: GameOverViewModel
     private lateinit var fragment_detail_question_count: TextView
     private lateinit var animeTitle: String
@@ -52,7 +54,6 @@ class AnimeListDetail : Fragment() {
         media = MediaPlayer.create(activity, R.raw.button_click_sound_effect)
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(activity)
         media_is_playing = sharedPreferences.getBoolean("sound_effects", true)
-        animeDetailViewModel = ViewModelProvider(this).get(AnimeDetailViewModel::class.java)
         gameOverViewModel = ViewModelProvider(requireActivity()).get(GameOverViewModel::class.java)
 
         fragment_detail_title.text = animeTitle
@@ -77,6 +78,12 @@ class AnimeListDetail : Fragment() {
             fragment_detail_question_count.text = String.format(view.context.getString(R.string.number_questions), num_questions)
             gameOverViewModel.setTotalQuestions(num_questions.toInt())
             Timber.d("Total questions: ${num_questions.toInt()}")
+        })
+
+        animeDetailViewModel.getHighScore(animeTitle, "68rBGyn2ZbWdace0mSkF47oV0DF2")
+        animeDetailViewModel.animeHighScore.observe(requireActivity(), Observer { highScore ->
+            ak_detail_high_score.text = "Highscore: $highScore"
+            gameOverViewModel.updateHighScore(highScore)
         })
 
     }

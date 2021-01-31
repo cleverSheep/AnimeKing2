@@ -4,6 +4,7 @@ import androidx.core.os.LocaleListCompat
 import com.google.firebase.firestore.FieldPath
 import com.google.firebase.firestore.FirebaseFirestore
 import com.murrayde.animekingmobile.model.community.CommunityQuestion
+import com.murrayde.animekingmobile.model.community.PlayHistory
 import com.murrayde.animekingmobile.util.removeForwardSlashes
 import de.aaronoe.rxfirestore.getSingle
 import io.reactivex.Single
@@ -30,5 +31,11 @@ class FirebaseApiClient @Inject constructor() {
         return Single.just(listOfQuestions)
 */
         return questionsRef.whereGreaterThanOrEqualTo(FieldPath.documentId(), key).getSingle()
+    }
+
+    /** High score for an anime title*/
+    fun getHighScore(anime_title: String, user_id: String): Single<PlayHistory> {
+        val highScoreRef = firebaseDB.collection("users").document("$user_id").collection("play_history").document("$anime_title")
+        return highScoreRef.getSingle()
     }
 }
