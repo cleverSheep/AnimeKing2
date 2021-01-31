@@ -25,7 +25,8 @@
     <string name="dark_anime">Dark anime trivia</string>
     <string name="everything_mecha">Everything mecha!</string>
     <string name="classical_anime">Classical anime trivia</string>
-    <string name="server_down_sorry">Server down. Sorry :-(</string>
+    <string name="server_down_sorry">Network issue. Sorry :-(</string>
+    <string name="give_us_a_second">Make sure you\'re connected to the internet.</string>
 
 
     <!-- Anime Detail Layout -->
@@ -143,7 +144,6 @@
     <string name="credit_radar">Airplane animation by Mark Geyer at lottiefiles.com</string>
     <string name="credit_loading_animation">Loading animation by zhejun bao at lottiefiles.com</string>
     <string name="credits_error_loading_anim">Error animation by Сергій Корсак at lottiefiles.com</string>
-    <string name="give_us_a_second">Give us a second or two to fix this.</string>
 
 
     <string name="not_enough_description">Each community requires at least 5 questions.\nAdd more questions to play trivia with this anime.</string>

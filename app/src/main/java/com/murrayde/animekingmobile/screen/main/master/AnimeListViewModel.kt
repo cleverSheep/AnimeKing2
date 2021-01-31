@@ -17,7 +17,6 @@ class AnimeListViewModel @ViewModelInject constructor(private val animeListRepo:
 
     private val disposable = CompositeDisposable()
     private val animeForYou = MutableLiveData<AnimeForYou>()
-    //private val loading = MutableLiveData<Boolean>()
     private val response = MutableLiveData<NetworkResponse>()
 
     init {
@@ -47,7 +46,6 @@ class AnimeListViewModel @ViewModelInject constructor(private val animeListRepo:
 
     fun getAnimeForYou(): LiveData<AnimeForYou> = animeForYou
 
-    //val networkLoading: LiveData<Boolean> = loading
     val networkResponse: LiveData<NetworkResponse> = response
 
     override fun onCleared() {

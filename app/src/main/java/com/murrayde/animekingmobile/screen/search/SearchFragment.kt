@@ -17,6 +17,9 @@ import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.GridLayoutManager
 import com.murrayde.animekingmobile.R
+import com.murrayde.animekingmobile.extensions.hideView
+import com.murrayde.animekingmobile.extensions.showView
+import com.murrayde.animekingmobile.model.ui.NetworkResponse
 import com.murrayde.animekingmobile.screen.search.adapter.SearchRecyclerViewAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_search.*
@@ -47,6 +50,26 @@ class SearchFragment : Fragment() {
             val action = SearchFragmentDirections.actionSearchFragmentToListFragment()
             Navigation.findNavController(it).navigate(action)
         }
+
+        viewModel.networkResponse.observe(requireActivity(), Observer { response ->
+            when (response) {
+                is NetworkResponse.Success -> {
+                    search_rv.showView()
+                    search_loading_anim.hideView()
+                    list_main_loading_error.hideView()
+                }
+                is NetworkResponse.Loading -> {
+                    search_loading_anim.showView()
+                    search_rv.hideView()
+                    list_main_loading_error.hideView()
+                }
+                is NetworkResponse.Error -> {
+                    list_main_loading_error.showView()
+                    search_rv.hideView()
+                    search_loading_anim.hideView()
+                }
+            }
+        })
         viewModel.getRequestedAnime().observe(requireActivity(), Observer { list_anime ->
             listAdapter.updateList(list_anime)
         })
