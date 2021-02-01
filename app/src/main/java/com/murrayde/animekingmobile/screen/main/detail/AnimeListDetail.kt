@@ -18,6 +18,7 @@ import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
 import androidx.preference.PreferenceManager
 import com.bumptech.glide.Glide
+import com.google.firebase.auth.FirebaseAuth
 import com.murrayde.animekingmobile.R
 import com.murrayde.animekingmobile.model.community.QuestionFactory
 import com.murrayde.animekingmobile.screen.game_over.GameOverViewModel
@@ -39,6 +40,7 @@ class AnimeListDetail : Fragment() {
     private lateinit var gameOverViewModel: GameOverViewModel
     private lateinit var fragment_detail_question_count: TextView
     private lateinit var animeTitle: String
+    private lateinit var auth: FirebaseAuth
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -55,6 +57,7 @@ class AnimeListDetail : Fragment() {
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(activity)
         media_is_playing = sharedPreferences.getBoolean("sound_effects", true)
         gameOverViewModel = ViewModelProvider(requireActivity()).get(GameOverViewModel::class.java)
+        auth = FirebaseAuth.getInstance()
 
         fragment_detail_title.text = animeTitle
         fragment_detail_description.text = attributes.synopsis
@@ -80,7 +83,7 @@ class AnimeListDetail : Fragment() {
             Timber.d("Total questions: ${num_questions.toInt()}")
         })
 
-        animeDetailViewModel.getHighScore(animeTitle, "68rBGyn2ZbWdace0mSkF47oV0DF2")
+        animeDetailViewModel.getHighScore(animeTitle, auth.uid!!)
         animeDetailViewModel.animeHighScore.observe(requireActivity(), Observer { highScore ->
             ak_detail_high_score.text = "Highscore: $highScore"
             gameOverViewModel.updateHighScore(highScore)

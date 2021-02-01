@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
 import androidx.preference.PreferenceManager
+import com.google.firebase.auth.FirebaseAuth
 import com.murrayde.animekingmobile.R
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_view_results.*
@@ -27,12 +28,14 @@ class GameOverResultsList : Fragment() {
     private var media_is_playing = true
     private lateinit var sharedPreferences: SharedPreferences
     private lateinit var animeTitle: String
+    private lateinit var auth: FirebaseAuth
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_view_results, container, false)
         gameOverViewModel = ViewModelProvider(requireActivity()).get(GameOverViewModel::class.java)
         animeTitle = if (resultsArgs.animeAttributes.titles.en != null) resultsArgs.animeAttributes.titles.en else resultsArgs.animeAttributes.canonicalTitle
+        auth = FirebaseAuth.getInstance()
         return view
     }
 
@@ -51,7 +54,7 @@ class GameOverResultsList : Fragment() {
             updateCustomSecondaryProgress()
         }
         if(gameOverViewModel.getTotalCorrect() > gameOverViewModel.getHighScore()) {
-            gameOverViewModel.updateBackendHighScore("68rBGyn2ZbWdace0mSkF47oV0DF2", animeTitle, gameOverViewModel.getTotalCorrect())
+            gameOverViewModel.updateBackendHighScore(auth.uid!!, animeTitle, gameOverViewModel.getTotalCorrect())
         }
     }
 

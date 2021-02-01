@@ -19,23 +19,12 @@ class FirebaseApiClient @Inject constructor() {
                 .document(removeForwardSlashes(anime_title)).collection("questions")
 
         val key = questionsRef.document().id
-
-/*
-        val listOfQuestions = mutableListOf<CommunityQuestion>()
-        var questionSize = 0L
-        questionsRef.whereGreaterThanOrEqualTo(FieldPath.documentId(), key).limit(questionSize).get().addOnSuccessListener { documents ->
-            documents.forEach {
-                listOfQuestions.add(it.toObject(CommunityQuestion::class.java))
-            }
-        }
-        return Single.just(listOfQuestions)
-*/
         return questionsRef.whereGreaterThanOrEqualTo(FieldPath.documentId(), key).getSingle()
     }
 
     /** High score for an anime title*/
     fun getHighScore(anime_title: String, user_id: String): Single<PlayHistory> {
-        val highScoreRef = firebaseDB.collection("users").document("$user_id").collection("play_history").document("$anime_title")
+        val highScoreRef = firebaseDB.collection("users").document(user_id).collection("play_history").document(removeForwardSlashes(anime_title))
         return highScoreRef.getSingle()
     }
 }

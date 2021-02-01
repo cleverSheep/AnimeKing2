@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModel
 import com.google.firebase.firestore.FirebaseFirestore
 import com.murrayde.animekingmobile.model.community.PlayHistory
 import com.murrayde.animekingmobile.repository.community.AnimeDetailRepo
+import com.murrayde.animekingmobile.util.removeForwardSlashes
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableSingleObserver
@@ -44,7 +45,7 @@ class AnimeDetailViewModel @ViewModelInject constructor(private val animeDetailR
     fun setHighScore(animeTitle: String, userId: String, highScore: Int) {
         val playHistory = PlayHistory(highScore)
         GlobalScope.launch {
-            db.collection("users").document("$userId").collection("play_history").document("$animeTitle")
+            db.collection("users").document(userId).collection("play_history").document(removeForwardSlashes(animeTitle))
                     .set(playHistory)
         }
     }
