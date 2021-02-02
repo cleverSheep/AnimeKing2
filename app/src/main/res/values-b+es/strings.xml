@@ -40,7 +40,7 @@
     <string name="number_questions">%1$s preguntas</string>
 
     <!-- Not Enough Questions -->
-    <string name="insufficient_questions">Esto es incómodo. Se necesita un mínimo de 7 preguntas para jugar. ¡Ayúdanos haciendo preguntas!</string>
+    <string name="min_questions_needed">Se necesita un mínimo de 10 preguntas para jugar. ¡Ayúdanos haciendo preguntas!</string>
     <string name="add_questions">Añadir Más Preguntas</string>
 
     <!-- Answer Question Layout -->
