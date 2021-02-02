@@ -13,6 +13,7 @@
         android:scaleType="fitCenter"
         android:src="@drawable/radial_gradient"
         app:layout_constraintBottom_toBottomOf="@id/cardView"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/cardView" />
 
@@ -20,7 +21,7 @@
         android:id="@+id/cardView"
         android:layout_width="150dp"
         android:layout_height="120dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="64dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -58,18 +59,129 @@
         android:id="@+id/profile_user_quote"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="24dp"
         android:background="@drawable/profile_quote_bg"
         android:fontFamily="@font/gilroy_light"
         android:padding="7dp"
+        android:text="Must...sleep...cozy...cookies??"
         android:textColor="@color/color_white"
         android:textSize="14sp"
         android:textStyle="normal"
-        android:text="Must...sleep...cozy...cookies??"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/profile_user_name"
         tools:text="Must...sleep...cozy...cookies??" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cardView3"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        android:layout_marginHorizontal="32dp"
+        android:layout_marginTop="64dp"
+        android:background="@drawable/game_over_progress_bg"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profile_user_quote">
+
+        <TextView
+            android:id="@+id/current_level"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/gilroy_extra_bold"
+            android:padding="8dp"
+            android:text="1"
+            android:textColor="@color/color_white"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toTopOf="@+id/progressBarSimpleCustom"
+            app:layout_constraintEnd_toStartOf="@+id/progressBarSimpleCustom"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/progressBarSimpleCustom" />
+
+        <com.murrayde.animekingmobile.screen.game_over.custom_view.RoundCornerProgressBar
+            android:id="@+id/progressBarSimpleCustom"
+            style="@style/SampleProgress"
+            android:layout_gravity="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/next_level"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/current_level"
+            app:layout_constraintTop_toTopOf="parent"
+            app:rcAnimationEnable="false"
+            app:rcBackgroundColor="#80393B48"
+            app:rcBackgroundPadding="4dp"
+            app:rcMax="100"
+            app:rcProgress="20"
+            app:rcProgressColor="@color/sample_progress_primary"
+            app:rcRadius="50dp"
+            app:rcSecondaryProgress="30"
+            app:rcSecondaryProgressColor="@color/sample_progress_secondary" />
+
+        <TextView
+            android:id="@+id/next_level"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/gilroy_extra_bold"
+            android:padding="8dp"
+            android:text="1"
+            android:textColor="@color/color_white"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toTopOf="@+id/progressBarSimpleCustom"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/progressBarSimpleCustom"
+            app:layout_constraintTop_toBottomOf="@+id/progressBarSimpleCustom" />
+
+        <TextView
+            android:id="@+id/current_xp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/gilroy_extra_bold"
+            android:text="XP 780"
+            android:textColor="@color/color_white"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="@+id/progressBarSimpleCustom"
+            app:layout_constraintTop_toBottomOf="@+id/progressBarSimpleCustom" />
+
+        <TextView
+            android:id="@+id/level_up_xp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/gilroy_extra_bold"
+            android:text="/800"
+            android:textColor="#7A7C88"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@+id/current_xp"
+            app:layout_constraintStart_toEndOf="@+id/current_xp"
+            app:layout_constraintTop_toTopOf="@+id/current_xp" />
+
+        <TextView
+            android:id="@+id/required_xp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/gilroy_extra_bold"
+            android:text="20 XP "
+            android:textColor="@color/color_white"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toStartOf="@+id/textView7"
+            app:layout_constraintTop_toBottomOf="@+id/progressBarSimpleCustom" />
+
+        <TextView
+            android:id="@+id/textView7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/gilroy_extra_bold"
+            android:text="@string/to_level_up"
+            android:textColor="#7A7C88"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@+id/required_xp"
+            app:layout_constraintEnd_toEndOf="@+id/progressBarSimpleCustom"
+            app:layout_constraintTop_toTopOf="@+id/required_xp" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <Button
         android:id="@+id/button6"
