@@ -27,8 +27,8 @@ import com.murrayde.animekingmobile.R
 import com.murrayde.animekingmobile.extensions.hideView
 import com.murrayde.animekingmobile.extensions.showView
 import com.murrayde.animekingmobile.model.practice.Result
-import com.murrayde.animekingmobile.util.QuestionUtil
 import com.murrayde.animekingmobile.screen.game_over.GameOverViewModel
+import com.murrayde.animekingmobile.util.QuestionUtil
 import kotlinx.android.synthetic.main.fragment_random_questions.*
 
 class AnswerRandomQuestions : Fragment() {

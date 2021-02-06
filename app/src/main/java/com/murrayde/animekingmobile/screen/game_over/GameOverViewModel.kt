@@ -3,34 +3,55 @@
 package com.murrayde.animekingmobile.screen.game_over
 
 import androidx.hilt.lifecycle.ViewModelInject
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.google.firebase.firestore.FirebaseFirestore
 import com.murrayde.animekingmobile.model.community.PlayHistory
+import com.murrayde.animekingmobile.model.player.PlayerExperience
+import com.murrayde.animekingmobile.util.QuestionUtil
 import com.murrayde.animekingmobile.util.removeForwardSlashes
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import timber.log.Timber
 
 class GameOverViewModel @ViewModelInject() constructor() : ViewModel() {
 
-    private var time_bonus = 0
-    var total_time_bonus = 0
     private var total_correct = 0
-    private var total_questions = 0
-    private var total_score = 0
     private var high_score = 0
+    private var time_bonus = 0
+
+    // Display total questions in anime detail
+    private var total_questions = 0
+
+    private lateinit var playerExperience: PlayerExperience
+    private var required_exp = 0
+    private val playerXPLiveData = MutableLiveData<Int>()
+    private val playerPreviousXPLiveData = MutableLiveData<Int>()
+
     private val db = FirebaseFirestore.getInstance()
 
 
-    fun incrementTimeBonus(time: Int) {
-        time_bonus += time
-        total_time_bonus = time_bonus
+    fun incrementTimeBonus(currentTime: Int) {
+        if (currentTime >= QuestionUtil.QUESTION_TIMER - 5) {
+            time_bonus += QuestionUtil.TIME_BONUS
+        }
     }
 
     fun updateTotalCorrect() {
         total_correct += 1
+        Timber.d("total correct: $total_correct")
     }
 
     fun getTotalCorrect(): Int = total_correct
+
+    fun getTotalXP(): Int {
+        var xp = 10 * total_correct + time_bonus
+        Timber.d("xp: $xp")
+        if (total_correct > high_score) xp += 12 * (total_correct + time_bonus)
+        Timber.d("xp: $xp")
+        return 200
+    }
 
     fun updateHighScore(highScore: Int) {
         high_score = highScore
@@ -46,6 +67,38 @@ class GameOverViewModel @ViewModelInject() constructor() : ViewModel() {
 
     fun getHighScore(): Int = high_score
 
+    fun getRequiredExperience(userId: String) {
+        var totalExperience = getTotalXP()
+        GlobalScope.launch {
+            val docRef = db.collection("users").document(userId)
+            docRef.get().addOnSuccessListener { documentSnapshot ->
+                if (documentSnapshot != null) {
+                    playerExperience = documentSnapshot.toObject(PlayerExperience::class.java)!!
+                    required_exp = playerExperience.req_exp
+                    playerPreviousXPLiveData.postValue(playerExperience.total_exp)
+                    playerExperience.total_exp += totalExperience
+                    while (playerExperience.total_exp >= required_exp) {
+                        playerExperience.level += 1
+                        playerExperience.total_exp -= required_exp
+                        playerExperience.req_exp += 20
+                    }
+                    playerXPLiveData.postValue(playerExperience.total_exp)
+                    updatePlayerStats(userId)
+                    return@addOnSuccessListener
+                }
+            }
+        }
+    }
+
+    fun getUpdatedPlayerXPLiveData(): LiveData<Int> = playerXPLiveData
+    fun getPreviousPlayerXPLiveData(): LiveData<Int> = playerPreviousXPLiveData
+
+    fun updatePlayerStats(userId: String) {
+        GlobalScope.launch {
+            db.collection("users").document(userId).set(playerExperience)
+        }
+    }
+
     fun setTotalQuestions(number_questions: Int) {
         total_questions = number_questions
     }
@@ -53,11 +106,6 @@ class GameOverViewModel @ViewModelInject() constructor() : ViewModel() {
     fun resetPoints(points: Int) {
         time_bonus = points
         total_correct = points
-        total_time_bonus = points
-    }
-
-    fun updateCurrentScore(currentScore: Int) {
-        total_score = currentScore
     }
 
 }

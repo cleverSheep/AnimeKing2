@@ -32,6 +32,7 @@
         <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/lottieAnimationView3"
             android:layout_width="120dp"
+            android:background="#00FFFFFF"
             android:layout_height="120dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -39,13 +40,14 @@
             app:layout_constraintTop_toTopOf="parent"
             app:lottie_autoPlay="true"
             app:lottie_loop="true"
-            app:lottie_rawRes="@raw/lottie_game_over" />
+            app:lottie_rawRes="@raw/lottie_game_over_kakashi" />
     </androidx.cardview.widget.CardView>
 
     <ImageView
         android:id="@+id/imageView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
         android:src="@drawable/ic_number_correct_bg"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -56,13 +58,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/gilroy_extra_bold"
-        android:text="7 questions correct!"
         android:textColor="@color/color_black"
         android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="@+id/imageView3"
         app:layout_constraintEnd_toEndOf="@+id/imageView3"
         app:layout_constraintStart_toStartOf="@+id/imageView3"
-        app:layout_constraintTop_toTopOf="@+id/imageView3" />
+        app:layout_constraintTop_toTopOf="@+id/imageView3"
+        tools:text="7 question(s) correct!" />
 
     <Button
         android:id="@+id/button5"
@@ -97,6 +99,7 @@
         android:layout_width="wrap_content"
         android:layout_height="100dp"
         android:layout_marginHorizontal="32dp"
+        android:layout_marginTop="32dp"
         android:background="@drawable/game_over_progress_bg"
         app:layout_constraintBottom_toTopOf="@+id/imageView8"
         app:layout_constraintEnd_toEndOf="parent"
@@ -109,14 +112,14 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/gilroy_extra_bold"
             android:padding="8dp"
-            android:text="1"
             android:textColor="@color/color_white"
             android:textSize="15sp"
             app:layout_constraintBottom_toTopOf="@+id/progressBarSimpleCustom"
             app:layout_constraintEnd_toStartOf="@+id/progressBarSimpleCustom"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/progressBarSimpleCustom" />
+            app:layout_constraintTop_toBottomOf="@+id/progressBarSimpleCustom"
+            tools:text="1" />
 
         <com.murrayde.animekingmobile.screen.game_over.custom_view.RoundCornerProgressBar
             android:id="@+id/progressBarSimpleCustom"
@@ -130,11 +133,10 @@
             app:rcAnimationEnable="false"
             app:rcBackgroundColor="#80393B48"
             app:rcBackgroundPadding="4dp"
-            app:rcMax="100"
-            app:rcProgress="20"
+            app:rcMax="800"
             app:rcProgressColor="@color/sample_progress_primary"
             app:rcRadius="50dp"
-            app:rcSecondaryProgress="30"
+            app:rcSecondaryProgress="10"
             app:rcSecondaryProgressColor="@color/sample_progress_secondary" />
 
         <TextView
@@ -143,14 +145,14 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/gilroy_extra_bold"
             android:padding="8dp"
-            android:text="1"
             android:textColor="@color/color_white"
             android:textSize="15sp"
             app:layout_constraintBottom_toTopOf="@+id/progressBarSimpleCustom"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/progressBarSimpleCustom"
-            app:layout_constraintTop_toBottomOf="@+id/progressBarSimpleCustom" />
+            app:layout_constraintTop_toBottomOf="@+id/progressBarSimpleCustom"
+            tools:text="2" />
 
         <TextView
             android:id="@+id/current_xp"
@@ -158,23 +160,23 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:fontFamily="@font/gilroy_extra_bold"
-            android:text="XP 780"
             android:textColor="@color/color_white"
             android:textSize="12sp"
             app:layout_constraintStart_toStartOf="@+id/progressBarSimpleCustom"
-            app:layout_constraintTop_toBottomOf="@+id/progressBarSimpleCustom" />
+            app:layout_constraintTop_toBottomOf="@+id/progressBarSimpleCustom"
+            tools:text="XP 0" />
 
         <TextView
             android:id="@+id/level_up_xp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/gilroy_extra_bold"
-            android:text="/800"
             android:textColor="#7A7C88"
             android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="@+id/current_xp"
             app:layout_constraintStart_toEndOf="@+id/current_xp"
-            app:layout_constraintTop_toTopOf="@+id/current_xp" />
+            app:layout_constraintTop_toTopOf="@+id/current_xp"
+            tools:text="/800" />
 
         <TextView
             android:id="@+id/required_xp"
@@ -182,11 +184,11 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:fontFamily="@font/gilroy_extra_bold"
-            android:text="20 XP "
             android:textColor="@color/color_white"
             android:textSize="12sp"
             app:layout_constraintEnd_toStartOf="@+id/textView7"
-            app:layout_constraintTop_toBottomOf="@+id/progressBarSimpleCustom" />
+            app:layout_constraintTop_toBottomOf="@+id/progressBarSimpleCustom"
+            tools:text="800 XP " />
 
         <TextView
             android:id="@+id/textView7"
@@ -222,7 +224,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/decrease_progress"
+        android:id="@+id/btn_results_play_again"
         android:layout_width="wrap_content"
         android:layout_height="54dp"
         android:background="@drawable/game_button_3d_states"
@@ -232,7 +234,7 @@
         android:textSize="@dimen/_13sdp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/imageView12"
-        app:layout_constraintEnd_toStartOf="@+id/increase_progress"
+        app:layout_constraintEnd_toStartOf="@+id/btn_results_exit_game"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView10">
@@ -269,7 +271,7 @@
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/increase_progress"
+        android:id="@+id/btn_results_exit_game"
         android:layout_width="wrap_content"
         android:layout_height="54dp"
         android:background="@drawable/game_button_3d_states"
@@ -278,11 +280,11 @@
         android:textColor="@color/color_background_dark"
         android:textSize="@dimen/_13sdp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/decrease_progress"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_results_play_again"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/decrease_progress"
-        app:layout_constraintTop_toTopOf="@+id/decrease_progress">
+        app:layout_constraintStart_toEndOf="@+id/btn_results_play_again"
+        app:layout_constraintTop_toTopOf="@+id/btn_results_play_again">
 
         <ImageView
             android:id="@+id/imageView13"
@@ -354,12 +356,12 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:fontFamily="@font/gilroy_extra_bold"
-        android:text="10 pts"
         android:textColor="@color/color_white"
         android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="@+id/imageView8"
         app:layout_constraintEnd_toEndOf="@+id/imageView8"
-        app:layout_constraintTop_toTopOf="@+id/imageView8" />
+        app:layout_constraintTop_toTopOf="@+id/imageView8"
+        tools:text="10 pts" />
 
     <ImageView
         android:id="@+id/imageView10"
@@ -391,12 +393,12 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:fontFamily="@font/gilroy_extra_bold"
-        android:text="10 pts"
         android:textColor="@color/color_white"
         android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="@+id/imageView10"
         app:layout_constraintEnd_toEndOf="@+id/imageView10"
-        app:layout_constraintTop_toTopOf="@+id/imageView10" />
+        app:layout_constraintTop_toTopOf="@+id/imageView10"
+        tools:text="10 pts" />
 
     <ImageView
         android:id="@+id/imageView12"

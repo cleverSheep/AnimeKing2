@@ -54,8 +54,6 @@ class AnswerQuestion : Fragment() {
     private val answerQuestionViewModel: AnswerQuestionViewModel by viewModels()
     private lateinit var gameOver_view_model: GameOverViewModel
 
-    private var current_score = 0
-    private var total_correct = 0
     private lateinit var countDownTimer: CountDownTimer
     private var current_time = 0
     private var current_question = 1
@@ -183,10 +181,8 @@ class AnswerQuestion : Fragment() {
                 countDownTimer.cancel()
                 disableAllButtons(list_buttons)
                 if (list_buttons[position].text == correct_response) {
-                    current_score += 1
                     communityQuestions[question_track].setUserCorrectResponse(true)
                     gameOver_view_model.updateTotalCorrect()
-                    gameOver_view_model.updateCurrentScore(current_score)
                     gameOver_view_model.incrementTimeBonus(current_time)
                     alertCorrectResponse(view, list_buttons, correct_response, communityQuestions, question_track, list_buttons[position])
                 } else {
@@ -228,7 +224,7 @@ class AnswerQuestion : Fragment() {
 
     private fun alertCorrectResponse(view: View, list_buttons: ArrayList<Button>, correct_response: String, communityQuestions: List<CommunityQuestion>, question_track: Int, correctButton: Button) {
         val button = view as Button
-        tv_game_score.text = current_score.toString()
+        tv_game_score.text = gameOver_view_model.getTotalCorrect().toString()
         if (media_is_playing) media_correct.start()
         button.background = resources.getDrawable(R.drawable.answer_correct_background)
         button.setTextColor(resources.getColor(R.color.color_white))
