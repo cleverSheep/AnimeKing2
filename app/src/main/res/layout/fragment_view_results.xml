@@ -32,8 +32,8 @@
         <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/lottieAnimationView3"
             android:layout_width="120dp"
-            android:background="#00FFFFFF"
             android:layout_height="120dp"
+            android:background="#00FFFFFF"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -133,7 +133,6 @@
             app:rcAnimationEnable="false"
             app:rcBackgroundColor="#80393B48"
             app:rcBackgroundPadding="4dp"
-            app:rcMax="800"
             app:rcProgressColor="@color/sample_progress_primary"
             app:rcRadius="50dp"
             app:rcSecondaryProgress="10"

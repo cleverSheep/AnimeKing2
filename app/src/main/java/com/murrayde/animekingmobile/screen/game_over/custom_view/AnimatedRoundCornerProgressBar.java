@@ -108,6 +108,10 @@ public abstract class AnimatedRoundCornerProgressBar extends BaseRoundCornerProg
             super.setSecondaryProgress(progress);
         }
     }
+    
+    public boolean isProgressAnimating() {
+        return isProgressAnimating;
+    }
 
     public void setAnimationEnabled(boolean isEnabled) {
         isAnimationEnabled = isEnabled;

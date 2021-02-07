@@ -25,9 +25,11 @@ class GameOverViewModel @ViewModelInject() constructor() : ViewModel() {
     private var total_questions = 0
 
     private lateinit var playerExperience: PlayerExperience
-    private var required_exp = 0
+    private val required_exp = MutableLiveData<Int>()
+
     private val playerXPLiveData = MutableLiveData<Int>()
     private val playerPreviousXPLiveData = MutableLiveData<Int>()
+    private val playerXPToLevelUp = MutableLiveData<Int>()
 
     private val db = FirebaseFirestore.getInstance()
 
@@ -74,15 +76,16 @@ class GameOverViewModel @ViewModelInject() constructor() : ViewModel() {
             docRef.get().addOnSuccessListener { documentSnapshot ->
                 if (documentSnapshot != null) {
                     playerExperience = documentSnapshot.toObject(PlayerExperience::class.java)!!
-                    required_exp = playerExperience.req_exp
                     playerPreviousXPLiveData.postValue(playerExperience.total_exp)
                     playerExperience.total_exp += totalExperience
-                    while (playerExperience.total_exp >= required_exp) {
+                    while (playerExperience.total_exp >= playerExperience.req_exp) {
                         playerExperience.level += 1
-                        playerExperience.total_exp -= required_exp
+                        playerExperience.total_exp -= playerExperience.req_exp
                         playerExperience.req_exp += 20
                     }
+                    required_exp.postValue(playerExperience.req_exp)
                     playerXPLiveData.postValue(playerExperience.total_exp)
+                    playerXPToLevelUp.postValue(playerExperience.req_exp - playerExperience.total_exp)
                     updatePlayerStats(userId)
                     return@addOnSuccessListener
                 }
@@ -92,6 +95,8 @@ class GameOverViewModel @ViewModelInject() constructor() : ViewModel() {
 
     fun getUpdatedPlayerXPLiveData(): LiveData<Int> = playerXPLiveData
     fun getPreviousPlayerXPLiveData(): LiveData<Int> = playerPreviousXPLiveData
+    fun getPlayerRequiredXP(): LiveData<Int> = required_exp
+    fun getPlayerXPToLevelUp(): LiveData<Int> = playerXPToLevelUp
 
     fun updatePlayerStats(userId: String) {
         GlobalScope.launch {

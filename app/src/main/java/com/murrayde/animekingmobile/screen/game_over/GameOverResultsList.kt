@@ -6,6 +6,8 @@ package com.murrayde.animekingmobile.screen.game_over
 import android.content.SharedPreferences
 import android.media.MediaPlayer
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,10 +18,10 @@ import androidx.navigation.fragment.navArgs
 import androidx.preference.PreferenceManager
 import com.google.firebase.auth.FirebaseAuth
 import com.murrayde.animekingmobile.R
+import com.murrayde.animekingmobile.util.QuestionUtil
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_view_results.*
-import java.util.*
-import kotlin.concurrent.schedule
+import timber.log.Timber
 
 
 @AndroidEntryPoint
@@ -51,12 +53,26 @@ class GameOverResultsList : Fragment() {
             progressBarSimpleCustom.setAnimationEnabled(false)
             progressBarSimpleCustom.setProgress(progress)
         })
-/*        gameOverViewModel.getUpdatedPlayerXPLiveData().observe(viewLifecycleOwner, Observer{ progress ->
-            progressBarSimpleCustom.setAnimationEnabled(true)
-            updateCustomPrimaryProgressBar(progress)
-        })*/
-        progressBarSimpleCustom.enableAnimation()
-        updateCustomPrimaryProgressBar(gameOverViewModel.getTotalXP())
+        gameOverViewModel.getUpdatedPlayerXPLiveData().observe(viewLifecycleOwner, Observer{ xp ->
+            current_xp.text = "XP $xp"
+        })
+        updateCustomPrimaryProgressBar(gameOverViewModel.getTotalXP(), 0)
+        gameOverViewModel.getPlayerRequiredXP().observe(viewLifecycleOwner, Observer {required_experience ->
+            level_up_xp.text = "/${required_experience}"
+            if (QuestionUtil.XP_TRACK == required_experience.toFloat()) {
+                Handler(Looper.getMainLooper()).postDelayed({
+                    progressBarSimpleCustom.max = required_experience.toFloat()
+                }, 0)
+            } else  {
+                Handler(Looper.getMainLooper()).postDelayed({
+                    progressBarSimpleCustom.max = required_experience.toFloat()
+                    QuestionUtil.XP_TRACK = required_experience.toFloat()
+                }, 2500)
+            }
+        })
+        gameOverViewModel.getPlayerXPToLevelUp().observe(viewLifecycleOwner, Observer {
+            required_xp.text = "$it XP "
+        })
         btn_results_exit_game.setOnClickListener {
         }
         btn_results_play_again.setOnClickListener {
@@ -67,16 +83,39 @@ class GameOverResultsList : Fragment() {
         gameOverViewModel.getRequiredExperience(auth.uid!!)
     }
 
+    private fun updateCustomPrimaryProgressBar(incrementProgress: Int, progress: Int) {
+        Handler(Looper.getMainLooper()).postDelayed({
+            progressBarSimpleCustom.enableAnimation()
+            val newProgressIncrement = progressBarSimpleCustom.progress
+            progressBarSimpleCustom.progress = progressBarSimpleCustom.progress + incrementProgress
+            Timber.d("progress: ${progressBarSimpleCustom.progress}")
+            Timber.d("prog max: ${progressBarSimpleCustom.max}")
+            if (progressBarSimpleCustom.progress >= progressBarSimpleCustom.max) {
+                resetPrimaryProgressBar((incrementProgress + newProgressIncrement) - QuestionUtil.XP_TRACK)
+            }
+            updateCustomSecondaryProgress()
+        }, 1000)
+    }
 
+    private fun resetPrimaryProgressBar(newProgress: Float) {
+        Handler(Looper.getMainLooper()).postDelayed({
+            activity?.runOnUiThread {
+                progressBarSimpleCustom.setAnimationEnabled(false)
+                progressBarSimpleCustom.progress = 0.toFloat()
+                updateCustomSecondaryProgress()
+                startAnimationReset(newProgress)
+            }
+        }, 1500)
+    }
 
-    private fun updateCustomPrimaryProgressBar(progress: Int) {
-        Timer().schedule(1000) {
+    private fun startAnimationReset(newProgress: Float) {
+        Handler(Looper.getMainLooper()).postDelayed({
             activity?.runOnUiThread {
                 progressBarSimpleCustom.enableAnimation()
-                progressBarSimpleCustom.progress = progressBarSimpleCustom.progress + progress
+                progressBarSimpleCustom.progress = progressBarSimpleCustom.progress + newProgress
                 updateCustomSecondaryProgress()
             }
-        }
+        }, 1500)
     }
 
     private fun updateCustomSecondaryProgress() {
