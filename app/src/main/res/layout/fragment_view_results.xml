@@ -27,7 +27,8 @@
         app:cardElevation="0dp"
         app:layout_constraintBottom_toBottomOf="@+id/progressBar18"
         app:layout_constraintEnd_toEndOf="@+id/progressBar18"
-        app:layout_constraintStart_toStartOf="@+id/progressBar18">
+        app:layout_constraintStart_toStartOf="@+id/progressBar18"
+        app:layout_constraintTop_toTopOf="parent">
 
         <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/lottieAnimationView3"
@@ -100,6 +101,7 @@
         android:layout_height="100dp"
         android:layout_marginHorizontal="32dp"
         android:layout_marginTop="32dp"
+        android:layout_marginBottom="32dp"
         android:background="@drawable/game_over_progress_bg"
         app:layout_constraintBottom_toTopOf="@+id/imageView8"
         app:layout_constraintEnd_toEndOf="parent"
@@ -112,14 +114,14 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/gilroy_extra_bold"
             android:padding="8dp"
+            android:text="-"
             android:textColor="@color/color_white"
             android:textSize="15sp"
-            android:text="-"
             app:layout_constraintBottom_toTopOf="@+id/progressBarSimpleCustom"
             app:layout_constraintEnd_toStartOf="@+id/progressBarSimpleCustom"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/progressBarSimpleCustom"/>
+            app:layout_constraintTop_toBottomOf="@+id/progressBarSimpleCustom" />
 
         <com.murrayde.animekingmobile.screen.game_over.custom_view.RoundCornerProgressBar
             android:id="@+id/progressBarSimpleCustom"
@@ -144,12 +146,12 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/gilroy_extra_bold"
             android:padding="8dp"
+            android:text="+"
             android:textColor="@color/color_white"
             android:textSize="15sp"
             app:layout_constraintBottom_toTopOf="@+id/progressBarSimpleCustom"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
-            android:text="+"
             app:layout_constraintStart_toEndOf="@+id/progressBarSimpleCustom"
             app:layout_constraintTop_toBottomOf="@+id/progressBarSimpleCustom" />
 
@@ -236,7 +238,7 @@
         app:layout_constraintEnd_toStartOf="@+id/btn_results_exit_game"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView10">
+        app:layout_constraintTop_toBottomOf="@+id/imageView11">
 
         <ImageView
             android:id="@+id/imageView15"
@@ -397,6 +399,43 @@
         app:layout_constraintBottom_toBottomOf="@+id/imageView10"
         app:layout_constraintEnd_toEndOf="@+id/imageView10"
         app:layout_constraintTop_toTopOf="@+id/imageView10"
+        tools:text="10 pts" />
+
+    <ImageView
+        android:id="@+id/imageView11"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/ic_game_over_category_bg"
+        app:layout_constraintEnd_toEndOf="@+id/cardView3"
+        app:layout_constraintStart_toStartOf="@+id/cardView3"
+        app:layout_constraintTop_toBottomOf="@+id/imageView10"
+        tools:visibility="visible" />
+
+    <TextView
+        android:id="@+id/textView17"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:fontFamily="@font/gilroy_extra_bold"
+        android:text="@string/time_bonus"
+        android:textColor="@color/color_white"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView11"
+        app:layout_constraintStart_toStartOf="@+id/imageView11"
+        app:layout_constraintTop_toTopOf="@+id/imageView11" />
+
+    <TextView
+        android:id="@+id/time_bonus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:fontFamily="@font/gilroy_extra_bold"
+        android:textColor="@color/color_white"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView11"
+        app:layout_constraintEnd_toEndOf="@+id/imageView11"
+        app:layout_constraintTop_toTopOf="@+id/imageView11"
         tools:text="10 pts" />
 
     <ImageView
