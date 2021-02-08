@@ -30,6 +30,7 @@ class GameOverViewModel @ViewModelInject() constructor() : ViewModel() {
     private val playerXPLiveData = MutableLiveData<Int>()
     private val playerPreviousXPLiveData = MutableLiveData<Int>()
     private val playerXPToLevelUp = MutableLiveData<Int>()
+    private val playerCurrentLevel = MutableLiveData<Int>()
 
     private val db = FirebaseFirestore.getInstance()
 
@@ -80,9 +81,11 @@ class GameOverViewModel @ViewModelInject() constructor() : ViewModel() {
                     playerExperience.total_exp += totalExperience
                     while (playerExperience.total_exp >= playerExperience.req_exp) {
                         playerExperience.level += 1
+                        playerCurrentLevel.postValue(playerExperience.level.toInt())
                         playerExperience.total_exp -= playerExperience.req_exp
                         playerExperience.req_exp += 20
                     }
+                    playerCurrentLevel.postValue(playerExperience.level.toInt())
                     required_exp.postValue(playerExperience.req_exp)
                     playerXPLiveData.postValue(playerExperience.total_exp)
                     playerXPToLevelUp.postValue(playerExperience.req_exp - playerExperience.total_exp)
@@ -97,6 +100,7 @@ class GameOverViewModel @ViewModelInject() constructor() : ViewModel() {
     fun getPreviousPlayerXPLiveData(): LiveData<Int> = playerPreviousXPLiveData
     fun getPlayerRequiredXP(): LiveData<Int> = required_exp
     fun getPlayerXPToLevelUp(): LiveData<Int> = playerXPToLevelUp
+    fun getPlayerCurrentLevel(): LiveData<Int> = playerCurrentLevel
 
     fun updatePlayerStats(userId: String) {
         GlobalScope.launch {

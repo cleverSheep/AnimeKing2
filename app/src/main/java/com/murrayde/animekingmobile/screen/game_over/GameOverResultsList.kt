@@ -73,6 +73,10 @@ class GameOverResultsList : Fragment() {
         gameOverViewModel.getPlayerXPToLevelUp().observe(viewLifecycleOwner, Observer {
             required_xp.text = "$it XP "
         })
+        gameOverViewModel.getPlayerCurrentLevel().observe(viewLifecycleOwner, Observer {
+            current_level.text = "$it"
+            next_level.text = "${it + 1}"
+        })
         btn_results_exit_game.setOnClickListener {
         }
         btn_results_play_again.setOnClickListener {
@@ -94,7 +98,7 @@ class GameOverResultsList : Fragment() {
                 resetPrimaryProgressBar((incrementProgress + newProgressIncrement) - QuestionUtil.XP_TRACK)
             }
             updateCustomSecondaryProgress()
-        }, 1000)
+        }, 625)
     }
 
     private fun resetPrimaryProgressBar(newProgress: Float) {
@@ -105,7 +109,7 @@ class GameOverResultsList : Fragment() {
                 updateCustomSecondaryProgress()
                 startAnimationReset(newProgress)
             }
-        }, 1500)
+        }, 685)
     }
 
     private fun startAnimationReset(newProgress: Float) {
@@ -115,10 +119,10 @@ class GameOverResultsList : Fragment() {
                 progressBarSimpleCustom.progress = progressBarSimpleCustom.progress + newProgress
                 updateCustomSecondaryProgress()
             }
-        }, 1500)
+        }, 75)
     }
 
     private fun updateCustomSecondaryProgress() {
-        progressBarSimpleCustom.secondaryProgress = progressBarSimpleCustom.progress + 10
+        progressBarSimpleCustom.secondaryProgress = progressBarSimpleCustom.progress + 35
     }
 }
