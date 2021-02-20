@@ -32,7 +32,7 @@
     </style>
 
     <style name="MenuNavTheme">
-        <item name="android:fontFamily">@font/baloobhairegular</item>
+        <item name="android:fontFamily">@font/gilroy_extra_bold</item>
     </style>
 
     <style name="Question_Incorrect_Format_Text">

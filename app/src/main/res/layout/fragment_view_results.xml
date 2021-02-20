@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center"
-    android:background="#393B48"
+    android:background="@color/color_background_dark"
     tools:context=".screen.game_over.GameOverResultsList">
 
     <ProgressBar
@@ -18,14 +18,24 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <ImageView
+        android:id="@+id/image_user_profile"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/radial_gradient"
+        app:layout_constraintBottom_toBottomOf="@id/cardView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/cardView2"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/color_background_main"
-        android:foreground="@drawable/circle"
+        android:layout_marginTop="32dp"
+        android:backgroundTint="#00393B48"
         app:cardElevation="0dp"
-        app:layout_constraintBottom_toBottomOf="@+id/progressBar18"
         app:layout_constraintEnd_toEndOf="@+id/progressBar18"
         app:layout_constraintStart_toStartOf="@+id/progressBar18"
         app:layout_constraintTop_toTopOf="parent">
@@ -48,7 +58,7 @@
         android:id="@+id/imageView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="64dp"
         android:src="@drawable/ic_number_correct_bg"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -72,7 +82,7 @@
         android:layout_width="0dp"
         android:layout_height="18dp"
         android:layout_marginHorizontal="21dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="16dp"
         android:background="@drawable/lottie_game_over_capsule"
         android:clickable="false"
         android:fontFamily="@font/gilroy_extra_bold"
@@ -234,7 +244,7 @@
         android:textColor="@color/color_background_dark"
         android:textSize="@dimen/_13sdp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/imageView12"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btn_results_exit_game"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -316,16 +326,6 @@
             app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-    <ImageView
-        android:id="@+id/imageView7"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_lottie_game_over_symbols"
-        app:layout_constraintBottom_toTopOf="@+id/cardView2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
         android:id="@+id/imageView8"
@@ -437,16 +437,5 @@
         app:layout_constraintEnd_toEndOf="@+id/imageView11"
         app:layout_constraintTop_toTopOf="@+id/imageView11"
         tools:text="10 pts" />
-
-    <ImageView
-        android:id="@+id/imageView12"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_group_16"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/progressBar22"
-        tools:visibility="visible" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
