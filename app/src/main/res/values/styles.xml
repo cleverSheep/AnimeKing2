@@ -27,7 +27,7 @@
     <style name="ToolbarDarkTheme" parent="ThemeOverlay.AppCompat.Dark" />
 
     <style name="TextAppearance.TabsFont" parent="android:TextAppearance">
-        <item name="android:fontFamily">@font/baloobhairegular</item>
+        <item name="android:fontFamily">@font/gilroy_extra_bold</item>
         <item name="android:textSize">20sp</item>
     </style>
 
