@@ -14,6 +14,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
 import androidx.preference.PreferenceManager
 import com.google.firebase.auth.FirebaseAuth
@@ -34,6 +35,7 @@ class GameOverResultsList : Fragment() {
     private lateinit var sharedPreferences: SharedPreferences
     private lateinit var animeTitle: String
     private lateinit var auth: FirebaseAuth
+    private lateinit var handler: Handler
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -41,6 +43,7 @@ class GameOverResultsList : Fragment() {
         gameOverViewModel = ViewModelProvider(requireActivity()).get(GameOverViewModel::class.java)
         animeTitle = if (resultsArgs.animeAttributes.titles.en != null) resultsArgs.animeAttributes.titles.en else resultsArgs.animeAttributes.canonicalTitle
         auth = FirebaseAuth.getInstance()
+        handler = Handler()
         return view
     }
 
@@ -49,6 +52,18 @@ class GameOverResultsList : Fragment() {
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(activity)
         media = MediaPlayer.create(activity, R.raw.button_click_sound_effect)
         media_is_playing = sharedPreferences.getBoolean("sound_effects", true)
+        gameOverViewModel.getGameTotalCorrectLD.observe(viewLifecycleOwner, Observer {
+            questions_correct.text = "$it question(s) correct!"
+        })
+        gameOverViewModel.getGameQuizScoreLD.observe(viewLifecycleOwner, Observer {
+            quiz_score.text = "$it pts"
+        })
+        gameOverViewModel.getHighScoreBonusLD.observe(viewLifecycleOwner, Observer {
+            high_score_bonus.text = "$it pts"
+        })
+        gameOverViewModel.getGameBonusTimeLD.observe(viewLifecycleOwner, Observer {
+            time_bonus.text = "$it pts"
+        })
         gameOverViewModel.getPreviousPlayerXPLiveData().observe(viewLifecycleOwner, Observer{ progress ->
             progressBarSimpleCustom.setAnimationEnabled(false)
             progressBarSimpleCustom.setProgress(progress)
@@ -64,10 +79,10 @@ class GameOverResultsList : Fragment() {
                     progressBarSimpleCustom.max = required_experience.toFloat()
                 }, 0)
             } else  {
-                Handler(Looper.getMainLooper()).postDelayed({
+                handler.postDelayed({
                     progressBarSimpleCustom.max = required_experience.toFloat()
                     QuestionUtil.XP_TRACK = required_experience.toFloat()
-                }, 2500)
+                }, 1500)
             }
         })
         gameOverViewModel.getPlayerXPToLevelUp().observe(viewLifecycleOwner, Observer {
@@ -78,8 +93,13 @@ class GameOverResultsList : Fragment() {
             next_level.text = "${it + 1}"
         })
         btn_results_exit_game.setOnClickListener {
+            val action = GameOverResultsListDirections.actionViewResultsToDetailFragment(resultsArgs.animeAttributes)
+            Navigation.findNavController(view).navigate(action)
+
         }
         btn_results_play_again.setOnClickListener {
+            val action = GameOverResultsListDirections.actionViewResultsToAnswerQuestionFragment(resultsArgs.animeAttributes)
+            Navigation.findNavController(view).navigate(action)
         }
         if(gameOverViewModel.getTotalCorrect() > gameOverViewModel.getHighScore()) {
             gameOverViewModel.updateBackendHighScore(auth.uid!!, animeTitle, gameOverViewModel.getTotalCorrect())
@@ -124,5 +144,11 @@ class GameOverResultsList : Fragment() {
 
     private fun updateCustomSecondaryProgress() {
         progressBarSimpleCustom.secondaryProgress = progressBarSimpleCustom.progress + 35
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Timber.e("fragment stopped")
+        handler.removeCallbacksAndMessages(null)
     }
 }

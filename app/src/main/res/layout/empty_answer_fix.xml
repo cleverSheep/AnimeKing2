@@ -18,7 +18,7 @@
         android:layout_weight="1"
         android:background="@color/goldish_color_light"
         android:clickable="true"
-        android:fontFamily="@font/baloobhairegular"
+        android:fontFamily="@font/gilroy_extra_bold"
         android:text="@string/accept"
         android:textColor="@color/color_black"
         android:textSize="@dimen/_15sdp"

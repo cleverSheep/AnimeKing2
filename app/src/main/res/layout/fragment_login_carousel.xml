@@ -28,9 +28,9 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="6dp"
+        android:padding="8dp"
         android:src="@drawable/ic_crown"
-        app:layout_constraintBottom_toTopOf="@+id/imageView6"
+        app:layout_constraintBottom_toTopOf="@+id/textView3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -38,6 +38,7 @@
         android:id="@+id/imageView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:visibility="invisible"
         android:src="@drawable/ic_ak_icon_text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -60,6 +61,7 @@
     <TextView
         android:id="@+id/textView"
         style="@style/OrganicFtuxHeader"
+        android:textSize="28sp"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:fontFamily="@font/gilroy_extra_bold"
@@ -69,18 +71,17 @@
         app:layout_constraintStart_toStartOf="@+id/imageView6"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
-
     <Button
-        android:id="@+id/facebook_login_button"
+        android:id="@+id/google_login_button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:background="@drawable/facebook_background_button"
-        android:drawableStart="@drawable/facebook_logo_icon"
+        android:background="@drawable/google_bg_button"
+        android:drawableStart="@drawable/icon_google"
         android:fontFamily="@font/gilroy_extra_bold"
-        android:text="facebook connect"
-        android:textColor="@color/color_white"
+        android:text="google connect"
+        android:textColor="@android:color/black"
         android:textSize="@dimen/_12sdp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/button3"
@@ -90,29 +91,31 @@
         app:layout_constraintTop_toBottomOf="@+id/button3" />
 
     <Button
-        android:id="@+id/google_login_button"
+        android:id="@+id/facebook_login_button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:background="@drawable/google_bg_button"
-        android:drawableStart="@drawable/icon_google"
+        android:background="@drawable/facebook_background_button"
+        android:drawableStart="@drawable/facebook_logo_icon"
         android:fontFamily="@font/gilroy_extra_bold"
-        android:text="google connect"
-        android:textColor="@android:color/black"
+        android:text="facebook connect"
+        android:textColor="@color/color_white"
         android:textSize="@dimen/_12sdp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/facebook_login_button" />
+        app:layout_constraintTop_toBottomOf="@+id/google_login_button" />
+
 
     <Button
         android:id="@+id/view5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:visibility="invisible"
-        app:layout_constraintBottom_toTopOf="@+id/textView5"
+        app:layout_constraintBottom_toTopOf="@+id/termsOfUseLink"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -138,14 +141,15 @@
 
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/termsOfUseLink"
         style="@style/DisclaimerLinkStyle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="24dp"
         android:clickable="true"
-        android:fontFamily="@font/gilroy_extra_bold"
+        android:fontFamily="@font/gilroy_light"
         android:linksClickable="true"
+        android:autoLink="web"
         android:textColorLink="@color/colorAccentLight"
         android:text="@string/by_continuing_you_agree_to_terms"
         android:textColor="@color/color_white"

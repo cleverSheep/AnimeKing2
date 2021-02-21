@@ -304,7 +304,7 @@
         android:layout_marginBottom="32dp"
         android:background="@drawable/game_button_3d_states"
         android:fontFamily="@font/gilroy_extra_bold"
-        android:text="@string/exit_game"
+        android:text="@string/quit_game"
         android:textAlignment="center"
         android:textColor="@color/color_black_dark"
         android:textSize="@dimen/_13sdp"

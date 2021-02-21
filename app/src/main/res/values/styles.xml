@@ -38,7 +38,7 @@
     <style name="Question_Incorrect_Format_Text">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="fontFamily">@font/baloobhairegular</item>
+        <item name="fontFamily">@font/gilroy_extra_bold</item>
         <item name="android:gravity">center</item>
         <item name="android:padding">4dp</item>
         <item name="android:textColor">@color/color_white</item>
@@ -70,8 +70,6 @@
     <style name="DisclaimerLinkStyle">
         <item name="android:textSize">10sp</item>
         <item name="android:textIsSelectable">false</item>
-        <item name="android:layout_marginStart">28dp</item>
-        <item name="android:layout_marginEnd">28dp</item>
         <item name="android:linksClickable">true</item>
         <item name="android:focusable">true</item>
         <item name="android:clickable">true</item>

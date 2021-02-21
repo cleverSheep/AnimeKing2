@@ -14,6 +14,7 @@ import android.media.MediaPlayer
 import android.media.MediaPlayer.create
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.os.Handler
 import android.os.Vibrator
 import android.view.LayoutInflater
 import android.view.View
@@ -66,6 +67,8 @@ class AnswerQuestion : Fragment() {
     private lateinit var button_next_question: Button
     private lateinit var button_quit_game: Button
 
+    private lateinit var handler: Handler
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         animeTitle = if (args.animeAttributes.titles.en != null) args.animeAttributes.titles.en else args.animeAttributes.canonicalTitle
@@ -88,6 +91,7 @@ class AnswerQuestion : Fragment() {
         gameOver_view_model = ViewModelProvider(requireActivity()).get(GameOverViewModel::class.java)
         button_next_question = view.findViewById(R.id.button_next_question)
         button_quit_game = view.findViewById(R.id.button_quit_game)
+        handler = Handler()
 
         answerQuestionViewModel.getListOfQuestions().observe(requireActivity(), Observer { listQuestions ->
             communityQuestions = listQuestions
@@ -232,7 +236,7 @@ class AnswerQuestion : Fragment() {
             it.text != correct_response
         }
         reverseAnimateButtons(listOfButtonsToReverseAnimate)
-        view.postDelayed({
+        handler.postDelayed({
             AnimatorSet().apply {
                 playTogether(
                         tv_answer_question.reverseAnimate(),
@@ -242,7 +246,9 @@ class AnswerQuestion : Fragment() {
                 start()
             }
         }, 2500)
-        view.postDelayed({ transitionToNextQuestion(question_track, communityQuestions, view, list_buttons) }, 3000)
+        handler.postDelayed({
+            transitionToNextQuestion(question_track, communityQuestions, view, list_buttons)
+        }, 3000)
     }
 
     private fun alertWrongResponse(view: View, list_buttons: ArrayList<Button>, correct_response: String, question_track: Int, communityQuestions: List<CommunityQuestion>) {
@@ -266,7 +272,7 @@ class AnswerQuestion : Fragment() {
         }
         val correctButton = list_buttons.filter { it.text == correct_response }[0]
         reverseAnimateButtons(listOfButtonsToReverseAnimate)
-        view.postDelayed({
+        handler.postDelayed({
             AnimatorSet().apply {
                 playTogether(
                         tv_answer_question.reverseAnimate(),
@@ -275,6 +281,7 @@ class AnswerQuestion : Fragment() {
                 duration = 200
                 start()
             }
+
         }, 2500)
         view.postDelayed({ transitionToNextQuestion(question_track, communityQuestions, view, list_buttons) }, 3000)
     }
@@ -336,6 +343,7 @@ class AnswerQuestion : Fragment() {
     override fun onStop() {
         super.onStop()
         if (countDownTimer != null) countDownTimer.cancel()
+        handler.removeCallbacksAndMessages(null)
     }
 
     override fun onDestroy() {

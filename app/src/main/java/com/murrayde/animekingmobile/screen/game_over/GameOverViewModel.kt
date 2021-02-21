@@ -32,17 +32,23 @@ class GameOverViewModel @ViewModelInject() constructor() : ViewModel() {
     private val playerXPToLevelUp = MutableLiveData<Int>()
     private val playerCurrentLevel = MutableLiveData<Int>()
 
+    private val gameTotalCorrectLD = MutableLiveData<Int>()
+    private val gameHighScoreBonusLD = MutableLiveData<Int>()
+    private val gameQuizScoreLD = MutableLiveData<Int>()
+    private val gameTimeBonusLD = MutableLiveData<Int>()
+
     private val db = FirebaseFirestore.getInstance()
 
 
     fun incrementTimeBonus(currentTime: Int) {
-        if (currentTime >= QuestionUtil.QUESTION_TIMER - 5) {
+        if (currentTime >= (QuestionUtil.QUESTION_TIMER / 1000) - 5) {
             time_bonus += QuestionUtil.TIME_BONUS
         }
     }
 
     fun updateTotalCorrect() {
         total_correct += 1
+        gameTotalCorrectLD.value = total_correct
         Timber.d("total correct: $total_correct")
     }
 
@@ -50,10 +56,14 @@ class GameOverViewModel @ViewModelInject() constructor() : ViewModel() {
 
     fun getTotalXP(): Int {
         var xp = 10 * total_correct + time_bonus
-        Timber.d("xp: $xp")
-        if (total_correct > high_score) xp += 12 * (total_correct + time_bonus)
-        Timber.d("xp: $xp")
-        return 200
+        if (total_correct > high_score) {
+            val highScoreBonus = 12 * (total_correct + time_bonus)
+            xp += highScoreBonus
+            gameHighScoreBonusLD.value = highScoreBonus
+        }
+        gameTimeBonusLD.value = time_bonus
+        gameQuizScoreLD.value = xp
+        return xp
     }
 
     fun updateHighScore(highScore: Int) {
@@ -95,6 +105,11 @@ class GameOverViewModel @ViewModelInject() constructor() : ViewModel() {
             }
         }
     }
+
+    var getGameTotalCorrectLD = gameTotalCorrectLD
+    var getHighScoreBonusLD = gameHighScoreBonusLD
+    var getGameQuizScoreLD = gameQuizScoreLD
+    var getGameBonusTimeLD = gameTimeBonusLD
 
     fun getUpdatedPlayerXPLiveData(): LiveData<Int> = playerXPLiveData
     fun getPreviousPlayerXPLiveData(): LiveData<Int> = playerPreviousXPLiveData

@@ -2,6 +2,8 @@ package com.murrayde.animekingmobile.screen.profile
 
 
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,8 +12,11 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.murrayde.animekingmobile.R
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_profile.*
+import timber.log.Timber
 
+@AndroidEntryPoint
 class ProfileFragment : Fragment() {
 
     private lateinit var profileViewModel: ProfileViewModel
@@ -24,6 +29,7 @@ class ProfileFragment : Fragment() {
         auth = FirebaseAuth.getInstance()
         profileViewModel = ViewModelProvider(this).get(ProfileViewModel::class.java)
         profileViewModel.getProfileInfoFor(auth.currentUser)
+        profileViewModel.getPlayerProfileStats(auth.uid!!)
         profileViewModel.getPlayerInfo().observe(viewLifecycleOwner, Observer { player ->
 //            profile_name.text = player.name
             profile_user_name.text = player.user_name
@@ -34,8 +40,26 @@ class ProfileFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-//        tv_profile_edit.setOnClickListener {
-//            Toast.makeText(requireActivity(), "Edit profile...", Toast.LENGTH_SHORT).show()
-//        }
+        Timber.d("progress max: ${profileProgressBarSimpleCustom.max}")
+        profileViewModel.getPlayerCurrentLevel().observe(viewLifecycleOwner, Observer {
+            profileImageLevel.text = "Form $it"
+            current_level.text = "$it"
+            next_level.text = "${it + 1}"
+        })
+        profileViewModel.getPlayerRequiredXP().observe(viewLifecycleOwner, Observer {required_experience ->
+            level_up_xp.text = "/${required_experience}"
+            profileProgressBarSimpleCustom.max = required_experience.toFloat()
+        })
+        profileViewModel.getPlayerCurrentXP().observe(viewLifecycleOwner, Observer{ xp ->
+            Handler(Looper.getMainLooper()).postDelayed({
+                profileProgressBarSimpleCustom.progress = xp.toFloat()
+                profileProgressBarSimpleCustom.secondaryProgress += xp + 20
+            }, 75)
+            current_xp.text = "XP $xp"
+        })
+        profileViewModel.getPlayerXPToLevelUp().observe(viewLifecycleOwner, Observer {
+            required_xp.text = "$it XP "
+        })
     }
+
 }

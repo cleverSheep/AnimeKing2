@@ -65,7 +65,7 @@
     <string name="game_over">Game Over</string>
     <string name="good_game">Good Game!</string>
     <string name="try_again">Try Again</string>
-    <string name="quit_game">Return Home</string>
+    <string name="quit_game">Quit Game</string>
     <string name="review_correct_choice">Correct: %1$s</string>
     <string name="questions_correct_count">%1$d out of %2$d questions correct!</string>
     <string name="questions_correct">%1$d questions correct!</string>
