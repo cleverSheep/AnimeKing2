@@ -35,7 +35,7 @@
     <string name="single_player">Single Player</string>
     <string name="multi_player">Multiplayer</string>
     <string name="join_community">Join Community</string>
-    <string name="question_count">0 questions</string>
+    <string name="question_count">0 question(s)</string>
     <string name="ask_question">Ask Question</string>
     <string name="coming_soon">Coming Soon!</string>
     <string name="number_questions">%1$s questions</string>

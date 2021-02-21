@@ -34,7 +34,7 @@
     <string name="single_player">Una jugadora</string>
     <string name="multi_player">Multijugador</string>
     <string name="join_community">Únete a la Comunidad</string>
-    <string name="question_count">0 questions</string>
+    <string name="question_count">0 question(s)</string>
     <string name="ask_question">Pregunta</string>
     <string name="coming_soon">Próximamente!</string>
     <string name="number_questions">%1$s preguntas</string>
