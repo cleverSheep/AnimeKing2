@@ -1,3 +1,0 @@
-package com.murrayde.animekingmobile.repository
-
-interface Repository

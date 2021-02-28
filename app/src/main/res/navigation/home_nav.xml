@@ -6,6 +6,6 @@
     app:startDestination="@id/credits">
     <fragment
         android:id="@+id/credits"
-        android:name="com.murrayde.animekingmobile.screen.splash_credits.CreditsFragment"
+        android:name="com.murrayde.animekingandroid.screen.splash_credits.CreditsFragment"
         tools:layout="@layout/fragment_credits" />
 </navigation>

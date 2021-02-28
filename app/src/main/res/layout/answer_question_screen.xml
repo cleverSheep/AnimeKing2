@@ -148,7 +148,7 @@
         app:layout_constraintBottom_toTopOf="@+id/currentQuestionAnimator"
         app:layout_constraintStart_toStartOf="@+id/currentQuestionAnimator" />
 
-    <com.murrayde.animekingmobile.screen.game.CurrentQuestionAnimator
+    <com.murrayde.animekingandroid.screen.game.CurrentQuestionAnimator
         android:id="@+id/currentQuestionAnimator"
         android:layout_width="0dp"
         android:layout_height="wrap_content"

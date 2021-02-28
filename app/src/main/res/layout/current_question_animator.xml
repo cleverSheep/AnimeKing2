@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.murrayde.animekingmobile.screen.game.CurrentQuestionView
+    <com.murrayde.animekingandroid.screen.game.CurrentQuestionView
         android:id="@+id/animator_one"
         android:layout_width="32dp"
         android:layout_height="8dp"
@@ -15,7 +15,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.murrayde.animekingmobile.screen.game.CurrentQuestionView
+    <com.murrayde.animekingandroid.screen.game.CurrentQuestionView
         android:id="@+id/animator_two"
         android:layout_width="32dp"
         android:layout_height="8dp"
@@ -26,7 +26,7 @@
         app:layout_constraintStart_toEndOf="@+id/animator_one"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.murrayde.animekingmobile.screen.game.CurrentQuestionView
+    <com.murrayde.animekingandroid.screen.game.CurrentQuestionView
         android:id="@+id/animator_three"
         android:layout_width="32dp"
         android:layout_height="8dp"
@@ -37,7 +37,7 @@
         app:layout_constraintStart_toEndOf="@+id/animator_two"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.murrayde.animekingmobile.screen.game.CurrentQuestionView
+    <com.murrayde.animekingandroid.screen.game.CurrentQuestionView
         android:id="@+id/animator_four"
         android:layout_width="32dp"
         android:layout_height="8dp"
@@ -48,7 +48,7 @@
         app:layout_constraintStart_toEndOf="@+id/animator_three"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.murrayde.animekingmobile.screen.game.CurrentQuestionView
+    <com.murrayde.animekingandroid.screen.game.CurrentQuestionView
         android:id="@+id/animator_five"
         android:layout_width="32dp"
         android:layout_height="8dp"
@@ -59,7 +59,7 @@
         app:layout_constraintStart_toEndOf="@+id/animator_four"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.murrayde.animekingmobile.screen.game.CurrentQuestionView
+    <com.murrayde.animekingandroid.screen.game.CurrentQuestionView
         android:id="@+id/animator_six"
         android:layout_width="32dp"
         android:layout_height="8dp"
@@ -70,7 +70,7 @@
         app:layout_constraintStart_toEndOf="@+id/animator_five"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.murrayde.animekingmobile.screen.game.CurrentQuestionView
+    <com.murrayde.animekingandroid.screen.game.CurrentQuestionView
         android:id="@+id/animator_seven"
         android:layout_width="32dp"
         android:layout_height="8dp"
@@ -81,7 +81,7 @@
         app:layout_constraintStart_toEndOf="@+id/animator_six"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.murrayde.animekingmobile.screen.game.CurrentQuestionView
+    <com.murrayde.animekingandroid.screen.game.CurrentQuestionView
         android:id="@+id/animator_eight"
         android:layout_width="32dp"
         android:layout_height="8dp"
@@ -92,7 +92,7 @@
         app:layout_constraintStart_toEndOf="@+id/animator_seven"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.murrayde.animekingmobile.screen.game.CurrentQuestionView
+    <com.murrayde.animekingandroid.screen.game.CurrentQuestionView
         android:id="@+id/animator_nine"
         android:layout_width="32dp"
         android:layout_height="8dp"
@@ -103,7 +103,7 @@
         app:layout_constraintStart_toEndOf="@+id/animator_eight"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.murrayde.animekingmobile.screen.game.CurrentQuestionView
+    <com.murrayde.animekingandroid.screen.game.CurrentQuestionView
         android:id="@+id/animator_ten"
         android:layout_width="32dp"
         android:layout_height="8dp"

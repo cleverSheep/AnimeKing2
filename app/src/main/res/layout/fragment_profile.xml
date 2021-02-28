@@ -98,7 +98,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/profileProgressBarSimpleCustom" />
 
-        <com.murrayde.animekingmobile.screen.game_over.custom_view.RoundCornerProgressBar
+        <com.murrayde.animekingandroid.screen.game_over.custom_view.RoundCornerProgressBar
             android:id="@+id/profileProgressBarSimpleCustom"
             style="@style/SampleProgress"
             android:layout_gravity="center"

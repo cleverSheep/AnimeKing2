@@ -45,10 +45,10 @@
 
         <variable
             name="listener"
-            type="com.murrayde.animekingmobile.screen.search.adapter.ClickListener" />
+            type="com.murrayde.animekingandroid.screen.search.adapter.ClickListener" />
 
         <variable
             name="anime_id"
-            type="com.murrayde.animekingmobile.network.community.api_models.AnimeData" />
+            type="com.murrayde.animekingandroid.network.community.api_models.AnimeData" />
     </data>
 </layout>

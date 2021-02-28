@@ -8,12 +8,81 @@
   "client": [
     {
       "client_info": {
+        "mobilesdk_app_id": "1:738121527329:android:2d8c4e71eb5e67331f7360",
+        "android_client_info": {
+          "package_name": "com.murrayde.animekingandroid"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "738121527329-qasnnqb9q0blmobi3ggrrn0o7b6d5h9o.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.murrayde.animekingandroid",
+            "certificate_hash": "50209b9e4872462461175bb107c72b432cda3625"
+          }
+        },
+        {
+          "client_id": "738121527329-afu8qdo00r239gnqilne2jp4721urvf2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBephRmxlEqtryakjQTXy8cpdIC5HQoiek"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "738121527329-afu8qdo00r239gnqilne2jp4721urvf2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:738121527329:android:700d3b38ae22a75f1f7360",
         "android_client_info": {
           "package_name": "com.murrayde.animekingmobile"
         }
       },
       "oauth_client": [
+        {
+          "client_id": "738121527329-42g3109141g77159bjkj2djqi8s40otj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.murrayde.animekingmobile",
+            "certificate_hash": "50209b9e4872462461175bb107c72b432cda3625"
+          }
+        },
+        {
+          "client_id": "738121527329-bnrpi8dt9dorft4svdls8tks1adk8u03.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.murrayde.animekingmobile",
+            "certificate_hash": "80f3f16f8126af7dca3552c2f50c8dcb1909dd84"
+          }
+        },
+        {
+          "client_id": "738121527329-pvn90i9dtvmr934fpha8d2c9omr1dltg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.murrayde.animekingmobile",
+            "certificate_hash": "ab379d5412315c4e00182d8ccc96ef799214c332"
+          }
+        },
+        {
+          "client_id": "738121527329-tcjmshgnis9dhtqtb2tdhu72v56tv3bo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.murrayde.animekingmobile",
+            "certificate_hash": "05521ca7f5a273c47e3119de33b50a14bd853789"
+          }
+        },
         {
           "client_id": "738121527329-afu8qdo00r239gnqilne2jp4721urvf2.apps.googleusercontent.com",
           "client_type": 3
@@ -44,6 +113,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "738121527329-djstfbmo0ogfc9u1ekimpl7j6v67rao9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.murrayde.animekingtrivia",
+            "certificate_hash": "4b10fadf3cac65ef0ca87dca121ece969b147073"
+          }
+        },
+        {
           "client_id": "738121527329-kmqn8u7anuoo6v7p4v1rd96g8c0rdaqs.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
@@ -65,14 +142,6 @@
           "android_info": {
             "package_name": "com.murrayde.animekingtrivia",
             "certificate_hash": "1e6dd382d34281b3e70e2d22d39ebef248731939"
-          }
-        },
-        {
-          "client_id": "738121527329-djstfbmo0ogfc9u1ekimpl7j6v67rao9.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.murrayde.animekingtrivia",
-            "certificate_hash": "4b10fadf3cac65ef0ca87dca121ece969b147073"
           }
         },
         {
