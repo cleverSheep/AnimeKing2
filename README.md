@@ -7,7 +7,7 @@
 </p>
 
 <p align="center">  
-Pokedex is a small demo application based on modern Android application tech-stacks and MVVM architecture.<br>This project is for focusing especially on the new library Hilt of implementing dependency injection.<br>
+Anime King is an anime trivia game based on modern Android application tech-stacks and MVVM architecture.<br>This project includes the new library Hilt for implementing dependency injection.<br>
 Also fetching data from the network and integrating persisted data in the database via repository pattern.
 </p>
 </br>
