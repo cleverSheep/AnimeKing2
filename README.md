@@ -23,7 +23,7 @@ Go to the [Play Store](https://play.google.com/store/apps/details?id=com.murrayd
 - Minimum SDK level 26
 - [RxJava](https://github.com/ReactiveX/RxJava) for asynchronous-based events.
 - [Firebase](https://firebase.google.com/docs/firestore) cloud-hosted, NoSQL database
-- Hilt (alpha) for dependency injection.
+- [Hilt] (https://developer.android.com/training/dependency-injection/hilt-android) for dependency injection.
 - JetPack
   - LiveData - notify domain layer data to views.
   - Lifecycle - dispose of observing data when lifecycle state changes.
