@@ -19,7 +19,7 @@ Visit the [Play Store](https://play.google.com/store/apps/details?id=com.murrayd
 - Minimum SDK level 26
 - [RxJava](https://github.com/ReactiveX/RxJava) for asynchronous-based events and parallel API network calls.
 - [Retrofit2 & OkHttp3](https://github.com/square/retrofit) - construct the REST APIs and paging network data.
-- [Gson](https://github.com/google/gson) - Convert Java Objects into their JSON representation.
+- [Gson](https://github.com/google/gson) - convert Java Objects into their JSON representation.
 - [Hilt](https://developer.android.com/training/dependency-injection/hilt-android) for dependency injection.
 - [Firebase](https://firebase.google.com/docs/build) cloud-hosted [NoSQL database, serverless functions, auth]
 - JetPack
