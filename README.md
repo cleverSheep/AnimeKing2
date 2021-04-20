@@ -5,7 +5,7 @@
 </p>
 
 <p align="center">  
-Anime King is an anime trivia game based on modern Android application tech-stacks and MVVM architecture.<br>
+Anime King is an anime trivia game based on modern Android application tech-stacks and the MVVM architecture.<br>
 </p>
 </br>
 
