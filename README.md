@@ -22,7 +22,7 @@ Go to the [Releases](https://github.com/skydoves/Pokedex/releases) to download t
 
 ## Tech stack & Open-source libraries
 - Minimum SDK level 26
-- [RxJava](https://github.com/ReactiveX/RxJava) based for asynchronous events.
+- [RxJava](https://github.com/ReactiveX/RxJava) for asynchronous-based events.
 - Hilt (alpha) for dependency injection.
 - JetPack
   - LiveData - notify domain layer data to views.
