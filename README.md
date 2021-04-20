@@ -39,7 +39,7 @@ Visit the [Play Store](https://play.google.com/store/apps/details?id=com.murrayd
 
 
 ## Architecture
-Anime King is based on MVVM architecture and a repository pattern.
+Anime King is based on the MVVM architecture and a repository pattern.
 
 ![architecture](https://user-images.githubusercontent.com/24237865/77502018-f7d36000-6e9c-11ea-92b0-1097240c8689.png)
 
