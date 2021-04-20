@@ -14,18 +14,6 @@ import androidx.annotation.DrawableRes
 import com.murrayde.animekingandroid.R
 import kotlinx.android.synthetic.main.vertical_scrolling_image_view.view.*
 
-/**
- * VerticalScrollingImageView
- * A constraint layout container for an imageView that scrolls up in a loop. The height of the
- * container will change to match the source's aspect ratio.
- *
- * Supported XML properties
- * app:src - set the image source. Currently only supports images with height > width
- * app:scroll_ms - sets the duration of one scroll through the container in milliseconds
- * app:translate_offset - translates the source image up by a percentage
- *
- * Copyright (c) 2019 Pandora Media, Inc.
- */
 class VerticalScrollingImageView(
         context: Context,
         private val attributeSet: AttributeSet
