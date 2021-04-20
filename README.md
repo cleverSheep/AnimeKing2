@@ -9,10 +9,6 @@ Anime King is an anime trivia game based on modern Android application tech-stac
 </p>
 </br>
 
-<p align="center">
-<img src="collage.png"/>
-</p>
-
 ## Download
 Visit the [Play Store](https://play.google.com/store/apps/details?id=com.murrayde.animekingandroid) and check it out!
 
