@@ -31,7 +31,7 @@ Go to the [Play Store](https://play.google.com/store/apps/details?id=com.murrayd
   - MVVM Architecture (View -> ViewModel -> Model)
   - Repository pattern
 - [Retrofit2 & OkHttp3](https://github.com/square/retrofit) - construct the REST APIs and paging network data.
-- [Moshi](https://github.com/google/gson) - Convert Java Objects into their JSON representation.
+- [Gson](https://github.com/google/gson) - Convert Java Objects into their JSON representation.
 - [Glide](https://github.com/bumptech/glide), [GlidePalette](https://github.com/florent37/GlidePalette) - loading images.
 - [Timber](https://github.com/JakeWharton/timber) - logging.
 - [Material-Components](https://github.com/material-components/material-components-android) - Material design components like ripple animation, cardView.
