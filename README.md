@@ -22,7 +22,7 @@ Go to the [Releases](https://github.com/skydoves/Pokedex/releases) to download t
 
 ## Tech stack & Open-source libraries
 - Minimum SDK level 26
-- [Kotlin](https://kotlinlang.org/) based, [Coroutines](https://github.com/Kotlin/kotlinx.coroutines) + [Flow](https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines.flow/) for asynchronous.
+- [RxJava](https://github.com/ReactiveX/RxJava) based for asynchronous events.
 - Hilt (alpha) for dependency injection.
 - JetPack
   - LiveData - notify domain layer data to views.
