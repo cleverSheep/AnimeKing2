@@ -22,7 +22,7 @@ Go to the [Play Store](https://play.google.com/store/apps/details?id=com.murrayd
 ## Tech stack & Open-source libraries
 - Minimum SDK level 26
 - [RxJava](https://github.com/ReactiveX/RxJava) for asynchronous-based events.
-- [Firebase](https://firebase.google.com/docs/firestore) cloud-hosted, NoSQL database
+- [Firebase](https://firebase.google.com/docs/firestore) cloud-hosted [NoSQL database, serverless functions, auth]
 - [Hilt](https://developer.android.com/training/dependency-injection/hilt-android) for dependency injection.
 - JetPack
   - LiveData - notify domain layer data to views.
