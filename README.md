@@ -5,8 +5,7 @@
 </p>
 
 <p align="center">  
-Anime King is an anime trivia game based on modern Android application tech-stacks and MVVM architecture.<br>This project includes the new library Hilt for implementing dependency injection.<br>
-Also fetching data from the network and integrating persisted data in the database via repository pattern.
+Anime King is an anime trivia game based on modern Android application tech-stacks and MVVM architecture.<br>
 </p>
 </br>
 
