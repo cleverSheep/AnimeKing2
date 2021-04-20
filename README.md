@@ -25,7 +25,7 @@ Visit the [Play Store](https://play.google.com/store/apps/details?id=com.murrayd
   - Lifecycle - dispose of observing data when lifecycle state changes.
   - ViewModel - UI related data holder, lifecycle aware.
 - Architecture
-  - MVVM Architecture (View -> ViewModel -> Model)
+  - MVVM Architecture (View <-> ViewModel <-> Model)
   - Repository pattern
 - [Retrofit2 & OkHttp3](https://github.com/square/retrofit) - construct the REST APIs and paging network data.
 - [Gson](https://github.com/google/gson) - Convert Java Objects into their JSON representation.
