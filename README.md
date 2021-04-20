@@ -52,7 +52,7 @@ Anime King uses the [Kitsu Api](https://pokeapi.co/) for fetching resources.<br>
 
 # License
 ```xml
-Designed and developed by 2021 cleverSheep (Dean Murray)
+Designed and developed by cleverSheep (Dean Murray) 2021
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
