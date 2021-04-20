@@ -20,8 +20,8 @@ Visit the [Play Store](https://play.google.com/store/apps/details?id=com.murrayd
 - [RxJava](https://github.com/ReactiveX/RxJava) for asynchronous-based events and parallel API network calls.
 - [Retrofit2 & OkHttp3](https://github.com/square/retrofit) - construct the REST APIs and paging network data.
 - [Gson](https://github.com/google/gson) - Convert Java Objects into their JSON representation.
-- [Firebase](https://firebase.google.com/docs/build) cloud-hosted [NoSQL database, serverless functions, auth]
 - [Hilt](https://developer.android.com/training/dependency-injection/hilt-android) for dependency injection.
+- [Firebase](https://firebase.google.com/docs/build) cloud-hosted [NoSQL database, serverless functions, auth]
 - JetPack
   - LiveData - notify domain layer data to views.
   - Lifecycle - dispose of observing data when lifecycle state changes.
@@ -29,9 +29,9 @@ Visit the [Play Store](https://play.google.com/store/apps/details?id=com.murrayd
 - Architecture
   - MVVM Architecture (View <-> ViewModel <-> Model)
   - Repository pattern
+- [Timber](https://github.com/JakeWharton/timber) - logging.
 - [Glide](https://github.com/bumptech/glide) - loading images.
 - [Epoxy](https://github.com/airbnb/epoxy) - building a complex RecyclerView.
-- [Timber](https://github.com/JakeWharton/timber) - logging.
 - [Material-Components](https://github.com/material-components/material-components-android) - Material design components like ripple animation, cardView.
 
 
