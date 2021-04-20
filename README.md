@@ -11,7 +11,7 @@ Also fetching data from the network and integrating persisted data in the databa
 </br>
 
 <p align="center">
-<img src="/previews/screenshot.png"/>
+<img src="collage.png"/>
 </p>
 
 ## Download
