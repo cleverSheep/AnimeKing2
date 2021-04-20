@@ -32,7 +32,7 @@ Visit the [Play Store](https://play.google.com/store/apps/details?id=com.murrayd
 - [Timber](https://github.com/JakeWharton/timber) - logging.
 - [Glide](https://github.com/bumptech/glide) - loading images.
 - [Epoxy](https://github.com/airbnb/epoxy) - building a complex RecyclerView.
-- [Material-Components](https://github.com/material-components/material-components-android) - Material design components like ripple animation, cardView.
+- [Custom Views](https://developer.android.com/guide/topics/ui/custom-components) - animated view components.
 
 
 ## Architecture
