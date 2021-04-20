@@ -43,7 +43,7 @@ Anime King is based on the MVVM architecture and a repository pattern.
 
 <img src="kitsu.png" align="right" width="4%"/>
 
-Anime King uses the [Kitsu Api](https://pokeapi.co/) for fetching resources.<br>
+Anime King uses the [Kitsu Api](https://kitsu.docs.apiary.io/) for fetching resources.<br>
 
 
 # License
